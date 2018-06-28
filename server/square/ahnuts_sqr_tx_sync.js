@@ -12,12 +12,113 @@ var v1_api_sqr = require('./v1_api.js');
 var an_sqr_tx_sync = {
 	batch_requests: batch_requests,
 	push_requests: push_requests,
-	single_tx_sync: single_tx_sync
+	single_tx_sync: single_tx_sync,
+	map_sqr_tx_to_ahnts_tx: map_sqr_tx_to_ahnts_tx,
+	map_sqr_tx_tender_to_ahnts_tx_tender: map_sqr_tx_tender_to_ahnts_tx_tender,
+	map_sqr_tx_itemizations_to_ahnts_tx_itemizations: map_sqr_tx_itemizations_to_ahnts_tx_itemizations,
+	map_sqr_tx_mods_to_ahnts_tx_mods: map_sqr_tx_mods_to_ahnts_tx_mods
 };
 
 /*
 *	MISC FUNCTIONS
 */
+// 
+function map_sqr_tx_mods_to_ahnts_tx_mods(sqrMods) {
+	//define local variables
+	var newModsArray = [];
+
+	//iterate through each tranaction
+	sqrMods.forEach(function(modifier) {
+		//define local variables
+		var newMod = {
+			name: 			 modifier.name,
+			applied_money: 	 modifier.applied_money.amount,
+			modifier_option: modifier.modifier_option_id
+		};
+
+		//add to array
+		newModsArray.push(newMod);
+
+	});
+
+	return newModsArray;
+};
+
+//
+function map_sqr_tx_tender_to_ahnts_tx_tender(sqrTender) {
+	//define local variables
+	var newTenderArray = [];
+
+	//iterate through each tranaction
+	sqrTender.forEach(function(tender_tx) {
+		//define local variales
+		var newTender = {
+			total_money: tender_tx.total_money.amount,
+			type: tender_tx.type
+		};	
+
+		//add to the array
+		newTenderArray.push(newTender);
+	});
+
+	return newTenderArray;
+};
+	
+//
+function map_sqr_tx_itemizations_to_ahnts_tx_itemizations(sqrItemizations) {
+	//define local variables
+	var newItemizationArray = [];
+
+	//iterate through each tranaction
+	sqrItemizations.forEach(function(itemization_tx) {
+		//define local variales
+		var newItemization = {
+			name: 					itemization_tx.name,
+			quantity: 				itemization_tx.quantity,
+			item_variation_id: 		itemization_tx.item_detail.item_id,
+			item_variation_name: 	itemization_tx.item_variation_name,
+			total_money: 			itemization_tx.total_money.amount,
+			single_quantity_money: 	itemization_tx.single_quantity_money.amount,
+			gross_sales_money: 		itemization_tx.gross_sales_money.amount,
+			discount_money: 		itemization_tx.discount_money.amount,
+			net_sales_money: 		itemization_tx.net_sales_money.amount,
+			modifers: map_sqr_tx_mods_to_ahnts_tx_mods(itemization_tx.modifiers)
+		};	
+
+		//add to the array
+		newItemizationArray.push(newItemization);
+	});
+
+	return newItemizationArray;	
+};
+
+//
+function map_sqr_tx_to_ahnts_tx(sqrTx) {
+	//define local variables
+	var ahnuts_tx = {};
+
+	//define the tx name
+	ahnuts_tx[sqrTx.id] = {
+		created_at: "",
+		device_id: sqrTx.device.id,
+		device_name: sqrTx.device.name,
+		salesDay: "",
+		customer: "",
+		employee_id: "",
+		net_total_money: sqrTx.net_total_money.amount,
+		tip_money: sqrTx.tip_money.amount,
+		discount_money: sqrTx.discount_money.amount,
+		processing_fee_money: sqrTx.processing_fee_money.amount,
+		refunded_money: sqrTx.refunded_money.amount,
+		gross_sales_money: sqrTx.gross_sales_money.amount,
+		net_sales_money: sqrTx.refunded_money.amount,
+		tender: map_sqr_tx_tender_to_ahnts_tx_tender(sqrTx.tender),
+		itemizations: map_sqr_tx_itemizations_to_ahnts_tx_itemizations(sqrTx.itemizations)
+	};
+
+	return ahnuts_tx;
+};
+
 // SINGLE TRANSACTION SYNC
 function single_tx_sync(entity_id, location_id) {
 	//define local variables
@@ -26,10 +127,18 @@ function single_tx_sync(entity_id, location_id) {
 	//download tx from square
 	v1_api_sqr.payments.retrieve(entity_id, location_id).then(function success(s) {
 
+		//notify of returning object
+		//console.log(s);
+
 		//check for reference transaction status
 
-		//saving the transaction happens regardless
+		//map square object to ah-nuts object
+		var ahnuts_tx = map_sqr_tx_to_ahnts_tx(s);
 		
+		console.log(ahnuts_tx);
+
+		//saving the transaction happens regardless
+
 		//if is a reference transaction....
 		//if is NOT a reference transaction...
 			//
