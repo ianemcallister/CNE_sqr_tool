@@ -8,6 +8,12 @@
 //define dependencies
 var v1_api_sqr 		= require('./v1_api.js');
 var firebase		= require('../firebase/firebase.js');
+var stdio 			= require('../stdio/stdio_api.js');
+var moment 			= require('moment-timezone');
+
+
+//define settings
+//moment().tz().format();
 
 //define module
 var an_sqr_tx_sync = {
@@ -19,7 +25,9 @@ var an_sqr_tx_sync = {
 	map_sqr_tx_itemizations_to_ahnts_tx_itemizations: map_sqr_tx_itemizations_to_ahnts_tx_itemizations,
 	map_sqr_tx_mods_to_ahnts_tx_mods: map_sqr_tx_mods_to_ahnts_tx_mods,
 	map_sqr_tx_device_id_to_ahnuts_tx_dev_id: map_sqr_tx_device_id_to_ahnuts_tx_dev_id,
-	save_tx_to_ahnuts_server: save_tx_to_ahnuts_server
+	parse_timestamp: parse_timestamp,
+	save_tx_to_ahnuts_server: save_tx_to_ahnuts_server,
+	save_tx_id_to_ahnuts_ref_lists: save_tx_id_to_ahnuts_ref_lists
 };
 
 /*
@@ -105,7 +113,7 @@ function map_sqr_tx_device_id_to_ahnuts_tx_dev_id(sqrDeviceId) {
 };
 
 //
-function map_sqr_tx_to_ahnts_tx(sqrTx) {
+function map_sqr_tx_to_ahnts_tx(sqrTx, location_id) {
 	//define local variables
 	var ahnuts_tx = {};
 
@@ -113,7 +121,7 @@ function map_sqr_tx_to_ahnts_tx(sqrTx) {
 
 	//define the tx name
 	ahnuts_tx[sqrTx.id] = {
-		created_at: sqrTx.created_at,
+		created_at: parse_timestamp(sqrTx.created_at, location_id),
 		device_id: map_sqr_tx_device_id_to_ahnuts_tx_dev_id(sqrTx.device.id),
 		device_name: sqrTx.device.name,
 		salesDay: "",
@@ -135,6 +143,17 @@ function map_sqr_tx_to_ahnts_tx(sqrTx) {
 	return ahnuts_tx;
 };
 
+// PARES TIMESTAMP
+function parse_timestamp(timestamp, location_id) {
+	//define local variables
+	var location_tz_object = stdio.read.json('./models/ahnuts_locations.json');
+	var tzTimestamp = moment.tz(timestamp, location_tz_object[location_id].timezone).format();
+	
+	//console.log('timezone:', tzTimestamp);
+
+	return tzTimestamp;
+}
+
 // SAVE TRANSACTION TO AHNUTS SERVER
 function save_tx_to_ahnuts_server(tx_id, ahnutstx) {
 	//define local variables	
@@ -142,6 +161,19 @@ function save_tx_to_ahnuts_server(tx_id, ahnutstx) {
 
 	//write the records
 	firebase.create(writePath, ahnutstx[tx_id]).then(function success(s) {
+		console.log('Success:', s);
+	}).catch(function error(e) {
+		console.log('ERROR:', e);
+	});
+};
+
+// SAVE TRANSACTION ID TO THE AHNUTS REFERENCE LIST
+function save_tx_id_to_ahnuts_ref_lists(tx_id, ahnutstx) {
+	//define local variables
+	var splitDatetime = ahnutstx[tx_id].created_at.split('T')
+	var writePath = 'reference_lists/unassigned_txs/' + ahnutstx[tx_id].device_id + "/" + splitDatetime[0];
+	
+	firebase.push(writePath, tx_id).then(function success(s) {
 		console.log('Success:', s);
 	}).catch(function error(e) {
 		console.log('ERROR:', e);
@@ -162,11 +194,13 @@ function single_tx_sync(entity_id, location_id) {
 		//check for reference transaction status
 
 		//map square object to ah-nuts object
-		var ahnuts_tx = map_sqr_tx_to_ahnts_tx(s);
+		var ahnuts_tx = map_sqr_tx_to_ahnts_tx(s, location_id);
 
-		//saving the transaction happens regardless
+		//we'll always save the transaction to the database
 		save_tx_to_ahnuts_server(entity_id, ahnuts_tx);
 
+		//for the time being, save the transaction id to the unassigned_txs list
+		save_tx_id_to_ahnuts_ref_lists(entity_id, ahnuts_tx);
 
 		//if is a reference transaction....
 		//if is NOT a reference transaction...

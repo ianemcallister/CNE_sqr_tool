@@ -35,6 +35,7 @@ var firebase = {
 	create: create,
 	read: read,
 	update: update,
+	push: push,
 	del: del,
 	aTest: aTest
 };
@@ -87,6 +88,30 @@ function read(path) {
 
 	});
 
+};
+
+/*
+*	PUSH
+*/
+function push(path, data) {
+	//define local variables
+	var ref = admin.database().ref(path);
+
+	console.log('pushing new record', path, data);
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//hit the database
+		ref.push().set(data, function(error) {
+		if (error) {
+		  reject("Data could not be saved." + error);
+		} else {
+		  resolve("Data saved successfully.");
+		}
+		});
+
+	});	
 };
 
 function update() {};

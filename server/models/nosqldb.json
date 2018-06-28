@@ -117,8 +117,21 @@
 				}
 			}
 		},
-		"unassigned_txs": [
-		]
+		"unassigned_txs": {
+			"placeholder": "placeholder",
+
+		},
+		"assigned_txs" : {
+			"(device_id)": {
+				"(date)": {
+					"0": {
+						"salesDay_title": "",
+						"salesDay_id": ""
+						""
+					}
+				}
+			}
+		}
 	},
 	"transactions": {
 		"Z8ahEq2jgpo1Tnkb5IsxKQB": {
