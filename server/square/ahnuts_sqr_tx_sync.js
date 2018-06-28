@@ -18,6 +18,7 @@ var an_sqr_tx_sync = {
 	map_sqr_tx_tender_to_ahnts_tx_tender: map_sqr_tx_tender_to_ahnts_tx_tender,
 	map_sqr_tx_itemizations_to_ahnts_tx_itemizations: map_sqr_tx_itemizations_to_ahnts_tx_itemizations,
 	map_sqr_tx_mods_to_ahnts_tx_mods: map_sqr_tx_mods_to_ahnts_tx_mods,
+	map_sqr_tx_device_id_to_ahnuts_tx_dev_id: map_sqr_tx_device_id_to_ahnuts_tx_dev_id,
 	save_tx_to_ahnuts_server: save_tx_to_ahnuts_server
 };
 
@@ -94,6 +95,15 @@ function map_sqr_tx_itemizations_to_ahnts_tx_itemizations(sqrItemizations) {
 	return newItemizationArray;	
 };
 
+// MAP SQUARE TRANSACTION DEVICE IDE TO AH NUTS TRANSACTION DEVICE ID
+function map_sqr_tx_device_id_to_ahnuts_tx_dev_id(sqrDeviceId) {
+	//define local variables
+	var namesplit = sqrDeviceId.split(":");
+	var ahnuts_device_id = namesplit[1];
+
+	return ahnuts_device_id;
+};
+
 //
 function map_sqr_tx_to_ahnts_tx(sqrTx) {
 	//define local variables
@@ -104,7 +114,7 @@ function map_sqr_tx_to_ahnts_tx(sqrTx) {
 	//define the tx name
 	ahnuts_tx[sqrTx.id] = {
 		created_at: sqrTx.created_at,
-		device_id: sqrTx.device.id,
+		device_id: map_sqr_tx_device_id_to_ahnuts_tx_dev_id(sqrTx.device.id),
 		device_name: sqrTx.device.name,
 		salesDay: "",
 		customer: "",
