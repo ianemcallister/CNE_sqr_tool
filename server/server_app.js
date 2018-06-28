@@ -55,14 +55,15 @@ serverApp.get('/', function(req, res) {
 *	POST Declarations
 */
 //square payment webhooks
-/*serverApp.post('/sqrwebhook', function(req, res) {
+serverApp.post('/sqrwebhook', function(req, res) {
 	
-
+	//advise of the post body
+	console.log(req.body);
 
 	//return an affirmative status code
 	res.sendStatus(200);
 
-});*/
+});
 
 /*
 *	Opening Up the server
