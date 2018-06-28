@@ -4,6 +4,7 @@
   "description": "Tool to download data from square",
   "main": "index.js",
   "scripts": {
+    "start": "node server/cli",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ian McAllister",

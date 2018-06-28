@@ -9,9 +9,9 @@ var fetch 			= require('node-fetch');
 
 //define global variables
 var _accessToken 	= process.env.SQUARE_APP_TOKEN;
-var _sandboxToken 	= process.env.SQUARE_SANDBOX_APP_TOKEN;
-var _applicationID 	= process.env.SQUARE_APP_ID;
-var _sandboxID 		= process.env.SQUARE_SANDBOX_APP_ID;
+//var _sandboxToken 	= process.env.SQUARE_SANDBOX_APP_TOKEN;
+//var _applicationID 	= process.env.SQUARE_APP_ID;
+//var _sandboxID 		= process.env.SQUARE_SANDBOX_APP_ID;
 var _baseURL 		= 'https://connect.squareup.com/';
 var _headers 		= {
 	'Authorization': 'Bearer ' + _accessToken, //process.env.SQUARE_APP_TOKEN,
