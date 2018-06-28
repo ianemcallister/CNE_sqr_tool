@@ -1,0 +1,100 @@
+[
+	{
+		"name": "Administrator",
+		"permissions": [
+			"REGISTER_ACCESS_SALES_HISTORY",
+			"REGISTER_APPLY_RESTRICTED_DISCOUNTS",
+			"REGISTER_CHANGE_SETTINGS",
+			"REGISTER_EDIT_ITEM",
+			"REGISTER_ISSUE_REFUNDS",
+			"REGISTER_OPEN_CASH_DRAWER_OUTSIDE_SALE",
+			"REGISTER_VIEW_SUMMARY_REPORTS"
+		],
+		"id": "oyRJuN2k_XrBHlYZnE0t",
+		"is_owner": true,
+		"created_at": "2016-06-15T02:05:34Z",
+		"updated_at": "2016-06-15T02:05:34Z"
+	},
+	{
+		"name": "Account Owner",
+		"permissions": [
+			"REGISTER_ACCESS_SALES_HISTORY",
+			"REGISTER_APPLY_RESTRICTED_DISCOUNTS",
+			"REGISTER_CHANGE_SETTINGS",
+			"REGISTER_EDIT_ITEM",
+			"REGISTER_ISSUE_REFUNDS",
+			"REGISTER_OPEN_CASH_DRAWER_OUTSIDE_SALE",
+			"REGISTER_VIEW_SUMMARY_REPORTS"
+		],
+		"id": "1bOQUfkd6cn-ZJU6QxZq",
+		"is_owner": true,
+		"created_at": "2016-06-15T02:05:34Z",
+		"updated_at": "2016-06-15T02:05:34Z"
+	},
+	{
+		"name": "Mobile Cashier (ah-nuts!)",
+		"permissions": [
+			"REGISTER_ACCESS_SALES_HISTORY",
+			"REGISTER_APPLY_RESTRICTED_DISCOUNTS",
+			"REGISTER_CHANGE_SETTINGS",
+			"REGISTER_EDIT_ITEM",
+			"REGISTER_ISSUE_REFUNDS",
+			"REGISTER_OPEN_CASH_DRAWER_OUTSIDE_SALE",
+			"REGISTER_VIEW_SUMMARY_REPORTS"
+		],
+		"id": "xhGRZOebO_zcbR1XUKx-",
+		"is_owner": false,
+		"created_at": "2016-06-15T02:05:35Z",
+		"updated_at": "2018-04-05T20:32:15Z"
+	},
+	{
+		"name": "Master Slinger",
+		"permissions": [
+			"REGISTER_ACCESS_SALES_HISTORY",
+			"REGISTER_CHANGE_SETTINGS",
+			"REGISTER_ISSUE_REFUNDS",
+			"REGISTER_VIEW_SUMMARY_REPORTS"
+		],
+		"id": "WJfRMDq7xX7aOVEnBtqc",
+		"is_owner": false,
+		"created_at": "2016-06-19T01:50:21Z",
+		"updated_at": "2018-02-17T17:08:01Z"
+	},
+	{
+		"name": "Nut Slinger",
+		"permissions": [
+			"REGISTER_ACCESS_SALES_HISTORY",
+			"REGISTER_APPLY_RESTRICTED_DISCOUNTS",
+			"REGISTER_ISSUE_REFUNDS",
+			"REGISTER_VIEW_SUMMARY_REPORTS"
+		],
+		"id": "MoGOuw3VYhSTNgLVIah7",
+		"is_owner": false,
+		"created_at": "2016-06-20T20:13:42Z",
+		"updated_at": "2018-02-17T17:08:01Z"
+	},
+	{
+		"name": "Mobile Staff",
+		"permissions": [],
+		"id": "7U99dPKKWiFKYCecc1Hi",
+		"is_owner": false,
+		"created_at": "2017-03-21T10:02:50Z",
+		"updated_at": "2018-02-17T17:08:01Z"
+	},
+	{
+		"name": "Coordinator",
+		"permissions": [],
+		"id": "6auiWkvhIYpvmMd7Gx79",
+		"is_owner": false,
+		"created_at": "2017-07-17T18:03:01Z",
+		"updated_at": "2018-04-05T20:50:01Z"
+	},
+	{
+		"name": "Warehouse Support",
+		"permissions": [],
+		"id": "o3VdbTVxpJsUzWoWMXcf",
+		"is_owner": false,
+		"created_at": "2017-07-18T18:11:49Z",
+		"updated_at": "2018-02-17T17:08:01Z"
+	}
+]

@@ -1,0 +1,520 @@
+{
+	"Mix Regular Price": {
+		"nut": "mix",
+		"flavor": "mix",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Mix 1/2 Lb.": {
+		"nut": "mix",
+		"flavor": "mix",
+		"pkg_size": "average",
+		"pkg_shape": "cone",
+		"oz": 8
+	},
+	"Mix 1 Lb": {
+		"nut": "mix",
+		"flavor": "mix",
+		"pkg_size": "impressive",
+		"pkg_shape": "cone",
+		"oz": 16
+	},
+	"Mix Small (4)": {
+		"nut": "mix",
+		"flavor": "mix",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Mix Average (8)": {
+		"nut": "mix",
+		"flavor": "mix",
+		"pkg_size": "average",
+		"pkg_shape": "cone",
+		"oz": 8
+	},
+	"Mix Impressive (16)": {
+		"nut": "mix",
+		"flavor": "mix",
+		"pkg_size": "impressive",
+		"pkg_shape": "cone",
+		"oz": 16
+	},
+	"Platter All Peanuts": {
+		"nut": "mix",
+		"flavor": "mix",
+		"pkg_size": "platter",
+		"pkg_shape": "cylinder",
+		"oz": 20
+	},
+	"Platter Regular": {
+		"nut": "mix",
+		"flavor": "mix",
+		"pkg_size": "platter",
+		"pkg_shape": "cylinder",
+		"oz": 20
+	},
+	"Pecan Regular Price": {
+		"nut": "pecans",
+		"flavor": "mix",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Pecan 1/2 Lb.": {
+		"nut": "pecans",
+		"flavor": "mix",
+		"pkg_size": "averge",
+		"pkg_shape": "cone",
+		"oz": 8
+	},
+	"Pecan 1 Lb.": {
+		"nut": "pecans",
+		"flavor": "mix",
+		"pkg_size": "impressive",
+		"pkg_shape": "cone",
+		"oz": 16
+	},
+	"SR Pecans Small (4)": {
+		"nut": "pecans",
+		"flavor": "sr",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"SR Pecans Average (8)": {
+		"nut": "pecans",
+		"flavor": "sr",
+		"pkg_size": "average",
+		"pkg_shape": "cone",
+		"oz": 8
+	},
+	"SR Pecans Impressive (16)": {
+		"nut": "pecans",
+		"flavor": "sr",
+		"pkg_size": "impressive",
+		"pkg_shape": "cone",
+		"oz": 16
+	},
+	"Cin Pecans Small (4)": {
+		"nut": "pecans",
+		"flavor": "cin",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Cin Pecans Average (8)": {
+		"nut": "pecans",
+		"flavor": "cin",
+		"pkg_size": "average",
+		"pkg_shape": "cone",
+		"oz": 8
+	},
+	"Cin Pecans Impressive (16)": {
+		"nut": "pecans",
+		"flavor": "cin",
+		"pkg_size": "impressive",
+		"pkg_shape": "cone",
+		"oz": 16
+	},
+	"Secret Recipe Pecans Regular": {
+		"nut": "pecans",
+		"flavor": "sr",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Cinnamon Pecans Regular": {
+		"nut": "pecans",
+		"flavor": "cin",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Almond Regular Price": {
+		"nut": "almonds",
+		"flavor": "mix",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Almond 1/2 Lb": {
+		"nut": "almonds",
+		"flavor": "mix",
+		"pkg_size": "average",
+		"pkg_shape": "cone",
+		"oz": 8
+	},
+	"Almond 1 Lb.": {
+		"nut": "almonds",
+		"flavor": "mix",
+		"pkg_size": "impressive",
+		"pkg_shape": "cone",
+		"oz": 16
+	},
+	"SR Almonds Small (4)": {
+		"nut": "almonds",
+		"flavor": "sr",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"SR Almonds Average (8)": {
+		"nut": "almonds",
+		"flavor": "sr",
+		"pkg_size": "average",
+		"pkg_shape": "cone",
+		"oz": 8
+	},
+	"SR Almonds Impressive (16)": {
+		"nut": "almonds",
+		"flavor": "sr",
+		"pkg_size": "impressive",
+		"pkg_shape": "cone",
+		"oz": 16
+	},
+	"Cin Almonds Small (4)": {
+		"nut": "almonds",
+		"flavor": "cin",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Cin Almonds Average (8)": {
+		"nut": "almonds",
+		"flavor": "cin",
+		"pkg_size": "average",
+		"pkg_shape": "cone",
+		"oz": 8
+	},
+	"Cin Almonds Impressive (16)": {
+		"nut": "almonds",
+		"flavor": "cin",
+		"pkg_size": "impressive",
+		"pkg_shape": "cone",
+		"oz": 16
+	},
+	"Secret Recipe Almonds Regular": {
+		"nut": "",
+		"flavor": "sr",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Cinnamon Almonds Regular": {
+		"nut": "almonds",
+		"flavor": "cin",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Cashews Regular Price": {
+		"nut": "cashews",
+		"flavor": "",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Cashews Medium": {
+		"nut": "cashews",
+		"flavor": "",
+		"pkg_size": "average",
+		"pkg_shape": "cone",
+		"oz": 8
+	},
+	"Cashews Large": {
+		"nut": "cashews",
+		"flavor": "",
+		"pkg_size": "impressive",
+		"pkg_shape": "cone",
+		"oz": 18
+	},
+	"SR Cashews Small (4)": {
+		"nut": "cashews",
+		"flavor": "sr",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"SR Cashews Average (8)": {
+		"nut": "cashews",
+		"flavor": "sr",
+		"pkg_size": "average",
+		"pkg_shape": "cone",
+		"oz": 8
+	},
+	"SR Cashews Impressive (16)": {
+		"nut": "cashews",
+		"flavor": "sr",
+		"pkg_size": "impressive",
+		"pkg_shape": "cone",
+		"oz": 16
+	},
+	"Secret Recipe Cashews Regular": {
+		"nut": "",
+		"flavor": "sr",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Peanuts Small": {
+		"nut": "peanuts",
+		"flavor": "sr",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Peanuts Average": {
+		"nut": "peanuts",
+		"flavor": "sr",
+		"pkg_size": "average",
+		"pkg_shape": "cone",
+		"oz": 8
+	},
+	"Peanuts Impressive": {
+		"nut": "peanuts",
+		"flavor": "sr",
+		"pkg_size": "impressive",
+		"pkg_shape": "cone",
+		"oz": 16
+	},
+	"SR Peanuts Small (4)": {
+		"nut": "peanuts",
+		"flavor": "sr",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"SR Peanuts Average (8)": {
+		"nut": "peanuts",
+		"flavor": "sr",
+		"pkg_size": "average",
+		"pkg_shape": "cone",
+		"oz": 8
+	},
+	"SR Peanuts Impressive (16)": {
+		"nut": "peanuts",
+		"flavor": "sr",
+		"pkg_size": "impressive",
+		"pkg_shape": "cone",
+		"oz": 16
+	},
+	"Secret Recipe Peanuts Regular": {
+		"nut": "peanuts",
+		"flavor": "sr",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Drunken Regular Price": {
+		"nut": "pecans",
+		"flavor": "drnk",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"DR Pecans Small (4)": {
+		"nut": "pecans",
+		"flavor": "drnk",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"DR Pecans Average (8)": {
+		"nut": "pecans",
+		"flavor": "drnk",
+		"pkg_size": "average",
+		"pkg_shape": "cone",
+		"oz": 8
+	},
+	"DR Pecans Impressive (16)": {
+		"nut": "pecans",
+		"flavor": "drnk",
+		"pkg_size": "impressive",
+		"pkg_shape": "cone",
+		"oz": 16
+	},
+	"Drunken Pecans Regular": {
+		"nut": "pecans",
+		"flavor": "drnk",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Variable Nut Regular Price": {
+		"nut": "mix",
+		"flavor": "mix",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Holiday Tins Regular": {
+		"nut": "mix",
+		"flavor": "mix",
+		"pkg_size": "tin",
+		"pkg_shape": "cylinder",
+		"oz": 16
+	},
+	"BOGO Regular": {
+		"nut": null,
+		"flavor": null,
+		"pkg_size": null,
+		"pkg_shape": null,
+		"oz": null
+	},
+	"Handle Bag Regular": {
+		"nut": null,
+		"flavor": null,
+		"pkg_size": null,
+		"pkg_shape": null,
+		"oz": null
+	},
+	"Sunflowers Small": {
+		"nut": "sunflowers",
+		"flavor": "sr",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Sunflowers Average": {
+		"nut": "sunflowers",
+		"flavor": "sr",
+		"pkg_size": "average",
+		"pkg_shape": "cone",
+		"oz": 8
+	},
+	"Sunflowers Impressive": {
+		"nut": "sunflowers",
+		"flavor": "sr",
+		"pkg_size": "impressive",
+		"pkg_shape": "cone",
+		"oz": 16
+	},
+	"SR Sunflower Seeds Small (4)": {
+		"nut": "sunflowers",
+		"flavor": "sr",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"SR Sunflower Seeds Average (8)": {
+		"nut": "sunflowers",
+		"flavor": "sr",
+		"pkg_size": "average",
+		"pkg_shape": "cone",
+		"oz": 8
+	},
+	"SR Sunflower Seeds Impressive (16)": {
+		"nut": "sunflowers",
+		"flavor": "sr",
+		"pkg_size": "impressive",
+		"pkg_shape": "cone",
+		"oz": 16
+	},
+	"Secret Recipe Sunflower Seeds Regular": {
+		"nut": "sunflowers",
+		"flavor": "sr",
+		"pkg_size": "small",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Full Batches SR Cashews": {
+		"nut": "cashews",
+		"flavor": "sr",
+		"pkg_size": "gallon",
+		"pkg_shape": "ziplock",
+		"oz": 52
+	},
+	"Full Batches SR Peanuts": {
+		"nut": "peanuts",
+		"flavor": "sr",
+		"pkg_size": "gallon",
+		"pkg_shape": "ziplock",
+		"oz": 4
+	},
+	"Full Batches SR Pecans": {
+		"nut": "pecans",
+		"flavor": "sr",
+		"pkg_size": "quarts",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Full Batches SR Almonds": {
+		"nut": "almonds",
+		"flavor": "sr",
+		"pkg_size": "quarts",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Full Batches Cin Pecans": {
+		"nut": "pecans",
+		"flavor": "cin",
+		"pkg_size": "quarts",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Full Batches Cin Almonds": {
+		"nut": "almonds",
+		"flavor": "cin",
+		"pkg_size": "quarts",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Full Batches Drunk Pecans": {
+		"nut": "pecans",
+		"flavor": "drnk",
+		"pkg_size": "quarts",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Full Batches SR Sunflower Seeds": {
+		"nut": "sunflowers",
+		"flavor": "sr",
+		"pkg_size": "quarts",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Half Batches SR Pecans": {
+		"nut": "pecans",
+		"flavor": "sr",
+		"pkg_size": "quart",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Half Batches SR Almonds": {
+		"nut": "almonds" ,
+		"flavor": "sr",
+		"pkg_size": "quart",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Half Batches Cin Pecans": {
+		"nut": "pecans",
+		"flavor": "cin",
+		"pkg_size": "quart",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Half Batches Cin Almonds": {
+		"nut": "almonds",
+		"flavor": "cin",
+		"pkg_size": "quart",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Half Batches Drunk Pecans": {
+		"nut": "pecans",
+		"flavor": "drnk",
+		"pkg_size": "quart",
+		"pkg_shape": "cone",
+		"oz": 4
+	},
+	"Variable Nut": {
+		"nut": "mix",
+		"flavor": "mix",
+		"pkg_size": null,
+		"pkg_shape": "cone",
+		"oz": null
+	}
+}

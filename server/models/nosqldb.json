@@ -1,0 +1,163 @@
+{
+	"customers": {
+		"soidhgoiweoisd": {
+			"name": "Beaverton Farmers Market",
+			"salesDays": ["oiasdoihsgwiohvsoihwea", "oiasdoihsgwiohvsoihwea2", "oiasdoihsgwiohvsoihwea3" ]
+		}
+	},
+	"team_members": {
+		"PFIbWPErF9uOwb_cqp2f": {
+			"first_name": "Ian",
+			"last_name": "McAllister"
+		},
+		"xQjIXzpdO_xAivh": {
+			"first_name": "Lexie",
+			"last_name": "Izzo"
+		}
+	},
+	"calender": {},
+	"salesDays": {
+		"oiasdoihsgwiohvsoihwea": {
+			"date/time": "",
+			"CME_name": "",
+			"customer": "soidhgoiweoisd",
+			"devices": {},
+			"team_members": {},
+			"schedule": {
+				"sales_start": "",
+				"sales_end": "",
+				"open": "",
+				"close": "",
+				"load_in": "",
+				"load_out": "",
+				"shifts": {}
+			},
+			"transactions": [
+				"Z8ahEq2jgpo1Tnkb5IsxKQB"	
+			],
+			"financial_summary": {
+				"gross_sales": 0,
+				"refunds": 0,
+				"net_gross_sales": 0,
+				"discounts": 0,
+				"tips": 0,
+				"no_of_tx": 0,
+				"rent_paid": {
+					"date_time": "",
+					"amount": 0,
+					"by": "",
+					"type": "CASH",
+					"account": ""
+				},
+				"pay_method_breakdown": {
+					"cash": 0,
+					"credit": 0,
+					"other": 0,
+					"tokens": 0
+				},
+				"change_banks":{
+					"no_provided": 0,
+					"cash_value_provided": 0,
+					"no_used": 0,
+					"cash_value_used":
+				},
+				"tokens": {},
+				"labor": {},
+				"commissions": {},
+				"power": {},
+				"parking": {},
+				"cash_drawers": {},
+				"expected_payments": [
+					{
+						"payment_id": "",
+						"type": "CASH",
+						"origination_date": "",
+						"original_balance": 0,
+						"paid": 0,
+						"due": 0,
+						"deposits": []
+					},
+					{
+						"payment_id": "",
+						"type": "CREDIT",
+						"origination_date": "",
+						"original_balance": 0,
+						"paid": 0,
+						"due": 0,
+						"deposits": []
+					}
+				]
+			},
+			"mfg_summary": {},
+			"product_sales_summary": {},
+			"raw_resources": {}
+		}
+	},
+	"shifts": {},
+	"reference_lists": {
+		"salesDays_by_datetime_and_employee_id": "",
+		"salesDays_by_datetime_and_device_id": {
+			"2018-05-02": {
+				"51DB5448-E1D5-452D-AC02-4E7D97DE4286": {
+					"device_name": "",
+					"salesDays": [
+						{
+							"salesday_id": "oiasdoihsgwiohvsoihwea",
+							"schedule": {
+								"sales_start": "",
+								"sales_end": "",
+								"open": "",
+								"close": "",
+								"load_in": "",
+								"load_out": "",
+								"shifts": {}
+							}
+						}
+					]
+				}
+			}
+		}
+	},
+	"transactions": {
+		"Z8ahEq2jgpo1Tnkb5IsxKQB": {
+			"created_at": "2018-05-02T16:56:30Z",
+			"device_id": "DEVICE_INSTALLATION_ID:51DB5448-E1D5-452D-AC02-4E7D97DE4286",
+			"net_total_money": "",
+			"tip_money": "",
+			"discount_money": "",
+			"processing_fee_money": "",
+			"refunded_money": "",
+			"gross_sales_money": "",
+			"net_sales_money": "",
+			"tender": [
+				{
+					"employee_id": "61_a_2vsUvpPUzE4Iide",
+					"total_money": "",
+					"type": "CASH"
+				}
+			],
+			"itemizations": [
+				{
+					"name": "Full Batches",
+					"quantity": 1,
+					"item_variation_id": "MS3P7FI5DJC5DT6M4DEF4GYE",
+					"item_variation_name": "SR Pecans",
+					"total_money": "",
+					"single_quantity_money": "",
+					"gross_sales_money": "",
+					"discount_money": "",
+					"net_sales_money": "",
+					"modifiers": [
+						{
+							"name": "",
+							"applied_money": "",
+							"modifier_option_id": ""
+						}
+					]
+				}
+			]	
+		}
+	},
+	"deposits": {},
+	"cash_drawers": {}
+}

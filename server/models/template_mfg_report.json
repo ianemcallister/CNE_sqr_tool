@@ -1,0 +1,47 @@
+{
+	"qty_btchs": 0,
+	"consumed": {
+		"stgd": {
+			"pcns_half": 0,
+			"alms_half": 0,
+			"pcns_full": 0,
+			"alms_full": 0,
+			"chws_full": 0,
+			"pnts_full": 0
+		},
+		"sr_mix_cps": 0.000,
+		"whisky_cps": 0.000,
+		"pkgng": {
+			"02oz_paper_cones": 0,
+			"04oz_paper_cones": 0,
+			"04oz_plstc_cones": 0,
+			"08oz_paper_cones": 0,
+			"08oz_plstc_cones": 0,
+			"16oz_paper_cones": 0,
+			"16oz_plstc_cones": 0,
+			"20oz_platters": 0,
+			"twisties": 0,
+			"branding_labels": 0
+		}
+	},
+	"produced": {
+		"total_oz": 0.000,
+		"srPecn": 0.000,
+		"srAlm": 0.000,
+		"srCsh": 0.000,
+		"srPnt": 0.000,
+		"cnPcn": 0.000,
+		"cnAlm": 0.000,
+		"cnHzl": 0.000,
+		"drPcn": 0.000,
+		"minis": 0,
+		"smals": 0,
+		"arvgs": 0,
+		"largs": 0,
+		"pltrs": 0
+	},
+	"mfg_hrs": 0.000,
+	"btchs_per_hr": 0.000,
+	"first_batch": "",
+	"last_batch": ""
+}

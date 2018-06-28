@@ -1,0 +1,1588 @@
+[
+	{
+		"id": "M6EUVCIU3KBA3TYPT3DDUR5R",
+		"name": "Platter",
+		"type": "NORMAL",
+		"color": "B21212",
+		"abbreviation": "Platte",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"category": {
+			"id": "P7PNNKQFZKOVFU3KKQJGSEI5",
+			"name": "Gift Round"
+		},
+		"variations": [
+			{
+				"id": "WPNFN22G45DFPV5ANBABHOF3",
+				"name": "All Peanuts",
+				"item_id": "M6EUVCIU3KBA3TYPT3DDUR5R",
+				"ordinal": 4,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 2200,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "GJLA7ATLIIBYPD5JLAUWNOM6",
+		"name": "Mix",
+		"type": "NORMAL",
+		"color": "2952CC",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"variations": [
+			{
+				"id": "KYZBRM2KSUNINVVRXFH7M7Y7",
+				"name": "Regular Price",
+				"item_id": "GJLA7ATLIIBYPD5JLAUWNOM6",
+				"ordinal": 0,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 700,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "5BB6D7B5BWDKNWNG2SR7K3XI",
+				"name": "1/2 Lb.",
+				"item_id": "GJLA7ATLIIBYPD5JLAUWNOM6",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1300,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "UQQHWA4V4LZMCH6BUQHPRLRR",
+				"name": "1 Lb",
+				"item_id": "GJLA7ATLIIBYPD5JLAUWNOM6",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1800,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "3JYVBQP2PR5TKUQPLMN5ZE6Y",
+		"name": "Cashews",
+		"type": "NORMAL",
+		"color": "593C00",
+		"abbreviation": "",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "66I4ADPURYMKYMHXVUQ3XCCV",
+			"url": "https://square-production.s3.amazonaws.com/files/5088c4b236055b62e8c22727bdd36b6b/original.jpeg"
+		},
+		"category": {
+			"id": "VHRYT7YYK7NY76NADCQDJI6E",
+			"name": "Cashews"
+		},
+		"variations": [
+			{
+				"id": "ZLRHEL4ZEC4FIWB2BR45WLAD",
+				"name": "Regular Price",
+				"item_id": "3JYVBQP2PR5TKUQPLMN5ZE6Y",
+				"ordinal": 0,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 700,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "6FC3NA33NKANZPFVDG5P5JVP",
+				"name": "Medium",
+				"item_id": "3JYVBQP2PR5TKUQPLMN5ZE6Y",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1300,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "CRG7EKYLGORU3MCBLH2CXRB5",
+				"name": "Large",
+				"item_id": "3JYVBQP2PR5TKUQPLMN5ZE6Y",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1800,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "U4UPYRPQQF3BDXNLZDDA3J25",
+		"name": "Drunken",
+		"type": "NORMAL",
+		"color": "E5457A",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"category": {
+			"id": "P5Q3A4AZ3PG55H6QBQE3S6DN",
+			"name": "Pecans"
+		},
+		"variations": [
+			{
+				"id": "CXMP7DUJ3H2GNGMJMDFGZHSJ",
+				"name": "Regular Price",
+				"item_id": "U4UPYRPQQF3BDXNLZDDA3J25",
+				"ordinal": 0,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 0,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "5MWI3CB3FXQ3ZX3Y32YC4YDH",
+		"name": "Variable Nut",
+		"type": "NORMAL",
+		"color": "A82EE5",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"variations": [
+			{
+				"id": "QROY5YEDK44WUABDBVMYXDSV",
+				"name": "Regular Price",
+				"item_id": "5MWI3CB3FXQ3ZX3Y32YC4YDH",
+				"ordinal": 0,
+				"pricing_type": "VARIABLE_PRICING",
+				"price_money": {
+					"amount": 0,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "T2PTESAXDPIUKMEDHB77DXM4",
+		"name": "Pecan",
+		"type": "NORMAL",
+		"color": "E5457A",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "SKCJUERMC6CTE24OYPJPMZSC",
+			"url": "https://square-production.s3.amazonaws.com/files/ef7187c834511456f2bb84b2bd32d3f9/original.jpeg"
+		},
+		"category": {
+			"id": "P5Q3A4AZ3PG55H6QBQE3S6DN",
+			"name": "Pecans"
+		},
+		"variations": [
+			{
+				"id": "VUPAJ7LJSXXA2FCOQS5X5OJK",
+				"name": "Regular Price",
+				"item_id": "T2PTESAXDPIUKMEDHB77DXM4",
+				"ordinal": 0,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 700,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "65VBGXVSCHIZASOVHSHYRJEM",
+				"name": "1/2 Lb.",
+				"item_id": "T2PTESAXDPIUKMEDHB77DXM4",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1300,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "XZ5XT5YAQARJOS6KHQMWPJNC",
+				"name": "1 Lb.",
+				"item_id": "T2PTESAXDPIUKMEDHB77DXM4",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1800,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "DKCL5TCZC23DZIVGAWCHCT3K",
+		"name": "Almond",
+		"type": "NORMAL",
+		"color": "B21212",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "ILIAIG2J24CXH4WS7VPWVLPM",
+			"url": "https://square-production.s3.amazonaws.com/files/23bb2057c687f29f7fc2ffbdd8ffded9/original.jpeg"
+		},
+		"category": {
+			"id": "FGCL53DHOFXGVZJJBQ6OHGJQ",
+			"name": "Almonds"
+		},
+		"variations": [
+			{
+				"id": "BXHIKAMVXAOWS227QEZQCTQS",
+				"name": "Regular Price",
+				"item_id": "DKCL5TCZC23DZIVGAWCHCT3K",
+				"ordinal": 0,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 700,
+					"currency_code": "USD"
+				},
+				"sku": "1001201",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "QNBPPL2RHK67WOYLPUGITK6H",
+				"name": "1/2 Lb",
+				"item_id": "DKCL5TCZC23DZIVGAWCHCT3K",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1300,
+					"currency_code": "USD"
+				},
+				"sku": "1001202",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "33KMQ3ATPHBUG22W2Z7RITBI",
+				"name": "1 Lb.",
+				"item_id": "DKCL5TCZC23DZIVGAWCHCT3K",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1800,
+					"currency_code": "USD"
+				},
+				"sku": "1001203",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "NBFXGDP26GKB3PIRO7LCBX3I",
+		"name": "Peanuts",
+		"type": "NORMAL",
+		"color": "13B1BF",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "SKZVHHWNZD7NN4ZINW2QG64X",
+			"url": "https://square-production.s3.amazonaws.com/files/b1cf5b92516ff2f7e595666f5bc7c2a0/original.jpeg"
+		},
+		"category": {
+			"id": "4IVF6MBWISKJQJBQIZN2I7VI",
+			"name": "Peanuts"
+		},
+		"variations": [
+			{
+				"id": "UNBV67OBTQDI7IGBSKKDQAYG",
+				"name": "Small",
+				"item_id": "NBFXGDP26GKB3PIRO7LCBX3I",
+				"ordinal": 0,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 700,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "FIODYM4B2ATZDDRBGDSJ33F4",
+				"name": "Average",
+				"item_id": "NBFXGDP26GKB3PIRO7LCBX3I",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1300,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "5BGYNO6KZ5Q33OX2NJK5FNKJ",
+				"name": "Impressive",
+				"item_id": "NBFXGDP26GKB3PIRO7LCBX3I",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1800,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "75MA7YKGP3A7A7NH6TVVYAGY",
+		"name": "Holiday Tins",
+		"type": "NORMAL",
+		"color": "593C00",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "PUUSECDGK2RXC2UI44FA5ACD",
+			"url": "https://square-production.s3.amazonaws.com/files/02fc1ec3653e696f1e70b7f317ae951b0713a224/original.jpeg"
+		},
+		"category": {
+			"id": "QDQWISQ46YLONUSG55RDYYQ7",
+			"name": "Mix"
+		},
+		"variations": [
+			{
+				"id": "QSF6FXIATWTEVMCMHCZIZNL4",
+				"name": "Regular",
+				"item_id": "75MA7YKGP3A7A7NH6TVVYAGY",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 2500,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "BIYECUEAZTHI7ZUME3NREP3Y",
+		"name": "BOGO",
+		"description": "Buy One Average and get One Average for $5",
+		"type": "NORMAL",
+		"color": "593C00",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"variations": [
+			{
+				"id": "PAXPQAU525EFU5WVNDR4AMXB",
+				"name": "Regular",
+				"item_id": "BIYECUEAZTHI7ZUME3NREP3Y",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 500,
+					"currency_code": "USD"
+				},
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "3NN446PL7U6MPNXUWN5CCL6I",
+		"name": "Handle Bag",
+		"type": "NORMAL",
+		"color": "0B8000",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"variations": [
+			{
+				"id": "SVC2DFK3ZPIIRUPNJ3T4UHKR",
+				"name": "Regular",
+				"item_id": "3NN446PL7U6MPNXUWN5CCL6I",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 100,
+					"currency_code": "USD"
+				},
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "YK4KWNCYCJHPGUGZLF7KYIQM",
+		"name": "Sunflowers",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "BYI5OR576AUFWDZWE4J6M2KM",
+			"url": "https://square-production.s3.amazonaws.com/files/2f032c6c069e3bf99509d60bdbd09ed3457bc9f2/original.jpeg"
+		},
+		"variations": [
+			{
+				"id": "BXTDZN3EISS4YMFNYFKJYWQX",
+				"name": "Small",
+				"item_id": "YK4KWNCYCJHPGUGZLF7KYIQM",
+				"ordinal": 0,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 700,
+					"currency_code": "USD"
+				},
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "QU7ZUNQ26NLIZX3SFVSCFLBG",
+				"name": "Average",
+				"item_id": "YK4KWNCYCJHPGUGZLF7KYIQM",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1300,
+					"currency_code": "USD"
+				},
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "P44YYRADUHN75KFBVZVCK2VB",
+				"name": "Impressive",
+				"item_id": "YK4KWNCYCJHPGUGZLF7KYIQM",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1800,
+					"currency_code": "USD"
+				},
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "TQ6ZBZXVKUCQKJWCFOW5UXGT",
+		"name": "Cin Almonds",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "UZA7X4UBIFJ5ZUVBYRBMMPLV",
+			"url": "https://square-production.s3.amazonaws.com/files/3847ce1781b6db956b1d3db6312b3cc671520a96/original.jpeg"
+		},
+		"category": {
+			"id": "HLEJAV3OZ5LWY34WIHDRGQ4A",
+			"name": "Completed Items"
+		},
+		"variations": [
+			{
+				"id": "NTQGKNBP5AAXCYI3RCMYVADU",
+				"name": "Small (4)",
+				"item_id": "TQ6ZBZXVKUCQKJWCFOW5UXGT",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 700,
+					"currency_code": "USD"
+				},
+				"sku": "1001201",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "XUGOPNT3YM3QXRTJ76WCIRUC",
+				"name": "Average (8)",
+				"item_id": "TQ6ZBZXVKUCQKJWCFOW5UXGT",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1300,
+					"currency_code": "USD"
+				},
+				"sku": "1001202",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "SLPG5XHIAFV3U5YUDDSHXHVP",
+				"name": "Impressive (16)",
+				"item_id": "TQ6ZBZXVKUCQKJWCFOW5UXGT",
+				"ordinal": 3,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1800,
+					"currency_code": "USD"
+				},
+				"sku": "1001203",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "W3J4QNNKIMJWTVE5KZIFZHOU",
+		"name": "Cin Pecans",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "NE3G3RRTVEQW3ZBYZLBYCC6R",
+			"url": "https://square-production.s3.amazonaws.com/files/55753af40e8eb4ba187d73e6aa1bf9b1cae2ccff/original.jpeg"
+		},
+		"category": {
+			"id": "HLEJAV3OZ5LWY34WIHDRGQ4A",
+			"name": "Completed Items"
+		},
+		"variations": [
+			{
+				"id": "B4ABCI3DAMCB4IGYBCG6QYE3",
+				"name": "Small (4)",
+				"item_id": "W3J4QNNKIMJWTVE5KZIFZHOU",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 700,
+					"currency_code": "USD"
+				},
+				"sku": "1001101",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "K62GJZH2ELCP2MK6YQ43EE6R",
+				"name": "Average (8)",
+				"item_id": "W3J4QNNKIMJWTVE5KZIFZHOU",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1300,
+					"currency_code": "USD"
+				},
+				"sku": "1001102",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "YFJBO6PJFVMKDEOIIWAUIA5I",
+				"name": "Impressive (16)",
+				"item_id": "W3J4QNNKIMJWTVE5KZIFZHOU",
+				"ordinal": 3,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1800,
+					"currency_code": "USD"
+				},
+				"sku": "1001103",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "577E4LQ4E4LCJ2OAMJ454ICT",
+		"name": "DR Pecans",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "O4QNVBJN4VWTZRPQTDD63E5J",
+			"url": "https://square-production.s3.amazonaws.com/files/aca951c2421480e63e3fbf5011160f922ac1fe62/original.jpeg"
+		},
+		"category": {
+			"id": "HLEJAV3OZ5LWY34WIHDRGQ4A",
+			"name": "Completed Items"
+		},
+		"variations": [
+			{
+				"id": "Z725MGBNRMYLCMRIKX2ONFXC",
+				"name": "Small (4)",
+				"item_id": "577E4LQ4E4LCJ2OAMJ454ICT",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 700,
+					"currency_code": "USD"
+				},
+				"sku": "1002101",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "R2KSZBSXJ7J2KU4Q4EWKOKIU",
+				"name": "Average (8)",
+				"item_id": "577E4LQ4E4LCJ2OAMJ454ICT",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1300,
+					"currency_code": "USD"
+				},
+				"sku": "1002102",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "PZ2E2X3SSXYRI7FL5BIW5NNA",
+				"name": "Impressive (16)",
+				"item_id": "577E4LQ4E4LCJ2OAMJ454ICT",
+				"ordinal": 3,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1800,
+					"currency_code": "USD"
+				},
+				"sku": "1002103",
+				"track_inventory": true,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "KRQC2TWVFEOP2XYUPHIOLK4M",
+		"name": "Full Batches",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"category": {
+			"id": "UUIVNHJR3RUGQIZ3VDBWZYL2",
+			"name": "Manufacturing"
+		},
+		"variations": [
+			{
+				"id": "RBFXLFHA7EYWAGIELEHNVY6M",
+				"name": "SR Cashews",
+				"item_id": "KRQC2TWVFEOP2XYUPHIOLK4M",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 0,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "CKVBBOXWKJVZVIT5ZQMB63XS",
+				"name": "SR Peanuts",
+				"item_id": "KRQC2TWVFEOP2XYUPHIOLK4M",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 0,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "MS3P7FI5DJC5DT6M4DEF4GYE",
+				"name": "SR Pecans",
+				"item_id": "KRQC2TWVFEOP2XYUPHIOLK4M",
+				"ordinal": 3,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 0,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "2Z4FEPCZTH5KCWS3GJ54H3MN",
+				"name": "SR Almonds",
+				"item_id": "KRQC2TWVFEOP2XYUPHIOLK4M",
+				"ordinal": 4,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 0,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "MB5EAHJNCDQS3AJZ4J7EJARP",
+				"name": "Cin Pecans",
+				"item_id": "KRQC2TWVFEOP2XYUPHIOLK4M",
+				"ordinal": 5,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 0,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "TDTKE7W4TVKTUBVAUU7ZWPI5",
+				"name": "Cin Almonds",
+				"item_id": "KRQC2TWVFEOP2XYUPHIOLK4M",
+				"ordinal": 6,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 0,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "GGRIQDCPL5EMASW2IXEMHO46",
+				"name": "Drunk Pecans",
+				"item_id": "KRQC2TWVFEOP2XYUPHIOLK4M",
+				"ordinal": 7,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 0,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "SQTMKWAJADYYXQXYNI5Z3DZC",
+				"name": "SR Sunflower Seeds",
+				"item_id": "KRQC2TWVFEOP2XYUPHIOLK4M",
+				"ordinal": 8,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 0,
+					"currency_code": "USD"
+				},
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "PTFGIERKVM6YTDJZ4DOAJ7VE",
+		"name": "Half Batches",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"category": {
+			"id": "UUIVNHJR3RUGQIZ3VDBWZYL2",
+			"name": "Manufacturing"
+		},
+		"variations": [
+			{
+				"id": "UTNRIUDVW5W6FT2I3ZNIAJK3",
+				"name": "SR Pecans",
+				"item_id": "PTFGIERKVM6YTDJZ4DOAJ7VE",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 0,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "XPZ5FIHW7EPJRXAIGKEYJWMY",
+				"name": "SR Almonds",
+				"item_id": "PTFGIERKVM6YTDJZ4DOAJ7VE",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 0,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "ZK6L4ON3CON5CH7K5XAJRHED",
+				"name": "Cin Pecans",
+				"item_id": "PTFGIERKVM6YTDJZ4DOAJ7VE",
+				"ordinal": 3,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 0,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "WKIEJWEXSMOISONULCWVE5W4",
+				"name": "Cin Almonds",
+				"item_id": "PTFGIERKVM6YTDJZ4DOAJ7VE",
+				"ordinal": 4,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 0,
+					"currency_code": "USD"
+				},
+				"sku": "",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "73SRGSY6TKISXVSDFXAL3765",
+				"name": "Drunk Pecans",
+				"item_id": "PTFGIERKVM6YTDJZ4DOAJ7VE",
+				"ordinal": 5,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 0,
+					"currency_code": "USD"
+				},
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "WUF7O3UIU5K5AXTFLHDSX6LL",
+		"name": "Mix",
+		"type": "NORMAL",
+		"color": "A82EE5",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "OZTJHP7TO7VANXJMXAOENKCR",
+			"url": "https://square-production.s3.amazonaws.com/files/7d9f1946c66b444d9b7a8acd57ee684706a18d7a/original.jpeg"
+		},
+		"category": {
+			"id": "HLEJAV3OZ5LWY34WIHDRGQ4A",
+			"name": "Completed Items"
+		},
+		"variations": [
+			{
+				"id": "GAPGZBFTTETCYILQYCZL2V4I",
+				"name": "Small (4)",
+				"item_id": "WUF7O3UIU5K5AXTFLHDSX6LL",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 700,
+					"currency_code": "USD"
+				},
+				"sku": "1003101",
+				"track_inventory": true,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "DSFEEQY3IGEC4XZPJ5JQHKIK",
+				"name": "Average (8)",
+				"item_id": "WUF7O3UIU5K5AXTFLHDSX6LL",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1300,
+					"currency_code": "USD"
+				},
+				"sku": "1003102",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "UPUCCHDMVNVEGIANPUN6Y4UF",
+				"name": "Impressive (16)",
+				"item_id": "WUF7O3UIU5K5AXTFLHDSX6LL",
+				"ordinal": 3,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1800,
+					"currency_code": "USD"
+				},
+				"sku": "1003103",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "26XIT6ZR5U4Q6IEHKJBMMANC",
+		"name": "Platter",
+		"type": "NORMAL",
+		"color": "B21212",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "7EUA7Z2TY3WGD44HXV5YXV7S",
+			"url": "https://square-production.s3.amazonaws.com/files/c0fe74eab4ccbd96bedba3ee19253dcd83820013/original.jpeg"
+		},
+		"category": {
+			"id": "HLEJAV3OZ5LWY34WIHDRGQ4A",
+			"name": "Completed Items"
+		},
+		"variations": [
+			{
+				"id": "C5MIEQCUM4JEMCPRVEVDSCG7",
+				"name": "Regular",
+				"item_id": "26XIT6ZR5U4Q6IEHKJBMMANC",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 2200,
+					"currency_code": "USD"
+				},
+				"sku": "1004101",
+				"track_inventory": true,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "MHQX76ZZYR6TVFWFC6BJQN7O",
+		"name": "SR Almonds",
+		"type": "NORMAL",
+		"color": "E5BF00",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "RUVVYTMZK5CQVJEJBWAUORXY",
+			"url": "https://square-production.s3.amazonaws.com/files/49fee1f45012b4240efb46ee69144831bff470ab/original.jpeg"
+		},
+		"category": {
+			"id": "HLEJAV3OZ5LWY34WIHDRGQ4A",
+			"name": "Completed Items"
+		},
+		"variations": [
+			{
+				"id": "QAHB7ZXYT4HDUN5NQHAYY7A4",
+				"name": "Small (4)",
+				"item_id": "MHQX76ZZYR6TVFWFC6BJQN7O",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 700,
+					"currency_code": "USD"
+				},
+				"sku": "1000201",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "XKLXPPF2U25NVLJJBFSPL4XI",
+				"name": "Average (8)",
+				"item_id": "MHQX76ZZYR6TVFWFC6BJQN7O",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1300,
+					"currency_code": "USD"
+				},
+				"sku": "1000202",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "HCPDT5U2NLKJ7USSEXBU2HIS",
+				"name": "Impressive (16)",
+				"item_id": "MHQX76ZZYR6TVFWFC6BJQN7O",
+				"ordinal": 3,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1800,
+					"currency_code": "USD"
+				},
+				"sku": "1000203",
+				"track_inventory": true,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "MMYGVAY3HW3HSJPNPXVNGDL5",
+		"name": "SR Cashews",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "CJPSYEJPD574FWH5GBVE7CC5",
+			"url": "https://square-production.s3.amazonaws.com/files/e3b71a443ff63c014856a975a058510cf7cac230/original.jpeg"
+		},
+		"category": {
+			"id": "HLEJAV3OZ5LWY34WIHDRGQ4A",
+			"name": "Completed Items"
+		},
+		"variations": [
+			{
+				"id": "N423EI6ZPEAW47FEKYCHYEB3",
+				"name": "Small (4)",
+				"item_id": "MMYGVAY3HW3HSJPNPXVNGDL5",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 700,
+					"currency_code": "USD"
+				},
+				"sku": "1000301",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "TPAJRXQN4YTSW63ZN426J2YN",
+				"name": "Average (8)",
+				"item_id": "MMYGVAY3HW3HSJPNPXVNGDL5",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1300,
+					"currency_code": "USD"
+				},
+				"sku": "1000302",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "3Z5HDOQQJ2WZN3SD636LIOOQ",
+				"name": "Impressive (16)",
+				"item_id": "MMYGVAY3HW3HSJPNPXVNGDL5",
+				"ordinal": 3,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1800,
+					"currency_code": "USD"
+				},
+				"sku": "1000303",
+				"track_inventory": true,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "U3IWHJKVPHKKKCX4P3AHVFAN",
+		"name": "SR Peanuts",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "MA47R25WLZLCIGODSZ2CECPN",
+			"url": "https://square-production.s3.amazonaws.com/files/4df18b5a65dd4b1487d774041d9d223a69b6ae44/original.png"
+		},
+		"category": {
+			"id": "HLEJAV3OZ5LWY34WIHDRGQ4A",
+			"name": "Completed Items"
+		},
+		"variations": [
+			{
+				"id": "554Y36NIUEL2NVHDH447NIEA",
+				"name": "Small (4)",
+				"item_id": "U3IWHJKVPHKKKCX4P3AHVFAN",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 700,
+					"currency_code": "USD"
+				},
+				"sku": "1000401",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "QRZMPSW5LHWQLY6KBOF4BOQX",
+				"name": "Average (8)",
+				"item_id": "U3IWHJKVPHKKKCX4P3AHVFAN",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1300,
+					"currency_code": "USD"
+				},
+				"sku": "1000402",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "6UIOC3TNVANBX4GP4X5ZRPWG",
+				"name": "Impressive (16)",
+				"item_id": "U3IWHJKVPHKKKCX4P3AHVFAN",
+				"ordinal": 3,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1800,
+					"currency_code": "USD"
+				},
+				"sku": "1000403",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "FK5TAQBEQ24U6WPJLJWGOGFR",
+		"name": "SR Pecans",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "HKWCJQCABW4ZXGHTBQYQIPYG",
+			"url": "https://square-production.s3.amazonaws.com/files/de62a8e36fcdbbc847d93d6283f79f849bd3ec5c/original.jpeg"
+		},
+		"category": {
+			"id": "HLEJAV3OZ5LWY34WIHDRGQ4A",
+			"name": "Completed Items"
+		},
+		"variations": [
+			{
+				"id": "IKIGTSXDGF3RJKMW7OWI3GZX",
+				"name": "Small (4)",
+				"item_id": "FK5TAQBEQ24U6WPJLJWGOGFR",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 700,
+					"currency_code": "USD"
+				},
+				"sku": "1000101",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "NEIFZMRUJEQVXT2BUETWL2WT",
+				"name": "Average (8)",
+				"item_id": "FK5TAQBEQ24U6WPJLJWGOGFR",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1300,
+					"currency_code": "USD"
+				},
+				"sku": "1000102",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "OGMWDQZEPHI5M63EJHMO5URL",
+				"name": "Impressive (16)",
+				"item_id": "FK5TAQBEQ24U6WPJLJWGOGFR",
+				"ordinal": 3,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1800,
+					"currency_code": "USD"
+				},
+				"sku": "1000103",
+				"track_inventory": true,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "5UB7XQQ2NDOVAZW4HFBZZVNN",
+		"name": "Variable Nut",
+		"type": "NORMAL",
+		"color": "13B1BF",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"category": {
+			"id": "HLEJAV3OZ5LWY34WIHDRGQ4A",
+			"name": "Completed Items"
+		},
+		"variations": [
+			{
+				"id": "ZWI6GJ52WBHKHOCD3DKWYPIJ",
+				"name": "",
+				"item_id": "5UB7XQQ2NDOVAZW4HFBZZVNN",
+				"ordinal": 1,
+				"pricing_type": "VARIABLE_PRICING",
+				"track_inventory": true,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "BF3GMRIEVOCWQHYYK6G6IVDY",
+		"name": "SR Sunflower Seeds",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "42NPDXYWVLS3S6A3VU6XMPUD",
+			"url": "https://square-production.s3.amazonaws.com/files/bb573b6702ae94420f5a82c9519187def75a18e0/original.jpeg"
+		},
+		"category": {
+			"id": "HLEJAV3OZ5LWY34WIHDRGQ4A",
+			"name": "Completed Items"
+		},
+		"variations": [
+			{
+				"id": "COCRTODYRUTMLXLJH3JGYAYP",
+				"name": "Small (4)",
+				"item_id": "BF3GMRIEVOCWQHYYK6G6IVDY",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 700,
+					"currency_code": "USD"
+				},
+				"sku": "1000501",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "KMB4Q7RZX7EZGYAEYWCEXGE3",
+				"name": "Average (8)",
+				"item_id": "BF3GMRIEVOCWQHYYK6G6IVDY",
+				"ordinal": 2,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1300,
+					"currency_code": "USD"
+				},
+				"sku": "1000502",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			},
+			{
+				"id": "K7DMF44JBRWI7LDDR5O7KP7I",
+				"name": "Impressive (16)",
+				"item_id": "BF3GMRIEVOCWQHYYK6G6IVDY",
+				"ordinal": 3,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1800,
+					"currency_code": "USD"
+				},
+				"sku": "1000503",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "I45C7N67CH6CDFOENZLK5JUG",
+		"name": "Secret Recipe Almonds",
+		"description": "The description of this item will go here.",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "OKM2MIHMOFZWL5X4KMQ5BHAX",
+			"url": "https://square-production.s3.amazonaws.com/files/49fee1f45012b4240efb46ee69144831bff470ab/original.jpeg"
+		},
+		"category": {
+			"id": "GIWWOVASNCF3GG626Y4F3A75",
+			"name": "Internet Items"
+		},
+		"variations": [
+			{
+				"id": "MIDYPGT2HOL7SVZYEDS42OKZ",
+				"name": "Regular",
+				"item_id": "I45C7N67CH6CDFOENZLK5JUG",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1535,
+					"currency_code": "USD"
+				},
+				"sku": "ISRA",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "56AGHUCQAIIN2MGIVF2LOLAX",
+		"name": "Cinnamon Almonds",
+		"description": "jsdflkafja;lskjfl;asfjdlk",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "IH64VBZCRYCYTICON2BHJRO3",
+			"url": "https://square-production.s3.amazonaws.com/files/930d39a3c99337c7756fe3bef6e383752f47972c/original.png"
+		},
+		"category": {
+			"id": "GIWWOVASNCF3GG626Y4F3A75",
+			"name": "Internet Items"
+		},
+		"variations": [
+			{
+				"id": "AHR4YRAQ6NJWHN3KEEKHU342",
+				"name": "Regular",
+				"item_id": "56AGHUCQAIIN2MGIVF2LOLAX",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1535,
+					"currency_code": "USD"
+				},
+				"sku": "ICIA",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "I67S4KMFDO4RWF7T23H3ZWAX",
+		"name": "Secret Recipe Pecans",
+		"description": "an;dfja;kjdf;kalsjdf",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "34BTYDULJNALOYUL5E5ESBBF",
+			"url": "https://square-production.s3.amazonaws.com/files/de62a8e36fcdbbc847d93d6283f79f849bd3ec5c/original.jpeg"
+		},
+		"category": {
+			"id": "GIWWOVASNCF3GG626Y4F3A75",
+			"name": "Internet Items"
+		},
+		"variations": [
+			{
+				"id": "GDP6V6F6NQ6XCV2JTHZFXQWJ",
+				"name": "Regular",
+				"item_id": "I67S4KMFDO4RWF7T23H3ZWAX",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1535,
+					"currency_code": "USD"
+				},
+				"sku": "ISRP",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "W6KZU7DK56KO36ET743RZ3UV",
+		"name": "Drunken Pecans",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "XVASBOH77OFKTM4IIKDUM2RB",
+			"url": "https://square-production.s3.amazonaws.com/files/aca951c2421480e63e3fbf5011160f922ac1fe62/original.jpeg"
+		},
+		"category": {
+			"id": "GIWWOVASNCF3GG626Y4F3A75",
+			"name": "Internet Items"
+		},
+		"variations": [
+			{
+				"id": "33KZFIR5J6DG3YKGOJWA3HV7",
+				"name": "Regular",
+				"item_id": "W6KZU7DK56KO36ET743RZ3UV",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1535,
+					"currency_code": "USD"
+				},
+				"sku": "INDP",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "LAMCE2P5KR7ZUUX2LJ6EXS5P",
+		"name": "Cinnamon Pecans",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "KBNP3QOU54XEL7DAYCMKXAU4",
+			"url": "https://square-production.s3.amazonaws.com/files/55753af40e8eb4ba187d73e6aa1bf9b1cae2ccff/original.jpeg"
+		},
+		"category": {
+			"id": "GIWWOVASNCF3GG626Y4F3A75",
+			"name": "Internet Items"
+		},
+		"variations": [
+			{
+				"id": "EJ2ZNFRUI6YC5UURIT7BPBDF",
+				"name": "Regular",
+				"item_id": "LAMCE2P5KR7ZUUX2LJ6EXS5P",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1535,
+					"currency_code": "USD"
+				},
+				"sku": "INCP",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "X44IXB5CJJ2UVXEFMRLV4Y57",
+		"name": "Secret Recipe Cashews",
+		"description": "adsfasfa",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "IDDE2S7PEOO4PAKDQTUPCVAO",
+			"url": "https://square-production.s3.amazonaws.com/files/e3b71a443ff63c014856a975a058510cf7cac230/original.jpeg"
+		},
+		"category": {
+			"id": "GIWWOVASNCF3GG626Y4F3A75",
+			"name": "Internet Items"
+		},
+		"variations": [
+			{
+				"id": "T5YDYHTKGLCUQ5QPZVBHJM7U",
+				"name": "Regular",
+				"item_id": "X44IXB5CJJ2UVXEFMRLV4Y57",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1535,
+					"currency_code": "USD"
+				},
+				"sku": "ISRC",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "U35LEHMNXOBQUZTVZBEN7GMU",
+		"name": "Secret Recipe Peanuts",
+		"description": "adfasfdadsf",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "DXB4RJG2BUIHNW2SQ7KVKC2T",
+			"url": "https://square-production.s3.amazonaws.com/files/4df18b5a65dd4b1487d774041d9d223a69b6ae44/original.png"
+		},
+		"category": {
+			"id": "GIWWOVASNCF3GG626Y4F3A75",
+			"name": "Internet Items"
+		},
+		"variations": [
+			{
+				"id": "EOIKJJ6PEHJFGC76B7D2GTFE",
+				"name": "Regular",
+				"item_id": "U35LEHMNXOBQUZTVZBEN7GMU",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1535,
+					"currency_code": "USD"
+				},
+				"sku": "IPEA",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	},
+	{
+		"id": "MNGDZHJKNSIMF4AVJKOHUTG3",
+		"name": "Secret Recipe Sunflower Seeds",
+		"description": "adfsafas",
+		"type": "NORMAL",
+		"visibility": "PRIVATE",
+		"available_online": false,
+		"master_image": {
+			"id": "G3K7MCIFZUCY26C4DE2CPJSM",
+			"url": "https://square-production.s3.amazonaws.com/files/bb573b6702ae94420f5a82c9519187def75a18e0/original.jpeg"
+		},
+		"category": {
+			"id": "GIWWOVASNCF3GG626Y4F3A75",
+			"name": "Internet Items"
+		},
+		"variations": [
+			{
+				"id": "TCS34MJP3LKDJ4UAC7NORO4H",
+				"name": "Regular",
+				"item_id": "MNGDZHJKNSIMF4AVJKOHUTG3",
+				"ordinal": 1,
+				"pricing_type": "FIXED_PRICING",
+				"price_money": {
+					"amount": 1535,
+					"currency_code": "USD"
+				},
+				"sku": "ISRS",
+				"track_inventory": false,
+				"inventory_alert_type": "NONE"
+			}
+		],
+		"fees": []
+	}
+]

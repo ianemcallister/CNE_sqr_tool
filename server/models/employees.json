@@ -1,0 +1,1379 @@
+[
+	{
+		"first_name": "Steve",
+		"last_name": "Young",
+		"id": "mmIrwp5oGAYi_58pRFAh",
+		"role_ids": [
+			"1bOQUfkd6cn-ZJU6QxZq"
+		],
+		"authorized_location_ids": [
+			"0CBRE1HP875C5",
+			"0FPCXRGTR1ZPK",
+			"14E8S7P16JQDM",
+			"1H17QN22FE35J",
+			"2KGZVV703WDA0",
+			"3DQBW3DGVAFCN",
+			"401RGQJRP8YPV",
+			"472415S9Z2Z50",
+			"4K0W9BZZFTQZB",
+			"4MDW18C989SDH",
+			"4MPDC5S22QB26",
+			"4T8W4677AQ8TS",
+			"5Y80F0B6XDD2A",
+			"6MBZHER0JTPFN",
+			"8W4GXAHCPXRES",
+			"8YJQBY7V8D4NX",
+			"9311BMKWN2VT6",
+			"96JGBJBFC6BDP",
+			"97TM0WYCGBD9G",
+			"9EHYNVKGGS7HY",
+			"BAWEK61MYMN00",
+			"BHAYAENR99WG7",
+			"BK0XW7SA66JJ2",
+			"BTWD40X9Q5JS2",
+			"BZ3SFQQS8S8N5",
+			"C1651SM2CW5S0",
+			"D7AMQ5Z0FAQZ9",
+			"DCF8W59C153FG",
+			"DTCPAFDAHE7XD",
+			"E18ABAA2F0YTX",
+			"E5D28QB6EZ8CC",
+			"E8754TVVR46F1",
+			"FX4A1626K7PRA",
+			"M53KQT35YKE5C",
+			"S4P16GQRK21CF",
+			"Y2K1KXM5JG644"
+		],
+		"email": "info@ah-nuts.com",
+		"status": "ACTIVE",
+		"created_at": "2016-06-15T02:05:34Z",
+		"updated_at": "2017-11-17T18:41:32Z"
+	},
+	{
+		"first_name": "ah",
+		"last_name": "nuts",
+		"id": "VxSnfQMIcj4wVz2metgg",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "ahnuts11@gmail.com",
+		"status": "ACTIVE",
+		"created_at": "2016-06-15T02:05:35Z",
+		"updated_at": "2016-06-15T02:05:35Z"
+	},
+	{
+		"first_name": "Ian",
+		"last_name": "McAllister",
+		"id": "PFIbWPErF9uOwb_cqp2f",
+		"role_ids": [
+			"WJfRMDq7xX7aOVEnBtqc"
+		],
+		"authorized_location_ids": [
+			"0FPCXRGTR1ZPK",
+			"14E8S7P16JQDM",
+			"472415S9Z2Z50",
+			"4K0W9BZZFTQZB",
+			"4MPDC5S22QB26",
+			"8W4GXAHCPXRES",
+			"BTWD40X9Q5JS2",
+			"D7AMQ5Z0FAQZ9",
+			"E5D28QB6EZ8CC",
+			"FX4A1626K7PRA"
+		],
+		"email": "iemcallister@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2016-06-19T01:47:34Z",
+		"updated_at": "2016-10-11T14:59:29Z"
+	},
+	{
+		"first_name": "Kevin",
+		"last_name": "Luna",
+		"id": "E7GW3rodWx02lmO0IfuT",
+		"role_ids": [
+			"WJfRMDq7xX7aOVEnBtqc"
+		],
+		"authorized_location_ids": [
+			"0FPCXRGTR1ZPK",
+			"472415S9Z2Z50",
+			"4K0W9BZZFTQZB",
+			"4MPDC5S22QB26",
+			"8W4GXAHCPXRES",
+			"D7AMQ5Z0FAQZ9",
+			"E5D28QB6EZ8CC",
+			"FX4A1626K7PRA"
+		],
+		"email": "kevin@ah-nuts.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2016-06-19T04:13:38Z",
+		"updated_at": "2016-09-26T04:56:55Z"
+	},
+	{
+		"first_name": "Ahmed",
+		"last_name": "Hosman",
+		"id": "CH9Xm62mdkeeVcmkarW9",
+		"role_ids": [
+			"WJfRMDq7xX7aOVEnBtqc"
+		],
+		"authorized_location_ids": [
+			"0FPCXRGTR1ZPK",
+			"472415S9Z2Z50",
+			"4K0W9BZZFTQZB",
+			"4MPDC5S22QB26",
+			"8W4GXAHCPXRES",
+			"D7AMQ5Z0FAQZ9",
+			"E5D28QB6EZ8CC",
+			"FX4A1626K7PRA"
+		],
+		"email": "ahosman50@yahoo.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2016-06-19T04:15:24Z",
+		"updated_at": "2017-01-03T16:02:54Z"
+	},
+	{
+		"first_name": "Kiley",
+		"last_name": "Jahn",
+		"id": "uS4G7Z95YyU9djVNshIu",
+		"role_ids": [
+			"WJfRMDq7xX7aOVEnBtqc"
+		],
+		"authorized_location_ids": [
+			"0FPCXRGTR1ZPK",
+			"472415S9Z2Z50",
+			"4K0W9BZZFTQZB",
+			"4MPDC5S22QB26",
+			"8W4GXAHCPXRES",
+			"D7AMQ5Z0FAQZ9",
+			"E5D28QB6EZ8CC",
+			"FX4A1626K7PRA"
+		],
+		"email": "kiley.jahn@live.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2016-06-19T04:18:14Z",
+		"updated_at": "2017-01-03T16:03:03Z"
+	},
+	{
+		"first_name": "Clyde",
+		"last_name": "Junior",
+		"id": "HYVJYhXHbY2C-DEioE7r",
+		"role_ids": [
+			"WJfRMDq7xX7aOVEnBtqc"
+		],
+		"authorized_location_ids": [
+			"0FPCXRGTR1ZPK",
+			"472415S9Z2Z50",
+			"4K0W9BZZFTQZB",
+			"4MPDC5S22QB26",
+			"8W4GXAHCPXRES",
+			"D7AMQ5Z0FAQZ9",
+			"E5D28QB6EZ8CC",
+			"FX4A1626K7PRA"
+		],
+		"email": "caligatorztv@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2016-06-19T04:19:05Z",
+		"updated_at": "2016-09-26T04:54:10Z"
+	},
+	{
+		"first_name": "All",
+		"last_name": "Employees",
+		"id": "I6RNIpJkyhLUmOLCcT7g",
+		"role_ids": [
+			"WJfRMDq7xX7aOVEnBtqc"
+		],
+		"authorized_location_ids": [
+			"0CBRE1HP875C5",
+			"0FPCXRGTR1ZPK",
+			"1H17QN22FE35J",
+			"2KGZVV703WDA0",
+			"3DQBW3DGVAFCN",
+			"401RGQJRP8YPV",
+			"472415S9Z2Z50",
+			"4K0W9BZZFTQZB",
+			"4MPDC5S22QB26",
+			"4T8W4677AQ8TS",
+			"5Y80F0B6XDD2A",
+			"6MBZHER0JTPFN",
+			"8W4GXAHCPXRES",
+			"8YJQBY7V8D4NX",
+			"9311BMKWN2VT6",
+			"97TM0WYCGBD9G",
+			"BAWEK61MYMN00",
+			"BHAYAENR99WG7",
+			"BK0XW7SA66JJ2",
+			"BZ3SFQQS8S8N5",
+			"D7AMQ5Z0FAQZ9",
+			"DCF8W59C153FG",
+			"E18ABAA2F0YTX",
+			"E5D28QB6EZ8CC",
+			"FX4A1626K7PRA"
+		],
+		"email": "employee@ah-nuts.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2016-06-20T19:52:15Z",
+		"updated_at": "2017-01-03T16:02:17Z"
+	},
+	{
+		"first_name": "Jonathan",
+		"last_name": "Sharp",
+		"id": "MEnx1mqhhvHTY0Gjkmq_",
+		"role_ids": [
+			"WJfRMDq7xX7aOVEnBtqc"
+		],
+		"authorized_location_ids": [
+			"0CBRE1HP875C5",
+			"401RGQJRP8YPV",
+			"472415S9Z2Z50",
+			"4MPDC5S22QB26",
+			"8W4GXAHCPXRES",
+			"97TM0WYCGBD9G",
+			"BAWEK61MYMN00",
+			"BZ3SFQQS8S8N5",
+			"D7AMQ5Z0FAQZ9"
+		],
+		"email": "jsharp4038@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "19931211",
+		"created_at": "2016-09-20T16:04:13Z",
+		"updated_at": "2016-12-31T16:48:45Z"
+	},
+	{
+		"first_name": "Ali",
+		"last_name": "Weber",
+		"id": "V776RlNFByDYf4hAoPzs",
+		"role_ids": [
+			"WJfRMDq7xX7aOVEnBtqc"
+		],
+		"authorized_location_ids": [
+			"0FPCXRGTR1ZPK",
+			"2KGZVV703WDA0",
+			"401RGQJRP8YPV",
+			"472415S9Z2Z50",
+			"4K0W9BZZFTQZB",
+			"4MPDC5S22QB26",
+			"6MBZHER0JTPFN",
+			"8W4GXAHCPXRES",
+			"97TM0WYCGBD9G",
+			"9EHYNVKGGS7HY",
+			"BAWEK61MYMN00",
+			"BHAYAENR99WG7",
+			"D7AMQ5Z0FAQZ9",
+			"E18ABAA2F0YTX",
+			"E5D28QB6EZ8CC",
+			"FX4A1626K7PRA"
+		],
+		"email": "aliweber92@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "19920921",
+		"created_at": "2016-09-20T22:25:56Z",
+		"updated_at": "2017-01-03T16:03:24Z"
+	},
+	{
+		"first_name": "Whitney",
+		"last_name": "Hoy",
+		"id": "KLIqnRJPcc2Khiyvl5aP",
+		"role_ids": [
+			"WJfRMDq7xX7aOVEnBtqc"
+		],
+		"authorized_location_ids": [
+			"E18ABAA2F0YTX"
+		],
+		"email": "whitney.hoy01@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "19870609",
+		"created_at": "2016-09-25T15:21:48Z",
+		"updated_at": "2017-01-03T16:02:59Z"
+	},
+	{
+		"first_name": "Salvadore",
+		"last_name": "Amaya",
+		"id": "hgo_24IlNsgyazuD2388",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "salvador@puronuez.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2016-09-27T01:08:24Z",
+		"updated_at": "2017-11-06T04:21:21Z"
+	},
+	{
+		"first_name": "Samuel",
+		"last_name": "Medal",
+		"id": "zwwkr8_KY18YI0IefxBF",
+		"role_ids": [
+			"WJfRMDq7xX7aOVEnBtqc"
+		],
+		"authorized_location_ids": [
+			"8YJQBY7V8D4NX",
+			"9311BMKWN2VT6",
+			"9EHYNVKGGS7HY",
+			"DCF8W59C153FG"
+		],
+		"email": "s.medal90@gmail.com",
+		"status": "INACTIVE",
+		"created_at": "2016-09-27T01:09:59Z",
+		"updated_at": "2017-01-03T16:03:11Z"
+	},
+	{
+		"first_name": "Steve",
+		"last_name": "Ramirez",
+		"id": "EVFON2Btaw4iundGIhNC",
+		"role_ids": [
+			"WJfRMDq7xX7aOVEnBtqc"
+		],
+		"authorized_location_ids": [
+			"0FPCXRGTR1ZPK",
+			"2KGZVV703WDA0",
+			"4K0W9BZZFTQZB",
+			"8W4GXAHCPXRES",
+			"BHAYAENR99WG7",
+			"D7AMQ5Z0FAQZ9",
+			"DCF8W59C153FG",
+			"E18ABAA2F0YTX",
+			"E5D28QB6EZ8CC",
+			"FX4A1626K7PRA"
+		],
+		"email": "vital_killz@yahoo.com",
+		"status": "INACTIVE",
+		"external_id": "19921120",
+		"created_at": "2016-09-27T19:18:58Z",
+		"updated_at": "2017-01-03T16:03:19Z"
+	},
+	{
+		"first_name": "Luis",
+		"last_name": "Dircio",
+		"id": "7gb8UO3oXlCJwOhOeQqb",
+		"role_ids": [
+			"WJfRMDq7xX7aOVEnBtqc"
+		],
+		"authorized_location_ids": [
+			"4MPDC5S22QB26",
+			"FX4A1626K7PRA"
+		],
+		"email": "ldircio.1991@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2016-09-27T23:22:24Z",
+		"updated_at": "2017-01-03T16:02:43Z"
+	},
+	{
+		"first_name": "Anthony",
+		"last_name": "Gomez",
+		"id": "YPzyKJjBkqbsYDlq6bSw",
+		"role_ids": [
+			"WJfRMDq7xX7aOVEnBtqc"
+		],
+		"authorized_location_ids": [
+			"0CBRE1HP875C5",
+			"401RGQJRP8YPV",
+			"472415S9Z2Z50",
+			"4MPDC5S22QB26",
+			"8W4GXAHCPXRES",
+			"8YJQBY7V8D4NX",
+			"97TM0WYCGBD9G",
+			"BAWEK61MYMN00",
+			"BK0XW7SA66JJ2",
+			"BZ3SFQQS8S8N5",
+			"FX4A1626K7PRA"
+		],
+		"email": "anthonygomez00@yahoo.com",
+		"status": "INACTIVE",
+		"external_id": "19960111",
+		"created_at": "2016-09-28T22:45:42Z",
+		"updated_at": "2017-01-03T16:02:49Z"
+	},
+	{
+		"first_name": "Ian",
+		"last_name": "McAllister",
+		"id": "rUxLgAqsVklCN_14dfbE",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "ian@ah-nuts.com",
+		"status": "ACTIVE",
+		"external_id": "19830919",
+		"created_at": "2016-12-31T16:52:31Z",
+		"updated_at": "2018-04-28T16:06:02Z"
+	},
+	{
+		"first_name": "Lacey",
+		"last_name": "Young",
+		"id": "lfRy4B4G-0lA_udwGgQr",
+		"role_ids": [
+			"oyRJuN2k_XrBHlYZnE0t"
+		],
+		"authorized_location_ids": [
+			"0CBRE1HP875C5",
+			"0FPCXRGTR1ZPK",
+			"14E8S7P16JQDM",
+			"1H17QN22FE35J",
+			"2KGZVV703WDA0",
+			"3DQBW3DGVAFCN",
+			"401RGQJRP8YPV",
+			"472415S9Z2Z50",
+			"4K0W9BZZFTQZB",
+			"4MDW18C989SDH",
+			"4MPDC5S22QB26",
+			"4T8W4677AQ8TS",
+			"5Y80F0B6XDD2A",
+			"6MBZHER0JTPFN",
+			"8W4GXAHCPXRES",
+			"8YJQBY7V8D4NX",
+			"9311BMKWN2VT6",
+			"96JGBJBFC6BDP",
+			"97TM0WYCGBD9G",
+			"9EHYNVKGGS7HY",
+			"BAWEK61MYMN00",
+			"BHAYAENR99WG7",
+			"BK0XW7SA66JJ2",
+			"BTWD40X9Q5JS2",
+			"BZ3SFQQS8S8N5",
+			"C1651SM2CW5S0",
+			"D7AMQ5Z0FAQZ9",
+			"DCF8W59C153FG",
+			"DTCPAFDAHE7XD",
+			"E18ABAA2F0YTX",
+			"E5D28QB6EZ8CC",
+			"E8754TVVR46F1",
+			"FX4A1626K7PRA",
+			"M53KQT35YKE5C",
+			"S4P16GQRK21CF",
+			"Y2K1KXM5JG644"
+		],
+		"email": "lacey.young1992@gmail.com",
+		"status": "ACTIVE",
+		"external_id": "1992032301",
+		"created_at": "2017-01-01T16:20:20Z",
+		"updated_at": "2018-03-13T22:15:19Z"
+	},
+	{
+		"first_name": "Parker",
+		"last_name": "Young",
+		"id": "QSYJWIOEgII_l37Zus88",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "parker.young228@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "19890228",
+		"created_at": "2017-01-05T00:36:50Z",
+		"updated_at": "2018-04-25T22:21:20Z"
+	},
+	{
+		"first_name": "Edward",
+		"last_name": "Chapa",
+		"id": "zdHTNT6RDlI4XR4Cug-y",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "edwardchapa96@yahoo.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2017-01-25T01:40:08Z",
+		"updated_at": "2017-05-09T17:54:49Z"
+	},
+	{
+		"first_name": "Ashlee",
+		"last_name": "Young",
+		"id": "UJBeCCEokTlGWtrLRJ-x",
+		"role_ids": [
+			"7U99dPKKWiFKYCecc1Hi"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "ashlee@ah-nuts.com",
+		"status": "ACTIVE",
+		"external_id": "19870603",
+		"created_at": "2017-02-03T22:25:41Z",
+		"updated_at": "2018-04-25T22:20:03Z"
+	},
+	{
+		"first_name": "Aaron",
+		"last_name": "Bettencourt",
+		"id": "jWHhpfKjHyEmzezPtJNM",
+		"role_ids": [
+			"7U99dPKKWiFKYCecc1Hi"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "baronvonaaron7@gmail.com",
+		"status": "ACTIVE",
+		"external_id": "425-512-3969AARBET",
+		"created_at": "2017-03-11T17:31:29Z",
+		"updated_at": "2018-04-25T22:18:12Z"
+	},
+	{
+		"first_name": "Curtis",
+		"last_name": "Bearcub",
+		"id": "PfXHVec70U9racOcDoab",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "curtisahnuts@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "19680604_01",
+		"created_at": "2017-04-15T16:26:41Z",
+		"updated_at": "2017-11-06T04:20:30Z"
+	},
+	{
+		"first_name": "Joy",
+		"last_name": "Olsen",
+		"id": "KlQHr9CysvY0QPlqgMbp",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "gabeolsen32@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "29840916_01",
+		"created_at": "2017-05-09T18:00:06Z",
+		"updated_at": "2017-11-06T04:20:56Z"
+	},
+	{
+		"first_name": "Andrea",
+		"last_name": "Zamora",
+		"id": "pSxphubvLoJisPzXvd9T",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "dreazamora17@yahoo.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2017-05-09T18:13:22Z",
+		"updated_at": "2017-07-10T17:11:38Z"
+	},
+	{
+		"first_name": "Lindsey",
+		"last_name": "Newby",
+		"id": "ONq0cDPusYNMsg3XBpRC",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "ljn3398@gmail.com",
+		"status": "ACTIVE",
+		"external_id": "19980516_01",
+		"created_at": "2017-05-09T18:37:41Z",
+		"updated_at": "2018-05-03T00:46:48Z"
+	},
+	{
+		"first_name": "Farrah",
+		"last_name": "Fatemi",
+		"id": "LOUI2KAt0ayRwTgVjI9o",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "farrah.fatemi@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "20170611_01",
+		"created_at": "2017-06-13T19:33:54Z",
+		"updated_at": "2017-07-10T17:11:24Z"
+	},
+	{
+		"first_name": "Rachel",
+		"last_name": "Schroeder",
+		"id": "JjJkUJoXE-SzRzXUWGZK",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "rannschroeder88@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "20170612_01",
+		"created_at": "2017-06-13T19:36:06Z",
+		"updated_at": "2018-04-25T22:21:27Z"
+	},
+	{
+		"first_name": "Makayla",
+		"last_name": "Tingle",
+		"id": "r3cN022u9Xxv7UN394O5",
+		"role_ids": [
+			"7U99dPKKWiFKYCecc1Hi"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "makatingle@gmail.com",
+		"status": "ACTIVE",
+		"external_id": "",
+		"created_at": "2017-06-13T19:36:55Z",
+		"updated_at": "2018-04-25T22:22:39Z"
+	},
+	{
+		"first_name": "Dayne",
+		"last_name": "Dibble",
+		"id": "JKqrZVFsktwiyHkdK-bA",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "dayne255@hotmail.com",
+		"status": "INACTIVE",
+		"external_id": "20170624_01",
+		"created_at": "2017-06-23T00:37:03Z",
+		"updated_at": "2018-04-25T22:19:24Z"
+	},
+	{
+		"first_name": "Hannah",
+		"last_name": "Barischoff",
+		"id": "61_a_2vsUvpPUzE4Iide",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "hbarischoff@gmail.com",
+		"status": "ACTIVE",
+		"external_id": "20170701_001",
+		"created_at": "2017-07-03T22:34:33Z",
+		"updated_at": "2018-04-28T15:39:58Z"
+	},
+	{
+		"first_name": "Sovanrith",
+		"last_name": "Oum",
+		"id": "2krnnbekOkusxeoDt86m",
+		"role_ids": [
+			"o3VdbTVxpJsUzWoWMXcf"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM",
+			"Y2K1KXM5JG644"
+		],
+		"email": "rithbross16@gmail.com",
+		"status": "ACTIVE",
+		"created_at": "2017-07-05T04:28:26Z",
+		"updated_at": "2017-07-18T18:12:00Z"
+	},
+	{
+		"first_name": "Miranda",
+		"last_name": "Scheffel",
+		"id": "mVwhPezyMVkx2jFPNwTL",
+		"role_ids": [
+			"6auiWkvhIYpvmMd7Gx79"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM",
+			"Y2K1KXM5JG644"
+		],
+		"email": "miranda@ah-nuts.com",
+		"status": "ACTIVE",
+		"created_at": "2017-07-17T18:03:31Z",
+		"updated_at": "2017-07-17T20:20:18Z"
+	},
+	{
+		"first_name": "Hal",
+		"last_name": "Ford",
+		"id": "-S1smdfaL0pDUTrxXiq1",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "halford870@gmail.com",
+		"status": "INACTIVE",
+		"created_at": "2017-07-19T22:29:03Z",
+		"updated_at": "2017-11-06T04:20:47Z"
+	},
+	{
+		"first_name": "Caitlin",
+		"last_name": "Miller",
+		"id": "4ISdMmC7SkAyDQL_DB87",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "cn_miller15@yahoo.com",
+		"status": "ACTIVE",
+		"external_id": "",
+		"created_at": "2017-08-24T17:05:29Z",
+		"updated_at": "2018-05-06T01:19:58Z"
+	},
+	{
+		"first_name": "Nolan",
+		"last_name": "Massie",
+		"id": "8PTvlOBPBHhJySMDhnCk",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "nolan.massie94@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2017-08-24T17:07:32Z",
+		"updated_at": "2017-11-06T04:21:09Z"
+	},
+	{
+		"first_name": "Elia",
+		"last_name": "Samms",
+		"id": "1F7a2TjJyH66sLBbz2Ga",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "e.a.samms@gmail.com",
+		"status": "INACTIVE",
+		"created_at": "2017-10-25T20:28:25Z",
+		"updated_at": "2018-04-25T22:20:11Z"
+	},
+	{
+		"first_name": "Kristi",
+		"last_name": "Schoolcraft",
+		"id": "TZDr8SCkbOU30asRpJJE",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "babybeet1@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2017-10-31T20:25:39Z",
+		"updated_at": "2018-01-14T18:31:17Z"
+	},
+	{
+		"first_name": "Natalin",
+		"last_name": "Lawson",
+		"id": "_hPY0QhARO0QRovbL4At",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "rainigirl65@yahoo.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2017-10-31T20:30:13Z",
+		"updated_at": "2018-04-25T22:21:07Z"
+	},
+	{
+		"first_name": "Sariah",
+		"last_name": "LeRiger",
+		"id": "SQy2Zs2OcuYWTK8E8089",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "riahmodeling@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2017-10-31T20:30:42Z",
+		"updated_at": "2018-04-25T22:21:41Z"
+	},
+	{
+		"first_name": "Bobby",
+		"last_name": "MacAdams",
+		"id": "rjfWoKtCnoaTqMHIW1Yf",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "p2so4rrf@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2017-11-01T21:25:34Z",
+		"updated_at": "2018-04-25T22:18:41Z"
+	},
+	{
+		"first_name": "Douglas",
+		"last_name": "Romained",
+		"id": "AyfJ0RT1d6I6fmTT8YUF",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "douglasromained@gmail.com",
+		"status": "INACTIVE",
+		"created_at": "2017-11-03T22:31:08Z",
+		"updated_at": "2017-11-06T04:20:37Z"
+	},
+	{
+		"first_name": "Erik",
+		"last_name": "Torske",
+		"id": "k--Mb3Q27UltwA23p70f",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "p.e.torske@gmail.com",
+		"status": "INACTIVE",
+		"created_at": "2017-11-04T23:13:05Z",
+		"updated_at": "2018-04-25T22:20:17Z"
+	},
+	{
+		"first_name": "Rachelle",
+		"last_name": "Morrison",
+		"id": "6-H4L7e6L7BHBl-AMQTS",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "rushphotos1@gmail.com",
+		"status": "INACTIVE",
+		"created_at": "2017-11-06T00:57:52Z",
+		"updated_at": "2018-04-25T22:21:32Z"
+	},
+	{
+		"first_name": "Amanda",
+		"last_name": "Grubbs",
+		"id": "9UETOIqbMDQ8IUEqg-ds",
+		"role_ids": [
+			"7U99dPKKWiFKYCecc1Hi"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "amandajeangrubbs@gmail.com",
+		"status": "ACTIVE",
+		"external_id": "406-696-2891AMAGRU",
+		"created_at": "2017-11-07T01:13:53Z",
+		"updated_at": "2018-04-25T22:18:25Z"
+	},
+	{
+		"first_name": "Coleby",
+		"last_name": "Hart",
+		"id": "jqDD_Jx71Y2Uz9zVcdwd",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "shaggy4721@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2017-11-07T01:17:54Z",
+		"updated_at": "2018-04-25T22:18:57Z"
+	},
+	{
+		"first_name": "Akai",
+		"last_name": "aloha",
+		"id": "ae63f9ol5JeR3-cgG9A3",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "akai.aloha@gmail.com",
+		"status": "INACTIVE",
+		"created_at": "2017-11-07T22:03:00Z",
+		"updated_at": "2017-11-22T18:21:06Z"
+	},
+	{
+		"first_name": "Coleby",
+		"last_name": "Hart",
+		"id": "a7Z8W7DG1CaVsEJ31l6C",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "colebyhart@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2017-11-08T00:21:48Z",
+		"updated_at": "2018-04-25T22:19:03Z"
+	},
+	{
+		"first_name": "Dawn",
+		"last_name": "Mendenhall",
+		"id": "M44g6BuoNr_r3e1j3iv4",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "dawnrmendenhall@gmail.com",
+		"status": "INACTIVE",
+		"created_at": "2017-11-10T19:43:21Z",
+		"updated_at": "2018-04-25T22:19:19Z"
+	},
+	{
+		"first_name": "Roath",
+		"last_name": "S",
+		"id": "V4TFtrxZI1nvKJtkw3Hn",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "sopheap.roath.kuch@gmail.com",
+		"status": "ACTIVE",
+		"created_at": "2017-11-11T01:34:06Z",
+		"updated_at": "2017-11-11T01:35:45Z"
+	},
+	{
+		"first_name": "Bonnie",
+		"last_name": "Kuss",
+		"id": "kBdUwaLC92tSCxnMkMyP",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "bonnie.kuss@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2017-11-11T18:45:08Z",
+		"updated_at": "2018-04-25T22:18:46Z"
+	},
+	{
+		"first_name": "Domonic",
+		"last_name": "Fisk-Hicks",
+		"id": "eHX6O4JW6ALdTKnn1_Hd",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "domonicfh@gmail.com",
+		"status": "ACTIVE",
+		"external_id": "",
+		"created_at": "2017-11-14T21:09:49Z",
+		"updated_at": "2018-04-28T15:56:46Z"
+	},
+	{
+		"first_name": "Cristina",
+		"last_name": "Roberts",
+		"id": "Wk3-Ch13JCoqYe4osRh5",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "cristina.marie2495@gmail.com",
+		"status": "INACTIVE",
+		"created_at": "2017-11-15T00:21:08Z",
+		"updated_at": "2018-04-25T22:19:13Z"
+	},
+	{
+		"first_name": "Grant",
+		"last_name": "Director",
+		"id": "L_UbwXmH5uXhnUNUdI_6",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "grantd@uoregon.edu",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2017-11-15T16:16:07Z",
+		"updated_at": "2018-04-25T22:20:24Z"
+	},
+	{
+		"first_name": "Michael",
+		"last_name": "Anderson",
+		"id": "Vic0FTASV8-Q9jMbrW8K",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "manderson496@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2017-11-16T16:31:23Z",
+		"updated_at": "2018-04-25T22:20:46Z"
+	},
+	{
+		"first_name": "Jesse",
+		"last_name": "Acord",
+		"id": "e1JvFQfIbueF0X69k8pl",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "jessebay.acord@gmail.com",
+		"status": "ACTIVE",
+		"external_id": "",
+		"created_at": "2017-11-17T16:29:04Z",
+		"updated_at": "2017-11-17T17:01:46Z"
+	},
+	{
+		"first_name": "Bexley",
+		"last_name": "Chapman",
+		"id": "a7Xy-rRp8MyRuzYQYWho",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "bexleyrocks@gmail.com",
+		"status": "ACTIVE",
+		"external_id": "",
+		"created_at": "2017-11-17T16:30:09Z",
+		"updated_at": "2017-11-17T16:33:46Z"
+	},
+	{
+		"first_name": "Devon",
+		"last_name": "Rice",
+		"id": "lvPvwZ-nw7ShyIW7AAeB",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "devontr@hotmail.com",
+		"status": "ACTIVE",
+		"external_id": "",
+		"created_at": "2017-11-17T16:30:49Z",
+		"updated_at": "2017-11-18T16:55:56Z"
+	},
+	{
+		"first_name": "John",
+		"last_name": "Layton",
+		"id": "rQacLt1hc8cIC7PfQxD-",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "sir_crash@aol.com",
+		"status": "ACTIVE",
+		"external_id": "",
+		"created_at": "2017-11-17T16:31:28Z",
+		"updated_at": "2017-11-21T17:31:33Z"
+	},
+	{
+		"first_name": "Steve",
+		"last_name": "Young",
+		"id": "IkbEUz93v6ghXbBZxHiz",
+		"role_ids": [
+			"7U99dPKKWiFKYCecc1Hi"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "steve@ah-nuts.com",
+		"status": "ACTIVE",
+		"created_at": "2017-11-17T18:44:12Z",
+		"updated_at": "2018-04-25T22:22:22Z"
+	},
+	{
+		"first_name": "Shannon",
+		"last_name": "Taggart",
+		"id": "zXdWTVIzYg3V_aYppH7g",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "motermouthmomma@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2017-11-18T22:53:52Z",
+		"updated_at": "2018-04-25T22:21:49Z"
+	},
+	{
+		"first_name": "Eden",
+		"last_name": "Wilkes",
+		"id": "37HjgbynHvU7cBdJ5sgZ",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "eden.wilkees@gmail.com",
+		"status": "ACTIVE",
+		"external_id": "",
+		"created_at": "2017-11-20T21:18:29Z",
+		"updated_at": "2018-04-28T17:08:30Z"
+	},
+	{
+		"first_name": "Kendra",
+		"last_name": "Jones",
+		"id": "PoaF4sZ2PMLYGVAEATYd",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "kendrajones7115@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "458-205-0270KENJON",
+		"created_at": "2017-11-22T18:19:53Z",
+		"updated_at": "2018-04-25T22:22:47Z"
+	},
+	{
+		"first_name": "Logan",
+		"last_name": "Lennox",
+		"id": "0FyoXe7xMC9sW_VhCPsp",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "loganlennox@outlook.com",
+		"status": "INACTIVE",
+		"external_id": "541-513-7973LOGLEN",
+		"created_at": "2017-11-26T20:14:59Z",
+		"updated_at": "2018-04-25T22:20:39Z"
+	},
+	{
+		"first_name": "Ziane",
+		"last_name": "Silvers",
+		"id": "B46AgluIuIEYK2oJTw-h",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "zianesilvers@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "541-731-3663ZIASIL",
+		"created_at": "2017-11-26T20:15:56Z",
+		"updated_at": "2018-04-25T22:19:47Z"
+	},
+	{
+		"first_name": "Nate",
+		"last_name": "Nield",
+		"id": "uTaqLnrzVzwpSrXZXl7D",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "nate.nield@gmail.com",
+		"status": "ACTIVE",
+		"created_at": "2017-11-30T00:37:23Z",
+		"updated_at": "2017-11-30T00:42:32Z"
+	},
+	{
+		"first_name": "Jordan",
+		"last_name": "Singh",
+		"id": "lcBHv-FHszEBryVSowNM",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "jordan.jsingh@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2017-11-30T23:52:03Z",
+		"updated_at": "2018-04-25T22:20:32Z"
+	},
+	{
+		"first_name": "Charlee",
+		"last_name": "Bangerter",
+		"id": "tGcG_qhBlXVHqXLdcyW6",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM",
+			"8YJQBY7V8D4NX"
+		],
+		"email": "charleebangerter3@gmail.com",
+		"status": "ACTIVE",
+		"created_at": "2017-12-08T00:15:56Z",
+		"updated_at": "2017-12-08T00:16:30Z"
+	},
+	{
+		"first_name": "Michael",
+		"last_name": "Holt",
+		"id": "gJKxOQ1cxPm0BTyaWzH_",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "mohducks13@gmail.com",
+		"status": "ACTIVE",
+		"created_at": "2017-12-20T05:06:04Z",
+		"updated_at": "2018-04-28T15:57:42Z"
+	},
+	{
+		"first_name": "Charles",
+		"last_name": "Patterson",
+		"id": "yNHYeb1kK90S0RehSRLl",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "altheaokthatsfine@gmail.com",
+		"status": "ACTIVE",
+		"created_at": "2017-12-26T23:54:14Z",
+		"updated_at": "2017-12-27T00:01:29Z"
+	},
+	{
+		"first_name": "Kristi",
+		"last_name": "Schoolcraft",
+		"id": "IXr-Y0Iufyool5SCAY8d",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"14E8S7P16JQDM"
+		],
+		"email": "mirtzan@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2018-02-21T23:45:45Z",
+		"updated_at": "2018-04-25T22:23:24Z"
+	},
+	{
+		"first_name": "Tyler",
+		"last_name": "Studer",
+		"id": "8JshYltB0LgUYzRu_Tkp",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "tstuder0430@gmail.com",
+		"status": "ACTIVE",
+		"external_id": "",
+		"created_at": "2018-04-25T22:13:36Z",
+		"updated_at": "2018-04-28T16:46:58Z"
+	},
+	{
+		"first_name": "William",
+		"last_name": "Edmonds",
+		"id": "wwEyWWGARxjHSiK6R3f_",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "werockoregon@gmail.com",
+		"status": "INACTIVE",
+		"external_id": "",
+		"created_at": "2018-04-25T22:29:33Z",
+		"updated_at": "2018-05-06T01:20:26Z"
+	},
+	{
+		"first_name": "Allison",
+		"last_name": "Hannan",
+		"id": "5EDNqkOPkSeCPy7HPixj",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "ahannan18@gmail.com",
+		"status": "ACTIVE",
+		"external_id": "",
+		"created_at": "2018-05-04T20:23:35Z",
+		"updated_at": "2018-05-05T01:26:04Z"
+	},
+	{
+		"first_name": "Matt",
+		"last_name": "Derosa",
+		"id": "bOe6nLiQYnXpBDWPOx-a",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "matt.j.derosa@gmail.com",
+		"status": "ACTIVE",
+		"external_id": "",
+		"created_at": "2018-05-18T22:53:16Z",
+		"updated_at": "2018-05-18T23:24:30Z"
+	},
+	{
+		"first_name": "Lexie",
+		"last_name": "izzo",
+		"id": "xQjIXzpdO_xAivh-9e9F",
+		"role_ids": [
+			"xhGRZOebO_zcbR1XUKx-"
+		],
+		"authorized_location_ids": [
+			"M53KQT35YKE5C"
+		],
+		"email": "lexie.izzo@gmail.com",
+		"status": "ACTIVE",
+		"external_id": "",
+		"created_at": "2018-05-18T22:57:20Z",
+		"updated_at": "2018-05-19T01:30:47Z"
+	}
+]

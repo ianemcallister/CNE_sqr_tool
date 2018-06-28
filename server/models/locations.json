@@ -1,0 +1,756 @@
+{
+	"locations": [
+		{
+			"id": "0FPCXRGTR1ZPK",
+			"name": "Anaheim Promenade",
+			"address": {
+				"address_line_1": "Center Street Promonade",
+				"locality": "Anaheim",
+				"administrative_district_level_1": "CA",
+				"postal_code": "92805",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-06-16T17:32:03Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "MOBILE"
+		},
+		{
+			"id": "Y2K1KXM5JG644",
+			"name": "Beaverton Warehouse",
+			"address": {
+				"address_line_1": "5976 SW Menlo Drive",
+				"locality": "Beaverton",
+				"administrative_district_level_1": "OR",
+				"postal_code": "97005",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "ACTIVE",
+			"created_at": "2017-07-17T18:06:02Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "Beaverton Warehouse",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "6MBZHER0JTPFN",
+			"name": "Bixby Park - Saturday",
+			"address": {
+				"address_line_1": "130 Cherry Ave",
+				"locality": "Long Beach",
+				"administrative_district_level_1": "CA",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-06-24T20:52:57Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "E5D28QB6EZ8CC",
+			"name": "Bixby Park - Tuesday",
+			"address": {
+				"address_line_1": "130 Cherry Ave",
+				"locality": "Long Beach",
+				"administrative_district_level_1": "CA",
+				"postal_code": "90802",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-06-15T04:14:47Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "401RGQJRP8YPV",
+			"name": "Brea",
+			"address": {
+				"administrative_district_level_1": "CA",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-08-04T22:57:49Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "Ah-Nuts",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "BHAYAENR99WG7",
+			"name": "CSUF",
+			"address": {
+				"administrative_district_level_1": "CA",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-09-13T16:22:53Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "4MPDC5S22QB26",
+			"name": "Great Park",
+			"address": {
+				"address_line_1": "C Street",
+				"locality": "Irvine",
+				"administrative_district_level_1": "CA",
+				"postal_code": "92618",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-06-17T05:48:15Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "5Y80F0B6XDD2A",
+			"name": "Howard Hughes",
+			"address": {
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-10-27T16:52:50Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "4K0W9BZZFTQZB",
+			"name": "Huntington Beach Pier",
+			"address": {
+				"address_line_1": "Huntington Beach Pier",
+				"locality": "Huntington Beach",
+				"administrative_district_level_1": "CA",
+				"postal_code": "92648",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-06-17T05:46:38Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "BTWD40X9Q5JS2",
+			"name": "Ian's Test",
+			"address": {
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-06-15T04:35:21Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "8W4GXAHCPXRES",
+			"name": "Irvine - Discovery",
+			"address": {
+				"address_line_1": "43 Discovery",
+				"locality": "Irvine",
+				"administrative_district_level_1": "CA",
+				"postal_code": "92618",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-06-17T05:36:08Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "4T8W4677AQ8TS",
+			"name": "Irvine - Executive",
+			"address": {
+				"administrative_district_level_1": "CA",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-08-18T17:00:10Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "2KGZVV703WDA0",
+			"name": "Irvine - Gateway",
+			"address": {
+				"administrative_district_level_1": "CA",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-08-18T17:01:09Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "BAWEK61MYMN00",
+			"name": "Irvine - Regional Park",
+			"address": {
+				"administrative_district_level_1": "CA",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-08-09T15:43:15Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "9EHYNVKGGS7HY",
+			"name": "Irvine Spectrum",
+			"address": {
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-09-28T16:44:07Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "BK0XW7SA66JJ2",
+			"name": "Live Event #2",
+			"address": {
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-09-09T23:24:02Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL",
+			"website_url": ""
+		},
+		{
+			"id": "97TM0WYCGBD9G",
+			"name": "Marine Stadium",
+			"address": {
+				"address_line_1": "5355 E Eliot St",
+				"locality": "Long Beacch",
+				"administrative_district_level_1": "CA",
+				"postal_code": "90803",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-06-27T17:04:37Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "D7AMQ5Z0FAQZ9",
+			"name": "Monrovia Street Fair",
+			"address": {
+				"address_line_1": "700 S Myrtle Ave",
+				"locality": "Monrovia",
+				"administrative_district_level_1": "CA",
+				"postal_code": "91016",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-06-17T05:47:28Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "S4P16GQRK21CF",
+			"name": "Online",
+			"address": {
+				"address_line_1": "5976 SW Menlo Drive",
+				"locality": "Beaverton",
+				"administrative_district_level_1": "OR",
+				"postal_code": "97005",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "ACTIVE",
+			"created_at": "2017-12-16T20:30:40Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "Online",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "M53KQT35YKE5C",
+			"name": "Oregon",
+			"address": {
+				"address_line_1": "5976 SW Menlo Drive",
+				"locality": "Beaverton",
+				"administrative_district_level_1": "OR",
+				"postal_code": "97005",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "ACTIVE",
+			"created_at": "2018-04-25T16:11:16Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"phone_number": "+1 503-383-1718",
+			"business_name": "Oregon",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "3DQBW3DGVAFCN",
+			"name": "Oregon - Beaverton",
+			"address": {
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-10-15T13:19:51Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "E18ABAA2F0YTX",
+			"name": "Riviera Village",
+			"address": {
+				"address_line_1": "Catalina Avenue",
+				"locality": "Redondo Beach",
+				"administrative_district_level_1": "CA",
+				"postal_code": "90277",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-08-07T14:36:56Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "0CBRE1HP875C5",
+			"name": "San Pedro",
+			"address": {
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-08-13T15:58:15Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "9311BMKWN2VT6",
+			"name": "Sherman Oaks",
+			"address": {
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-09-27T04:29:59Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL",
+			"website_url": ""
+		},
+		{
+			"id": "FX4A1626K7PRA",
+			"name": "Surf City Nights",
+			"address": {
+				"address_line_1": "Main St & Olive Ave",
+				"locality": "Huntington Beach",
+				"administrative_district_level_1": "CA",
+				"postal_code": "92648",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-06-17T05:34:47Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "472415S9Z2Z50",
+			"name": "Twila Reid Park",
+			"address": {
+				"address_line_1": "3100 W Orange Ave",
+				"locality": "Anaheim",
+				"administrative_district_level_1": "CA",
+				"postal_code": "92804",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-06-17T05:45:15Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "1H17QN22FE35J",
+			"name": "USC",
+			"address": {
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-10-26T17:05:26Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "DCF8W59C153FG",
+			"name": "Universal Studios",
+			"address": {
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-08-16T17:14:22Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "14E8S7P16JQDM",
+			"name": "Utah",
+			"address": {
+				"administrative_district_level_1": "CA",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "ACTIVE",
+			"created_at": "2011-03-05T01:47:23Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"phone_number": "+1 818-533-8343",
+			"business_name": "Utah",
+			"type": "MOBILE",
+			"website_url": "www.ah-nuts.com"
+		},
+		{
+			"id": "C1651SM2CW5S0",
+			"name": "Utah - Bountiful ",
+			"address": {
+				"administrative_district_level_1": "UT",
+				"country": "US"
+			},
+			"timezone": "America/Denver",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "ACTIVE",
+			"created_at": "2016-08-09T05:36:36Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "E8754TVVR46F1",
+			"name": "Utah - Cross E Ranch",
+			"address": {
+				"country": "US"
+			},
+			"timezone": "America/Denver",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "ACTIVE",
+			"created_at": "2016-10-01T17:11:58Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "96JGBJBFC6BDP",
+			"name": "Utah - Ready 2 Go",
+			"address": {
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "ACTIVE",
+			"created_at": "2016-09-02T16:22:20Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "DTCPAFDAHE7XD",
+			"name": "Utah - Syracuse",
+			"address": {
+				"country": "US"
+			},
+			"timezone": "America/Denver",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "ACTIVE",
+			"created_at": "2016-08-09T05:34:38Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "4MDW18C989SDH",
+			"name": "Utah - Wheeler Farms",
+			"address": {
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "ACTIVE",
+			"created_at": "2016-09-11T15:34:27Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "8YJQBY7V8D4NX",
+			"name": "Utah Live Event #1",
+			"address": {
+				"administrative_district_level_1": "CA",
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "ACTIVE",
+			"created_at": "2016-09-09T23:23:03Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "PHYSICAL"
+		},
+		{
+			"id": "BZ3SFQQS8S8N5",
+			"name": "Yorba Linda",
+			"address": {
+				"country": "US"
+			},
+			"timezone": "America/Los_Angeles",
+			"capabilities": [
+				"CREDIT_CARD_PROCESSING"
+			],
+			"status": "INACTIVE",
+			"created_at": "2016-08-13T15:56:39Z",
+			"merchant_id": "FCGJQY3GC9BNW",
+			"country": "US",
+			"language_code": "en-US",
+			"currency": "USD",
+			"business_name": "ah-nuts!",
+			"type": "MOBILE"
+		}
+	]
+}

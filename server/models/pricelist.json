@@ -1,0 +1,215 @@
+{
+	"SR Pecans": {
+		"nut": "Pecans",
+		"flavor": "Secret Recipe",
+		"pkg_shape": "cone",
+		"variations": {
+			"Small (4)": {
+				"oz": 4,
+				"pkg_size": "small",
+				"COG": 195,
+				"wholesale": ""
+			},
+			"Average (8)": {
+				"oz": 8,
+				"pkg_size": "average",
+				"COG": 367,
+				"wholesale": ""
+			},
+			"Impressive (16)": {
+				"oz": 16,
+				"pkg_size": "Impressive",
+				"COG": 699,
+				"wholesale": ""
+			}
+		}
+	},
+	"SR Almonds": {
+		"nut": "Almonds",
+		"flavor": "Secret Recipe",
+		"pkg_shape": "cone",
+		"variations": {
+			"Small (4)": {
+				"oz": 4,
+				"pkg_size": "small",
+				"COG": 147,
+				"wholesale": ""
+			},
+			"Average (8)": {
+				"oz": 8,
+				"pkg_size": "average",
+				"COG": 272,
+				"wholesale": ""
+			},
+			"Impressive (16)": {
+				"oz": 16,
+				"pkg_size": "Impressive",
+				"COG": 509,
+				"wholesale": ""
+			}
+		}
+	},
+	"SR Cashews": {
+		"nut": "Cashews",
+		"flavor": "Secret Recipe",
+		"pkg_shape": "cone",
+		"variations": {
+			"Small (4)": {
+				"oz": 4,
+				"pkg_size": "small",
+				"COG": 200,
+				"wholesale": ""
+			},
+			"Average (8)": {
+				"oz": 8,
+				"pkg_size": "average",
+				"COG": 379,
+				"wholesale": ""
+			},
+			"Impressive (16)": {
+				"oz": 16,
+				"pkg_size": "Impressive",
+				"COG": 722,
+				"wholesale": ""
+			}
+		}
+	},
+	"SR Peanuts": {
+		"nut": "Peanuts",
+		"flavor": "Secret Recipe",
+		"pkg_shape": "cone",
+		"variations": {
+			"Small (4)": {
+				"oz": 4,
+				"pkg_size": "small",
+				"COG": 99,
+				"wholesale": ""
+			},
+			"Average (8)": {
+				"oz": 8,
+				"pkg_size": "average",
+				"COG": 177,
+				"wholesale": ""
+			},
+			"Impressive (16)": {
+				"oz": 16,
+				"pkg_size": "Impressive",
+				"COG": 318,
+				"wholesale": ""
+			}
+		}
+	},
+	"Cin Pecans": {
+		"nut": "Pecans",
+		"flavor": "Cinnamon",
+		"pkg_shape": "cone",
+		"variations": {
+			"Small (4)": {
+				"oz": 4,
+				"pkg_size": "small",
+				"COG": 196,
+				"wholesale": ""
+			},
+			"Average (8)": {
+				"oz": 8,
+				"pkg_size": "average",
+				"COG": 370,
+				"wholesale": ""
+			},
+			"Impressive (16)": {
+				"oz": 16,
+				"pkg_size": "Impressive",
+				"COG": 705,
+				"wholesale": ""
+			}
+		}
+	},
+	"Cin Almonds": {
+		"nut": "Almonds",
+		"flavor": "Cinnamon",
+		"pkg_shape": "cone",
+		"variations": {
+			"Small (4)": {
+				"oz": 4,
+				"pkg_size": "small",
+				"COG": 149,
+				"wholesale": ""
+			},
+			"Average (8)": {
+				"oz": 8,
+				"pkg_size": "average",
+				"COG": 275,
+				"wholesale": ""
+			},
+			"Impressive (16)": {
+				"oz": 16,
+				"pkg_size": "Impressive",
+				"COG": 514,
+				"wholesale": ""
+			}
+		}
+	},
+	"Drunk Pecans": {
+		"nut": "Pecans",
+		"flavor": "Drunken",
+		"pkg_shape": "cone",
+		"variations": {
+			"Small (4)": {
+				"oz": 4,
+				"pkg_size": "small",
+				"COG": 209,
+				"wholesale": ""
+			},
+			"Average (8)": {
+				"oz": 8,
+				"pkg_size": "average",
+				"COG": 395,
+				"wholesale": ""
+			},
+			"Impressive (16)": {
+				"oz": 16,
+				"pkg_size": "Impressive",
+				"COG": 755,
+				"wholesale": ""
+			}
+		}
+	},
+	"Mix": {
+		"nut": "Mix",
+		"flavor": "Mix",
+		"pkg_shape": "cone",
+		"variations": {
+			"Small (4)": {
+				"oz": 4,
+				"pkg_size": "small",
+				"COG": "",
+				"wholesale": ""
+			},
+			"Average (8)": {
+				"oz": 8,
+				"pkg_size": "average",
+				"COG": "",
+				"wholesale": ""
+			},
+			"Impressive (16)": {
+				"oz": 16,
+				"pkg_size": "Impressive",
+				"COG": "",
+				"wholesale": ""
+			}
+		}
+	},
+	"Platter": {
+		"nut": "Mix",
+		"flavor": "Mix",
+		"pkg_shape": "Gift Round",
+		"variations": {
+			"Regular": {
+				"oz": 20,
+				"pkg_size": "small",
+				"COG": "",
+				"wholesale": ""
+			}
+		}
+	}
+}
