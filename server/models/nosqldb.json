@@ -116,12 +116,17 @@
 					]
 				}
 			}
-		}
+		},
+		"unassigned_txs": [
+		]
 	},
 	"transactions": {
 		"Z8ahEq2jgpo1Tnkb5IsxKQB": {
 			"created_at": "2018-05-02T16:56:30Z",
 			"device_id": "DEVICE_INSTALLATION_ID:51DB5448-E1D5-452D-AC02-4E7D97DE4286",
+			"salesDay": "",
+			"customer": "",
+			"employee_id": "61_a_2vsUvpPUzE4Iide",
 			"net_total_money": "",
 			"tip_money": "",
 			"discount_money": "",
@@ -131,7 +136,6 @@
 			"net_sales_money": "",
 			"tender": [
 				{
-					"employee_id": "61_a_2vsUvpPUzE4Iide",
 					"total_money": "",
 					"type": "CASH"
 				}

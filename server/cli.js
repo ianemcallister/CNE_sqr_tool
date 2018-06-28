@@ -13,6 +13,8 @@ var stdio			= require('./stdio/stdio_api.js');
 var sqrdata			= require('./square/sqr_data_api.js');
 //var locations_mysql = require('./mysql/query_builder.js');
 var squareV1		= require('./square/v1_api.js');
+var ahnutsSqSync	= require('./square/ahnuts_sqr_tx_sync.js');
+var firebase		= require('./firebase/firebase.js');
 
 //get the employee list from square
 //cne.update.table.products();
@@ -35,18 +37,27 @@ stdio.write.json(idProductsList, "models/id_products_list.json");
 
 //console.log(mfgReport);
 
-squareV1.webhooks.list(["PAYMENT_UPDATED"]).then(function success(s) {
+/*squareV1.webhooks.list(["PAYMENT_UPDATED"]).then(function success(s) {
 
 	console.log('got this back');
 	console.log(s);
 
 }).catch(function error(e) {
 	console.log('there was an error', e);
-});
+});*/
+
+//ahnutsSqSync.push_requests({ entity_id: 'PzGUikmYpROMkDuGal6XLQB', event_type: 'PAYMENT_UPDATED', merchant_id: 'FCGJQY3GC9BNW', location_id: 'M53KQT35YKE5C' });
 
 /*squareV1.locations.list().then(function success(s) {
 	console.log('success', s);
 }).catch(function error(e) {
 	console.log('error', e);
 });*/
+
+firebase.read('reference_lists').then(function success(s) {
+	console.log('got this back');
+	console.log(s);
+}).catch(function error(e) {
+	console.log('error',e);
+})
 

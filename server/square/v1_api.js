@@ -332,7 +332,54 @@ function payments_list() {
 	  ]
 	}
 */
-function retrieve_payment(location_id, payment_id) {};
+function retrieve_payment(payment_id, location_id) {
+	//define local variables
+	var self = this;
+	var thisUrl = _baseURL + 'v1/' + location_id + '/payments/' + payment_id;
+	var options = {
+		method: 'GET',
+		headers: _headers
+	};
+
+	//return for async work
+	return new Promise(function(resolve, reject) {
+
+		console.log('fetching', thisUrl, options);
+
+		//fetch the details
+		fetch(thisUrl, options)
+		.then(function success(s) {
+
+			//upon success proceed
+			if(s.status == 200) {
+				
+				//retrieve buffer content
+				buffer_extract(s)
+				.then(function success(ss) {
+
+					//send the data back
+					resolve(ss);
+
+
+				}).catch(function error(ee) {
+
+				});
+
+			} else if(s.status == 401) {
+				console.log('Unauthorized');
+				reject('boo');
+			} else {
+				console.log('there was an error');
+				reject(s);
+			}
+
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
+};
 
 //ROLES FUNCTIONS 
 function roles_list() {

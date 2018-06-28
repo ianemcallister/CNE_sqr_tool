@@ -10,6 +10,9 @@ console.log('runnign the server');
 var express		= require('express');
 var bodyParser 	= require('body-parser');
 
+//update this later but goo dfor now
+var sqrtxs 		= require('./square/ahnuts_sqr_tx_sync.js');
+
 //return the express object
 var serverApp = express();
 
@@ -59,6 +62,9 @@ serverApp.post('/sqrwebhook', function(req, res) {
 	
 	//advise of the post body
 	console.log(req.body);
+
+	//run the requird function
+	sqrtxs.push_requests(req.body);
 
 	//return an affirmative status code
 	res.sendStatus(200);
