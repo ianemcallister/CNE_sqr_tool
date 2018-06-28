@@ -28,7 +28,7 @@ admin.initializeApp({
   databaseURL: "https://cnute-b75af.firebaseio.com"
 });
 
-console.log(serviceAccount);
+//console.log(serviceAccount);
 
 //define module
 var firebase = {
@@ -42,6 +42,8 @@ var firebase = {
 function create(path, data) {
 	//define local variables
 	var ref = admin.database().ref(path);
+
+	console.log('creating record', path, data);
 
 	//return async work
 	return new Promise(function(resolve, reject) {

@@ -6,7 +6,8 @@
 */
 
 //define dependencies
-var v1_api_sqr = require('./v1_api.js');
+var v1_api_sqr 		= require('./v1_api.js');
+var firebase		= require('../firebase/firebase.js');
 
 //define module
 var an_sqr_tx_sync = {
@@ -16,7 +17,8 @@ var an_sqr_tx_sync = {
 	map_sqr_tx_to_ahnts_tx: map_sqr_tx_to_ahnts_tx,
 	map_sqr_tx_tender_to_ahnts_tx_tender: map_sqr_tx_tender_to_ahnts_tx_tender,
 	map_sqr_tx_itemizations_to_ahnts_tx_itemizations: map_sqr_tx_itemizations_to_ahnts_tx_itemizations,
-	map_sqr_tx_mods_to_ahnts_tx_mods: map_sqr_tx_mods_to_ahnts_tx_mods
+	map_sqr_tx_mods_to_ahnts_tx_mods: map_sqr_tx_mods_to_ahnts_tx_mods,
+	save_tx_to_ahnuts_server: save_tx_to_ahnuts_server
 };
 
 /*
@@ -97,14 +99,16 @@ function map_sqr_tx_to_ahnts_tx(sqrTx) {
 	//define local variables
 	var ahnuts_tx = {};
 
+	//console.log(sqrTx);
+
 	//define the tx name
 	ahnuts_tx[sqrTx.id] = {
-		created_at: "",
+		created_at: sqrTx.created_at,
 		device_id: sqrTx.device.id,
 		device_name: sqrTx.device.name,
 		salesDay: "",
 		customer: "",
-		employee_id: "",
+		employee_id: sqrTx.tender[0].employee_id,
 		net_total_money: sqrTx.net_total_money.amount,
 		tip_money: sqrTx.tip_money.amount,
 		discount_money: sqrTx.discount_money.amount,
@@ -116,7 +120,20 @@ function map_sqr_tx_to_ahnts_tx(sqrTx) {
 		itemizations: map_sqr_tx_itemizations_to_ahnts_tx_itemizations(sqrTx.itemizations)
 	};
 
+	console.log(ahnuts_tx);
+
 	return ahnuts_tx;
+};
+
+// SAVE TRANSACTION TO AHNUTS SERVER
+function save_tx_to_ahnuts_server(ahnutstx) {
+	//define local variables
+
+	firebase.create('transactions', ahnutstx).then(function success(s) {
+		console.log('Success:', s);
+	}).catch(function error(e) {
+		console.log('ERROR:', e);
+	});
 };
 
 // SINGLE TRANSACTION SYNC
@@ -134,10 +151,10 @@ function single_tx_sync(entity_id, location_id) {
 
 		//map square object to ah-nuts object
 		var ahnuts_tx = map_sqr_tx_to_ahnts_tx(s);
-		
-		console.log(ahnuts_tx);
 
 		//saving the transaction happens regardless
+		save_tx_to_ahnuts_server(ahnuts_tx);
+
 
 		//if is a reference transaction....
 		//if is NOT a reference transaction...
