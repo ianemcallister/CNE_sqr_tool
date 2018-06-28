@@ -126,10 +126,12 @@ function map_sqr_tx_to_ahnts_tx(sqrTx) {
 };
 
 // SAVE TRANSACTION TO AHNUTS SERVER
-function save_tx_to_ahnuts_server(ahnutstx) {
-	//define local variables
+function save_tx_to_ahnuts_server(tx_id, ahnutstx) {
+	//define local variables	
+	var writePath = 'transactions/' + tx_id;
 
-	firebase.create('transactions', ahnutstx).then(function success(s) {
+	//write the records
+	firebase.create(writePath, ahnutstx[tx_id]).then(function success(s) {
 		console.log('Success:', s);
 	}).catch(function error(e) {
 		console.log('ERROR:', e);
@@ -153,7 +155,7 @@ function single_tx_sync(entity_id, location_id) {
 		var ahnuts_tx = map_sqr_tx_to_ahnts_tx(s);
 
 		//saving the transaction happens regardless
-		save_tx_to_ahnuts_server(ahnuts_tx);
+		save_tx_to_ahnuts_server(entity_id, ahnuts_tx);
 
 
 		//if is a reference transaction....
