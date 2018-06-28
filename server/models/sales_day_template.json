@@ -1,0 +1,82 @@
+{
+	"date/time": "",
+	"CME_name": "",
+	"customer": "",
+	"devices": { "placeholder": "placeholder" },
+	"team_members": { "placeholder": "placeholder" },
+	"schedule": {
+		"sales_start": "",
+		"sales_end": "",
+		"open": "",
+		"close": "",
+		"load_in": "",
+		"load_out": "",
+		"shifts": { "placeholder": "placeholder" }
+	},
+	"transactions": { "placeholder": "placeholder" },
+	"financial_summary": {
+		"gross_sales": 0,
+		"refunds": 0,
+		"net_gross_sales": 0,
+		"discounts": 0,
+		"tips": 0,
+		"no_of_tx": 0,
+		"rent_paid": {
+			"date_time": "",
+			"amount": 0,
+			"by": "",
+			"type": "",
+			"account": ""
+		},
+		"rev_channel_breakdown": {
+			"cash": 0,
+			"credit": 0,
+			"other": 0,
+			"tokens": 0
+		},
+		"change_banks":{
+			"no_provided": 0,
+			"cash_value_provided": 0,
+			"no_used": 0,
+			"cash_value_used":
+		},
+		"tokens": { "placeholder": "placeholder" },
+		"labor": { "placeholder": "placeholder" },
+		"commissions": { "placeholder": "placeholder" },
+		"power": { "placeholder": "placeholder" },
+		"parking": { "placeholder": "placeholder" },
+		"cash_drawers": { "placeholder": "placeholder" },
+		"expected_payments": [
+			{
+				"payment_id": "",
+				"type": "CASH",
+				"origination_date": "",
+				"original_balance": 0,
+				"paid": 0,
+				"due": 0,
+				"deposits": { "placeholder": "placeholder" }
+			},
+			{
+				"payment_id": "",
+				"type": "CREDIT",
+				"origination_date": "",
+				"original_balance": 0,
+				"paid": 0,
+				"due": 0,
+				"deposits": { "placeholder": "placeholder" }
+			},
+			{
+				"payment_id": "",
+				"type": "OTHER",
+				"origination_date": "",
+				"original_balance": 0,
+				"paid": 0,
+				"due": 0,
+				"deposits": { "placeholder": "placeholder" }
+			}
+		]
+	},
+	"mfg_summary": { "placeholder": "placeholder" },
+	"product_sales_summary": { "placeholder": "placeholder" },
+	"raw_resources": { "placeholder": "placeholder" }
+}

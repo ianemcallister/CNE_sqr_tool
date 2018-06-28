@@ -1,0 +1,19 @@
+{
+	"name": "",
+	"display_name": "",
+	"sales_days": {
+		"placeholder": "placeholder"
+	},
+	"address": {
+		"city": "",
+		"state": "",
+		"zip": "",
+		"street1": "",
+		"street2": "",
+		"street3": ""
+	},
+	"timzone": "",
+	"schedule": {
+		"placeholder": "placeholder"
+	}
+}

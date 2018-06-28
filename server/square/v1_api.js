@@ -19,7 +19,7 @@ var _headers 		= {
 	'Content-Type': 'application/json'
 };
 
-console.log('_accessToken', _accessToken);
+//console.log('_accessToken', _accessToken);
 //console.log("_headers", _headers);
 
 //define module
