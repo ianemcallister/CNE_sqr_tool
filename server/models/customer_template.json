@@ -15,5 +15,30 @@
 	"timzone": "",
 	"schedule": {
 		"placeholder": "placeholder"
+	},
+	"seasons": {
+		"2018": {
+			"start_date": "",
+			"end_date": "",
+			"frequency": "",
+			"repeat_on": {
+				"mon": false,
+				"tue": false,
+				"wed": false,
+				"thu": false,
+				"fri": false,
+				"sat": false,
+				"sun": false
+			},
+			"no_of_occurances": 0,
+			"hrs": {
+				"open": "",
+				"close": "",
+				"sales_start": "",
+				"sales_end": "",
+				"load_in": "",
+				"load_out": ""
+			}
+		}
 	}
 }

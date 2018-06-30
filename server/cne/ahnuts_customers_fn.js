@@ -10,10 +10,19 @@ var stdio			= require('../stdio/stdio_api.js');
 
 //define module
 var ahcfn = {
+	compile: {
+		sales_days_list: compile_sales_days_list
+	},
 	add: {
 		a_customer: add_a_customer,
 		customers: add_customers
 	}
+};
+
+//	COMPILE SALES DAY LIST
+function compile_sales_days_list() {
+	//define local variables
+	
 };
 
 //	ADD A CUSTOMER 

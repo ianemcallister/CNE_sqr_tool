@@ -14,58 +14,20 @@ var stdio			= require('./stdio/stdio_api.js');
 //var locations_mysql = require('./mysql/query_builder.js');
 //var squareV1		= require('./square/v1_api.js');
 //var ahnutsSqSync	= require('./square/ahnuts_sqr_tx_sync.js');
-//var firebase		= require('./firebase/firebase.js');
+var firebase		= require('./firebase/firebase.js');
 var customerFns		= require('./cne/ahnuts_customers_fn.js'); 
+//var calendarFns		= require('./cne/ahnuts_calender_fn.js'); 
 
-//get the employee list from square
-//cne.update.table.products();
+customerFns.add.customers(stdio.read.json('./models/customers.json'));
 
-/*
-var products = stdio.read.json('models/products.json');
-var idProductsList = sqrdata.products.sqr_to_sql(products);
-stdio.write.json(idProductsList, "models/id_products_list.json");
-*/
+//var calObject = calendarFns.add.date_range("2018-01-01", "2018-12-31");
 
-//var txs = stdio.read.json('models/tickets_test.json');
-
-//var anTickets = sqrdata.transactions.to_object(txs);
-
-//break out the transactions by device
-//var selection = sqrdata.selection.filter(txs, "DEVICE_INSTALLATION_ID:51DB5448-E1D5-452D-AC02-4E7D97DE4286", "2018-05-02T16:56:30Z", "2018-05-03T20:16:44Z");
-
-//then generate a report
-//var mfgReport = selection.length;
-
-//console.log(mfgReport);
-
-/*squareV1.webhooks.list(["PAYMENT_UPDATED"]).then(function success(s) {
-
-	console.log('got this back');
-	console.log(s);
-
+/*firebase.create('calender/2018', calObject).then(function success(s) {
+	console.log('success', s);
 }).catch(function error(e) {
-	console.log('there was an error', e);
-});*/
-
-
+	console.log("error", e);
+})*/
 
 //ahnutsSqSync.push_requests({ entity_id: 'PzGUikmYpROMkDuGal6XLQB', event_type: 'PAYMENT_UPDATED', merchant_id: 'FCGJQY3GC9BNW', location_id: 'M53KQT35YKE5C' });
 
-
-var customerList = stdio.read.json('./models/customers.json');
-customerFns.add.customers(customerList);
-
-
-/*squareV1.locations.list().then(function success(s) {
-	console.log('success', s);
-}).catch(function error(e) {
-	console.log('error', e);
-});*/
-
-/*firebase.read('reference_lists').then(function success(s) {
-	console.log('got this back');
-	console.log(s);
-}).catch(function error(e) {
-	console.log('error',e);
-})*/
 
