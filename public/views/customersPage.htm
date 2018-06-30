@@ -1,3 +1,21 @@
 <div>
-	This is the customers page
+	
+	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style='background:blue; color: white'>
+		
+		<strong>Customer List</strong>
+		
+		<ul>
+			<li ng-repeat="customer in vm.customerList track by $index">
+				{{customer}}
+			</li>
+		</ul>
+
+	</div>
+	
+	<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+		Customer Profile <br>
+		This is a customer list <br>
+		{{vm.testList}}
+	</div>
+
 </div>

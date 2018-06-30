@@ -25,6 +25,11 @@ function config($routeProvider, $locationProvider) {
             customerList: customerList
         }
     })
+    .when('/login', {
+        templateUrl: 'views/loginPage.htm',      //'views/mainPage.htm'
+        controller: 'loginController',           //'mainController'
+        controllerAs: 'vm'
+    })
 	.otherwise({
         redirectTo: '/'
     });

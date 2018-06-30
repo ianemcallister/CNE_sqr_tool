@@ -1,0 +1,37 @@
+<div>
+	This is the login page
+
+	<div class="container">
+
+		<!--Collect the username & password with validation-->
+		<div class="row">
+			<!--Input-->
+			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+				<!--username directive-->
+				<login-username 	username="vm.credentials.username" 
+									active='vm.active.username'>
+				</login-username>
+
+				<!--password directive-->
+				<login-password 	password='vm.credentials.password' 
+									active='vm.active.password'>
+				</login-password>
+			</div>
+			
+			<!--Validation
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<login-validation active='vm.active'></login-validation>
+			</div>-->
+
+		</div>
+
+		<!--Login Link-->
+		<div class="row">
+			<button 	class='btn btn-success' 
+						ng-click='vm.submitCreds(vm.credentials.username, vm.credentials.password)'>
+			Login</button>
+		</div>
+		
+	</div>
+
+</div>
