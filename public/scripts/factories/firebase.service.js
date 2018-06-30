@@ -20,7 +20,33 @@ function firebaseService($firebase, $firebaseObject, $firebaseArray) {
 		get: {
 			customer_list: get_customer_list
 		},
+		authUser: {
+			email: authUser_email
+		},
 		test: test
+	};
+
+	//	AUTHENTICATE USER
+	function authUser_email(email, password) {
+		
+		console.log('authenticating user')
+
+		//return async work
+		return new Promise(function (resolve, reject) {
+
+			firebase.auth().signInWithEmailAndPassword(email, password).then(function sucess(s) {
+
+				resolve(s);
+
+			}).catch(function(error) {
+				// Handle Errors here.
+				var errorCode = error.code;
+				var errorMessage = error.message;
+				reject({code: errorCode , message: errorMessage});
+
+			});
+		});
+
 	};
 
 	//	GET CUSTOMER LIST

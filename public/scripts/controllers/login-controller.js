@@ -2,10 +2,10 @@ angular
     .module('cne')
     .controller('loginController', loginController);
 
-loginController.$inject = ['$scope','$log'];
+loginController.$inject = ['$scope','$log', 'firebaseService'];
 
 /* @ngInject */
-function loginController($scope, $log) {
+function loginController($scope, $log, firebaseService) {
 
 	//define view model variable
 	var vm = this;
@@ -23,7 +23,18 @@ function loginController($scope, $log) {
 
 	//define view model functions
 	vm.submitCreds = function(username, pass) {
-		console.log('submitting credentials', username, pass);
+		
+		console.log('submitCreds clicked');
+		
+		//submit credentials
+		firebaseService.authUser.email(username, pass).then(function success (s) {
+
+			console.log('was success', s);
+
+		}).catch(function error(e) {
+			console.log("Error:", e);
+		});
+
 	};
 
 	$log.info('in the login controller');	//TODO: TAKE THIS OUT LATER
