@@ -8,7 +8,7 @@ angular
     .config(config);
 
 /* @ngInject */
-function config($routeProvider,$locationProvider) {
+function config($routeProvider, $locationProvider) {
 	$locationProvider.hashPrefix('');
     $routeProvider
 	//PUBLIC ROUTES
