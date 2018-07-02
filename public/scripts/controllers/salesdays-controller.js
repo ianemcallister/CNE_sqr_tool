@@ -9,6 +9,19 @@ function salesDaysController($scope, $log, $firebase, $firebaseArray, $firebaseO
 
 	//define view model variable
 	var vm = this;
+	var iteration = {
+		date: "2018-05-05T06:00:00Z",
+		wk_day: "Sat",
+		id: "beaverton_fm_001",
+		schedule: {
+			load_in: "",
+			load_out: "",
+			open: "8:00 AM",
+			close: "1:30 PM",
+			sales_start: "",
+			sales_end: ""
+		}
+	};
 	vm.salesdaysList = $firebaseArray(firebase.database().ref().child('sales_days'));
 	vm.selectedRecord = { id: "2039752" };
 	vm.testCustomers = [ "Beaverton", "Orenco" ];
@@ -41,12 +54,25 @@ function salesDaysController($scope, $log, $firebase, $firebaseArray, $firebaseO
 			sales_start: "",
 			sales_end: ""
 		}
-	}
+	};
+	vm.tempIterations = [iteration, iteration];
 
 	//identify controller
-	$log.info('in the sales days controller', new Date().toISOString());	//TODO: TAKE THIS OUT LATER
+	$log.info('in the sales days controller');	//TODO: TAKE THIS OUT LATER
 
-	//define local functions
+	/*
+	*	LOCAL FUNCTIONS GO HERE
+	*
+	*/
+	function build_sales_days_array(params) {
+		//local variables
+		var start = new Date(params.bookend_dates.first);
+		var end = new Date(params.bookend_dates.last);
+		var counter = start;
+
+		console.log('got these params', start, end);
+	};
+
 
 	/*
 	*	VIEW MODEL FUNCTIONS GO HERE
@@ -110,7 +136,10 @@ function salesDaysController($scope, $log, $firebase, $firebaseArray, $firebaseO
 		//define local variables
 
 		//notify of location
-		console.log('generating Sales days', vm.scheduling_params);
+		//console.log('generating Sales days', vm.scheduling_params);
+
+		vm.tempIterations = build_sales_days_array(vm.scheduling_params);
+
 	};
 
 	//run the test

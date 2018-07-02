@@ -12,8 +12,6 @@
 				{{salesday.$value}}
 			</li>
 		</ul>
-		
-		{{vm.scheduling_params}}
 
 	</div>
 
@@ -148,6 +146,14 @@
 				<th>ID</th>
 				<th>Open</th>
 				<th>Close</th>
+			</tr>
+			<tr ng-repeat='salesday in vm.tempIterations track by $index'>
+				<td>{{$index + 1}}</td>
+				<td>{{salesday.date | date: "M/d/yy"}}</td>
+				<td>{{salesday.wk_day}}</td>
+				<td>{{salesday.id}}</td>
+				<td>{{salesday.schedule.open}}</td>
+				<td>{{salesday.schedule.close}}</td>
 			</tr>
 		</table>
 
