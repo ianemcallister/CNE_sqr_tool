@@ -16,9 +16,41 @@ var stdio			= require('./stdio/stdio_api.js');
 //var ahnutsSqSync	= require('./square/ahnuts_sqr_tx_sync.js');
 var firebase		= require('./firebase/firebase.js');
 var customerFns		= require('./cne/ahnuts_customers_fn.js'); 
+var salsesdaysFns	= require('./cne/ahnuts_sales_days_fn.js'); 
 //var calendarFns		= require('./cne/ahnuts_calender_fn.js'); 
 
-customerFns.add.customers(stdio.read.json('./models/customers.json'));
+//customerFns.add.customers(stdio.read.json('./models/customers.json'));
+
+var newArray = salsesdaysFns.compile.new_sales_days_batch({
+		customer: "Beaverton",
+		season: "2018_Summer",
+		bookend_dates: {
+			first: "2018-05-05",
+			last: "2018-09-29"
+		},
+		repeats: "every_week",
+		event_days: {
+			0: false,
+			1: false,
+			2: false,
+			3: false,
+			4: false,
+			5: false,
+			6: true
+		},
+		same_day_load_in_out: true,
+		schedule: {
+			load_in: "2018-05-05T06:00:00-07:00",
+			load_out: "2018-05-05T14:30:00-07:00",
+			open: "2018-05-05T06:00:00-07:00",
+			close: "2018-05-05T14:30:00-07:00",
+			sales_start: "2018-05-05T08:00:00-07:00",
+			sales_end: "2018-05-05T13:30:00-07:00"
+		}
+	});
+
+console.log(newArray);
+
 
 //var calObject = calendarFns.add.date_range("2018-01-01", "2018-12-31");
 
