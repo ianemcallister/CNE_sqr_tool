@@ -25,6 +25,11 @@ function config($routeProvider, $locationProvider) {
             customerList: customerList
         }
     })
+    .when('/salesdays', {
+        templateUrl: 'views/salesDaysPage.htm',      //'views/mainPage.htm'
+        controller: 'salesDaysController',           //'mainController'
+        controllerAs: 'vm'
+    })
     .when('/login', {
         templateUrl: 'views/loginPage.htm',      //'views/mainPage.htm'
         controller: 'loginController',           //'mainController'

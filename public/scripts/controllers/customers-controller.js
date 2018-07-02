@@ -10,7 +10,8 @@ function customersController($scope, $log, customerList, firebaseService, $fireb
 	//define view model variable
 	var vm = this;
 	vm.customerList = $firebaseArray(firebase.database().ref().child('customers'));
-	vm.selectedCustomer = '';
+	vm.customerSalesDays = [];
+	vm.selectedCustomer = { seasons: { "2018": { id: 2018} } };
 	vm.testList = ['a', 'b', 'c']; //$firebaseArray(firebase.database().ref().child('customers').child('customer_list'));
 	vm.state = {
 		selected: {
@@ -62,8 +63,10 @@ function customersController($scope, $log, customerList, firebaseService, $fireb
 	//	SELECT CLICKED CUSTOMER
 	vm.selectCustomer = function(index_id) {
 		//define local variables
-		vm.state.selected.customer.$id = index_id;
+		vm.state.selected.customer.$index = index_id;
+		vm.state.selected.customer.$id = vm.customerList[index_id].$id;
 		vm.selectedCustomer = $firebaseObject(firebase.database().ref().child('customers').child(vm.customerList[index_id].$id));
+		vm.customerSalesDays = vm.selectedCustomer.sales_days;
 	};
 
 	//	UPDATE THE CUSTOMER RECORD
@@ -79,25 +82,49 @@ function customersController($scope, $log, customerList, firebaseService, $fireb
 	vm.changeRecord = function(select) {
 		//define local variables
 		var optn = { "prev": 0, "next": 1 };
-		var index_id = vm.state.selected.customer.$id;
+		var index_id = vm.state.selected.customer.$index;
+
+		//console.log(index_id);
 
 		switch(optn[select]) {
 			case 0:
 				//console.log('previous record');
-				vm.selectCustomer(vm.state.selected.customer.$id - 1);
+				vm.selectCustomer(vm.state.selected.customer.$index - 1);
 				break;
 			case 1:
 				//console.log('next record');
-				vm.selectCustomer(vm.state.selected.customer.$id + 1);
+				vm.selectCustomer(vm.state.selected.customer.$index + 1);
 				break;
 			default:
 				break;
 		}
 	};
 
+	//	GENERATE BULK SALES DAYS
+	vm.generate_bulk_salesdays = function() {
+		//define local variables
+		console.log('generating bulk salesdays', vm.selectedCustomer.sales_days);
+		
+		/*if(vm.selectedCustomer.sales_days[0] == undefined) {
+			console.log('sales days undefined')
+			vm.selectedCustomer.sales_days[0] = "aoisgoi23obsob23oihss"
+		} else {
+			console.log('sales days defined');
+			var lastkey = 0;
+			Object.keys(vm.selectedCustomer.sales_days).forEach(function (key) {
+				if(key != 'placeholder') lastkey = parseInt(key);
+			});
+			vm.selectedCustomer.sales_days[lastkey + 1] = "aosighaoishgiohsg"
+		}
+
+		//save values
+		vm.updateCustomer();*/
+	};
+
 	//run the test
 
 	//on page load
 	//load_customer_list();
+
 
 }

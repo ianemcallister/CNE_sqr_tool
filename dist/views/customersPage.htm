@@ -30,6 +30,96 @@
 		Timezone: <input 	type="text"
 							ng-model='vm.selectedCustomer.timezone'>
 
+		<h4>Address</h4>
+		Street: <input 	type="text" 
+						ng-model='vm.selectedCustomer.address.street1'
+						ng-blur='vm.updateCustomer()'> <br>
+		Street: <input type="text" 
+						ng-model='vm.selectedCustomer.address.street2'
+						ng-blur='vm.updateCustomer()'> <br>
+		Street: <input type="text" 
+						ng-model='vm.selectedCustomer.address.street3'
+						ng-blur='vm.updateCustomer()'> <br>
+		City: <input type="text" 
+						ng-model='vm.selectedCustomer.address.city'
+						ng-blur='vm.updateCustomer()'> <br>
+		State: <input type="text" 
+						ng-model='vm.selectedCustomer.address.state'
+						ng-blur='vm.updateCustomer()'> <br>
+		Zip: <input type="text" 
+						ng-model='vm.selectedCustomer.address.zip'
+						ng-blur='vm.updateCustomer()'> <br>
+
+		<h4>Seasons</h4>
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			Season
+			<input 	list='seasonPicker' 
+					name='seasonPicker' 
+					class='' 
+					required=''
+					placeholder='2018'>
+			<datalist name="seasonPicker" id="seasonPicker">
+				<option ng-repeat="season in vm.selectedCustomer.seasons track by $index"
+						style='font-size: 12pt'
+						ng-click=''>
+						{{season.id}}
+				</option>
+
+			</datalist>
+
+			<ul>
+				<li ng-repeat="season in vm.selectedCustomer.seasons track by $index"
+					style='font-size: 12pt'
+					ng-click=''>
+					{{season.id}}
+				</li>
+			</ul>
+
+
+		</div>
+
+		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+			Paramaters	<br>
+
+			<button class='btn btn-success' ng-click='vm.generate_bulk_salesdays()'>Generate Reoccurance</button> <br>
+			Start Date: <input 	type="text" 
+								ng-model='vm.selectedCustomer.seasons[2018].start_date'
+								ng-blur='vm.updateCustomer()'> <br>
+			End Date: <input 	type="text" 
+								ng-model='vm.selectedCustomer.seasons[2018].end_date'
+								ng-blur='vm.updateCustomer()'> <br>
+			Frequency: <input 	type="text" 
+								ng-model='vm.selectedCustomer.seasons[2018].start_date'
+								ng-blur='vm.updateCustomer()'> <br>
+			Repeat On: <input 	type="text" 
+								ng-model='vm.selectedCustomer.seasons[2018].start_date'
+								ng-blur='vm.updateCustomer()'> <br>
+			Number of Occurances: Blah blach 	<br>
+			
+			<h4>Hours</h4>
+			Load in: <br>
+			Load out: <br>
+			Open: <br>
+			Close: <br>
+			Sales Start: <br>
+			Sales End: <br>
+
+		</div>
+
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<h4>Sales Days</h4>
+			<button class='btn btn-success' ng-click=''>Add Sales Day</button> <br>
+			<ul>
+				<li ng-repeat="salesday in vm.customerSalesDays track by $index"
+					style='font-size: 12pt'
+					ng-click=''>
+					{{salesday}}
+				</li>
+			</ul>
+		</div>
+
+		{{vm.selectedCustomer.sales_days}}
+
 	</div>
 
 </div>
