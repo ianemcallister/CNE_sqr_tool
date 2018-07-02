@@ -1,33 +1,184 @@
 <div>
 	<h1>Sales Days</h1>
 
-	<button class='btn btn-success'
-			ng-click="vm.addSalesDay()">
-			Add Sales Day
-	</button>
-	<br>
+	
 
-	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 		<h3>All Sales Days</h3>
 		<ul>
 			<li ng-repeat="salesday in vm.salesdaysList track by $index"
 				style='font-size: 12pt'
 				ng-click=''>
-				{{salesday}}
+				{{salesday.$value}}
 			</li>
 		</ul>
+		
+		{{vm.scheduling_params}}
+
 	</div>
 
-	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-		<h3>A Sales Day</h3>
+
+
+	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+		<h3>Sales Day Generator</h3>
 
 		Sales Day ID: {{ vm.selectedRecord.$id }} <br>
 		Customer ID: <br>
-		Customer: {{ vm.selectedRecord.customer}} <br>
-		Date: <input 	type="text"
-						ng-model='vm.selectedRecord.date'
-						ng-blur='vm.updateRecord(vm.selectedRecord.id)'> <br>
-		<input type="text">
+		Customer: 
+		<input 	list='customerPicker' 
+				name='customerPicker' 
+				class='' 
+				required=''
+				placeholder=''
+				ng-model='vm.scheduling_params.customer'>
+		<br>
+
+		Season:
+		<input 	list='seasonPicker' 
+				name='seasonPicker' 
+				class='' 
+				required=''
+				placeholder='2018'
+				ng-model='vm.scheduling_params.season'>
+		<br>
+
+		Date: <input type="date" ng-model='vm.scheduling_params.bookend_dates.first'> <br>
+
+		<h5>Repeats</h5>
+		<input type="radio" name='repeats' value='never' ng-model='vm.scheduling_params.repeats'> Never <br>
+		Every
+		<input type="radio" name='repeats' value='every_week' ng-model='vm.scheduling_params.repeats'> Week
+		<input type="radio" name='repeats' value='every_2_weeks' ng-model='vm.scheduling_params.repeats'> 2 wks
+		<input type="radio" name='repeats' value='every_3_weeks' ng-model='vm.scheduling_params.repeats'> 3 wks
+		<input type="radio" name='repeats' value='every_4_weeks' ng-model='vm.scheduling_params.repeats'> 4 wks
+		<input type="radio" name='repeats' value='every_5_weeks' ng-model='vm.scheduling_params.repeats'> 5 wks
+		<input type="radio" name='repeats' value='every_6_weeks' ng-model='vm.scheduling_params.repeats'> 6 wks
+		<input type="radio" name='repeats' value='every_7_weeks' ng-model='vm.scheduling_params.repeats'> 7 wks
+		<input type="radio" name='repeats' value='every_8_weeks' ng-model='vm.scheduling_params.repeats'> 8 wks
+		 <br>
+		Repeat On: 
+		<input type="checkbox" name='wkdays' value='Mon' ng-model='vm.scheduling_params.event_days.mon'> Mon
+		<input type="checkbox" name='wkdays' value='Tue' ng-model='vm.scheduling_params.event_days.tue'> Tue
+		<input type="checkbox" name='wkdays' value='Wed' ng-model='vm.scheduling_params.event_days.wed'> Wed
+		<input type="checkbox" name='wkdays' value='Thu' ng-model='vm.scheduling_params.event_days.thu'> Thu
+		<input type="checkbox" name='wkdays' value='Fri' ng-model='vm.scheduling_params.event_days.fri'> Fri
+		<input type="checkbox" name='wkdays' value='Sat' ng-model='vm.scheduling_params.event_days.sat'> Sat
+		<input type="checkbox" name='wkdays' value='Sun' ng-model='vm.scheduling_params.event_days.sun'> Su 	
+		<br>
+		End Date: <input type="date" ng-model='vm.scheduling_params.bookend_dates.last'> <br> 
+
+
+		<h4>Iterations Schedule</h4>
+		
+		<h5>Load IN/OUT</h5>
+		Same Day Load-in/out?: 
+		<input type="radio" name='loadinout' value='true' ng-model='vm.scheduling_params.same_day_load_in_out'> Yes 
+		<input type="radio" name='loadinout' value='false' ng-model='vm.scheduling_params.same_day_load_in_out'> No
+		<br>
+		Load In:
+		<input 	list='timePicker' 
+				name='timePicker' 
+				class='' 
+				required=''
+				placeholder='9:00 AM'
+				ng-model='vm.scheduling_params.schedule.load_in'>
+		Load Out: 
+		<input 	list='timePicker' 
+				name='timePicker' 
+				class='' 
+				required=''
+				placeholder='5:00 PM'
+				ng-model='vm.scheduling_params.schedule.load_out'>
+		<br>
+
+
+		<h5>Open / Close</h5>
+		Open:
+		<input 	list='timePicker' 
+				name='timePicker' 
+				class='' 
+				required=''
+				placeholder='9:00 AM'
+				ng-model='vm.scheduling_params.schedule.open'>
+		Close: 
+		<input 	list='timePicker' 
+				name='timePicker' 
+				class='' 
+				required=''
+				placeholder='5:00 PM'
+				ng-model='vm.scheduling_params.schedule.close'>
+		<br>
+
+		<h5>Sales</h5>
+		Start:
+		<input 	list='timePicker' 
+				name='timePicker' 
+				class='' 
+				required=''
+				placeholder='9:00 AM'
+				ng-model='vm.scheduling_params.schedule.sales_start'>
+		End: 
+		<input 	list='timePicker' 
+				name='timePicker' 
+				class='' 
+				required=''
+				placeholder='5:00 PM'
+				ng-model='vm.scheduling_params.schedule.sales_end'>
+		<br>
+
+
+		<button class='btn btn-success'
+				ng-click="vm.generateSalesDays()">
+				Generate Sales Days
+		</button>
+		<br>
+
+		<h4>Template Sales</h4>
+		<button class='btn btn-success'
+				ng-click="">
+				Save Sales Days
+		</button>
+		<br>
+
+		<table class='table'>
+			<tr>
+				<th>#</th>
+				<th>Date</th>
+				<th>Wkday</th>
+				<th>ID</th>
+				<th>Open</th>
+				<th>Close</th>
+			</tr>
+		</table>
+
+
+		<!--DATA LISTS-->
+		<datalist name="customerPicker" id="customerPicker">
+			<option ng-repeat="customer in vm.testCustomers track by $index"
+					style='font-size: 12pt'
+					ng-click=''>
+					{{customer}}
+			</option>
+
+		</datalist>
+
+		<datalist name="seasonPicker" id="seasonPicker">
+			<option ng-repeat="season in vm.testSeasons track by $index"
+					style='font-size: 12pt'
+					ng-click=''>
+					{{season}}
+			</option>
+
+		</datalist>
+
+		<datalist name="timePicker" id="timePicker">
+			<option ng-repeat="time in vm.testTimes track by $index"
+					style='font-size: 12pt'
+					ng-click=''>
+					{{time}}
+			</option>
+
+		</datalist>	
 
 		
 	</div>
