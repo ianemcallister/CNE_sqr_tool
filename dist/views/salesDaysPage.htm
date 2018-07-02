@@ -1,3 +1,34 @@
 <div>
-	Sales Days Page
+	<h1>Sales Days</h1>
+
+	<button class='btn btn-success'
+			ng-click="vm.addSalesDay()">
+			Add Sales Day
+	</button>
+	<br>
+
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<h3>All Sales Days</h3>
+		<ul>
+			<li ng-repeat="salesday in vm.salesdaysList track by $index"
+				style='font-size: 12pt'
+				ng-click=''>
+				{{salesday}}
+			</li>
+		</ul>
+	</div>
+
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<h3>A Sales Day</h3>
+
+		Sales Day ID: {{ vm.selectedRecord.$id }} <br>
+		Customer ID: <br>
+		Customer: {{ vm.selectedRecord.customer}} <br>
+		Date: <input 	type="text"
+						ng-model='vm.selectedRecord.date'
+						ng-blur='vm.updateRecord(vm.selectedRecord.id)'> <br>
+		<input type="text">
+
+		
+	</div>
 </div>
