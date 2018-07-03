@@ -9,7 +9,7 @@ function salesDaysController($scope, $log, $firebase, $firebaseArray, $firebaseO
 
 	//define view model variable
 	var vm = this;
-	var iteration = {
+	/*var iteration = {
 		date: "2018-05-05T06:00:00Z",
 		wk_day: "Sat",
 		id: "beaverton_fm_001",
@@ -21,7 +21,7 @@ function salesDaysController($scope, $log, $firebase, $firebaseArray, $firebaseO
 			sales_start: "",
 			sales_end: ""
 		}
-	};
+	};*/
 	vm.salesdaysList = $firebaseArray(firebase.database().ref().child('sales_days'));
 	vm.selectedRecord = { id: "2039752" };
 	vm.testCustomers = [ "Beaverton", "Orenco" ];
@@ -55,7 +55,15 @@ function salesDaysController($scope, $log, $firebase, $firebaseArray, $firebaseO
 			sales_end: ""
 		}
 	};
-	vm.tempIterations = [iteration, iteration];
+	vm.tempIterations = [];
+	vm.tempTimes = {
+		load_in: "",
+		load_out: "",
+		open: "",
+		close: "",
+		sales_start: "",
+		sales_end: ""
+	}
 
 	//identify controller
 	$log.info('in the sales days controller');	//TODO: TAKE THIS OUT LATER
@@ -157,6 +165,39 @@ function salesDaysController($scope, $log, $firebase, $firebaseArray, $firebaseO
 			console.log(e);
 		});
 
+	};
+
+	//	FORMAT TIME
+	vm.foramtTime = function(section) {
+		
+		//notify of progress
+		console.log('formatting time', section);
+
+		//split time
+		var today = new Date();
+		var year = today.getFullYear();
+		var month = today.getMonth();
+		var day = today.getDate();
+		
+
+		var timeSplit = vm.tempTimes[section].split(":");
+		var minSplit = timeSplit[1].split(" ");
+		var hour = parseInt(timeSplit[0]);
+		var minute = minSplit[0];
+		var timeDay = minSplit[1];
+
+		//format accordingly
+		if(timeDay == "PM") { hour += 12; hour.toString(); }
+		if(month < 10) month = "0" + month;
+		if(day < 10) day = "0" + day;
+		if(hour < 10) hour = "0" + hour;
+		//if(minute < 10) min = "0" + minute;
+		
+
+		//console.log(today, 'hour', hour, 'minute', minute, 'timeDay', timeDay);
+
+		//vm.scheduling_params.schedule[section] = "2018-05-05T06:00:00-07:00"
+		vm.scheduling_params.schedule[section] = year + "-" + month + "-" +  day + "T" +  hour + ":" + minute + ":00-07:00"
 	};
 
 	//run the test

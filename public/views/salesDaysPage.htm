@@ -79,14 +79,16 @@
 				class='' 
 				required=''
 				placeholder='9:00 AM'
-				ng-model='vm.scheduling_params.schedule.load_in'>
+				ng-model='vm.tempTimes.load_in'
+				ng-blur='vm.foramtTime("load_in")'>
 		Load Out: 
 		<input 	list='timePicker' 
 				name='timePicker' 
 				class='' 
 				required=''
 				placeholder='5:00 PM'
-				ng-model='vm.scheduling_params.schedule.load_out'>
+				ng-model='vm.tempTimes.load_out'
+				ng-blur='vm.foramtTime("load_out")'>
 		<br>
 
 
@@ -97,14 +99,16 @@
 				class='' 
 				required=''
 				placeholder='9:00 AM'
-				ng-model='vm.scheduling_params.schedule.open'>
+				ng-model='vm.tempTimes.open'
+				ng-blur='vm.foramtTime("open")'>
 		Close: 
 		<input 	list='timePicker' 
 				name='timePicker' 
 				class='' 
 				required=''
 				placeholder='5:00 PM'
-				ng-model='vm.scheduling_params.schedule.close'>
+				ng-model='vm.tempTimes.close'
+				ng-blur='vm.foramtTime("close")'>
 		<br>
 
 		<h5>Sales</h5>
@@ -114,14 +118,16 @@
 				class='' 
 				required=''
 				placeholder='9:00 AM'
-				ng-model='vm.scheduling_params.schedule.sales_start'>
+				ng-model='vm.tempTimes.sales_start'
+				ng-blur='vm.foramtTime("sales_start")'>
 		End: 
 		<input 	list='timePicker' 
 				name='timePicker' 
 				class='' 
 				required=''
 				placeholder='5:00 PM'
-				ng-model='vm.scheduling_params.schedule.sales_end'>
+				ng-model='vm.tempTimes.sales_end'
+				ng-blur='vm.foramtTime("sales_end")'>
 		<br>
 
 
@@ -130,6 +136,9 @@
 				Generate Sales Days
 		</button>
 		<br>
+
+		{{vm.tempTimes}}
+		{{vm.scheduling_params.schedule}}
 
 		<h4>Template Sales</h4>
 		<button class='btn btn-success'
@@ -151,9 +160,9 @@
 				<td>{{$index + 1}}</td>
 				<td>{{salesday.date | date: "M/d/yy"}}</td>
 				<td>{{salesday.wk_day}}</td>
-				<td>{{salesday.id}}</td>
-				<td>{{salesday.schedule.open}}</td>
-				<td>{{salesday.schedule.close}}</td>
+				<td>{{salesday.cme_name}}</td>
+				<td>{{salesday.schedule.open | date: "h:mm a"}}</td>
+				<td>{{salesday.schedule.close | date: "h:mm a"}}</td>
 			</tr>
 		</table>
 

@@ -19,9 +19,10 @@ var customerFns		= require('./cne/ahnuts_customers_fn.js');
 var salsesdaysFns	= require('./cne/ahnuts_sales_days_fn.js'); 
 //var calendarFns		= require('./cne/ahnuts_calender_fn.js'); 
 
+
 //customerFns.add.customers(stdio.read.json('./models/customers.json'));
 
-var newArray = salsesdaysFns.compile.new_sales_days_batch({
+/*var newArray = salsesdaysFns.compile.new_sales_days_batch({
 		customer: "Beaverton",
 		season: "2018_Summer",
 		bookend_dates: {
@@ -47,9 +48,9 @@ var newArray = salsesdaysFns.compile.new_sales_days_batch({
 			sales_start: "2018-05-05T08:00:00-07:00",
 			sales_end: "2018-05-05T13:30:00-07:00"
 		}
-	});
+	});*/
 
-console.log(newArray);
+//console.log(newArray);
 
 
 //var calObject = calendarFns.add.date_range("2018-01-01", "2018-12-31");
