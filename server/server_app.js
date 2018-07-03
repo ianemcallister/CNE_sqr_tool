@@ -12,6 +12,7 @@ var bodyParser 	= require('body-parser');
 
 //update this later but goo dfor now
 var sqrtxs 		= require('./square/ahnuts_sqr_tx_sync.js');
+var slsdayfns	= require('./cne/ahnuts_sales_days_fn.js');
 
 //return the express object
 var serverApp = express();
@@ -68,6 +69,22 @@ serverApp.post('/sqrwebhook', function(req, res) {
 
 	//return an affirmative status code
 	res.sendStatus(200);
+
+});
+
+//	BATCH REQUEST FOR NEW SALES DAYS
+serverApp.post('/api/sales_days/compile_new_sales_days_batch', function(req, res) {
+	
+	//advise of the post body
+	console.log(req.body);
+
+	//run the requird function
+	var returnArray = slsdayfns.compile.new_sales_days_batch(req.body);
+
+	//return an affirmative status code
+	res.status(200);
+	res.send(returnArray);
+
 
 });
 

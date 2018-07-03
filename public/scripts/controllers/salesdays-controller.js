@@ -2,10 +2,10 @@ angular
     .module('cne')
     .controller('salesDaysController', salesDaysController);
 
-salesDaysController.$inject = ['$scope','$log', '$firebase', '$firebaseArray', '$firebaseObject'];
+salesDaysController.$inject = ['$scope','$log', '$firebase', '$firebaseArray', '$firebaseObject', '$http', 'dataService'];
 
 /* @ngInject */
-function salesDaysController($scope, $log, $firebase, $firebaseArray, $firebaseObject) {
+function salesDaysController($scope, $log, $firebase, $firebaseArray, $firebaseObject, $http, dataService) {
 
 	//define view model variable
 	var vm = this;
@@ -37,13 +37,13 @@ function salesDaysController($scope, $log, $firebase, $firebaseArray, $firebaseO
 		},
 		repeats: "",
 		event_days: {
-			mon: false,
-			tue: false,
-			wed: false,
-			thu: false,
-			fri: false,
-			sat: false,
-			"sun": false
+			Mon: false,
+			Tue: false,
+			Wed: false,
+			Thu: false,
+			Fri: false,
+			Sat: false,
+			Sun: false
 		},
 		same_day_load_in_out: true,
 		schedule: {
@@ -66,11 +66,22 @@ function salesDaysController($scope, $log, $firebase, $firebaseArray, $firebaseO
 	*/
 	function build_sales_days_array(params) {
 		//local variables
-		var start = new Date(params.bookend_dates.first);
-		var end = new Date(params.bookend_dates.last);
-		var counter = start;
 
-		console.log('got these params', start, end);
+		//console.log('got these params', start, end);
+
+		//return async work
+		return new Promise(function(resolve, reject) {
+			//access data service
+			dataService.sales_days.compile_batch(params).then(function success(s) {
+				//console.log('success', s);
+				resolve(s);
+			}).catch(function error(e) {
+				//console.log('error', e);
+				reject(e);
+			});
+
+		});
+
 	};
 
 
@@ -138,7 +149,13 @@ function salesDaysController($scope, $log, $firebase, $firebaseArray, $firebaseO
 		//notify of location
 		//console.log('generating Sales days', vm.scheduling_params);
 
-		vm.tempIterations = build_sales_days_array(vm.scheduling_params);
+		build_sales_days_array(vm.scheduling_params).then(function success(s) {
+			console.log('successfully built', s);
+			vm.tempIterations = s;
+			$scope.$apply();
+		}).catch(function error(e) {
+			console.log(e);
+		});
 
 	};
 
