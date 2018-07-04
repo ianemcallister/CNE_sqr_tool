@@ -195,7 +195,7 @@ function single_tx_sync(entity_id, location_id) {
 
 		//notify of returning object
 		//console.log(s);
-		add_tx_to_ahnuts_db(entity_id, s).then(function success(s) {
+		add_tx_to_ahnuts_db(entity_id, s, location_id).then(function success(s) {
 
 		}).catch(function error(e) {
 
@@ -209,7 +209,7 @@ function single_tx_sync(entity_id, location_id) {
 };
 
 //	ADD TX TO AHNUTS DB
-function add_tx_to_ahnuts_db(tx_id, tx) {
+function add_tx_to_ahnuts_db(tx_id, tx, location_id) {
 	//define local variables
 
 	//map square object to ah-nuts object
