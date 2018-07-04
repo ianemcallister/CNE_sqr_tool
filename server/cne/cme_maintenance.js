@@ -36,13 +36,14 @@ function check_known_cme(ahnuts_tx) {
 		tx_key = key;
 	})
 
-	var created_at = ahnuts_tx[tx_key].created_at;
-	var created_at_split = created_at.split('T');
-	var tx_date = created_at_split[0];
-	var emp_id = ahnuts_tx.employee_id;
+	var tx_date = ((ahnuts_tx[tx_key].created_at).split('T'))[0];
+	var emp_id = ahnuts_tx[tx_key].employee_id;
+	
+	//define the read path
 	var readpath = 'reference_lists/CME_by_employee_and_date/' + tx_date + "/" + emp_id;
 
-	console.log(readpath);
+	//notify user
+	console.log("check_known_cme readpath", readpath);
 
 	//return async work
 	return new Promise(function(resolve, reject) {

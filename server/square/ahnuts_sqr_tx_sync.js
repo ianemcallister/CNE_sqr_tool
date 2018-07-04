@@ -161,12 +161,17 @@ function save_tx_to_ahnuts_server(tx_id, ahnutstx) {
 	//define local variables	
 	var writePath = 'transactions/' + tx_id;
 
-	//write the records
-	firebase.create(writePath, ahnutstx[tx_id]).then(function success(s) {
-		console.log('Success:', s);
-	}).catch(function error(e) {
-		console.log('ERROR:', e);
+	return new Promise(function(resolve, reject) {
+		
+		//write the records
+		firebase.create(writePath, ahnutstx[tx_id]).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
 	});
+
 };
 
 // SAVE TRANSACTION ID TO THE AHNUTS REFERENCE LIST
@@ -185,20 +190,24 @@ function save_tx_id_to_ahnuts_ref_lists(tx_id, ahnutstx) {
 	});
 };
 
-// SINGLE TRANSACTION SYNC
+/*
+*	SINGLE TRANSACTION SYNC
+*
+*	This function downloads a specific transaction from square then adds it to the ah-nuts
+*	database.
+*/
 function single_tx_sync(entity_id, location_id) {
 	//define local variables
-	var newtx = {};
-
+	
 	//download tx from square
 	v1_api_sqr.payments.retrieve(entity_id, location_id).then(function success(s) {
 
 		//notify of returning object
 		//console.log(s);
-		add_tx_to_ahnuts_db(entity_id, s, location_id).then(function success(s) {
-
-		}).catch(function error(e) {
-
+		add_tx_to_ahnuts_db(entity_id, s, location_id).then(function success(ss) {
+			console.log('tx added to db successfully', ss);
+		}).catch(function error(ee) {
+			console.log('error adding tx to ahnuts db', ee);
 		});
 
 	}).catch(function error(e) {
@@ -208,65 +217,78 @@ function single_tx_sync(entity_id, location_id) {
 	//
 };
 
-//	ADD TX TO AHNUTS DB
+/*
+*	ADD TX TO AHNUTS DB
+*
+*	
+*/	
 function add_tx_to_ahnuts_db(tx_id, tx, location_id) {
 	//define local variables
 
 	//map square object to ah-nuts object
 	var ahnuts_tx = map_sqr_tx_to_ahnts_tx(tx, location_id);
 
-	//check for reference transaction status
-	cme.check.known_cme(ahnuts_tx).then(function success(known_cme) {
+	//return async work
+	return new Promise(function(resolve, reject) {
 
-		//check for known status
-		if(known_cme.is_known) {
+		//check for reference transaction status
+		cme.check.known_cme(ahnuts_tx).then(function success(known_cme) {
 
-			//notify progress
-			console.log('tx known, saving to sales day');
-			
-			//if we know where this transaction shoudl go....
-			//ADD a customer to the transaction
-			ahnuts_tx.customer = known_cme.customer;
-			//ADD a salesday to the transaction
-			ahnuts_tx.salesDay = known_cme.salesDay;
-			
-			//ADD the transaction to the correct SalesDay
-			var salesDayPath = 'sales_days/' + known_cme.salesDay + "/transactions"
-			firebase.push(salesDayPath, tx_id).then(function success(s) {
+			//check for known status
+			if(known_cme.is_known) {
 
-				console.log("success", s);
+				//notify progress
+				console.log('tx known, saving to sales day');
+				
+				//if we know where this transaction shoudl go....
+				//ADD a customer to the transaction
+				ahnuts_tx.customer = known_cme.customer;
+				//ADD a salesday to the transaction
+				ahnuts_tx.salesDay = known_cme.salesDay;
+				
+				//ADD the transaction to the correct SalesDay
+				var salesDayPath = 'sales_days/' + known_cme.salesDay + "/transactions"
+				firebase.push(salesDayPath, tx_id).then(function success(s) {
 
-				//RECALCULATE salesDay sums
+					console.log("success", s);
 
+					//RECALCULATE salesDay sums
+
+				}).catch(function error(e) {
+					console.log("error", e);
+				});
+
+				
+			} else {
+				//notify
+				console.log('tx cme unknown ,saving to reference list');
+
+				//for the time being, save the transaction id to the unassigned_txs list
+				save_tx_id_to_ahnuts_ref_lists(entity_id, ahnuts_tx).then(function success(s) {
+					console.log('success', s);
+				}).catch(function error(e) {
+					console.log('error', e);
+				});
+
+			}
+
+			//	IN ALL CASES
+
+			//	SAVE THE TRANSACTION TO THE TRANSACTIONS COLLECTION
+			save_tx_to_ahnuts_server(entity_id, ahnuts_tx).then(function success(s) {
+				resolve(s);
 			}).catch(function error(e) {
-				console.log("error", e);
+				reject(e);
 			});
 
 			
-		} else {
-			//notify
-			console.log('tx cme unknown ,saving to reference list');
+			//if is a reference transaction....
+			//if is NOT a reference transaction...
 
-			//for the time being, save the transaction id to the unassigned_txs list
-			save_tx_id_to_ahnuts_ref_lists(entity_id, ahnuts_tx).then(function success(s) {
-				console.log('success', s);
-			}).catch(function error(e) {
-				console.log('error', e);
-			});
+		}).catch(function error(e) {
+			console.log("error", e);
+		});
 
-		}
-
-		//	IN ALL CASES
-
-		//	SAVE THE TRANSACTION TO THE TRANSACTIONS COLLECTION
-		save_tx_to_ahnuts_server(entity_id, ahnuts_tx);
-
-		
-		//if is a reference transaction....
-		//if is NOT a reference transaction...
-
-	}).catch(function error(e) {
-		console.log("error", e);
 	});
 
 };
@@ -278,6 +300,8 @@ function batch_requests() {}
 
 /*
 *	PUSH REQUESTS
+*	
+*	This function picks the appropriate function based on the push request.
 */
 function push_requests(pushObject) {
 	//define local variables
