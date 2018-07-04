@@ -245,7 +245,7 @@ function add_tx_to_ahnuts_db(tx_id, tx, location_id) {
 			
 		} else {
 			//notify
-			console.log('tx cme unknown' ,saving to reference list);
+			console.log('tx cme unknown ,saving to reference list');
 
 			//for the time being, save the transaction id to the unassigned_txs list
 			save_tx_id_to_ahnuts_ref_lists(entity_id, ahnuts_tx).then(function success(s) {
