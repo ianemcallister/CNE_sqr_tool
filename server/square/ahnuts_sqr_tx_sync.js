@@ -275,7 +275,7 @@ function add_tx_to_ahnuts_db(tx_id, tx, location_id) {
 			//	IN ALL CASES
 
 			//	SAVE THE TRANSACTION TO THE TRANSACTIONS COLLECTION
-			save_tx_to_ahnuts_server(entity_id, ahnuts_tx).then(function success(s) {
+			save_tx_to_ahnuts_server(tx_id, ahnuts_tx).then(function success(s) {
 				resolve(s);
 			}).catch(function error(e) {
 				reject(e);
