@@ -78,39 +78,21 @@
 
 
 		</div>
-
+	
+		<!--Sales Days-->
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<h4>Sales Days</h4>
-			<button class='btn btn-success' ng-click=''>Add Sales Day</button> <br>
-			
-			<!--<ul>
-				<li ng-repeat="salesday in vm.customerSalesDays track by $index"
-					style='font-size: 12pt'
-					ng-click=''>
-					{{salesday}}
-				</li>
-			</ul>-->
-			<table class='table'>
-			<tr>
-				<th>#</th>
-				<th>Date</th>
-				<th>Wkday</th>
-				<th>ID</th>
-				<th>Open</th>
-				<th>Close</th>
-			</tr>
-			<tr ng-repeat='salesday in vm.customerSalesDays track by $index'>
-				<td>{{$index + 1}}</td>
-				<td>{{salesday.date | date: "M/d/yy"}}</td>
-				<td>{{salesday.wk_day}}</td>
-				<td>{{salesday.cme_name}}</td>
-				<td>{{salesday.schedule.open | date: "h:mm a"}}</td>
-				<td>{{salesday.schedule.close | date: "h:mm a"}}</td>
-			</tr>
-		</table>
-		</div>
 
-		{{vm.selectedCustomer.sales_days}}
+			<customer-sales-days salesdays-list='vm.selectedCustomer.sales_days'>
+			</customer-sales-days>
+
+		</div>
+	
+		<!--Sales Day Transactions-->
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			
+			<sales-day-txs txs-list='vm.testList'></sales-day-txs>
+			
+		</div>
 
 	</div>
 

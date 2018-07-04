@@ -105,20 +105,6 @@ function customersController($scope, $log, customerList, firebaseService, $fireb
 		//define local variables
 		console.log('generating bulk salesdays', vm.selectedCustomer.sales_days);
 		
-		/*if(vm.selectedCustomer.sales_days[0] == undefined) {
-			console.log('sales days undefined')
-			vm.selectedCustomer.sales_days[0] = "aoisgoi23obsob23oihss"
-		} else {
-			console.log('sales days defined');
-			var lastkey = 0;
-			Object.keys(vm.selectedCustomer.sales_days).forEach(function (key) {
-				if(key != 'placeholder') lastkey = parseInt(key);
-			});
-			vm.selectedCustomer.sales_days[lastkey + 1] = "aosighaoishgiohsg"
-		}
-
-		//save values
-		vm.updateCustomer();*/
 	};
 
 	//run the test
