@@ -103,7 +103,7 @@ function push(path, data) {
 	return new Promise(function(resolve, reject) {
 
 		//hit the database
-		ref.push().set(data, function(error) {
+		ref.push(data).set(data, function(error) {
 		if (error) {
 		  reject("Data could not be saved." + error);
 		} else {
@@ -114,7 +114,26 @@ function push(path, data) {
 	});	
 };
 
-function update() {};
+function update(path, data) {
+	//define local variables
+	var ref = admin.database().ref(path);
+
+	console.log('updating record record at, with', path, data);
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//hit the database
+		ref.update(data).set(data, function(error) {
+			if (error) {
+			  reject("Data could not be saved." + error);
+			} else {
+			  resolve("Data saved successfully.");
+			}
+		});
+
+	});	
+};
 
 /*
 *	DEL

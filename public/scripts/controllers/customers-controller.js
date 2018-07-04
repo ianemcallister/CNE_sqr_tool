@@ -66,7 +66,7 @@ function customersController($scope, $log, customerList, firebaseService, $fireb
 		vm.state.selected.customer.$index = index_id;
 		vm.state.selected.customer.$id = vm.customerList[index_id].$id;
 		vm.selectedCustomer = $firebaseObject(firebase.database().ref().child('customers').child(vm.customerList[index_id].$id));
-		vm.customerSalesDays = vm.selectedCustomer.sales_days;
+		vm.customerSalesDays = firebaseService.compile.customer_sales_days(vm.state.selected.customer.$id);
 	};
 
 	//	UPDATE THE CUSTOMER RECORD

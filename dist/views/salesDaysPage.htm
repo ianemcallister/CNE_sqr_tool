@@ -9,7 +9,7 @@
 			<li ng-repeat="salesday in vm.salesdaysList track by $index"
 				style='font-size: 12pt'
 				ng-click=''>
-				{{salesday.$value}}
+				{{salesday.cme_name}}
 			</li>
 		</ul>
 
@@ -21,7 +21,7 @@
 		<h3>Sales Day Generator</h3>
 
 		Sales Day ID: {{ vm.selectedRecord.$id }} <br>
-		Customer ID: <br>
+		Customer ID: <input type="text" ng-model='vm.scheduling_params.customer_id'> <br>
 		Customer: 
 		<input 	list='customerPicker' 
 				name='customerPicker' 
@@ -137,12 +137,9 @@
 		</button>
 		<br>
 
-		{{vm.tempTimes}}
-		{{vm.scheduling_params.schedule}}
-
 		<h4>Template Sales</h4>
 		<button class='btn btn-success'
-				ng-click="">
+				ng-click="vm.saveSalesDays()">
 				Save Sales Days
 		</button>
 		<br>

@@ -9,6 +9,7 @@
 var v1_api_sqr 		= require('./v1_api.js');
 var firebase		= require('../firebase/firebase.js');
 var stdio 			= require('../stdio/stdio_api.js');
+var cme				= require('../cne/cme_maintenance.js'); 
 var moment 			= require('moment-timezone');
 
 
@@ -27,7 +28,8 @@ var an_sqr_tx_sync = {
 	map_sqr_tx_device_id_to_ahnuts_tx_dev_id: map_sqr_tx_device_id_to_ahnuts_tx_dev_id,
 	parse_timestamp: parse_timestamp,
 	save_tx_to_ahnuts_server: save_tx_to_ahnuts_server,
-	save_tx_id_to_ahnuts_ref_lists: save_tx_id_to_ahnuts_ref_lists
+	save_tx_id_to_ahnuts_ref_lists: save_tx_id_to_ahnuts_ref_lists,
+	add_tx_to_ahnuts_db: add_tx_to_ahnuts_db
 };
 
 /*
@@ -173,10 +175,13 @@ function save_tx_id_to_ahnuts_ref_lists(tx_id, ahnutstx) {
 	var splitDatetime = ahnutstx[tx_id].created_at.split('T')
 	var writePath = 'reference_lists/unassigned_txs/' + ahnutstx[tx_id].device_id + "/" + splitDatetime[0];
 	
-	firebase.push(writePath, tx_id).then(function success(s) {
-		console.log('Success:', s);
-	}).catch(function error(e) {
-		console.log('ERROR:', e);
+	//return async work
+	return new Promise(function(resolve, reject) {
+		firebase.push(writePath, tx_id).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
 	});
 };
 
@@ -190,27 +195,75 @@ function single_tx_sync(entity_id, location_id) {
 
 		//notify of returning object
 		//console.log(s);
+		add_tx_to_ahnuts_db(entity_id, s).then(function success(s) {
 
-		//check for reference transaction status
+		}).catch(function error(e) {
 
-		//map square object to ah-nuts object
-		var ahnuts_tx = map_sqr_tx_to_ahnts_tx(s, location_id);
-
-		//we'll always save the transaction to the database
-		save_tx_to_ahnuts_server(entity_id, ahnuts_tx);
-
-		//for the time being, save the transaction id to the unassigned_txs list
-		save_tx_id_to_ahnuts_ref_lists(entity_id, ahnuts_tx);
-
-		//if is a reference transaction....
-		//if is NOT a reference transaction...
-			//
+		});
 
 	}).catch(function error(e) {
 		console.log('error', e);
 	});
 
 	//
+};
+
+//	ADD TX TO AHNUTS DB
+function add_tx_to_ahnuts_db(tx_id, tx) {
+	//define local variables
+
+	//map square object to ah-nuts object
+	var ahnuts_tx = map_sqr_tx_to_ahnts_tx(s, location_id);
+
+	//check for reference transaction status
+	cme.check.known_cme(ahnuts_tx).then(function success(known_cme) {
+
+		//check for known status
+		if(known_cme.is_known) {
+
+			//if we know where this transaction shoudl go....
+			//ADD a customer to the transaction
+			ahnuts_tx.customer = known_cme.customer;
+			//ADD a salesday to the transaction
+			ahnuts_tx.salesDay = known_cme.salesDay;
+			
+			//ADD the transaction to the correct SalesDay
+			var salesDayPath = 'sales_days/' + known_cme.salesDay + "/transactions"
+			firebase.push(salesDayPath, tx_id).then(function success(s) {
+
+				console.log("success", s);
+
+				//RECALCULATE salesDay sums
+
+			}).catch(function error(e) {
+				console.log("error", e);
+			});
+
+			
+		} else {
+			
+			//for the time being, save the transaction id to the unassigned_txs list
+			save_tx_id_to_ahnuts_ref_lists(entity_id, ahnuts_tx).then(function success(s) {
+				console.log('success', s);
+			}).catch(function error(e) {
+				console.log('error', e);
+			});
+
+		}
+
+		//	IN ALL CASES
+
+		//	SAVE THE TRANSACTION TO THE TRANSACTIONS COLLECTION
+		save_tx_to_ahnuts_server(entity_id, ahnuts_tx);
+
+		
+		//if is a reference transaction....
+		//if is NOT a reference transaction...
+
+	}).catch(function error(e) {
+		console.log("error", e);
+	});
+
 };
 
 /*

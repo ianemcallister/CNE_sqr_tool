@@ -389,6 +389,31 @@ function roles_list() {
 //EMPLOYEES FUNCTIONS 
 function employees_list() {
 	//define local variables
+	var self = this;
+	var thisUrl = _baseURL + 'v1/me/employees';
+	var options = {
+		method: 'GET',
+		headers: _headers
+	};
+
+	//return for async work
+	return new Promise(function(resolve, reject) {
+
+		console.log('fetching', thisUrl, options);
+
+		//fetch the details
+		fetch(thisUrl, options)
+		.then(function success(s) {
+
+			buffer_extract(s).then(function success(ss) {
+				resolve(ss);
+			});
+
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
 };
 
 //PRODUCTS FUNCTIONS 
@@ -400,7 +425,7 @@ function products_list() {
 *	LIST WEBHOOKS
 */
 function webhooks_list() {
-//define local variables
+	//define local variables
 	var self = this;
 	var thisUrl = _baseURL + 'v1/M53KQT35YKE5C/webhooks';
 	var options = {

@@ -21,6 +21,7 @@
 		<button class='btn btn-success' ng-click='vm.changeRecord("prev")'>Prev</button>
 		<button class='btn btn-success' ng-click='vm.changeRecord("next")'>Next</button> <br>
 
+		Customer Id: {{vm.state.selected.customer.$id}} <br>
 		Customer Name: <input 	type="text"
 								ng-model='vm.selectedCustomer.name'
 								ng-blur='vm.updateCustomer()'> <br>
@@ -78,44 +79,35 @@
 
 		</div>
 
-		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-			Paramaters	<br>
-
-			<button class='btn btn-success' ng-click='vm.generate_bulk_salesdays()'>Generate Reoccurance</button> <br>
-			Start Date: <input 	type="text" 
-								ng-model='vm.selectedCustomer.seasons[2018].start_date'
-								ng-blur='vm.updateCustomer()'> <br>
-			End Date: <input 	type="text" 
-								ng-model='vm.selectedCustomer.seasons[2018].end_date'
-								ng-blur='vm.updateCustomer()'> <br>
-			Frequency: <input 	type="text" 
-								ng-model='vm.selectedCustomer.seasons[2018].start_date'
-								ng-blur='vm.updateCustomer()'> <br>
-			Repeat On: <input 	type="text" 
-								ng-model='vm.selectedCustomer.seasons[2018].start_date'
-								ng-blur='vm.updateCustomer()'> <br>
-			Number of Occurances: Blah blach 	<br>
-			
-			<h4>Hours</h4>
-			Load in: <br>
-			Load out: <br>
-			Open: <br>
-			Close: <br>
-			Sales Start: <br>
-			Sales End: <br>
-
-		</div>
-
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<h4>Sales Days</h4>
 			<button class='btn btn-success' ng-click=''>Add Sales Day</button> <br>
-			<ul>
+			
+			<!--<ul>
 				<li ng-repeat="salesday in vm.customerSalesDays track by $index"
 					style='font-size: 12pt'
 					ng-click=''>
 					{{salesday}}
 				</li>
-			</ul>
+			</ul>-->
+			<table class='table'>
+			<tr>
+				<th>#</th>
+				<th>Date</th>
+				<th>Wkday</th>
+				<th>ID</th>
+				<th>Open</th>
+				<th>Close</th>
+			</tr>
+			<tr ng-repeat='salesday in vm.customerSalesDays track by $index'>
+				<td>{{$index + 1}}</td>
+				<td>{{salesday.date | date: "M/d/yy"}}</td>
+				<td>{{salesday.wk_day}}</td>
+				<td>{{salesday.cme_name}}</td>
+				<td>{{salesday.schedule.open | date: "h:mm a"}}</td>
+				<td>{{salesday.schedule.close | date: "h:mm a"}}</td>
+			</tr>
+		</table>
 		</div>
 
 		{{vm.selectedCustomer.sales_days}}

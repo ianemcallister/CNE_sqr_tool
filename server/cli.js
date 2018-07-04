@@ -5,19 +5,34 @@
 */
 
 //declare dependencies
-var cne				= require('./cne/cne.js');
+//var cne				= require('./cne/cne.js');
 //var mysql 			= require('./mysql/mysql_api.js');
 //var square 			= require('./square/sqr_api.js');
 //var templatizer 	= require('./template_engine/templateizer.js');
-var stdio			= require('./stdio/stdio_api.js');
+//var stdio			= require('./stdio/stdio_api.js');
 //var sqrdata			= require('./square/sqr_data_api.js');
 //var locations_mysql = require('./mysql/query_builder.js');
 //var squareV1		= require('./square/v1_api.js');
 //var ahnutsSqSync	= require('./square/ahnuts_sqr_tx_sync.js');
 var firebase		= require('./firebase/firebase.js');
-var customerFns		= require('./cne/ahnuts_customers_fn.js'); 
-var salsesdaysFns	= require('./cne/ahnuts_sales_days_fn.js'); 
+//var customerFns		= require('./cne/ahnuts_customers_fn.js'); 
+//var salsesdaysFns	= require('./cne/ahnuts_sales_days_fn.js'); 
+var cme				= require('./cne/cme_maintenance.js'); 
 //var calendarFns		= require('./cne/ahnuts_calender_fn.js'); 
+
+
+//cme.sync.sales_days_to_customers();
+
+
+/*var known_cme_object = cme.check.known_cme({
+	created_at: "2018-07-02T17:38:43-07:00",
+	employee_id: "4ISdMmC7SkAyDQL_DB87"
+}).then(function success(s) {
+	console.log("success", s);
+}).catch(function error(e) {
+	console.log("error", e)
+});*/
+
 
 
 //customerFns.add.customers(stdio.read.json('./models/customers.json'));

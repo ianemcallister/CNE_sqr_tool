@@ -23,6 +23,9 @@ function firebaseService($firebase, $firebaseObject, $firebaseArray) {
 		authUser: {
 			email: authUser_email
 		},
+		compile: {
+			customer_sales_days: compile_customer_sales_days
+		},
 		test: test
 	};
 
@@ -65,6 +68,13 @@ function firebaseService($firebase, $firebaseObject, $firebaseArray) {
 
 	    });
 	}
+
+	//	COMPLILE CUSTOMER SALES DAYS
+	function compile_customer_sales_days(customer_id) {
+		//define local variables
+		
+	};	
+
 
 	//	TEST FUNCTION
 	function test() { return('good test from FB Service'); };

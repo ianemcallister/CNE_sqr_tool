@@ -26,7 +26,7 @@ function build_sales_day_object(date, instance, params) {
 		date: moment(date).format('YYYY-MM-DD'),
 		wk_day: moment(date).format('ddd'),
 		customer_name: params.customer,
-		customer_id: "",
+		customer_id: params.customer_id,
 		season_id: params.season,
 		cme_name: params.customer + "_" + params.season + "_" + instance,
 		hrs: {

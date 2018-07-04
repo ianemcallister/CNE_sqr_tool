@@ -30,6 +30,7 @@ function salesDaysController($scope, $log, $firebase, $firebaseArray, $firebaseO
 	vm.testTimes = [ '9:00 AM','9:15 AM','9:30 AM','9:45 AM'  ];
 	vm.scheduling_params = {
 		customer: "",
+		customer_id: "",
 		season: "",
 		bookend_dates: {
 			first: "",
@@ -198,6 +199,30 @@ function salesDaysController($scope, $log, $firebase, $firebaseArray, $firebaseO
 
 		//vm.scheduling_params.schedule[section] = "2018-05-05T06:00:00-07:00"
 		vm.scheduling_params.schedule[section] = year + "-" + month + "-" +  day + "T" +  hour + ":" + minute + ":00-07:00"
+	};
+
+	// 	SAVE SALES DAYS
+	vm.saveSalesDays = function() {
+		//define local variables
+		var index = 0;
+
+		//iterate through all the sales days, saving to the DB
+		vm.tempIterations.forEach(function (cme_iteration) {
+
+			vm.salesdaysList.$add(cme_iteration).then(function (ref) {
+				//get the new key
+				var id = ref.key;
+
+				//save it to the db object
+				console.log(id);
+
+			});
+
+		});
+
+		//once they have all ben saved 
+
+		//vm.salesdaysList.$add({name: 'test'});	
 	};
 
 	//run the test
