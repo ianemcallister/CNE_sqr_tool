@@ -24,9 +24,11 @@ var cme				= require('./cne/cme_maintenance.js');
 //cme.sync.sales_days_to_customers();
 
 
-var known_cme_object = cme.check.known_cme({
-	created_at: "2018-07-02T17:38:43-07:00",
-	employee_id: "4ISdMmC7SkAyDQL_DB87"
+var known_cme_object = cme.check.known_cme( {
+	JAMRfRgDpZvisJ8n6DvXLQB: {
+		created_at: "2018-07-02T17:38:43-07:00",
+		employee_id: "4ISdMmC7SkAyDQL_DB87"
+	}
 }).then(function success(s) {
 	console.log("success", s);
 }).catch(function error(e) {
