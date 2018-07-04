@@ -213,7 +213,7 @@ function add_tx_to_ahnuts_db(tx_id, tx) {
 	//define local variables
 
 	//map square object to ah-nuts object
-	var ahnuts_tx = map_sqr_tx_to_ahnts_tx(s, location_id);
+	var ahnuts_tx = map_sqr_tx_to_ahnts_tx(tx, location_id);
 
 	//check for reference transaction status
 	cme.check.known_cme(ahnuts_tx).then(function success(known_cme) {
