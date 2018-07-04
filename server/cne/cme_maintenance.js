@@ -23,6 +23,9 @@ var cme_maintenance = {
 
 //	CHECK KNOWN CME
 function check_known_cme(ahnuts_tx) {
+	
+	console.log('ahnuts_tx', ahnuts_tx);
+
 	//define local variables
 	var known_cme_object = {
 		is_known: false,
