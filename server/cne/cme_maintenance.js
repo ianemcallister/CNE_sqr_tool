@@ -33,7 +33,8 @@ function check_known_cme(ahnuts_tx) {
 		salesDay: ""
 	};
 
-	var created_at = ahnuts_tx.created_at.toString()
+	var created_at = ahnuts_tx.created_at;
+	console.log('created_at type', typeof created_at);
 	var created_at_split = created_at.split('T');
 	var tx_date = created_at_split[0];
 	var emp_id = ahnuts_tx.employee_id;
