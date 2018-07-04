@@ -24,7 +24,7 @@ var cme_maintenance = {
 //	CHECK KNOWN CME
 function check_known_cme(ahnuts_tx) {
 	
-	console.log('ahnuts_tx', ahnuts_tx);
+	console.log('ahnuts_tx', ahnuts_tx, "created_at", ahnuts_tx.created_at);
 
 	//define local variables
 	var known_cme_object = {
@@ -32,8 +32,10 @@ function check_known_cme(ahnuts_tx) {
 		customer: "",
 		salesDay: ""
 	};
-	var created_at = ahnuts_tx.created_at.toString().split("T")
-	var tx_date = created_at[0];
+
+	var created_at = ahnuts_tx.created_at.toString()
+	var created_at_split = created_at.split('T');
+	var tx_date = created_at_split[0];
 	var emp_id = ahnuts_tx.employee_id;
 	var readpath = 'reference_lists/CME_by_employee_and_date/' + tx_date + "/" + emp_id;
 
