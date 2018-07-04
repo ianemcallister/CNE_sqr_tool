@@ -32,7 +32,8 @@ function check_known_cme(ahnuts_tx) {
 		customer: "",
 		salesDay: ""
 	};
-	var tx_date = (ahnuts_tx.created_at.split("T"))[0];
+	var created_at = ahnuts_tx.created_at.toString().split("T")
+	var tx_date = created_at[0];
 	var emp_id = ahnuts_tx.employee_id;
 	var readpath = 'reference_lists/CME_by_employee_and_date/' + tx_date + "/" + emp_id;
 
