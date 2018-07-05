@@ -18,7 +18,8 @@ function firebaseService($firebase, $firebaseObject, $firebaseArray) {
 	//define methods
 	var FBService = {
 		get: {
-			customer_list: get_customer_list
+			customer_list: get_customer_list,
+			a_record: get_a_record
 		},
 		authUser: {
 			email: authUser_email
@@ -61,13 +62,22 @@ function firebaseService($firebase, $firebaseObject, $firebaseArray) {
 		//return async work
 		return new Promise(function(resolve, reject) {
 	        
-	        //var test = 
-
-	        //hit the server for the 
-	        resolve(["one", "two", 'three']);
+	        ;
 
 	    });
 	}
+
+	//	GET A RECORD
+	function get_a_record(path) {
+
+		//return async work
+		return new Promise(function(resolve, reject) {
+	        
+	        resolve($firebaseObject(firebase.database().ref().child(path)));
+
+	    });
+
+	};
 
 	//	COMPLILE CUSTOMER SALES DAYS
 	function compile_customer_sales_days(customer_id) {

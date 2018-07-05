@@ -9,7 +9,8 @@
 			<li ng-repeat="salesday in vm.salesdaysList track by $index"
 				style='font-size: 12pt'
 				ng-click=''>
-				{{salesday.cme_name}}
+				{{salesday.cme_name}} 
+				{{salesday.$id}} {{salesday.date}}
 			</li>
 		</ul>
 
