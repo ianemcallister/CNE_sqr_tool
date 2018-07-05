@@ -70,6 +70,7 @@ function firebaseService($firebase, $firebaseObject, $firebaseArray) {
 	//	GET A RECORD
 	function get_a_record(path) {
 
+		//console.log('getting', path);
 		//return async work
 		return new Promise(function(resolve, reject) {
 	        

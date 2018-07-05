@@ -50,12 +50,13 @@ function salesDayTxs() {
 	function salesDayTxsController($scope, $log, firebaseService) {
 		//define local variables
 		var vm = this;
+		vm.promiseList = [];
 		vm.detailedTxList = [];
-		
+
 		console.log('in the salesDayTxsController');
 
-		function loadARcrd(id) {
-			var path = 'sales_days/' + id;
+		function loadARcrd(path, id) {
+			var path = path + id;
 
 			//return async work
 			return new Promise(function(resolve, reject) {
@@ -73,13 +74,32 @@ function salesDayTxs() {
 
 		//	DEFINE SALES DAYS TRANSACTIONS
 		$scope.loadSDTxs = function() {
-			console.log('loading sd txs', vm.salesdaySelected);
+			//console.log('loading sd txs', vm.salesdaySelected);
 
 			//
-			loadARcrd(vm.salesdaySelected).then(function success(s) {
-				console.log(s)
-			}).catch(function error(e) {
+			loadARcrd("sales_days/", vm.salesdaySelected).then(function success(detailedDay) {
+				
+				//console.log(detailedDay.transactions)
+				//Iterate over all of the transactions
+				Object.keys(detailedDay.transactions).forEach(function(key) {
+					//console.log(detailedDay.transactions[key]);
+					
+					if(detailedDay.transactions[key] != "placeholder") {
+						vm.promiseList.push(loadARcrd("transactions/", detailedDay.transactions[key]));
+					}
+					
+				});
 
+				Promise.all(vm.promiseList).then(function success(s) {
+					console.log(s);
+					vm.detailedTxList = s;
+				}).catch(function error(e) {
+					console.log("error", e);
+				});
+
+
+			}).catch(function error(e) {
+				console.log('error', e);
 			});
 		};
 	}

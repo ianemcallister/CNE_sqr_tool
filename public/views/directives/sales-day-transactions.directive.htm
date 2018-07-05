@@ -3,13 +3,17 @@
 	<table class='table'>
 		<tr>
 			<th>#</th>
-			<th>Itms</th>
+			<th>Time</th>
 			<th>Amount</th>
 			<th>Method</th>
 			<th>Employee</th>
 		</tr>
 		<tr ng-repeat='tx in vm.detailedTxList track by $index'>
 			<td>{{$index + 1}}</td>
+			<td>{{tx.created_at | date: "h:mm a"}}</td>
+			<td>{{tx.net_total_money / 100 | currency: "$":2}}</td>
+			<td></td>
+			<td>{{tx.employee_id}}</td>
 			<!--<td>{{salesday.date | date: "M/d/yy"}}</td>
 			<td>{{salesday.wk_day}}</td>
 			<td>{{salesday.cme_name}}</td>
