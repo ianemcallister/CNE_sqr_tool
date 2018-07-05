@@ -78,11 +78,11 @@
 
 
 		</div>
-	
+		{{vm.state.selected.salesday}}
 		<!--Sales Days-->
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-			<customer-sales-days salesdays-list='vm.selectedCustomer.sales_days'>
+			<customer-sales-days salesdays-list='vm.selectedCustomer.sales_days' salesday-selected='vm.state.selected.salesday.$id'>
 			</customer-sales-days>
 
 		</div>
@@ -90,7 +90,7 @@
 		<!--Sales Day Transactions-->
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			
-			<sales-day-txs txs-list='vm.testList'></sales-day-txs>
+			<sales-day-txs txs-list='vm.testList' salesday-selected='vm.state.selected.salesday.$id'></sales-day-txs>
 			
 		</div>
 

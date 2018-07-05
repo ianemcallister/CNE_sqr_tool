@@ -16,7 +16,8 @@ function customerSalesDays() {
 		templateUrl: 'views/directives/customer-sales-days.directive.htm',
 		replace: true,
 		scope: {
-			salesdaysList: "="
+			salesdaysList: "=",
+			salesdaySelected: '='
 		},
 		link: linkFunc,
 		controller: customerSalesDaysController,
@@ -47,6 +48,8 @@ function customerSalesDays() {
 	function customerSalesDaysController($scope, $log, firebaseService) {
 		//define local variables
 		var vm = this;
+		vm.detailedSalesDaysList = [];
+
 		console.log('in the customerSalesDaysController');
 
 		function loadATx(id) {
@@ -67,6 +70,7 @@ function customerSalesDays() {
 		}
 
 		//define scope variables
+		//	LOAD SALEDAYS
 		$scope.loadSaleDays = function() {
 			//define local variables
 			var allPromises = [];
@@ -80,14 +84,21 @@ function customerSalesDays() {
 
 			//run all promises
 			Promise.all(allPromises).then(function success(s) {
-				console.log('all promises returned', s);
-				vm.salesdaysList = s
+				//console.log('all promises returned', s);
+				vm.detailedSalesDaysList = s
 			}).catch(function error(e) {
 				console.log('error',e);
 			});
 
 
 		};
+
+		//	SALES DAY SELECTED
+		$scope.salesDaySelected = function(index) { 
+			//define local variables
+			vm.salesdaySelected = vm.detailedSalesDaysList[index].$id;
+			//console.log(vm.salesdaysList[index]);
+		}
 
 	}
 

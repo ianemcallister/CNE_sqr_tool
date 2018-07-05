@@ -17,8 +17,11 @@ function customersController($scope, $log, customerList, firebaseService, $fireb
 		selected: {
 			customer: {
 				$index: "",
-				$id: "",
-
+				$id: ""
+			},
+			salesday: {
+				$index: "test",
+				$id: "test"
 			}
 		}
 	};
