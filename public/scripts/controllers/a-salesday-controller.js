@@ -10,6 +10,7 @@ function aSalesdayController($scope, $log, $routeParams, $firebaseObject) {
 	//define view model variable
 	var vm = this;
 	var dbPath = 'sales_days/' + $routeParams.salesdayid;
+	vm.salesdaySelected = $routeParams.salesdayid;
 
 	vm.currentCME = $firebaseObject(firebase.database().ref().child(dbPath));
 

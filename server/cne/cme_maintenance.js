@@ -10,6 +10,10 @@ var stdio			= require('../stdio/stdio_api.js');
 
 //define module
 var cme_maintenance = {
+	_download_detailed_tx_array: _download_detailed_tx_array,
+	calculate: {
+		salesday_summary: calculate_salesday_summary
+	},
 	check: {
 		known_cme: check_known_cme
 	},
@@ -20,6 +24,69 @@ var cme_maintenance = {
 };
 
 //everytime a transaction comes in it should be sorted
+
+function _download_detailed_tx_array(txListPath) {
+	//define local variables
+	var txList = [];
+	var promisesArray = [];
+	var detailedTxList = [];
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//download all transactions
+		firebase.read(txListPath).then(function success(txIdObject) {
+			
+			//iterate through each tx in the list
+			Object.keys(txIdObject).forEach(function keyfinder(key) {
+				
+				txList.push(txIdObject[key]);
+
+			});
+
+			console.log('lenght', txList.length);
+
+			//iterate through tx
+			txList.forEach(function keyfinder(key) {
+				var txPath = 'transactions/' + key;
+
+				promisesArray.push(firebase.read(txPath));
+
+			});
+
+			//run all promises
+			Promise.all(promisesArray).then(function success(detailedTxList) {
+
+				//return the result
+				resolve(detailedTxList);
+
+			}).catch(function error(e) {
+				reject(e);
+			});
+
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+}
+
+function calculate_salesday_summary(salesday_id) {
+	//define local variables
+	var txListPath = "sales_days/" + salesday_id + '/transactions';
+	
+	//notify progress
+	console.log('salesday_id', salesday_id);
+
+	_download_detailed_tx_array(txListPath).then(function success(s) {
+
+		console.log(s.length, 'SUCCESS');
+
+	}).catch(function error(e) {	
+		console.log("Error", e);
+	});
+
+}
 
 //	CHECK KNOWN CME
 function check_known_cme(ahnuts_tx) {

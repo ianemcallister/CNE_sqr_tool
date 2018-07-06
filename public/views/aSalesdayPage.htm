@@ -1,4 +1,40 @@
 <div>
-	This is a sales day page
-	{{vm.currentCME}}
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		This is a sales day page <br>
+		<strong>Customer:</strong>{{vm.currentCME.customer_name}} <br>
+		<strong>CME_Id:</strong>{{vm.currentCME.$id}} <br>
+		<h4>{{vm.currentCME.cme_name}}</h4>
+		<h5>{{vm.currentCME.date | date: "medium"}}</h5>
+
+		<h4>Financial summary</h4>
+		<ul>
+			<li>Gross Sales:</li>
+			<li>Refunds:</li>
+			<li>Net Gross Sales:</li>
+			<li>Discounts:</li>
+			<li>Net Sales:</li>
+			<li>Tips:</li>
+			<li>Commissions:</li>
+			<li>Cash Payments:</li>
+			<li>CC Payments:</li>
+			<li>Other Payments:</li>
+			<li>CC Fees:</li>
+			<li>Sales Hours:</li>
+			<li>Net Sales / hr:</li>
+			<li>Total Tx: </li>
+			<li>Cooking Tx:</li>
+			<li>Sales Tx:</li>
+			<li>Data Tx:</li>
+		</ul>
+		<br>
+	</div>
+	<!--Transactions-->
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		
+		<sales-day-txs txs-list='vm.testList' salesday-selected='vm.salesdaySelected'>
+		</sales-day-txs>
+		<!--{{vm.currentCME}}-->
+	</div>
+
+	
 </div>

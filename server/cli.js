@@ -21,6 +21,10 @@ var cme				= require('./cne/cme_maintenance.js');
 var calendarFns		= require('./cne/ahnuts_calender_fn.js'); 
 var txFns			= require('./cne/ahnuts_transactions_fn.js');
 
+
+cme.calculate.salesday_summary('-LGW19FaJ-c3p8FzuVJo');
+
+
 //calendarFns.sync.sales_days_to_calendar();
 
 //txFns.batch.move_txs('sales_days/-LGW6w5gsL1Kff8Gt2MB /transactions', 'sales_days/-LGW6w5gsL1Kff8Gt2MB/transactions');

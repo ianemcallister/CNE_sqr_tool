@@ -79,7 +79,7 @@ function read(path) {
 		ref.once("value")
 		.then(function(snapshot) {
 		    
-			console.log(snapshot.val());
+			//console.log(snapshot.val());
 
 			//pass the data back
 			resolve(snapshot.val());
