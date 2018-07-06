@@ -18,13 +18,18 @@ var firebase		= require('./firebase/firebase.js');
 //var customerFns		= require('./cne/ahnuts_customers_fn.js'); 
 //var salsesdaysFns	= require('./cne/ahnuts_sales_days_fn.js'); 
 var cme				= require('./cne/cme_maintenance.js'); 
-//var calendarFns		= require('./cne/ahnuts_calender_fn.js'); 
+var calendarFns		= require('./cne/ahnuts_calender_fn.js'); 
+var txFns			= require('./cne/ahnuts_transactions_fn.js');
+
+calendarFns.sync.sales_days_to_calendar();
+
+//txFns.batch.move_txs('sales_days/-LGW6w5gsL1Kff8Gt2MB /transactions', 'sales_days/-LGW6w5gsL1Kff8Gt2MB/transactions');
 
 
 //cme.sync.sales_days_to_customers();
 
 
-var known_cme_object = cme.check.known_cme( {
+/*var known_cme_object = cme.check.known_cme( {
 	JAMRfRgDpZvisJ8n6DvXLQB: {
 		created_at: "2018-07-02T17:38:43-07:00",
 		employee_id: "4ISdMmC7SkAyDQL_DB87"
@@ -33,7 +38,7 @@ var known_cme_object = cme.check.known_cme( {
 	console.log("success", s);
 }).catch(function error(e) {
 	console.log("error", e)
-});
+});*/
 
 
 

@@ -1,0 +1,30 @@
+<div>
+	scheduling page
+
+	<table class='table'>
+		<tr>
+			<th>Date</th>
+			<th>Wk</th>
+			<th>WkDay</th>
+			<th>1</th>
+			<th>2</th>
+			<th>3</th>
+			<th>4</th>
+			<th>5</th>
+			<th>6</th>
+		</tr>
+		<tr ng-repeat='day in vm.calendarDays track by $index'>
+			<td>{{day.$id | date: "M/d/yy"}}</td>
+			<td>{{day.wk_num}}</td>
+			<td>{{day.wkday}}</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+
+	{{vm.calendarDays}}
+</div>

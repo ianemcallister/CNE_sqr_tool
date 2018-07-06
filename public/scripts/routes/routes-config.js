@@ -35,6 +35,11 @@ function config($routeProvider, $locationProvider) {
         controller: 'loginController',           //'mainController'
         controllerAs: 'vm'
     })
+    .when('/cme_schedule', {
+        templateUrl: 'views/cmeSchedulingPage.htm',      //'views/mainPage.htm'
+        controller: 'cmeScheduleController',           //'mainController'
+        controllerAs: 'vm'
+    })
 	.otherwise({
         redirectTo: '/'
     });

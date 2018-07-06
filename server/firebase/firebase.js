@@ -124,7 +124,7 @@ function update(path, data) {
 	return new Promise(function(resolve, reject) {
 
 		//hit the database
-		ref.update(data).set(data, function(error) {
+		ref.update(data, function(error) {
 			if (error) {
 			  reject("Data could not be saved." + error);
 			} else {

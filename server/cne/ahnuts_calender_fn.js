@@ -20,6 +20,9 @@ var ahcalfn = {
 	add: {
 		date_range: add_date_range,
 		season_sales_days: add_season_sales_days
+	},
+	sync: {
+		sales_days_to_calendar: sync_sales_days_to_calendar
 	}
 };
 
@@ -56,7 +59,35 @@ function add_date_range(start, end) {
 };
 
 //	ADD SEASON SALES DAYS
-function add_season_sales_days()
+function add_season_sales_days() {};
+
+//	SYNC SALES DAYS TO CALENDAR
+function sync_sales_days_to_calendar() {
+	//define local variables
+	var sales_days_list = [];
+
+	//download full sales_days list
+	firebase.read('sales_days').then(function success(s) {
+		
+		// save the list
+		sales_days_list = s;
+
+		//iterate through the list
+		Object.keys(sales_days_list).forEach(function(key) {
+			
+			var pushPath = 'calender/2018/' + sales_days_list[key].date + "/sales_days";
+			//calender[sales_days_list[key].date].sales_days
+			firebase.push(pushPath, key);
+			
+			console.log(key, 'written');
+
+		});
+
+
+	}).catch(function error(e) {
+		console.log("error", e);
+	});
+}
 
 //return the module
 module.exports = ahcalfn;
