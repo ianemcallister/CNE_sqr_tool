@@ -10,7 +10,6 @@ var stdio			= require('../stdio/stdio_api.js');
 
 //define module
 var cme_maintenance = {
-	_download_detailed_tx_array: _download_detailed_tx_array,
 	calculate: {
 		salesday_summary: calculate_salesday_summary
 	},
@@ -20,11 +19,16 @@ var cme_maintenance = {
 	sync: {
 		sales_days_to_customers: sync_sales_days_to_customers
 	},
+	update: {
+		tx: {
+			gross_sales_money: update_gross_sales_money
+		}
+	},
 	test: test
 };
 
 //everytime a transaction comes in it should be sorted
-
+//	INTERNAL ONLY: Download Detailed TX Array
 function _download_detailed_tx_array(txListPath) {
 	//define local variables
 	var txList = [];
@@ -69,7 +73,64 @@ function _download_detailed_tx_array(txListPath) {
 		});
 
 	});
+};
+
+//	INTERNAL ONLY: Sum Gross Sales
+function _sum_tx_field(field, detailedTxList) {
+	//define local variables
+	var sum = 0;
+
+	//iterate through all tx
+	detailedTxList.forEach(function txFinder(tx) {
+
+		//as long as it's nut a null value, save it
+		if(tx != null) {
+			
+			sum += tx[field];
+
+		}
+		
+	});
+
+	return sum;
+
+};
+
+//	INTERNAL ONLY: Sum Refunds
+function _sum_refunds(detailedTxList) {
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		resolve('it worked',detailedTxList.length);
+	});
+};
+
+//	INTERNAL ONLY: Sum Refunds
+function _sum_net_gross_sales(detailedTxList) {
+
+	return new Promise(function(resolve, reject) {
+		resolve('it worked',detailedTxList.length);
+	});
+};
+
+
+function update_gross_sales_money(salesday_id, detailedTxList) {
+	//return async work
+	return new Promise(function(resolve, reject) {
+		//define local variables
+		var gross_sales_money = _sum_tx_field('gross_sales_money', detailedTxList);
+		var dbPath = 'sales_days/' + salesday_id + '/financial_summary';
+
+		//write the value to the DB
+		firebase.update(dbPath, { gross_sales: gross_sales_money }).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {	
+			reject(e);
+		});
+	});
+
 }
+
 
 function calculate_salesday_summary(salesday_id) {
 	//define local variables
@@ -78,15 +139,33 @@ function calculate_salesday_summary(salesday_id) {
 	//notify progress
 	console.log('salesday_id', salesday_id);
 
-	_download_detailed_tx_array(txListPath).then(function success(s) {
+	//start by downloading the transactions
+	_download_detailed_tx_array(txListPath).then(function success(detailedTxList) {
+		//define local variable
 
-		console.log(s.length, 'SUCCESS');
+		//notify the progress
+		//console.log(s.length, 'SUCCESS');
+
+		//next parse the data
+		var fieldUpdates = [
+			update_gross_sales_money(salesday_id, detailedTxList),
+			_sum_refunds(detailedTxList),
+			_sum_net_gross_sales(detailedTxList),
+		];
+
+		//run all the promises
+		Promise.all(fieldUpdates).then(function success(s) {
+			//once all the updates have been made notify the user
+			console.log('All', s.length, 'updates made successuflly', s);
+		}).catch(function error(e) {	
+			console.log("Error", e);
+		});
 
 	}).catch(function error(e) {	
 		console.log("Error", e);
 	});
 
-}
+};
 
 //	CHECK KNOWN CME
 function check_known_cme(ahnuts_tx) {
