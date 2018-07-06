@@ -30,6 +30,11 @@ function config($routeProvider, $locationProvider) {
         controller: 'salesDaysController',           //'mainController'
         controllerAs: 'vm'
     })
+    .when('/salesdays/:salesdayid', {
+        templateUrl: 'views/aSalesdayPage.htm',      //'views/mainPage.htm'
+        controller: 'aSalesdayController',           //'mainController'
+        controllerAs: 'vm'
+    })
     .when('/login', {
         templateUrl: 'views/loginPage.htm',      //'views/mainPage.htm'
         controller: 'loginController',           //'mainController'
