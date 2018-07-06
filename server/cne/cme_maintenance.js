@@ -21,7 +21,7 @@ var cme_maintenance = {
 	},
 	update: {
 		tx: {
-			gross_sales_money: update_gross_sales_money
+			update_simple_salesdays_remote_db: update_simple_salesdays_remote_db
 		}
 	},
 	test: test
@@ -96,42 +96,28 @@ function _sum_tx_field(field, detailedTxList) {
 
 };
 
-//	INTERNAL ONLY: Sum Refunds
-function _sum_refunds(detailedTxList) {
-
-	//return async work
-	return new Promise(function(resolve, reject) {
-		resolve('it worked',detailedTxList.length);
-	});
-};
-
-//	INTERNAL ONLY: Sum Refunds
-function _sum_net_gross_sales(detailedTxList) {
-
-	return new Promise(function(resolve, reject) {
-		resolve('it worked',detailedTxList.length);
-	});
-};
-
-
-function update_gross_sales_money(salesday_id, detailedTxList) {
+//	UPDATE DALESDAYS REMOTE DB
+function update_simple_salesdays_remote_db(txField, salesdayField, salesday_id, detailedTxList) {
 	//return async work
 	return new Promise(function(resolve, reject) {
 		//define local variables
-		var gross_sales_money = _sum_tx_field('gross_sales_money', detailedTxList);
 		var dbPath = 'sales_days/' + salesday_id + '/financial_summary';
+		
+		var newValue = _sum_tx_field(txField, detailedTxList);
+		var newObject = {};
+		newObject[salesdayField] = newValue;
 
 		//write the value to the DB
-		firebase.update(dbPath, { gross_sales: gross_sales_money }).then(function success(s) {
+		firebase.update(dbPath, newObject).then(function success(s) {
 			resolve(s);
 		}).catch(function error(e) {	
 			reject(e);
 		});
-	});
+	});	
+};
 
-}
 
-
+//	 CALCULATE_SALESDAY SUMMARY
 function calculate_salesday_summary(salesday_id) {
 	//define local variables
 	var txListPath = "sales_days/" + salesday_id + '/transactions';
@@ -148,9 +134,13 @@ function calculate_salesday_summary(salesday_id) {
 
 		//next parse the data
 		var fieldUpdates = [
-			update_gross_sales_money(salesday_id, detailedTxList),
-			_sum_refunds(detailedTxList),
-			_sum_net_gross_sales(detailedTxList),
+			update_simple_salesdays_remote_db('gross_sales_money', 'gross_sales', salesday_id, detailedTxList),
+			update_simple_salesdays_remote_db('refunded_money', 'refunds', salesday_id, detailedTxList),
+			update_simple_salesdays_remote_db('net_sales_money', 'net_gross_sales', salesday_id, detailedTxList),
+			update_simple_salesdays_remote_db('discount_money', 'discounts', salesday_id, detailedTxList),
+			update_simple_salesdays_remote_db('tip_money', 'tips', salesday_id, detailedTxList),
+			update_simple_salesdays_remote_db('processing_fee_money', 'processing_fees', salesday_id, detailedTxList)
+			//_sum_net_gross_sales(detailedTxList),
 		];
 
 		//run all the promises
