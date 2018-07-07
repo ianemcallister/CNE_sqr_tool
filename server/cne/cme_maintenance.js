@@ -96,6 +96,34 @@ function _sum_tx_field(field, detailedTxList) {
 
 };
 
+function _sum_tender_values(detailedTxList) {
+	//define local variables
+	var returnObject = {
+		cash: 0,
+		credit: 0,
+		other: 0,
+		tokens: 0
+	};
+	var pymnt_hash = { "CREDIT_CARD": "credit", "CASH": "cash" }
+
+	//iterate through all tx
+	detailedTxList.forEach(function txFinder(tx) {
+
+		//as long as it's nut a null value, save it
+		if(tx != null) {
+			
+			//iterate through Till
+			Object.keys(tx.tender).forEach(function keyfinder(key) {
+				returnObject[pymnt_hash[tx.tender[key].type]] += tx.tender[key].total_money	
+			});
+
+		}
+		
+	});
+
+	return returnObject;	
+};
+
 //	UPDATE DALESDAYS REMOTE DB
 function update_simple_salesdays_remote_db(txField, salesdayField, salesday_id, detailedTxList) {
 	//return async work
@@ -106,6 +134,24 @@ function update_simple_salesdays_remote_db(txField, salesdayField, salesday_id, 
 		var newValue = _sum_tx_field(txField, detailedTxList);
 		var newObject = {};
 		newObject[salesdayField] = newValue;
+
+		//write the value to the DB
+		firebase.update(dbPath, newObject).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {	
+			reject(e);
+		});
+	});	
+};
+
+//	UPDATE SALESDAYS PAYMENT MTHDS
+function update_salesdays_payment_mthds(salesday_id, detailedTxList) {
+	//return async work
+	return new Promise(function(resolve, reject) {
+		//define local variables
+		var dbPath = 'sales_days/' + salesday_id + '/financial_summary/pay_method_breakdown';
+		
+		var newObject = _sum_tender_values(detailedTxList);
 
 		//write the value to the DB
 		firebase.update(dbPath, newObject).then(function success(s) {
@@ -139,7 +185,8 @@ function calculate_salesday_summary(salesday_id) {
 			update_simple_salesdays_remote_db('net_sales_money', 'net_gross_sales', salesday_id, detailedTxList),
 			update_simple_salesdays_remote_db('discount_money', 'discounts', salesday_id, detailedTxList),
 			update_simple_salesdays_remote_db('tip_money', 'tips', salesday_id, detailedTxList),
-			update_simple_salesdays_remote_db('processing_fee_money', 'processing_fees', salesday_id, detailedTxList)
+			update_simple_salesdays_remote_db('processing_fee_money', 'processing_fees', salesday_id, detailedTxList),
+			update_salesdays_payment_mthds(salesday_id, detailedTxList)
 			//_sum_net_gross_sales(detailedTxList),
 		];
 
