@@ -14,7 +14,7 @@
 			<li>Discounts: {{vm.currentCME.financial_summary.discounts / 100 | currency: "$" : 2}}</li>
 			<li>Net Sales:</li>
 			<li>Tips:  {{vm.currentCME.financial_summary.tips / 100 | currency: "$" : 2}}</li>
-			<li>Commissions:</li>
+			<li>Commissions: {{vm.currentCME.financial_summary.commissions_total / 100 | currency: "$" : 2}}</li>
 			<li>Cash Payments: {{vm.currentCME.financial_summary.pay_method_breakdown.cash / 100 | currency: "$" : 2}}</li>
 			<li>CC Payments: {{vm.currentCME.financial_summary.pay_method_breakdown.credit / 100 | currency: "$" : 2}}</li>
 			<li>Other Payments: {{vm.currentCME.financial_summary.pay_method_breakdown.other / 100 | currency: "$" : 2}}</li>

@@ -58,11 +58,14 @@ function salesDayTxs() {
 		function loadARcrd(path, id) {
 			var path = path + id;
 
+			//console.log('loadARcrd', path)
+
 			//return async work
 			return new Promise(function(resolve, reject) {
 
 				//collected data
 				firebaseService.get.a_record(path).then(function success(s) {
+					//console.log('got this record', s);
 					resolve(s);
 				}).catch(function error(e) {
 					reject(e);
@@ -79,7 +82,7 @@ function salesDayTxs() {
 			//
 			loadARcrd("sales_days/", vm.salesdaySelected).then(function success(detailedDay) {
 				
-				//console.log(detailedDay.transactions)
+				//console.log('detailedDay', detailedDay.$resolved);
 				//Iterate over all of the transactions
 				Object.keys(detailedDay.transactions).forEach(function(key) {
 					//console.log(detailedDay.transactions[key]);
@@ -91,8 +94,9 @@ function salesDayTxs() {
 				});
 
 				Promise.all(vm.promiseList).then(function success(s) {
-					console.log(s);
+					//console.log(s);
 					vm.detailedTxList = s;
+					$scope.$apply();
 				}).catch(function error(e) {
 					console.log("error", e);
 				});

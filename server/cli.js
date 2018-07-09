@@ -13,13 +13,16 @@
 //var sqrdata			= require('./square/sqr_data_api.js');
 //var locations_mysql = require('./mysql/query_builder.js');
 //var squareV1		= require('./square/v1_api.js');
-//var ahnutsSqSync	= require('./square/ahnuts_sqr_tx_sync.js');
+var ahnutsSqSync	= require('./square/ahnuts_sqr_tx_sync.js');
 var firebase		= require('./firebase/firebase.js');
 //var customerFns		= require('./cne/ahnuts_customers_fn.js'); 
 //var salsesdaysFns	= require('./cne/ahnuts_sales_days_fn.js'); 
 var cme				= require('./cne/cme_maintenance.js'); 
 var calendarFns		= require('./cne/ahnuts_calender_fn.js'); 
 var txFns			= require('./cne/ahnuts_transactions_fn.js');
+
+
+//ahnutsSqSync.single_tx_sync('TdeA1fel6UysVdEGFH5rKQB', 'M53KQT35YKE5C');
 
 
 cme.calculate.salesday_summary('-LGW19FaJ-c3p8FzuVJo');

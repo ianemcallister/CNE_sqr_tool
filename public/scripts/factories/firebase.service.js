@@ -73,8 +73,13 @@ function firebaseService($firebase, $firebaseObject, $firebaseArray) {
 		//console.log('getting', path);
 		//return async work
 		return new Promise(function(resolve, reject) {
+	        var desiredRecord = $firebaseObject(firebase.database().ref().child(path));
 	        
-	        resolve($firebaseObject(firebase.database().ref().child(path)));
+	        desiredRecord.$loaded().then(function success(s) {
+	        	resolve(s);
+	        }).catch(function error(e) {
+	        	reject(e);
+	        });
 
 	    });
 

@@ -84,6 +84,10 @@ function map_sqr_tx_itemizations_to_ahnts_tx_itemizations(sqrItemizations) {
 
 	//iterate through each tranaction
 	sqrItemizations.forEach(function(itemization_tx) {
+		
+		//deal with anomolies
+		if(itemization_tx.item_variation_name == undefined) itemization_tx.item_variation_name = itemization_tx.name;
+
 		//define local variales
 		var newItemization = {
 			name: 					itemization_tx.name,

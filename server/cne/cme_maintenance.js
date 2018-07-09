@@ -11,17 +11,21 @@ var stdio			= require('../stdio/stdio_api.js');
 //define module
 var cme_maintenance = {
 	calculate: {
-		salesday_summary: calculate_salesday_summary
+		salesday_summary: calculate_salesday_summary,
+		salesday_commissions: calculate_salesday_commissions
 	},
 	check: {
 		known_cme: check_known_cme
 	},
 	sync: {
-		sales_days_to_customers: sync_sales_days_to_customers
+		sales_days_to_customers: sync_sales_days_to_customers,
+		sqr_to_an_tx: sync_sqr_to_an_tx
 	},
 	update: {
 		tx: {
-			update_simple_salesdays_remote_db: update_simple_salesdays_remote_db
+			update_simple_salesdays_remote_db: update_simple_salesdays_remote_db,
+			update_salesdays_net_gross_sales: update_salesdays_net_gross_sales,
+			update_commissions: update_commissions
 		}
 	},
 	test: test
@@ -85,7 +89,7 @@ function _sum_tx_field(field, detailedTxList) {
 
 		//as long as it's nut a null value, save it
 		if(tx != null) {
-			
+
 			sum += tx[field];
 
 		}
@@ -130,7 +134,7 @@ function update_simple_salesdays_remote_db(txField, salesdayField, salesday_id, 
 	return new Promise(function(resolve, reject) {
 		//define local variables
 		var dbPath = 'sales_days/' + salesday_id + '/financial_summary';
-		
+
 		var newValue = _sum_tx_field(txField, detailedTxList);
 		var newObject = {};
 		newObject[salesdayField] = newValue;
@@ -150,7 +154,7 @@ function update_salesdays_payment_mthds(salesday_id, detailedTxList) {
 	return new Promise(function(resolve, reject) {
 		//define local variables
 		var dbPath = 'sales_days/' + salesday_id + '/financial_summary/pay_method_breakdown';
-		
+
 		var newObject = _sum_tender_values(detailedTxList);
 
 		//write the value to the DB
@@ -159,6 +163,54 @@ function update_salesdays_payment_mthds(salesday_id, detailedTxList) {
 		}).catch(function error(e) {	
 			reject(e);
 		});
+	});	
+};
+
+function update_salesdays_net_gross_sales(salesday_id, detailedTxList) {
+	//return async work
+	return new Promise(function(resolve, reject) {
+		//define local variables
+		var dbPath = 'sales_days/' + salesday_id + '/financial_summary';
+
+		var gross_sales = _sum_tx_field('gross_sales_money', detailedTxList);
+		var total_refunds = _sum_tx_field('refunded_money', detailedTxList);
+		var newObject = {};
+		newObject['net_sales_money'] = gross_sales - total_refunds;
+
+		//write the value to the DB
+		firebase.update(dbPath, newObject).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {	
+			reject(e);
+		});
+	});	
+};
+
+function update_commissions(salesday_id, detailedTxList) {
+	//return async work
+	return new Promise(function(resolve, reject) {
+		//define local variables
+		var dbPath = 'sales_days/' + salesday_id + '/financial_summary';
+
+		var gross_sales = _sum_tx_field('gross_sales_money', detailedTxList);
+		var total_refunds = _sum_tx_field('refunded_money', detailedTxList);
+		var net_sales_money = gross_sales - total_refunds;
+		var newObject = {};
+		calculate_salesday_commissions(salesday_id, net_sales_money).then(function success(s) {
+
+			newObject['commissions_total'] = s;
+
+			//write the value to the DB
+			firebase.update(dbPath, newObject).then(function success(ss) {
+				resolve(ss);
+			}).catch(function error(ee) {	
+				reject(ee);
+			});
+
+		}).catch(function error(e) {
+			reject(e);
+		});
+
 	});	
 };
 
@@ -182,11 +234,13 @@ function calculate_salesday_summary(salesday_id) {
 		var fieldUpdates = [
 			update_simple_salesdays_remote_db('gross_sales_money', 'gross_sales', salesday_id, detailedTxList),
 			update_simple_salesdays_remote_db('refunded_money', 'refunds', salesday_id, detailedTxList),
-			update_simple_salesdays_remote_db('net_sales_money', 'net_gross_sales', salesday_id, detailedTxList),
+			//update_simple_salesdays_remote_db('net_sales_money', 'net_gross_sales', salesday_id, detailedTxList),
 			update_simple_salesdays_remote_db('discount_money', 'discounts', salesday_id, detailedTxList),
 			update_simple_salesdays_remote_db('tip_money', 'tips', salesday_id, detailedTxList),
 			update_simple_salesdays_remote_db('processing_fee_money', 'processing_fees', salesday_id, detailedTxList),
-			update_salesdays_payment_mthds(salesday_id, detailedTxList)
+			update_salesdays_payment_mthds(salesday_id, detailedTxList),
+			update_salesdays_net_gross_sales(salesday_id, detailedTxList),
+			update_commissions(salesday_id, detailedTxList)
 			//_sum_net_gross_sales(detailedTxList),
 		];
 
@@ -200,6 +254,36 @@ function calculate_salesday_summary(salesday_id) {
 
 	}).catch(function error(e) {	
 		console.log("Error", e);
+	});
+
+};
+
+// 	CALCULATE SALESDAY COMMISSIONS
+function calculate_salesday_commissions(salesday_id, net_sales_money) {
+	//define local variables
+	var readpath = 'sales_days/' + salesday_id + "/hrs/sales_total";
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		//collect the reference from the db
+		firebase.read(readpath).then(function success(salesHours) {
+
+			var sales_per_hour = (net_sales_money / salesHours) / 100;
+			var commission_multiplier = sales_per_hour / 2752;
+			var commission_rate = sales_per_hour * commission_multiplier;
+			var commission = (salesHours * commission_rate) * 100;
+
+			console.log('sales_per_hour', sales_per_hour);
+			console.log('commission_multiplier', commission_multiplier);
+			console.log('commission_rate', commission_rate);
+			console.log('commission', commission);
+
+			resolve(commission);
+
+		}).catch(function error(e) {
+			reject('an error occured', e);
+		});
+
 	});
 
 };
@@ -314,6 +398,12 @@ function sync_sales_days_to_customers() {
 		console.log('error', e);
 	});
 }
+
+//	SYNC SALES TRANSACTIONS BETWEEN SQUARE AND AH-NUTS
+function sync_sqr_to_an_tx(start, finish) {
+	//define local variables
+
+};
 
 //	TEST
 function test() { console.log('good CME Test'); }
