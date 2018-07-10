@@ -44,6 +44,9 @@ var sqr_data_api = {
 	},
 	selection: {
 		filter: filter_txs
+	},
+	payments: {
+		parselink: payments_parselink
 	}
 };
 
@@ -502,6 +505,21 @@ function filter_txs(txs, device, start, end) {
 
 	return returnArray;
 };
+
+//	PAYMENTS PARSELINK
+function payments_parselink(linkArray) {
+	//define local variables
+	//console.log('got this link', linkArray);
+
+	var semisplit = linkArray.split(';');
+	var end_brac_split = semisplit[0].split('>');
+	var front_brac_split = end_brac_split[0].split('<');
+	var newUrl = front_brac_split[1];
+
+	//console.log('new url', newUrl);
+
+	return newUrl
+}	
 
 //return the module
 module.exports = sqr_data_api;

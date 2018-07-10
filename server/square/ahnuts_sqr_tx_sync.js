@@ -300,7 +300,10 @@ function add_tx_to_ahnuts_db(tx_id, tx, location_id) {
 /*
 *	BATCH REQUESTS
 */
-function batch_requests() {}
+function batch_requests(start, end) {
+	//define local variables
+	
+}
 
 /*
 *	PUSH REQUESTS

@@ -6,6 +6,8 @@
 
 //define dependencies
 var fetch 			= require('node-fetch');
+var sqrdata			= require('./sqr_data_api.js');
+var stdio			= require('../stdio/stdio_api.js');
 
 //define global variables
 var _accessToken 	= process.env.SQUARE_APP_TOKEN;
@@ -145,7 +147,7 @@ function locations_list() {
 			if(s.status == 200) {
 				
 				//retrieve buffer content
-				self._service.buffer_extract(s)
+				buffer_extract(s)
 				.then(function success(ss) {
 
 					//send the data back
@@ -172,8 +174,99 @@ function locations_list() {
 };
 
 //PAYMENTS FUNCTIONS 
-function payments_list() {
+function payments_list(locationId, startTime, endTime, linkUrl) {
 	//define local variables
+	//define local variables
+	var self = this;
+	var thisUrl = _baseURL + 'v1/' + locationId + '/payments?begin_time=' + startTime + '&end_time=' + endTime;
+	var options = {
+		method: 'GET',
+		headers: _headers
+	};
+
+	if(linkUrl != undefined) thisUrl = linkUrl;
+
+	//return for async work
+	return new Promise(function(resolve, reject) {
+
+		console.log('fetching', thisUrl);
+
+		//fetch the details
+		fetch(thisUrl, options)
+		.then(function success(s) {
+
+			//upon success proceed
+			if(s.status == 200) {
+
+				//if there is a link, go deeper
+				if(s.headers.get('link') != null) {
+					
+					//run the function again
+					payments_list("","","",sqrdata.payments.parselink(s.headers.get('link'))).then(function success(ss) {
+
+						var newCollection = [];
+
+						//iterate over returned list
+						ss.forEach(function(tx) {
+							newCollection.push(tx);
+						});
+						
+						buffer_extract(s)
+						.then(function success(lastTx) {
+
+							//iterate over original list
+							lastTx.forEach(function(tx) {
+								newCollection.push(tx);
+							});
+
+							
+							//send the data back
+							resolve(newCollection);
+
+						}).catch(function error(lastErr) {
+							reject(lastErr)
+						});
+
+					}).catch(function error(ee) {
+						reject(ee)
+					});
+
+				} else {
+
+					//if no link is found we've hit the bottom, start returning
+					//retrieve buffer content
+					buffer_extract(s)
+					.then(function success(ss) {
+						var newCollection = [];
+
+						ss.forEach(function(tx) {
+							newCollection.push[tx];
+						});
+
+						//send the data back
+						resolve(ss);
+
+					}).catch(function error(ee) {
+						reject(ee)
+					});
+
+				};
+
+
+			} else if(s.status == 401) {
+				console.log('Unauthorized');
+				reject('boo');
+			} else {
+				console.log('there was an error');
+				reject(s);
+			}
+
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
 };
 
 /*
