@@ -21,11 +21,21 @@ var cme				= require('./cne/cme_maintenance.js');
 var calendarFns		= require('./cne/ahnuts_calender_fn.js'); 
 var txFns			= require('./cne/ahnuts_transactions_fn.js');
 
-squareV1.payments.list('M53KQT35YKE5C', '2018-01-01T00:00:00Z', '2018-05-03T00:00:00Z').then(function success(s) {
+/*squareV1.payments.list('M53KQT35YKE5C', '2018-01-01T00:00:00Z', '2018-05-03T00:00:00Z').then(function success(s) {
 	console.log('success', s.length);
 }).catch(function error(e) {
 	console.log("error", e);
-})
+})*/
+
+var tx_date = "2018-07-10";
+var emp_id = "rUxLgAqsVklCN_14dfbE";
+var writePath = 'reference_lists/CME_by_employee_and_date/' + tx_date + "/" + emp_id;
+
+firebase.create(writePath, { 0: { "is_known": true, customer:"-LG7zzWTpCtTr3upAVJP", salesDay:"-LGW5loOCgXFu-B1UPbg"}}).then(function success(s) {
+	console.log("success", s);
+}).catch(function error(e) {
+	console.log("error", e)
+});
 
 
 //ahnutsSqSync.single_tx_sync('TdeA1fel6UysVdEGFH5rKQB', 'M53KQT35YKE5C');
