@@ -4,25 +4,25 @@ This tool is a combination server and web app.  It helps us to automate various 
 
 ## FEATURES
 
-**1. SYNC AH-NUTS DB (FIREBASE) WITH SQUAREUP DB**
-	**Transactions**
+**1. SYNC AH-NUTS DB (FIREBASE) WITH SQUAREUP DB
+	**Transactions
 	a. Single Transactions Via Push Notifications
 	b. Batch Transactions by Location and Dates
 
-	**Employees**
+	**Employees
 	a. List of Employees
 
-	**Locations**
+	**Locations
 	a. List of Locations
 
-	*Cashdrawers**
+	*Cashdrawers
 	a. Single Cashdrawer
 	b. Batch List of Cashdrawers
 
-	**Items**
+	**Items
 	a. List of Items
 
-	**Modifiers**
+	**Modifiers
 	a. List of Modifers
 
 **2. SYNC AH-NUTS DB (FIREBASE) WITH SLING.IS DB**
