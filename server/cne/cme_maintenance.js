@@ -19,7 +19,7 @@ var cme_maintenance = {
 	},
 	sync: {
 		sales_days_to_customers: sync_sales_days_to_customers,
-		sqr_to_an_tx: sync_sqr_to_an_tx
+		an_txs_to_sqrt: sync_an_txs_to_sqrt
 	},
 	update: {
 		tx: {
@@ -400,8 +400,12 @@ function sync_sales_days_to_customers() {
 }
 
 //	SYNC SALES TRANSACTIONS BETWEEN SQUARE AND AH-NUTS
-function sync_sqr_to_an_tx(start, finish) {
+/*
+*	Accepts an Array of txs and syncs them to 
+*/
+function sync_an_txs_to_sqrt(txs) {
 	//define local variables
+
 
 };
 

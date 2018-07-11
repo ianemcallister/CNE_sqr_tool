@@ -50,8 +50,15 @@ serverApp.use('/', function(req, res, next) {
 /*
 *	GET Declarations
 */
+//	GET: ROOT 
 serverApp.get('/', function(req, res) {
 	//return an affirmative status code
+	res.sendStatus(200);
+});
+
+//	GET: /API/
+serverApp.get('/api', function(req, res) {
+	//
 	res.sendStatus(200);
 });
 
