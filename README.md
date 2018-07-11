@@ -7,40 +7,53 @@ This tool is a combination server and web app.  It helps us to automate various 
 1. **SYNC AH-NUTS DB (FIREBASE) WITH SQUAREUP DB**
 
 	**Transactions**
+
 	a. Single Transactions Via Push Notifications
 	b. Batch Transactions by Location and Dates
 
 	**Employees**
+
 	a. List of Employees
 
 	**Locations**
+
 	a. List of Locations
 
 	**Cashdrawers**
+
 	a. Single Cashdrawer
 	b. Batch List of Cashdrawers
 
 	**Items**
+
 	a. List of Items
 
 	**Modifiers**
+
 	a. List of Modifers
 
 2. **SYNC AH-NUTS DB (FIREBASE) WITH SLING.IS DB**
+	
 	**Locations**
+
 	a. List of Locations
 
 	**Employees**
+
 	a. List of Employees
 
 	**Shifts**
+
 	a. Lost of Shifts
 
 **3. MAINTAIN AH-NUTS DB (FIREBASE)**
+
 	**Transaction Collection**
-	a. Add Sales Day and Customer
+
+	a. Add Sales Day and Customer to a transaction
 
 	**Calendar Collection**
+
 	a. Update Calendar Based on Shifts
 		Frequency: Daily
 
@@ -49,23 +62,40 @@ This tool is a combination server and web app.  It helps us to automate various 
 	**Employees Collection**
 	
 	**Sales Days Collection**
+
 	a. Update Financial Summary
 		Frequency: After transactions are added to a given Sales Day
+
 	b. Build Financial Summary
 		Frquency: Upon request?
 
 	**Reference List Collection**
+
 	a. Update POS Devices List
+
 	b. Update Items List
+
 	c. Update Locations List
+
 	d. Confirm Sales Day based on Identifying Transaction
 
+	e. Update Square Transactions Sync Log
+
 	**Reports Collection**
+
 	a. Build CME Performance Reports
 		Frequency: Daily
 
 	b. Build Team Member Shift Reports
 		Frequency: Daily
+
+**4. ENDPOINTS**
+
+a. /api/sync/transactions
+
+This endpoint is hit daily by a cron job.  When hit it needs to update the all transactions since the last update. It goes through the following steps:
+
+b. /sqrwebhook
 
 ## INSTRUCTIONS
 1. **Clone the repository**

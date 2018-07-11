@@ -57,7 +57,7 @@ serverApp.get('/', function(req, res) {
 });
 
 //	GET: /API/
-serverApp.get('/api', function(req, res) {
+serverApp.get('/api/sync/transactions', function(req, res) {
 	//
 	res.sendStatus(200);
 });
