@@ -21,11 +21,25 @@ var cme				= require('./cne/cme_maintenance.js');
 var calendarFns		= require('./cne/ahnuts_calender_fn.js'); 
 var txFns			= require('./cne/ahnuts_transactions_fn.js');
 
-squareV1.payments.list('M53KQT35YKE5C', '2018-01-01T00:00:00Z', '2018-05-03T00:00:00Z').then(function success(s) {
+//console.log(ahnutsSqSync);
+
+cme.sync.an_txs_to_sqrt('batch').then(function success(s) {
+		
+	//return an affirmative status code
+	console.log('success', s);
+
+}).catch(function error(e) {
+	
+	//return an error status code
+	console.log("error", e);
+
+});
+
+/*squareV1.payments.list('M53KQT35YKE5C', '2018-05-01T00:00:00Z', '2018-05-03T00:00:00Z').then(function success(s) {
 	console.log('success', s.length);
 }).catch(function error(e) {
 	console.log("error", e);
-})
+})*/
 
 
 

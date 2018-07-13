@@ -7,9 +7,15 @@
 //define dependencies
 var firebase		= require('../firebase/firebase.js');
 var stdio			= require('../stdio/stdio_api.js');
+var sqrtxs 			= require('../square/ahnuts_sqr_tx_sync.js');
+var squareV1		= require('../square/v1_api.js');
 
 //define module
 var cme_maintenance = {
+	_private: {
+		batch_update_txs: _private_batch_update_txs,
+		batch_locations_dates_download: _private_batch_locations_dates_download
+	},
 	calculate: {
 		salesday_summary: calculate_salesday_summary,
 		salesday_commissions: calculate_salesday_commissions
@@ -30,6 +36,144 @@ var cme_maintenance = {
 	},
 	test: test
 };
+
+function batch_requests(locationId, startTime, endTime) {
+	//define local variables
+	
+	//return async work
+	return new Promise(function(resolve, reject) {
+		
+		console.log(locationId, startTime, endTime);
+
+		//get payments list
+		squareV1.payments.list(locationId, startTime, endTime).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
+};
+
+//
+function _private_batch_update_txs(allLocations, startDate) {
+	//define local variables
+	var endDate = '2018-07-03T00:00:00Z'; //new Date('');
+	var allPromises = [];
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//iterate through each of the locations
+		allLocations.forEach(function(locationId) {
+
+			allPromises.push(batch_requests(locationId, startDate, endDate));
+			//console.log(locationId);
+		});
+
+		//when all the promises resolve move on
+		Promise.all(allPromises).then(function succcess(s) {
+			resolve([s, endDate]);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
+};
+
+//
+function _private_locations_list_download() {
+	//define local variables
+
+	//notify location
+	//console.log('got to _private_locations_list_download');
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		resolve(['M53KQT35YKE5C', '14E8S7P16JQDM']);
+	});
+
+};
+
+//
+function _private_batch_last_updated_value() {
+	//define local variables
+
+	//notify location
+	//console.log('got to _private_batch_last_updated_value');
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		resolve({ timestamp: "2018-07-01T00:00:00Z", successful: true });
+	});
+
+};
+
+//	
+/*
+*	This funciton updates the log to reflect the successful 
+*/
+function _private_update_lastUpdated_log(startId, currentTimestamp) {
+	//define local variables
+
+	//notify location
+	//console.log('got to _private_update_lastUpdated_log');
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		resolve();
+	});
+
+};
+
+//
+function _private_batch_locations_dates_download() {
+	//define local variables
+
+	//notify location
+	//console.log('got to _private_batch_locations_dates_download');
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//download locations list from square
+		var locationsPromise = _private_locations_list_download();
+		//download last successfuly batch update from firebase
+		var lastUpdatePromise = _private_batch_last_updated_value();
+
+		//resolve promises
+		Promise.all([locationsPromise, lastUpdatePromise]).then(function success(s) {
+			
+			//define local variable
+			var locationsList = s[0];
+			var lastUpdated = s[1];
+
+			//run through locations list
+			_private_batch_update_txs(locationsList, lastUpdated.timestamp).then(function success(ss) {
+				
+				//if all updates were successful, write success to the lastUpdated log
+				_private_update_lastUpdated_log(lastUpdated.$id, ss).then(function success(sss) {
+
+					resolve(ss, sss);
+
+				}).catch(function error(eee) {
+					reject(eee);
+				});
+
+			}).catch(function error(ee) {
+				reject(ee);
+			});
+
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
+};
+
 
 //everytime a transaction comes in it should be sorted
 //	INTERNAL ONLY: Download Detailed TX Array
@@ -401,11 +545,39 @@ function sync_sales_days_to_customers() {
 
 //	SYNC SALES TRANSACTIONS BETWEEN SQUARE AND AH-NUTS
 /*
-*	Accepts an Array of txs and syncs them to 
+*	Syncs both batch and single transcations from square to the ah-nuts database. 
 */
-function sync_an_txs_to_sqrt(txs) {
+function sync_an_txs_to_sqrt(type, pushObject) {
 	//define local variables
+	var typeHash = {"batch": 0, "single": 1};
 
+	//notify location
+	//console.log('got to sync_an_txs_to_sqrt');
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//switch based on type
+		switch(typeHash[type]) {
+			case 0:
+				_private_batch_locations_dates_download().then(function success(s) {
+					resolve(s);
+				}).catch(function error(e) {
+					reject(e);
+				});
+				break;
+			case 1:
+				sqrtxs.push_requests(pushObject).then(function success(s) {
+					resolve(s);
+				}).catch(function error(e) {
+					reject(e);
+				});
+				break;
+			default:
+				break;
+		};
+
+	});
 
 };
 

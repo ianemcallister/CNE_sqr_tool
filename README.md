@@ -6,47 +6,47 @@ This tool is a combination server and web app.  It helps us to automate various 
 
 1. **SYNC AH-NUTS DB (FIREBASE) WITH SQUAREUP DB**
 
-	**Transactions**
+**Transactions**
 
-	a. Single Transactions Via Push Notifications
-	b. Batch Transactions by Location and Dates
+a. Single Transactions Via Push Notifications
+b. Batch Transactions by Location and Dates
 
-	**Employees**
+**Employees**
 
-	a. List of Employees
+a. List of Employees
 
-	**Locations**
+**Locations**
 
-	a. List of Locations
+a. List of Locations
 
-	**Cashdrawers**
+**Cashdrawers**
 
-	a. Single Cashdrawer
-	b. Batch List of Cashdrawers
+a. Single Cashdrawer
+b. Batch List of Cashdrawers
 
-	**Items**
+**Items**
 
-	a. List of Items
+a. List of Items
 
-	**Modifiers**
+**Modifiers**
 
-	a. List of Modifers
+a. List of Modifers
 
 2. **SYNC AH-NUTS DB (FIREBASE) WITH SLING.IS DB**
 	
-	**Locations**
+**Locations**
 
-	a. List of Locations
+a. List of Locations
 
-	**Employees**
+**Employees**
 
-	a. List of Employees
+a. List of Employees
 
-	**Shifts**
+**Shifts**
 
-	a. Lost of Shifts
+a. Lost of Shifts
 
-**3. MAINTAIN AH-NUTS DB (FIREBASE)**
+3. **MAINTAIN AH-NUTS DB (FIREBASE)**
 
 	**Transaction Collection**
 
@@ -94,6 +94,28 @@ This tool is a combination server and web app.  It helps us to automate various 
 a. /api/sync/transactions
 
 This endpoint is hit daily by a cron job.  When hit it needs to update the all transactions since the last update. It goes through the following steps:
+
+	1. Collect The Initial Datetime & Location Parameters
+		a) Download the time of the last batch update from the Ah-Nuts (Firebase) database.This datetime becomes the start datetime.  The end datetime is the current datetime.
+		b) Download the list of square locations from the Ah-Nuts (Firebase) database.
+	
+	2. Iterate through each of the Square Locations
+
+	3. Download the batch sales of the current location and datetimes
+
+	4. Map all the square transactions to Ah-nuts transactions
+
+	5. Iterate through all the transaction IDs, if they already exist in the database do nothing.  If they don't exist save each transaction individually to the databse.
+
+	6. Check if there is a known Customer/Market/Event (CME) for teach transaction.  If there is a known CME go to a.  If the tx CME is unkown go to d.
+		a) Add the Transaction ID to the designated sales day
+		b) Add the Customer and Sales Day to the transaction
+		c) Update the CME sums.  If the CME was known end here
+		d) Add the Tx to the unassigned tx list
+
+	7. Return to step 4 until all of the trasactions are processed
+
+	8. Return to setp 2 until all of the locations are processed
 
 b. /sqrwebhook
 

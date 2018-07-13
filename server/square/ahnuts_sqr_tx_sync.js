@@ -12,7 +12,6 @@ var stdio 			= require('../stdio/stdio_api.js');
 var cme				= require('../cne/cme_maintenance.js'); 
 var moment 			= require('moment-timezone');
 
-
 //define settings
 //moment().tz().format();
 
@@ -29,7 +28,8 @@ var an_sqr_tx_sync = {
 	parse_timestamp: parse_timestamp,
 	save_tx_to_ahnuts_server: save_tx_to_ahnuts_server,
 	save_tx_id_to_ahnuts_ref_lists: save_tx_id_to_ahnuts_ref_lists,
-	add_tx_to_ahnuts_db: add_tx_to_ahnuts_db
+	add_tx_to_ahnuts_db: add_tx_to_ahnuts_db,
+	test: test
 };
 
 /*
@@ -144,7 +144,8 @@ function map_sqr_tx_to_ahnts_tx(sqrTx, location_id) {
 		itemizations: map_sqr_tx_itemizations_to_ahnts_tx_itemizations(sqrTx.itemizations)
 	};
 
-	console.log(ahnuts_tx);
+	//notify of progress
+	//console.log(ahnuts_tx);
 
 	return ahnuts_tx;
 };
@@ -203,22 +204,25 @@ function save_tx_id_to_ahnuts_ref_lists(tx_id, ahnutstx) {
 function single_tx_sync(entity_id, location_id) {
 	//define local variables
 	
-	//download tx from square
-	v1_api_sqr.payments.retrieve(entity_id, location_id).then(function success(s) {
+	//Return Async Work
+	return new Promise(function(resolve, reject) {
 
-		//notify of returning object
-		//console.log(s);
-		add_tx_to_ahnuts_db(entity_id, s, location_id).then(function success(ss) {
-			console.log('tx added to db successfully', ss);
-		}).catch(function error(ee) {
-			console.log('error adding tx to ahnuts db', ee);
+		//download tx from square
+		v1_api_sqr.payments.retrieve(entity_id, location_id).then(function success(s) {
+
+			//notify of returning object
+			add_tx_to_ahnuts_db(entity_id, s, location_id).then(function success(ss) {
+				resolve('tx added to db successfully', ss);
+			}).catch(function error(ee) {
+				reject('error adding tx to ahnuts db', ee);
+			});
+
+		}).catch(function error(e) {
+			reject('error', e);
 		});
 
-	}).catch(function error(e) {
-		console.log('error', e);
 	});
 
-	//
 };
 
 /*
@@ -300,10 +304,15 @@ function add_tx_to_ahnuts_db(tx_id, tx, location_id) {
 /*
 *	BATCH REQUESTS
 */
-function batch_requests(start, end) {
+function batch_requests(locationId, startTime, endTime) {
 	//define local variables
 	
-}
+	//return async work
+	return new Promise(function(resolve, reject) {
+		resolve('1');
+	});
+
+};
 
 /*
 *	PUSH REQUESTS
@@ -316,24 +325,33 @@ function push_requests(pushObject) {
 	var location_id = pushObject.location_id;
 	var pushCase = { "PAYMENT_UPDATED": 1 };
 
-	//handle the appropriate case
-	switch(pushCase[pushObject.event_type]) {
-		case 1:
-			//payment updated
-			single_tx_sync(entity_id, location_id);
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
-		default:
-			break;
-	};
+	//RETURN ASYNC WORK
+	return new Promise(function(resolve, reject) {
+
+		//handle the appropriate case
+		switch(pushCase[pushObject.event_type]) {
+			case 1:
+				//payment updated
+				single_tx_sync(entity_id, location_id).then(function success(s) {
+					resolve(s);
+				}).catch(function error(e) {
+					reject(e);
+				});
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			default:
+				break;
+		};
+
+	});
+
+};
 
 
-}
-
-
+function test() { console.log('sqrtxs test'); };
 
 //return the module
 module.exports = an_sqr_tx_sync;
