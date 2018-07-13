@@ -1,0 +1,27 @@
+Avoiding circular dependency injection
+
+In order to avoid circluar dependency injection I need to track what calls what:
+
+1. cne_matinenance <- /firebase/firebase 
+
+
+batch_requests
+_private_batch_update_txs
+_private_locations_list_download
+_private_batch_last_updated_value
+_private_locations_list_download
+_private_update_lastUpdated_log
+_private_batch_locations_dates_download
+_download_detailed_tx_array
+_sum_tx_field
+_sum_tender_values
+update_simple_salesdays_remote_db
+update_salesdays_payment_mthds
+update_salesdays_net_gross_sales
+update_commissions
+calculate_salesday_summary
+calculate_salesday_commissions
+check_known_cme
+sync_sales_days_to_customers
+sync_an_txs_to_sqrt
+test

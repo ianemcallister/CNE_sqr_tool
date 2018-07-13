@@ -9,22 +9,35 @@
 //var mysql 			= require('./mysql/mysql_api.js');
 //var square 			= require('./square/sqr_api.js');
 //var templatizer 	= require('./template_engine/templateizer.js');
-var stdio			= require('./stdio/stdio_api.js');
+//var stdio			= require('./stdio/stdio_api.js');
 //var sqrdata			= require('./square/sqr_data_api.js');
 //var locations_mysql = require('./mysql/query_builder.js');
-var squareV1		= require('./square/v1_api.js');
-var ahnutsSqSync	= require('./square/ahnuts_sqr_tx_sync.js');
-var firebase		= require('./firebase/firebase.js');
+//var squareV1		= require('./square/v1_api.js');
+//var ahnutsSqSync	= require('./square/ahnuts_sqr_tx_sync.js');
+//var firebase		= require('./firebase/firebase.js');
 //var customerFns		= require('./cne/ahnuts_customers_fn.js'); 
 //var salsesdaysFns	= require('./cne/ahnuts_sales_days_fn.js'); 
-var cme				= require('./cne/cme_maintenance.js'); 
-var calendarFns		= require('./cne/ahnuts_calender_fn.js'); 
-var txFns			= require('./cne/ahnuts_transactions_fn.js');
+//var CNE				= require('./cne/cme_maintenance.js'); 
+var maintenance 	= require('./cne/maintenance.js');
+//var calendarFns		= require('./cne/ahnuts_calender_fn.js'); 
+//var txFns			= require('./cne/ahnuts_transactions_fn.js');
 
 //console.log(ahnutsSqSync);
 
-cme.sync.an_txs_to_sqrt('batch').then(function success(s) {
-		
+/*firebase.push('logs/tx_syncs', { timestamp: "2018-07-01T00:00:00Z", successful: true } ).then(function success(s) {
+
+	//return an affirmative status code
+	console.log('success', s);
+
+}).catch(function error(e) {
+	
+	//return an error status code
+	console.log("error", e);
+
+});*/
+
+maintenance.transactions.sync.ahNuts_to_Square('batch').then(function success(s) {
+
 	//return an affirmative status code
 	console.log('success', s);
 
@@ -34,6 +47,19 @@ cme.sync.an_txs_to_sqrt('batch').then(function success(s) {
 	console.log("error", e);
 
 });
+
+/*
+CNE.sync.an_txs_to_sqrt('batch').then(function success(s) {
+		
+	//return an affirmative status code
+	console.log('success', s);
+
+}).catch(function error(e) {
+	
+	//return an error status code
+	console.log("error", e);
+
+});*/
 
 /*squareV1.payments.list('M53KQT35YKE5C', '2018-05-01T00:00:00Z', '2018-05-03T00:00:00Z').then(function success(s) {
 	console.log('success', s.length);

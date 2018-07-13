@@ -43,14 +43,14 @@ function batch_requests(locationId, startTime, endTime) {
 	//return async work
 	return new Promise(function(resolve, reject) {
 		
-		console.log(locationId, startTime, endTime);
-
+		//console.log(locationId, startTime, endTime);
+		resolve([{tx_id: "209uasgodihas"}, {tx_id: "209uasgodihas"}]);
 		//get payments list
-		squareV1.payments.list(locationId, startTime, endTime).then(function success(s) {
+		/*squareV1.payments.list(locationId, startTime, endTime).then(function success(s) {
 			resolve(s);
 		}).catch(function error(e) {
 			reject(e);
-		});
+		});*/
 
 	});
 
@@ -74,6 +74,8 @@ function _private_batch_update_txs(allLocations, startDate) {
 
 		//when all the promises resolve move on
 		Promise.all(allPromises).then(function succcess(s) {
+			
+			//each transaction then 
 			resolve([s, endDate]);
 		}).catch(function error(e) {
 			reject(e);
