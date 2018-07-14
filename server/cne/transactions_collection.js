@@ -101,7 +101,7 @@ function download_single_tx(tx_id, location_id) {
 };
 
 /*
-*	SYNC BATCH TRANSACTIONS
+*	SYNC SINGLE TRANSACTION
 *
 *	This is used to...
 */
@@ -146,7 +146,7 @@ function sync_single_tx(tx_id, location_id) {
 				} else if(s[1] = 'NOT_FOUND') {
 					//if the records can't be found
 					//B.5) Add the TX to the unassigned list - Async
-					finishingPromises.push();
+					finishingPromises.push(tasks.update.lists.unassigned_tx(tx_id, location_id, ahnuts_tx));
 
 				} else {
 
@@ -182,7 +182,7 @@ function sync_single_tx(tx_id, location_id) {
 function sync_batch_txs() {}
 
 /*
-*	SYNC SINGLE TRANSACTION
+*	FILTER SINGLE TRANSACTION
 *
 *	This is used to...
 */

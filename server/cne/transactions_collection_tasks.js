@@ -8,6 +8,7 @@
 //define dependencies
 var squareV1		= require('../square/v1_api.js');
 var firebase		= require('../firebase/firebase.js');
+var data			= require('./transactions_collection_data_formatting.js');
 
 //define module
 var tasks = {
@@ -26,17 +27,20 @@ var tasks = {
 		tx_to_db: save_tx_to_db
 	},
 	update: {
+		lists: {
+			unassigned_tx: update_unassigned_tx_list
+		},
 		logs: {
 			last_tx: update_last_tx_log
 		},
 		sales_day: {
-			fields: update_sales_day_field,*********
-			calculations: update_sales_calculations*******
+			fields: update_sales_day_field,
+			calculations: update_sales_calculations
 		},
 		txs: {
 			batch: batch_update_txs,
 			single: update_single_tx,
-			fields: update_tx_fields********
+			fields: update_tx_fields
 		}
 	},
 	test: test
@@ -166,6 +170,76 @@ function save_tx_to_db(tx_id, ahnutstx) {
 
 };
 
+/*
+*	UPDATE UNASSIGNED TRANSACTION LIST
+*
+*	This is used to...
+*/
+function update_unassigned_tx_list(tx_id, location_id, tx) { 
+	
+	console.log(tx, 'using this tx');
+	//define local variables
+	var device_id = tx[tx_id].device_id
+	var tx_date = (tx[tx_id].created_at.split("T"))[0];
+	var writePath = "reference_lists/unassigned_txs/" + device_id + "/" + tx_date;
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		//resolve(writePath + " " + tx_id);
+		//write the tx to the db
+		firebase.push(writePath, tx_id).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+	}); 
+
+};
+
+/*
+*	UPDATE LAST TRANSACTIONS LOG
+*
+*	This is used to...
+*/
+function update_last_tx_log(lastUpdated) { 
+	//define local variables
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		resolve('update_last_tx_log');
+	}); 
+
+};
+
+/*
+*	UPDATE SALES DAY FIELD
+*
+*	This is used to...
+*/
+function update_sales_day_field() { 
+	//define local variables
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		resolve('update_sales_day_field');
+	}); 
+
+};
+
+/*
+*	UPDATE SALES CALCULATIONS
+*
+*	This is used to...
+*/
+function update_sales_calculations() { 
+	//define local variables
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		resolve('update_sales_calculations');
+	}); 
+
+};
 
 /*
 *	BATCH UPDATE TRANSACTINS
@@ -182,20 +256,7 @@ function batch_update_txs(locationsList, lastUpdated) {
 
 };
 
-/*
-*	UPDATE LAST TRANSACTIONS LOG
-*
-*	This is used to...
-*/
-function update_last_tx_log(lastUpdated) { 
-	//define local variables
 
-	//return async work
-	return new Promise(function(resolve, reject) {
-		resolve('last updated tx log');
-	}); 
-
-};
 
 /*
 *	UPDATE SINGLE TRANSACTION
@@ -212,7 +273,20 @@ function update_single_tx(entity_id, location_id) {
 
 };
 
+/*
+*	UPDATE TX FIELDS
+*
+*	This is used to...
+*/
+function update_tx_fields() { 
+	//define local variables
 
+	//return async work
+	return new Promise(function(resolve, reject) {
+		resolve('update_tx_fields');
+	}); 
+
+};
 
 /*
 *	TEST
