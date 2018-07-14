@@ -13,7 +13,7 @@ var bodyParser 	= require('body-parser');
 //update this later but goo dfor now
 var sqrtxs 		= require('./square/ahnuts_sqr_tx_sync.js');
 var slsdayfns	= require('./cne/ahnuts_sales_days_fn.js');
-var CNE 		= require('./cne/cme_maintenance.js');
+var CNE 		= require('./cne/maintenance.js');
 
 //return the express object
 var serverApp = express();
@@ -61,7 +61,7 @@ serverApp.get('/', function(req, res) {
 serverApp.get('/api/sync/transactions', function(req, res) {
 	
 	//run the requird function
-	CNE.sync.an_txs_to_sqrt('batch').then(function success(s) {
+	CNE.transactions.sync.ahNuts_to_Square('batch').then(function success(s) {
 		
 		//return an affirmative status code
 		res.sendStatus(200);
@@ -85,7 +85,7 @@ serverApp.post('/sqrwebhook', function(req, res) {
 	console.log(req.body);
 
 	//run the requird function
-	CNE.sync.an_txs_to_sqrt('single', req.body).then(function success(s) {
+	CNE.transactions.sync.ahNuts_to_Square('single', req.body).then(function success(s) {
 		
 		//return an affirmative status code
 		res.sendStatus(200);

@@ -22,6 +22,33 @@ var maintenance 	= require('./cne/maintenance.js');
 //var calendarFns		= require('./cne/ahnuts_calender_fn.js'); 
 //var txFns			= require('./cne/ahnuts_transactions_fn.js');
 
+
+maintenance.transactions.sync.ahNuts_to_Square('single', { entity_id: 'PzGUikmYpROMkDuGal6XLQB', event_type: 'PAYMENT_UPDATED', merchant_id: 'FCGJQY3GC9BNW', location_id: 'M53KQT35YKE5C' }).then(function success(s) {
+		
+	//return an affirmative status code
+	console.log(s)
+
+}).catch(function error(e) {
+	
+	//return an error status code
+	console.log(e)
+	
+});
+//.push_requests();
+
+/*maintenance.transactions.sync.ahNuts_to_Square('batch').then(function success(s) {
+
+	//return an affirmative status code
+	console.log('success', s);
+
+}).catch(function error(e) {
+	
+	//return an error status code
+	console.log("error", e);
+
+});*/
+
+
 //console.log(ahnutsSqSync);
 
 /*firebase.push('logs/tx_syncs', { timestamp: "2018-07-01T00:00:00Z", successful: true } ).then(function success(s) {
@@ -35,18 +62,6 @@ var maintenance 	= require('./cne/maintenance.js');
 	console.log("error", e);
 
 });*/
-
-maintenance.transactions.sync.ahNuts_to_Square('batch').then(function success(s) {
-
-	//return an affirmative status code
-	console.log('success', s);
-
-}).catch(function error(e) {
-	
-	//return an error status code
-	console.log("error", e);
-
-});
 
 /*
 CNE.sync.an_txs_to_sqrt('batch').then(function success(s) {
@@ -148,6 +163,6 @@ firebase.create(writePath, { 0: { "is_known": true, customer:"-LG7zzWIARLFo9__Sw
 	console.log("error", e);
 })*/
 
-//ahnutsSqSync.push_requests({ entity_id: 'PzGUikmYpROMkDuGal6XLQB', event_type: 'PAYMENT_UPDATED', merchant_id: 'FCGJQY3GC9BNW', location_id: 'M53KQT35YKE5C' });
+
 
 

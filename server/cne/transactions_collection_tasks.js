@@ -6,16 +6,180 @@
 */
 
 //define dependencies
+var squareV1		= require('../square/v1_api.js');
+var firebase		= require('../firebase/firebase.js');
 
 //define module
 var tasks = {
-	update_txs: {
-		batch: batch_update_txs
+	check: {
+		lists: {
+			known_cme: check_known_cme
+		}
 	},
-	update_logs: {
-		last_tx: update_last_tx_log
+	download: {
+		txs: {
+			batch: batch_download_txs,
+			single: download_single_tx
+		}
+	},
+	save: {
+		tx_to_db: save_tx_to_db
+	},
+	update: {
+		logs: {
+			last_tx: update_last_tx_log
+		},
+		sales_day: {
+			fields: update_sales_day_field,*********
+			calculations: update_sales_calculations*******
+		},
+		txs: {
+			batch: batch_update_txs,
+			single: update_single_tx,
+			fields: update_tx_fields********
+		}
 	},
 	test: test
+};
+
+/*
+*	CHECK KNOWN CME
+*
+*	This is used to..
+*/
+function check_known_cme(ahnuts_tx) {
+	//define local variables
+	var known_cme_object = {
+		is_known: false,
+		customer: "",
+		salesDay: ""
+	};
+	var tx_key = ""
+
+	//pull the key
+	Object.keys(ahnuts_tx).forEach(function(key) {
+		tx_key = key;
+	})
+
+	var tx_date = ((ahnuts_tx[tx_key].created_at).split('T'))[0];
+	var emp_id = ahnuts_tx[tx_key].employee_id;
+	
+	//define the read path
+	var readpath = 'reference_lists/CME_by_employee_and_date/' + tx_date + "/" + emp_id;
+
+	//notify user
+	console.log("check_known_cme readpath", readpath);
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//collect the reference from the db
+		firebase.read(readpath).then(function success(s) {
+
+			//iterate through all entries
+			Object.keys(s).forEach(function(key) {
+				
+				//if is known, add the data
+				if(s[key].cme_confirmed) {
+					known_cme_object.is_known = true;
+					known_cme_object.customer = s[key].customer_id;
+					known_cme_object.salesDay = s[key].cme_id;
+				}
+
+			});
+
+			resolve('FOUND', known_cme_object);
+
+		}).catch(function error(e) {
+			//if there was a type error then the records required don't exist in the database
+			var rawError = e.toString();
+			var errorSplit = rawError.split(':');
+			if(errorSplit[0] == 'TypeError') resolve('NOT_FOUND', {});
+
+			reject(e);
+		});
+
+	});
+
+};
+
+/*
+*	BATCH DOWNLOAD TRANSACTINS
+*
+*	This is used to..
+*/
+function batch_download_txs(locationsList, lastUpdated) { 
+	//define local variables
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		resolve(lastUpdated);
+	}); 
+
+};
+
+/*
+*	DOWNLOAD SINGLE TRANSACTION
+*
+*	This is used to..
+*/
+function download_single_tx(tx_id, location_id) { 
+	//define local variables
+
+	//notify progress
+	//console.log('tx_id', tx_id, 'location_id', location_id);
+	
+	//return Async Work
+	return new Promise(function(resolve, reject) {
+		
+		
+		//download tx from square
+		squareV1.payments.retrieve(tx_id, location_id).then(function success(tx) {
+			resolve(tx);
+		}).catch(function error(e) {
+			reject('error', e);
+		});
+
+	}); 
+
+};
+
+/*
+*	SAVE AH-NUTS TRANSACTION TO AH-NUTS DATABSAE
+*
+*	This is used to..
+*/
+function save_tx_to_db(tx_id, ahnutstx) {
+	//define local variables	
+	var writePath = 'transactions/' + tx_id;
+
+	return new Promise(function(resolve, reject) {
+		
+		//write the records
+		firebase.create(writePath, ahnutstx[tx_id]).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
+};
+
+
+/*
+*	BATCH UPDATE TRANSACTINS
+*
+*	This is used to..
+*/
+function batch_update_txs(locationsList, lastUpdated) { 
+	//define local variables
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		resolve(lastUpdated);
+	}); 
+
 };
 
 /*
@@ -34,19 +198,21 @@ function update_last_tx_log(lastUpdated) {
 };
 
 /*
-*	BATCH UPDATE TRANSACTINS
+*	UPDATE SINGLE TRANSACTION
 *
 *	This is used to..
 */
-function batch_update_txs(locationsList, lastUpdated) { 
+function update_single_tx(entity_id, location_id) { 
 	//define local variables
-
+	
 	//return async work
 	return new Promise(function(resolve, reject) {
 		resolve(lastUpdated);
 	}); 
 
 };
+
+
 
 /*
 *	TEST

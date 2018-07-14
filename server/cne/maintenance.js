@@ -27,14 +27,16 @@ var maintenace = {
 };
 
 /*
+*	SYNC AH-NUTS TRANSACTIONS DB TO SQUARE TRANSACTIONS DB
 *
+*	This function...
 */
 function tx_sync_cne_db_to_sqr_db(type, pushObject) {
 	//define local variables
 	var typeHash = {"batch": 0, "single": 1};
 
 	//notify location
-	//console.log('got to sync_an_txs_to_sqrt');
+	console.log('got to sync_an_txs_to_sqrt');
 
 	//return async work
 	return new Promise(function(resolve, reject) {
@@ -49,7 +51,7 @@ function tx_sync_cne_db_to_sqr_db(type, pushObject) {
 				});
 				break;
 			case 1:
-				transactions.download.single_tx(pushObject).then(function success(s) {
+				transactions.filter.single_tx_type(pushObject).then(function success(s) {
 					resolve(s);
 				}).catch(function error(e) {
 					reject(e);

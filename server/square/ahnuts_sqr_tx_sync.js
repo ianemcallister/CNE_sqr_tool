@@ -18,17 +18,17 @@ var moment 			= require('moment-timezone');
 //define module
 var an_sqr_tx_sync = {
 	batch_requests: batch_requests,
-	push_requests: push_requests,
-	single_tx_sync: single_tx_sync,
-	map_sqr_tx_to_ahnts_tx: map_sqr_tx_to_ahnts_tx,
-	map_sqr_tx_tender_to_ahnts_tx_tender: map_sqr_tx_tender_to_ahnts_tx_tender,
-	map_sqr_tx_itemizations_to_ahnts_tx_itemizations: map_sqr_tx_itemizations_to_ahnts_tx_itemizations,
-	map_sqr_tx_mods_to_ahnts_tx_mods: map_sqr_tx_mods_to_ahnts_tx_mods,
-	map_sqr_tx_device_id_to_ahnuts_tx_dev_id: map_sqr_tx_device_id_to_ahnuts_tx_dev_id,
-	parse_timestamp: parse_timestamp,
-	save_tx_to_ahnuts_server: save_tx_to_ahnuts_server,
+	//push_requests: push_requests,
+	//single_tx_sync: single_tx_sync,
+	//map_sqr_tx_to_ahnts_tx: map_sqr_tx_to_ahnts_tx,
+	//map_sqr_tx_tender_to_ahnts_tx_tender: map_sqr_tx_tender_to_ahnts_tx_tender,
+	//map_sqr_tx_itemizations_to_ahnts_tx_itemizations: map_sqr_tx_itemizations_to_ahnts_tx_itemizations,
+	//map_sqr_tx_mods_to_ahnts_tx_mods: map_sqr_tx_mods_to_ahnts_tx_mods,
+	//map_sqr_tx_device_id_to_ahnuts_tx_dev_id: map_sqr_tx_device_id_to_ahnuts_tx_dev_id,
+	//parse_timestamp: parse_timestamp,
+	//save_tx_to_ahnuts_server: save_tx_to_ahnuts_server,
 	save_tx_id_to_ahnuts_ref_lists: save_tx_id_to_ahnuts_ref_lists,
-	add_tx_to_ahnuts_db: add_tx_to_ahnuts_db,
+	//add_tx_to_ahnuts_db: add_tx_to_ahnuts_db,
 	test: test
 };
 

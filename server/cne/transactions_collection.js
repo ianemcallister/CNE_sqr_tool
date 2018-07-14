@@ -17,6 +17,13 @@ var transactions = {
 		batch_locations_dates: download_batch_locations_and_dates,
 		single_tx: download_single_tx
 	},
+	filter: {
+		single_tx_type: filter_single_tx_type
+	},
+	sync: {
+		batch_txs: sync_batch_txs,
+		single_tx: sync_single_tx
+	},
 	test: test
 };
 
@@ -29,7 +36,7 @@ function download_batch_locations_and_dates() {
 	//define local variables
 
 	//notify location
-	console.log('got to _private_batch_locations_dates_download');
+	//console.log('got to _private_batch_locations_dates_download');
 
 	//return async work
 	return new Promise(function(resolve, reject) {
@@ -47,11 +54,11 @@ function download_batch_locations_and_dates() {
 			var lastUpdated = s[1];
 
 			//run through locations list
-			tasks.update_txs.batch(locationsList, lastUpdated).then(function success(ss) {
+			tasks.update.txs.batch(locationsList, lastUpdated).then(function success(ss) {
 				
 				//resolve(ss);
 				//if all updates were successful, write success to the lastUpdated log
-				tasks.update_logs.last_tx(ss).then(function success(sss) {
+				tasks.update.logs.last_tx(ss).then(function success(sss) {
 
 					resolve(sss);
 
@@ -76,17 +83,144 @@ function download_batch_locations_and_dates() {
 *
 *	This function...
 */
-function download_single_tx() {
+function download_single_tx(tx_id, location_id) {
 	//define local variables
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//start by downloading the transaction
+		tasks.download.tx.single(tx_id, location_id).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
+};
+
+/*
+*	SYNC BATCH TRANSACTIONS
+*
+*	This is used to...
+*/
+function sync_single_tx(tx_id, location_id) {
+	//define local variables
+
+	//notify of progress
+	console.log('got to sync_single_tx');
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//1. download the transaction
+		tasks.download.txs.single(tx_id, location_id).then(function success(tx) {
+
+			//2. map the transaction from the square tx to an ah-nuts transaction
+			var ahnuts_tx = data.map.sq_tx_to_ahNuts_tx(tx, location_id);
+
+			//3. save the tx to the ah-nuts(firebase) db
+			var txSavePromise = tasks.save.tx_to_db(tx_id, ahnuts_tx);
+
+			//4. check for known Sales day
+			var salesdayCheckPromise = tasks.check.lists.known_cme(ahnuts_tx);
+
+			//handle both promises at the same time
+			Promise.all([txSavePromise, salesdayCheckPromise]).then(function success(s) {
+				//define local variales
+				var finishingPromises = [];
+
+				//salesdayCheckPromise may come back with data
+				//if the reference list had the record, update the appropriate models
+				if(s[1] == 'FOUND') {
+					//A.5) Add the TX to the Sales Day object - Async
+					finishingPromises.push(tasks.update.sales_day.fields(tx_id));
+
+					//A.6) Add customer & sales day to transaction - Async
+					finishingPromises.push(tasks.update.tx.fields(ahnuts_tx));
+
+					//A.7) Update sales day calculations - Async
+					finishingPromises.push(tasks.update.sales_day.calculations());
+
+				} else if(s[1] = 'NOT_FOUND') {
+					//if the records can't be found
+					//B.5) Add the TX to the unassigned list - Async
+					finishingPromises.push();
+
+				} else {
+
+				};
+				
+				//resolve all final promises
+				Promise.all(finishingPromises).then(function success(ss) {
+					resolve(ss);
+				}).catch(function error(eee) {
+					reject(eee);
+				});
+
+			}).catch(function error(ee) {
+				reject(ee);
+			});
+
+			//resolve(s);
+
+		}).catch(function error(e) {
+			console.log('error', e);
+			reject('got this error' + e);
+		});
+
+	});
+
+};
+
+/*
+*	SYNC BATCH TRANSACTIONS
+*
+*	This is used to...
+*/
+function sync_batch_txs() {}
+
+/*
+*	SYNC SINGLE TRANSACTION
+*
+*	This is used to...
+*/
+function filter_single_tx_type(pushObject) {
+	//define local variables
+	var entity_id = pushObject.entity_id;
+	var location_id = pushObject.location_id;
+	var pushCase = { "PAYMENT_UPDATED": 1 };
 
 	//notify location
 	console.log('got to download_single_tx');
 
 	//return async work
 	return new Promise(function(resolve, reject) {
-		resolve();
+		
+		//handle the appropriate case
+		switch(pushCase[pushObject.event_type]) {
+			case 1:
+				
+				//run through updating the transaction
+				sync_single_tx(entity_id, location_id).then(function success(s) {
+					resolve(s);
+				}).catch(function error(e) {
+					reject(e);
+				});
+
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			default:
+				break;
+		};
+
 	});
-};
+		
+}
 
 /*
 *	TEST
