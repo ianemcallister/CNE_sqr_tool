@@ -129,21 +129,23 @@ function sync_single_tx(tx_id, location_id) {
 			//handle both promises at the same time
 			Promise.all([txSavePromise, salesdayCheckPromise]).then(function success(s) {
 				//define local variales
+				var sales_day_id = s[1].ref.salesDay;
+				var customer_id = s[1].ref.customer;
 				var finishingPromises = [];
 
 				//salesdayCheckPromise may come back with data
 				//if the reference list had the record, update the appropriate models
-				if(s[1] == 'FOUND') {
+				if(s[1].status == 'FOUND') {
 					//A.5) Add the TX to the Sales Day object - Async
-					finishingPromises.push(tasks.update.sales_day.fields(tx_id));
+					finishingPromises.push(tasks.update.sales_day.fields(sales_day_id, [{field: "transaction", data: tx_id}]));
 
 					//A.6) Add customer & sales day to transaction - Async
-					finishingPromises.push(tasks.update.tx.fields(ahnuts_tx));
+					finishingPromises.push(tasks.update.txs.fields(tx_id, [{field: "salesDay", data: sales_day_id}, {field: "customer", data: customer_id}]));
 
 					//A.7) Update sales day calculations - Async
 					finishingPromises.push(tasks.update.sales_day.calculations());
 
-				} else if(s[1] = 'NOT_FOUND') {
+				} else if(s[1].status = 'NOT_FOUND') {
 					//if the records can't be found
 					//B.5) Add the TX to the unassigned list - Async
 					finishingPromises.push(tasks.update.lists.unassigned_tx(tx_id, location_id, ahnuts_tx));

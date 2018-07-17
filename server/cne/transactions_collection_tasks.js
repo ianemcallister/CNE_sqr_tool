@@ -92,13 +92,13 @@ function check_known_cme(ahnuts_tx) {
 
 			});
 
-			resolve('FOUND', known_cme_object);
+			resolve({status:'FOUND', ref:known_cme_object});
 
 		}).catch(function error(e) {
 			//if there was a type error then the records required don't exist in the database
 			var rawError = e.toString();
 			var errorSplit = rawError.split(':');
-			if(errorSplit[0] == 'TypeError') resolve('NOT_FOUND', {});
+			if(errorSplit[0] == 'TypeError') resolve({status:'NOT_FOUND', ref:{}});
 
 			reject(e);
 		});
@@ -177,7 +177,6 @@ function save_tx_to_db(tx_id, ahnutstx) {
 */
 function update_unassigned_tx_list(tx_id, location_id, tx) { 
 	
-	console.log(tx, 'using this tx');
 	//define local variables
 	var device_id = tx[tx_id].device_id
 	var tx_date = (tx[tx_id].created_at.split("T"))[0];
@@ -216,12 +215,48 @@ function update_last_tx_log(lastUpdated) {
 *
 *	This is used to...
 */
-function update_sales_day_field() { 
+function update_sales_day_field(sales_day_id, fieldsArray) { 
 	//define local variables
-
+	//start by handling tranactions only
+	var readPath = 'sales_days/' + sales_day_id + "/transactions";
+	
 	//return async work
 	return new Promise(function(resolve, reject) {
-		resolve('update_sales_day_field');
+		
+		//LATER THIS CAN DISCERN BETWEEN DIFFERENT TX TYPES 
+		//iterate through fieldsArray
+		fieldsArray.forEach(function(field) {
+
+			//read the current transactions present
+			firebase.read(readPath).then(function success(allSalesdayTx) {
+				var writePath = 'sales_days/' + sales_day_id + "/transactions";
+				var flaggedTx = false;
+
+				//iterate through the responses
+				Object.keys(allSalesdayTx).forEach(function(key) {
+					if(allSalesdayTx[key] == field.data) flaggedTx = true;
+				});
+
+				//if the transaction couldn't be found in the current set, add it
+				if(!flaggedTx) {
+
+					firebase.push(writePath, field.data).then(function success(s) {
+						resolve(s);
+					}).catch(function error(ee) {
+						reject(ee);
+					});
+
+				} else {
+					resolve('Record Already Added');
+				}
+
+			}).catch(function error(e) {
+				reject(e);
+			});
+
+		});
+
+		//resolve('update_sales_day_field');
 	}); 
 
 };
@@ -231,7 +266,7 @@ function update_sales_day_field() {
 *
 *	This is used to...
 */
-function update_sales_calculations() { 
+function update_sales_calculations(sales_day_id) { 
 	//define local variables
 
 	//return async work
@@ -278,12 +313,26 @@ function update_single_tx(entity_id, location_id) {
 *
 *	This is used to...
 */
-function update_tx_fields() { 
+function update_tx_fields(tx_id, fieldsArray) { 
 	//define local variables
+	var writePath = "transactions/" + tx_id + "/salesDay/";
 
 	//return async work
 	return new Promise(function(resolve, reject) {
-		resolve('update_tx_fields');
+
+		//LATER THIS CAN DISCERN BETWEEN DIFFERENT TX TYPES 
+		//iterate through fieldsArray
+		fieldsArray.forEach(function(field) {
+
+			firebase.create(writePath, field.data).then(function success(s) {
+				resolve(s);
+			}).catch(function error(e) {
+				reject(e);
+			});
+
+		});			
+
+		//resolve('update_tx_fields');
 	}); 
 
 };

@@ -27,7 +27,7 @@ var an_sqr_tx_sync = {
 	//map_sqr_tx_device_id_to_ahnuts_tx_dev_id: map_sqr_tx_device_id_to_ahnuts_tx_dev_id,
 	//parse_timestamp: parse_timestamp,
 	//save_tx_to_ahnuts_server: save_tx_to_ahnuts_server,
-	save_tx_id_to_ahnuts_ref_lists: save_tx_id_to_ahnuts_ref_lists,
+	//save_tx_id_to_ahnuts_ref_lists: save_tx_id_to_ahnuts_ref_lists,
 	//add_tx_to_ahnuts_db: add_tx_to_ahnuts_db,
 	test: test
 };

@@ -23,7 +23,7 @@ var maintenance 	= require('./cne/maintenance.js');
 //var txFns			= require('./cne/ahnuts_transactions_fn.js');
 
 
-maintenance.transactions.sync.ahNuts_to_Square('single', { entity_id: 'PzGUikmYpROMkDuGal6XLQB', event_type: 'PAYMENT_UPDATED', merchant_id: 'FCGJQY3GC9BNW', location_id: 'M53KQT35YKE5C' }).then(function success(s) {
+maintenance.transactions.sync.ahNuts_to_Square('single', { entity_id: 'fv8sLywLW3wUivCKUcPAKQB', event_type: 'PAYMENT_UPDATED', merchant_id: 'FCGJQY3GC9BNW', location_id: 'M53KQT35YKE5C' }).then(function success(s) {
 		
 	//return an affirmative status code
 	console.log(s)
