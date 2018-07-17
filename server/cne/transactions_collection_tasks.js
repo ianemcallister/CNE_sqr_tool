@@ -21,6 +21,15 @@ var tasks = {
 		txs: {
 			batch: batch_download_txs,
 			single: download_single_tx
+		},
+		sales_day: {
+			batch: "",
+			single: download_single_sales_day
+		}
+	},
+	read: {
+		txs: {
+			single: read_single_tx
 		}
 	},
 	save: {
@@ -136,9 +145,57 @@ function download_single_tx(tx_id, location_id) {
 	//return Async Work
 	return new Promise(function(resolve, reject) {
 		
-		
 		//download tx from square
 		squareV1.payments.retrieve(tx_id, location_id).then(function success(tx) {
+			resolve(tx);
+		}).catch(function error(e) {
+			reject('error', e);
+		});
+
+	}); 
+
+};
+
+/*
+*	DOWNLOAD SINGLE TRANSACTION
+*
+*	This is used to..
+*/
+function download_single_sales_day(sales_day_id) { 
+	//define local variables
+	var readPath = "sales_days/" + sales_day_id;
+
+	//notify progress
+	//console.log('tx_id', tx_id, 'location_id', location_id);
+	
+	//return Async Work
+	return new Promise(function(resolve, reject) {
+		
+		//download tx from square
+		firebase.read(readPath).then(function success(sales_day) {
+			resolve(sales_day);
+		}).catch(function error(e) {
+			reject('error', e);
+		});
+
+	}); 
+
+};
+
+/*
+*	READ SINGLE TRANSACTION
+*
+*	This is used to read a single transaction from the ah-nuts database
+*/
+function read_single_tx(tx_id) { 
+	//define local variables
+	var readPath = "transactions/" + tx_id;
+	
+	//return Async Work
+	return new Promise(function(resolve, reject) {
+		
+		//download tx from square
+		firebase.read(readPath).then(function success(tx) {
 			resolve(tx);
 		}).catch(function error(e) {
 			reject('error', e);
@@ -220,6 +277,9 @@ function update_sales_day_field(sales_day_id, fieldsArray) {
 	//start by handling tranactions only
 	var readPath = 'sales_days/' + sales_day_id + "/transactions";
 	
+	//TODO: ADD DEVICE NAMES IF NOT ALREADY ADDED
+	//TODO: ADD TEAM MEMBERS IF NOT ALREADY ADDED
+
 	//return async work
 	return new Promise(function(resolve, reject) {
 		
@@ -231,6 +291,8 @@ function update_sales_day_field(sales_day_id, fieldsArray) {
 			firebase.read(readPath).then(function success(allSalesdayTx) {
 				var writePath = 'sales_days/' + sales_day_id + "/transactions";
 				var flaggedTx = false;
+
+				//console.log('got these salesday tx', allSalesdayTx);
 
 				//iterate through the responses
 				Object.keys(allSalesdayTx).forEach(function(key) {
@@ -266,12 +328,73 @@ function update_sales_day_field(sales_day_id, fieldsArray) {
 *
 *	This is used to...
 */
-function update_sales_calculations(sales_day_id) { 
+function update_sales_calculations(sales_day_id, location_id) { 
 	//define local variables
+	var txPromises = [];
 
 	//return async work
 	return new Promise(function(resolve, reject) {
-		resolve('update_sales_calculations');
+		
+		//1. Downlaod the sales_day object
+		download_single_sales_day(sales_day_id).then(function success(salesDayObject) {
+
+			//2. Download all the tx in the sales day
+			//Start by iterating through all transactions
+			Object.keys(salesDayObject.transactions).forEach(function(key) {
+				//define local variables
+				
+				//only select actual transactions
+				if(salesDayObject.transactions[key] != "placeholder") {
+
+					//add the transactions to the array
+					txPromises.push(read_single_tx(salesDayObject.transactions[key]));
+				}
+				
+			});
+
+			//Wait for all promises to resolve
+			//3. run all calculations
+			Promise.all(txPromises).then(function success(allTx) {
+				//define local variables
+				var updateObject = {
+					"financial_summary/discounts": data.calculate.financial.sums(allTx, "discounts"),
+					"financial_summary/gross_sales": data.calculate.financial.sums(allTx, "gross_sales"),
+					"financial_summary/net_gross_sales": data.calculate.financial.sums(allTx, "net_gross_sales"),
+					"financial_summary/no_of_tx": data.calculate.financial.sums(allTx, "no_of_tx"),
+					"financial_summary/refunds": data.calculate.financial.sums(allTx, "refunds"),
+					"financial_summary/tips": data.calculate.financial.sums(allTx, "tips"),
+					mfg_summary: {
+						//TODO: ADD MFG CALCULATIONS LATER
+						0: "placeholder"
+					},
+					product_sales_summary: {
+						//TODO: ADD PRODUCT SALES CALCULATIONS LATER
+						0: "placeholder"
+					},
+					raw_resources: {
+						//TODO: ADD RAW RESOURCES CALCULATIONS LATER
+						0: "placeholder"
+					}
+				};
+				var writePath = "sales_days/" + sales_day_id;
+
+				//4. Update the sales_day in the db
+				firebase.update(writePath, updateObject).then(function success(sss) {
+					resolve(sss);
+				}).catch(function error(eee) {
+					reject(eee);
+				});
+
+			}).catch(function error(ee) {
+				reject(ee);
+			});
+
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+
+		//resolve('update_sales_calculations');
 	}); 
 
 };

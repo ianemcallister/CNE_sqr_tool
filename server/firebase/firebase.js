@@ -69,6 +69,8 @@ function create(path, data) {
 */
 function read(path) {
   
+	console.log('reading path', path);
+	
 	//define local variable
 	var ref = admin.database().ref(path);
 

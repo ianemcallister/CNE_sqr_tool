@@ -133,6 +133,9 @@ function sync_single_tx(tx_id, location_id) {
 				var customer_id = s[1].ref.customer;
 				var finishingPromises = [];
 
+				//console.log('sales_day_id', sales_day_id);
+				//console.log('customer_id', customer_id);
+
 				//salesdayCheckPromise may come back with data
 				//if the reference list had the record, update the appropriate models
 				if(s[1].status == 'FOUND') {
@@ -143,7 +146,7 @@ function sync_single_tx(tx_id, location_id) {
 					finishingPromises.push(tasks.update.txs.fields(tx_id, [{field: "salesDay", data: sales_day_id}, {field: "customer", data: customer_id}]));
 
 					//A.7) Update sales day calculations - Async
-					finishingPromises.push(tasks.update.sales_day.calculations());
+					finishingPromises.push(tasks.update.sales_day.calculations(sales_day_id, location_id));
 
 				} else if(s[1].status = 'NOT_FOUND') {
 					//if the records can't be found

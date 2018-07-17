@@ -11,6 +11,14 @@ var moment 			= require('moment-timezone');
 
 //define module
 var data_formatting = {
+	calculate: {
+		financial: {
+			sums: calculate_financial_sums
+		},
+		mfg: {
+			sums: calculate_mfg_sums
+		}
+	},
 	map: {
 		sq_tx_to_ahNuts_tx: map_sq_tx_to_ahNuts_tx,
 		sq_tx_itmz_to_ahNuts: map_sqr_tx_itemizations_to_ahnts_tx_itemizations,
@@ -23,6 +31,46 @@ var data_formatting = {
 		tx_device_id: parse_tx_device_id
 	},
 	test: test
+};
+
+/*
+*	CALCULATE FINANCIAL SUMS
+*
+*	This function accepts an array of transactions and field that needs to be summed
+*/
+function calculate_financial_sums(allTx, field) {
+	//define local variables
+	var localSum = 0;
+	var fieldKey = {"discounts": "discount_money", "gross_sales":"gross_sales_money", "net_gross_sales":"net_sales_money", "no_of_tx":"", "refunds":"refunded_money", "tips": "tip_money" };
+	
+	//iterate through transactions
+	allTx.forEach(function(tx) {
+
+		//select time of sum
+		if(field=="no_of_tx") {
+			localSum++;
+		} else {
+			localSum += parseInt(tx[fieldKey[field]])
+		}
+
+	});
+
+
+	return localSum;
+};
+
+/*
+*	CALCULATE MANUFACTURING SUMS
+*
+*	This function accepts an array of transactions and field that needs to be summed
+*/
+function calculate_mfg_sums(allTx, field) {
+	//define local variables
+	var localSum = 1;
+
+
+
+	return localSum;
 };
 
 /*
