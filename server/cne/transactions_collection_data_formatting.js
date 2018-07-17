@@ -13,7 +13,8 @@ var moment 			= require('moment-timezone');
 var data_formatting = {
 	calculate: {
 		financial: {
-			sums: calculate_financial_sums
+			sums: calculate_financial_sums,
+			tx_types: calculate_tx_types
 		},
 		mfg: {
 			sums: calculate_mfg_sums
@@ -43,13 +44,16 @@ function calculate_financial_sums(allTx, field) {
 	var localSum = 0;
 	var fieldKey = {"discounts": "discount_money", "gross_sales":"gross_sales_money", "net_gross_sales":"net_sales_money", "no_of_tx":"", "refunds":"refunded_money", "tips": "tip_money" };
 	
+	//notify progress
+	console.log("allTx.length", allTx.length)
+
 	//iterate through transactions
 	allTx.forEach(function(tx) {
 
 		//select time of sum
 		if(field=="no_of_tx") {
 			localSum++;
-		} else {
+		} else if(tx != null) {
 			localSum += parseInt(tx[fieldKey[field]])
 		}
 
@@ -57,6 +61,41 @@ function calculate_financial_sums(allTx, field) {
 
 
 	return localSum;
+};
+
+/*
+*	CALCULATE TRANSACTION TYPES
+*
+*	This function accepts an array of transactions and and returns and object
+*/
+function calculate_tx_types(allTx) {
+	//define local variables
+	var returnObject = {
+		cash: 0,
+		credit: 0,
+		other: 0,
+		tokens: 0
+	};
+	var typeKey = {"CASH": "cash", "CREDIT_CARD":"credit", "OTHER": "other", "NO_SALE":"cash" };
+
+	//iterate through transactions
+	allTx.forEach(function(tx) {
+
+		if(tx != null) {	
+
+			//then iterate trough the tender
+			Object.keys(tx.tender).forEach(function(key) {
+				console.log("tx.tender[key].type", tx.tender[key].type);
+
+				returnObject[typeKey[tx.tender[key].type]] += parseInt(tx.tender[key].total_money);
+			});
+
+		}
+
+	});
+
+	//return object
+	return returnObject
 };
 
 /*

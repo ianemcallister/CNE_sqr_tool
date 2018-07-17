@@ -11,6 +11,6 @@ var helper 		= require('./helpers/cli_helpers.js');
 //read through all transactions
 
 //testing single tx id
-//helper.tests.single_tx_sync('grMRi9ErLpdGCrwyOS8DSvMF', 'M53KQT35YKE5C');
+helper.tests.single_tx_sync('H5bAUefTNYkt60lNHbrnKQB', 'M53KQT35YKE5C');
 
-
+//helper.ops.allTx();

@@ -363,6 +363,7 @@ function update_sales_calculations(sales_day_id, location_id) {
 					"financial_summary/no_of_tx": data.calculate.financial.sums(allTx, "no_of_tx"),
 					"financial_summary/refunds": data.calculate.financial.sums(allTx, "refunds"),
 					"financial_summary/tips": data.calculate.financial.sums(allTx, "tips"),
+					"financial_summary/pay_method_breakdown": data.calculate.financial.tx_types(allTx),
 					mfg_summary: {
 						//TODO: ADD MFG CALCULATIONS LATER
 						0: "placeholder"

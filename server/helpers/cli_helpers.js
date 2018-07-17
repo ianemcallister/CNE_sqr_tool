@@ -10,12 +10,12 @@
 //var mysql 			= require('./mysql/mysql_api.js');
 //var square 			= require('./square/sqr_api.js');
 //var templatizer 	= require('./template_engine/templateizer.js');
-//var stdio			= require('./stdio/stdio_api.js');
+var stdio			= require('../stdio/stdio_api.js');
 //var sqrdata			= require('./square/sqr_data_api.js');
 //var locations_mysql = require('./mysql/query_builder.js');
 //var squareV1		= require('./square/v1_api.js');
 //var ahnutsSqSync	= require('./square/ahnuts_sqr_tx_sync.js');
-//var firebase		= require('./firebase/firebase.js');
+var firebase		= require('../firebase/firebase.js');
 //var customerFns		= require('./cne/ahnuts_customers_fn.js'); 
 //var salsesdaysFns	= require('./cne/ahnuts_sales_days_fn.js'); 
 //var CNE				= require('./cne/cme_maintenance.js'); 
@@ -25,6 +25,9 @@ var maintenance 	= require('../cne/maintenance.js');
 
 //define local variables
 var cli_helper = {
+	ops: {
+		allTx: all_db_tx_read
+	},
 	tests: {
 		single_tx_sync: test_single_tx_sync,
 		general: test
@@ -47,6 +50,51 @@ function test_single_tx_sync(entity_id, location_id) {
 	});
 
 };
+
+//	ALL DATABSE TRANSCATIONS READ
+/*
+*	This function reads all the transactions from the database
+*/
+function all_db_tx_read() {
+	//define local variables
+	var totalKeys = 0;
+	var salesDays = {};
+	var readPath = "transactions";
+
+	//read databse
+	firebase.read(readPath).then(function success(allTx) {
+		
+		//iterate through all transactions
+		Object.keys(allTx).forEach(function(key) {
+
+			//split the date
+			var dateSplit = allTx[key].created_at.split("T");
+			var theDate = dateSplit[0];
+			var employee_id = allTx[key].employee_id;
+
+			console.log(key, theDate, employee_id);
+
+			//check for date currently active
+			if(salesDays[theDate] == undefined) salesDays[theDate] = {};
+
+			//add employees
+			if(salesDays[theDate][employee_id] == undefined) salesDays[theDate][employee_id] = { tx: 0 };
+
+			//incriment the counter
+			//salesDays[theDate][employee_id].tx = parseInt(salesDays[theDate][employee_id].tx)++
+
+			totalKeys++;
+		});
+
+		console.log("totalKeys:", totalKeys);
+		console.log('salesDays', salesDays);
+		stdio.write.json(salesDays, "salesDays_by_device.json");
+
+	}).catch(function error(e) {
+
+	});
+}
+	
 
 
 
