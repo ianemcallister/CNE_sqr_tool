@@ -11,6 +11,7 @@ var moment 			= require('moment-timezone');
 
 //define module
 var ahsdfn = {
+	build: build_sales_day_object,
 	compile: {
 		new_sales_days_batch: compile_new_sales_days_batch
 	},

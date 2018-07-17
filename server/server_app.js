@@ -12,7 +12,7 @@ var bodyParser 	= require('body-parser');
 
 //update this later but goo dfor now
 var sqrtxs 		= require('./square/ahnuts_sqr_tx_sync.js');
-var slsdayfns	= require('./cne/ahnuts_sales_days_fn.js');
+//var slsdayfns	= require('./cne/ahnuts_sales_days_fn.js');
 var CNE 		= require('./cne/maintenance.js');
 
 //return the express object
