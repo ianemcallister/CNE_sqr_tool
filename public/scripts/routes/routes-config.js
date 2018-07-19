@@ -35,6 +35,11 @@ function config($routeProvider, $locationProvider) {
         controller: 'aSalesdayController',           //'mainController'
         controllerAs: 'vm'
     })
+    .when('/cash_drawer_assignments', {
+        templateUrl: 'views/cashDrawerAssignmentsPage.htm',      //'views/mainPage.htm'
+        controller: 'cashDrawerAssignmentsController',           //'mainController'
+        controllerAs: 'vm'
+    })    
     .when('/login', {
         templateUrl: 'views/loginPage.htm',      //'views/mainPage.htm'
         controller: 'loginController',           //'mainController'

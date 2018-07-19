@@ -1,0 +1,36 @@
+<div>
+	<div class="container">
+	<h2>Cash Drawer Assignments</h2>
+
+	Square Location: <input list='sqrLctnsList' 
+							name='sqrLctnsList'
+							class="">
+	<datalist name="sqrLctnsList" id="sqrLctnsList">
+		<option ng-repeat="location in vm.sqrLocations track by $index"
+				style='font-size: 12pt'
+				ng-click=''>
+				{{location.name}}
+		</option>
+
+	</datalist>
+
+	<table class='table'>
+		<tr>
+			<th>Start</th>
+			<th>End</th>
+			<th>Name</th>
+			<th>Employees</th>
+			<th>Expected In Drawer</th>
+			<th>CME</th>
+		</tr>
+		<tr ng-repeat='drawer in vm.cashDrawerList track by $index'>
+			<td></td>
+			<td></td>
+			<td>{{drawer.name}}</td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	</div>
+</div>

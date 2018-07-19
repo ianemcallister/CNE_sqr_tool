@@ -1,40 +1,200 @@
 <div>
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		This is a sales day page <br>
+		
+		<!--Sales Day Name, Date, Customer, and CME ID-->
+		<h2>{{vm.currentCME.cme_name}}</h2>
+		<h5>{{vm.currentCME.date | date: "medium"}}</h5>
 		<strong>Customer:</strong>{{vm.currentCME.customer_name}} <br>
 		<strong>CME_Id:</strong>{{vm.currentCME.$id}} <br>
-		<h4>{{vm.currentCME.cme_name}}</h4>
-		<h5>{{vm.currentCME.date | date: "medium"}}</h5>
-
-		<h4>Financial summary</h4>
-		<ul>
-			<li>Gross Sales: {{vm.currentCME.financial_summary.gross_sales / 100 | currency: "$" : 2}}</li>
-			<li>Refunds: {{vm.currentCME.financial_summary.refunds / 100 | currency: "$" : 2}}</li>
-			<li>Net Gross Sales: {{vm.currentCME.financial_summary.net_gross_sales / 100 | currency: "$" : 2}}</li>
-			<li>Discounts: {{vm.currentCME.financial_summary.discounts / 100 | currency: "$" : 2}}</li>
-			<li>Net Sales:</li>
-			<li>Tips:  {{vm.currentCME.financial_summary.tips / 100 | currency: "$" : 2}}</li>
-			<li>Commissions: {{vm.currentCME.financial_summary.commissions_total / 100 | currency: "$" : 2}}</li>
-			<li>Cash Payments: {{vm.currentCME.financial_summary.pay_method_breakdown.cash / 100 | currency: "$" : 2}}</li>
-			<li>CC Payments: {{vm.currentCME.financial_summary.pay_method_breakdown.credit / 100 | currency: "$" : 2}}</li>
-			<li>Other Payments: {{vm.currentCME.financial_summary.pay_method_breakdown.other / 100 | currency: "$" : 2}}</li>
-			<li>CC Fees: {{vm.currentCME.financial_summary.processing_fees / 100 | currency: "$" : 2}}</li>
-			<li>Sales Hours: {{vm.currentCME.hrs.sales_total}}</li>
-			<li>Net Sales / hr:</li>
-			<li>Total Tx: </li>
-			<li>Cooking Tx:</li>
-			<li>Sales Tx:</li>
-			<li>Data Tx:</li>
-		</ul>
-		<br>
-	</div>
-	<!--Transactions-->
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<strong>Season:</strong>{{vm.currentCME.season_id}} <br>
 		
-		<sales-day-txs txs-list='vm.testList' salesday-selected='vm.salesdaySelected'>
-		</sales-day-txs>
-		<!--{{vm.currentCME}}-->
+		<!--Timing Blocks-->
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			<!--Schedule-->
+			<h4>Schedule</h4>
+			<ul>
+				<li>Load In:</li>
+				<li>Open:</li>
+				<li>Sales Start:</li>
+				<li>Sales End:</li>
+				<li>Close:</li>
+				<li>Load Out:</li>
+			</ul>			
+		</div>
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			<!--Shifts-->
+			<h4>Shifts</h4>
+
+		</div>
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			<!--Shifts-->
+			<h4>Pay Time</h4>
+			<ul>
+				<li>Sales Hours: {{vm.currentCME.hrs.sales_total}}</li>
+				<li>Regular Hours:</li>
+				<li>OT Hours:</li>
+				<li>Total Labor:</li>
+			</ul>
+		</div>
+
+		<!--Sales Device & Employees-->
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<!--Shifts-->
+			<h4>Devices Used</h4>
+
+		</div>	
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<!--Shifts-->
+			<h4>Employees Logged</h4>
+
+		</div>	
+
+		<!--Manufacturing Summary-->
+		<!--Product Sales Summary-->
+		<!--Raw Resources Summary-->
+		<!--Budget Summary-->
+
+
+		<!--Financial Summary & Transactions-->
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<h4>Financial summary</h4>
+			<!--Totals: Gross Sales, Refunds, -->
+			<table>
+				<tr>
+					<th></th>
+					<th>Gross</th>
+					<th>Discounts</th>
+					<th>Net</th>
+				</tr>
+				<tr>
+					<td>Sales</td>
+					<td>{{vm.currentCME.financial_summary.gross_sales / 100 | currency: "$" : 2}}</td>
+					<td>{{vm.currentCME.financial_summary.discounts / 100 | currency: "$" : 2}}</td>
+					<td>{{vm.currentCME.financial_summary.net_gross_sales / 100 | currency: "$" : 2}}</td>
+				</tr>
+				<tr>
+					<td>Refunds</td>
+					<td>{{vm.currentCME.financial_summary.refunds / 100 | currency: "$" : 2}}</td>
+					<td>-</td>
+					<td>{{vm.currentCME.financial_summary.refunds / 100 | currency: "$" : 2}}</td>
+				</tr>
+				<tr>
+					<td>Net Sale</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+
+			<!--Tips-->
+			<h4>Tips</h4>
+			<table>
+				<tr>
+					<th></th>
+					<th>Value</th>
+					<th># of</th>
+					<th>Split</th>
+					<th>Portion</th>
+				</tr>
+				<tr>
+					<td>Tips</td>
+					<td>{{vm.currentCME.financial_summary.tips / 100 | currency: "$" : 2}}</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+
+			<!--Commissions-->
+			<h4>Commissions</h4>
+			<table>
+				<tr>
+					<th></th>
+					<th>Value</th>
+					<th># of</th>
+					<th>Split</th>
+					<th>Portion</th>
+				</tr>
+				<tr>
+					<td>Commissions</td>
+					<td>{{vm.currentCME.financial_summary.commissions_total / 100 | currency: "$" : 2}}</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+
+			<!--Payments-->
+			<h4>Payment Methods</h4>
+			<ul>
+				<li>Cash: {{vm.currentCME.financial_summary.pay_method_breakdown.cash / 100 | currency: "$" : 2}}</li>
+				<li>Credit: {{vm.currentCME.financial_summary.pay_method_breakdown.credit / 100 | currency: "$" : 2}}</li>
+				<li>Tokens</li>
+				<li>Other: {{vm.currentCME.financial_summary.pay_method_breakdown.other / 100 | currency: "$" : 2}}</li>
+			</ul>
+
+			<!--Fees-->
+			<h4>Expenses</h4>
+			<ul>
+				<li>CC Fees: {{vm.currentCME.financial_summary.processing_fees / 100 | currency: "$" : 2}}</li>
+				<li>Rent: </li>
+				<li>Power: </li>
+				<li>Parking: </li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+
+			<!--Cash Drawer-->
+			<h4>Cash Drawers</h4>
+			<ul>
+				<li>Cash Sales:</li>
+				<li>Cash Refunds:</li>
+				<li>Paid In/Out:</li>
+				<li>Expected in Drawer:</li>
+				<li>Actual in Drawer:</li>
+				<li>Difference:</li>
+			</ul><br>
+			<strong>Paid In/Out</strong>
+			<table>
+				<tr>
+					<th>Time</th>
+					<th>Note</th>
+					<th>By</th>
+					<th>Amount</th>
+					<th>Rent</th>
+					<th>Tokens</th>
+					<th>Bank</th>
+					<th>Power</th>
+					<th>Parking</th>
+					<th>Misc</th>
+				</tr>
+				<tr>
+					
+				</tr>
+			</table>
+			<strong>Total paid in/out</strong>
+			
+			<!--Deposits-->
+			<h4>Expected Deposits</h4>
+			<table>
+				<tr>
+					<th>Date</th>
+					<th>Amount</th>
+					<th>To</th>
+					<th>Paid</th>
+					<th>Balance</th>
+				</tr>
+			</table>
+
+			<!--Transactions-->
+			<sales-day-txs txs-list='vm.testList' salesday-selected='vm.salesdaySelected'>
+			</sales-day-txs>
+			<!--{{vm.currentCME}}-->
+
+		</div>
 	</div>
+
 
 	
 </div>

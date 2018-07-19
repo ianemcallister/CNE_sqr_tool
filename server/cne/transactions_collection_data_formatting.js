@@ -45,7 +45,7 @@ function calculate_financial_sums(allTx, field) {
 	var fieldKey = {"discounts": "discount_money", "gross_sales":"gross_sales_money", "net_gross_sales":"net_sales_money", "no_of_tx":"", "refunds":"refunded_money", "tips": "tip_money" };
 	
 	//notify progress
-	console.log("allTx.length", allTx.length)
+	//console.log("allTx.length", allTx.length)
 
 	//iterate through transactions
 	allTx.forEach(function(tx) {
@@ -85,7 +85,7 @@ function calculate_tx_types(allTx) {
 
 			//then iterate trough the tender
 			Object.keys(tx.tender).forEach(function(key) {
-				console.log("tx.tender[key].type", tx.tender[key].type);
+				//console.log("tx.tender[key].type", tx.tender[key].type);
 
 				returnObject[typeKey[tx.tender[key].type]] += parseInt(tx.tender[key].total_money);
 			});

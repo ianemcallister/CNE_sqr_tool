@@ -28,10 +28,43 @@ var cli_helper = {
 	ops: {
 		allTx: all_db_tx_read
 	},
+	firebase: {
+		create: create_firebase_record,
+		push: push_firebase_record
+	},
+	stdio: {
+		read: {
+			json: stdio_read_json
+		}
+	},
 	tests: {
 		single_tx_sync: test_single_tx_sync,
 		general: test
 	}
+};
+
+function stdio_read_json(filepath) {
+	return stdio.read.json(filepath);
+};
+
+function push_firebase_record(path, data) {
+	return new Promise(function(resolve, reject) {
+		firebase.push(path, data).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		})
+	});
+}
+
+//
+function create_firebase_record(path, data) {
+	//define local variables
+	firebase.create(path, data).then(function success(s) {
+		console.log('SUCCESS', s);
+	}).catch(function error(e) {
+		console.log('ERROR', e);
+	});
 };
 
 //	TEST SINGLE TX SYNC
@@ -104,6 +137,7 @@ function all_db_tx_read() {
 *	This is used to test the module
 */
 function test() { console.log('testing cli_helper module'); }
+
 
 
 //return the module
