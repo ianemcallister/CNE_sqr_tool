@@ -15,6 +15,7 @@ var tasks			= require('./transactions_collection_tasks.js');
 var transactions = {
 	download: {
 		batch_locations_dates: download_batch_locations_and_dates,
+		batch_txs: download_batch_txs,
 		single_tx: download_single_tx
 	},
 	filter: {
@@ -76,6 +77,23 @@ function download_batch_locations_and_dates() {
 
 	});
 
+};
+
+function download_batch_txs(location_id, start, end) {
+	//define local variables
+	console.log('got to download_batch_txs');
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//start by downloading the transaction
+		squareV1.payments.list(location_id, start, end).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
 };
 
 /*

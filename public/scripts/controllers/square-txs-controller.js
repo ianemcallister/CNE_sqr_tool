@@ -2,10 +2,10 @@ angular
     .module('cne')
     .controller('squareTxsController', squareTxsController);
 
-squareTxsController.$inject = ['$scope','$log', '$routeParams', '$firebase', '$firebaseObject', '$firebaseArray'];
+squareTxsController.$inject = ['$scope','$log', '$routeParams', '$firebase', '$firebaseObject', '$firebaseArray', 'dataService'];
 
 /* @ngInject */
-function squareTxsController($scope, $log, $routeParams, $firebase, $firebaseObject, $firebaseArray) {
+function squareTxsController($scope, $log, $routeParams, $firebase, $firebaseObject, $firebaseArray, dataService) {
 
 	//define view model variable
 	var vm = this;
@@ -13,15 +13,51 @@ function squareTxsController($scope, $log, $routeParams, $firebase, $firebaseObj
 	
 	//define viewmodel variables
 	//vm.highlightedDate = yesterday.format("MM-DD-YYYY");
-	vm.selectedLocation = "Oregon";
+	vm.selectedLocation = {
+		name:"Oregon",
+		id: ""
+	};
 	vm.selectedDate = new Date(yesterday.format("MM-DD-YYYY"));
 	vm.dayHrs = [1, 2, 3, 4, 5,6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 	vm.sqrLocations = $firebaseArray(firebase.database().ref().child('reference_lists/sqr_locations'));
-	
+	vm.daystransactions = [];
+
 	//notify progress
 	$log.info('in a square Txs controller', yesterday.format());	//TODO: TAKE THIS OUT LATER
 
 	//define local functions
+	function updateTxList() {
+		var endOfDay = moment(vm.selectedDate).hours(23).minutes(59).seconds(59).format();
+		var startOfDay = moment(vm.selectedDate).format();
+		dataService.sqr_txs.full_day(
+			vm.selectedLocation.id, 
+			startOfDay,
+			endOfDay
+		).then(function success(s) {
+			//console.log(s, 'got this back');
+			vm.daystransactions = s;
+		}).catch(function error(e) {
+			console.log('ERROR', e);
+		});
+	};
+
+	function defineLocation() {
+		//define local varaiables
+		
+		//make sure locations object is loaded
+		vm.sqrLocations.$loaded().then(function(allLocations) {
+				
+			//iterate through all locations
+			allLocations.forEach(function(location) {
+				
+				if(location.name == vm.selectedLocation.name) vm.selectedLocation.id = location.sqr_id;
+			});
+
+			//then run the data service
+			updateTxList();
+		});
+
+	};
 
 	//define view model functions
 	vm.dayChange = function(direction) {
@@ -42,8 +78,10 @@ function squareTxsController($scope, $log, $routeParams, $firebase, $firebaseObj
 
 		vm.selectedDate = new Date(currentDate.format("MM-DD-YYYY"));
 
+		updateTxList();
 	}
+
 	//run the test
-
-
+	
+	defineLocation();
 }

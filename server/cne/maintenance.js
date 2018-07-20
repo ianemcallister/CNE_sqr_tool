@@ -12,7 +12,10 @@ var transactions		= require('./transactions_collection.js');
 
 //define local variables
 var maintenace = {
-	transactions: {
+	txs: {
+		download: {
+			from_square: download_tx_from_square
+		},
 		sync: {
 			ahNuts_to_Square: tx_sync_cne_db_to_sqr_db
 		}
@@ -24,6 +27,25 @@ var maintenace = {
 	ref_lists: {},
 	reports: {},
 	test: test
+};
+
+// 	DOWNLOAD TRANSACTIONS FROM SQUARE
+function download_tx_from_square(location_id, start, end) {
+	//define local variables
+	//console.log('got to download_tx_from_square');
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//start by downloading the transaction
+		transactions.download.batch_txs(location_id, start, end).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
 };
 
 /*

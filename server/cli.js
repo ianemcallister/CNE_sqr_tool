@@ -8,3 +8,4 @@
 var helper 		= require('./helpers/cli_helpers.js');
 
 
+helper.tests.cne_sqr_tx_download();

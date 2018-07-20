@@ -57,12 +57,6 @@ serverApp.get('/', function(req, res) {
 	res.sendStatus(200);
 });
 
-//	GET: ROOT 
-serverApp.get('/squarepos', function(req, res) {
-	//return an affirmative status code
-	res.sendStatus(200);
-});
-
 //	GET: /API/
 serverApp.get('/api/sync/transactions', function(req, res) {
 	
@@ -103,6 +97,23 @@ serverApp.post('/sqrwebhook', function(req, res) {
 		
 	});
 
+});
+
+
+//	POST: SQUARE TRANSACTIONS 
+serverApp.post('/squarepos/txs', function(req, res) {
+	//return an affirmative status code
+	CNE.txs.download.from_square(req.body.location, req.body.start, req.body.end).then(function success(s) {
+
+		console.log(JSON.stringify(s), 'got a response');
+		res.setHeader('Content-Type', 'application/json');
+    	res.status(200);
+    	res.send(JSON.stringify(s));
+
+	}).catch(function error(e) {
+		res.sendStatus(550);
+	});
+	
 });
 
 //	BATCH REQUEST FOR NEW SALES DAYS

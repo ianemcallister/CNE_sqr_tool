@@ -7,7 +7,7 @@
 		Square Location: <input list='sqrLctnsList' 
 						name='sqrLctnsList'
 						class=""
-						ng-model='vm.selectedLocation'
+						ng-model='vm.selectedLocation.name'
 						ng-blur=''>
 		<datalist name="sqrLctnsList" id="sqrLctnsList">
 			<option ng-repeat="location in vm.sqrLocations track by $index"
@@ -47,4 +47,5 @@
 			</tr>
 		</table>
 	</div>
+	{{vm.daystransactions}}
 </div>
