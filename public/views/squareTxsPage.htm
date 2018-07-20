@@ -7,7 +7,7 @@
 		Square Location: <input list='sqrLctnsList' 
 						name='sqrLctnsList'
 						class=""
-						ng-model='vm.selected.location'
+						ng-model='vm.selectedLocation'
 						ng-blur=''>
 		<datalist name="sqrLctnsList" id="sqrLctnsList">
 			<option ng-repeat="location in vm.sqrLocations track by $index"
@@ -17,7 +17,34 @@
 			</option>
 
 		</datalist>
-	
+		
+		<br>
+		<button class="btn btn-success" ng-click='vm.dayChange("-")'>-</button>
+		<input type="date" ng-model="vm.selectedDate">
+		<button class="btn btn-success" ng-click='vm.dayChange("+")'>+</button>
+		<br>
+		
+		<h4>{{vm.selectedDate | date: "fullDate"}}</h4>
 		<!--Transactions by Device Table-->
+		<table class="table">
+			<tr>
+				<th>Device</th>
+				<th>Emplyoyee</th>
+				<th>CME</th>
+				<th></th>
+				<th>Total</th>
+				<th>Txs</th>
+				<th ng-repeat="hr in vm.dayHrs track by $index"> {{hr}}</th>
+			</tr>
+			<tr>
+				<td>Kit02-Oregon</td>
+				<td>Kiley Tyler</td>
+				<td><input type="text"></td>
+				<td><button class="btn btn-success">Split</button></td>
+				<td>$345</td>
+				<td>32</td>
+
+			</tr>
+		</table>
 	</div>
 </div>
