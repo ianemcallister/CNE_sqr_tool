@@ -29,6 +29,10 @@ var squarev1 = {
 	_service: {
 		buffer_extract: buffer_extract
 	},
+	cash_drawers: {
+		list: cash_drawers_list,
+		retrieve: retrieve_cash_drawers
+	},
 	payments: {
 		list: payments_list,
 		retrieve: retrieve_payment
@@ -51,6 +55,64 @@ var squarev1 = {
 
 	}
 };
+
+//CASH DRAWERS LIST
+function cash_drawers_list(location, times) {
+	//define local variables
+	var self = this;
+	var thisUrl = _baseURL + 'v1/' + location + '/cash-drawer-shifts?';
+
+	//add times if necessary
+	if(times != undefined) {
+		thisUrl = thisUrl + "begin_time=" + times.start + "&end_time=" + times.end;
+	};
+
+	var options = {
+		method: 'GET',
+		headers: _headers
+	};
+
+	//return for async work
+	return new Promise(function(resolve, reject) {
+
+		console.log('fetching', thisUrl, options);
+
+		//fetch the details
+		fetch(thisUrl, options)
+		.then(function success(s) {
+
+			//upon success proceed
+			if(s.status == 200) {
+				
+				//retrieve buffer content
+				buffer_extract(s)
+				.then(function success(ss) {
+
+					//send the data back
+					resolve(ss);
+
+
+				}).catch(function error(ee) {
+
+				});
+
+			} else if(s.status == 401) {
+				console.log('Unauthorized');
+				reject('boo');
+			} else {
+				console.log('there was an error');
+				reject(s);
+			}
+
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
+};
+
+function retrieve_cash_drawers() {};
 
 //REQUIRED SERVICES
 function buffer_extract(buffer) {
@@ -480,7 +542,7 @@ function roles_list() {
 };
 
 //EMPLOYEES FUNCTIONS 
-function employees_list() {
+function employees_list(order, updatesTimes, createdTimes, status, externalId, limit) {
 	//define local variables
 	var self = this;
 	var thisUrl = _baseURL + 'v1/me/employees';

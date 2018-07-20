@@ -1,0 +1,23 @@
+<div>
+	<div class="container">
+		<!--Heading-->
+		<h2>Square Transactions Page</h2>
+	
+		<!--Location Input-->
+		Square Location: <input list='sqrLctnsList' 
+						name='sqrLctnsList'
+						class=""
+						ng-model='vm.selected.location'
+						ng-blur=''>
+		<datalist name="sqrLctnsList" id="sqrLctnsList">
+			<option ng-repeat="location in vm.sqrLocations track by $index"
+					style='font-size: 12pt'
+					ng-click=''>
+					{{location.name}}
+			</option>
+
+		</datalist>
+	
+		<!--Transactions by Device Table-->
+	</div>
+</div>

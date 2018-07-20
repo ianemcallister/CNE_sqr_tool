@@ -39,7 +39,12 @@ function config($routeProvider, $locationProvider) {
         templateUrl: 'views/cashDrawerAssignmentsPage.htm',      //'views/mainPage.htm'
         controller: 'cashDrawerAssignmentsController',           //'mainController'
         controllerAs: 'vm'
-    })    
+    })   
+    .when('/square_txs', {
+        templateUrl: 'views/squareTxsPage.htm',      //'views/mainPage.htm'
+        controller: 'squareTxsController',           //'mainController'
+        controllerAs: 'vm'
+    })  
     .when('/login', {
         templateUrl: 'views/loginPage.htm',      //'views/mainPage.htm'
         controller: 'loginController',           //'mainController'

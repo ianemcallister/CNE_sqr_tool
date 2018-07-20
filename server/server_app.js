@@ -57,6 +57,12 @@ serverApp.get('/', function(req, res) {
 	res.sendStatus(200);
 });
 
+//	GET: ROOT 
+serverApp.get('/squarepos', function(req, res) {
+	//return an affirmative status code
+	res.sendStatus(200);
+});
+
 //	GET: /API/
 serverApp.get('/api/sync/transactions', function(req, res) {
 	

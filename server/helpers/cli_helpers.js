@@ -13,7 +13,7 @@
 var stdio			= require('../stdio/stdio_api.js');
 //var sqrdata			= require('./square/sqr_data_api.js');
 //var locations_mysql = require('./mysql/query_builder.js');
-//var squareV1		= require('./square/v1_api.js');
+var squareV1		= require('../square/v1_api.js');
 //var ahnutsSqSync	= require('./square/ahnuts_sqr_tx_sync.js');
 var firebase		= require('../firebase/firebase.js');
 //var customerFns		= require('./cne/ahnuts_customers_fn.js'); 
@@ -30,17 +30,66 @@ var cli_helper = {
 	},
 	firebase: {
 		create: create_firebase_record,
-		push: push_firebase_record
+		push: push_firebase_record,
+		read: read_firebase_record
 	},
 	stdio: {
 		read: {
 			json: stdio_read_json
 		}
 	},
+	square: {
+		cash_drawers: {
+			list: cash_drawers_list
+		},
+		employees: {
+			list: sqr_employees_list
+		}
+	},
 	tests: {
 		single_tx_sync: test_single_tx_sync,
 		general: test
 	}
+};
+
+function read_firebase_record(path) {
+	return new Promise(function(resolve, reject) {
+		firebase.read(path).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		})
+	});
+};
+
+//cash_drawers_list
+function sqr_employees_list(order, updatesTimes, createdTimes, status, externalId, limit) {
+	//return async work
+	return new Promise(function(resolve, reject) {
+		//run function
+		squareV1.employees.list(order, updatesTimes, createdTimes, status, externalId, limit).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		})
+
+	});
+
+};
+
+//cash_drawers_list
+function cash_drawers_list(location, times) {
+	//return async work
+	return new Promise(function(resolve, reject) {
+		//run function
+		squareV1.cash_drawers.list(location, times).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		})
+
+	});
+
 };
 
 function stdio_read_json(filepath) {

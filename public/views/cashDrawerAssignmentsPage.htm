@@ -4,7 +4,8 @@
 
 	Square Location: <input list='sqrLctnsList' 
 							name='sqrLctnsList'
-							class="">
+							class=""
+							ng-model='vm.selected.location'>
 	<datalist name="sqrLctnsList" id="sqrLctnsList">
 		<option ng-repeat="location in vm.sqrLocations track by $index"
 				style='font-size: 12pt'
@@ -13,6 +14,9 @@
 		</option>
 
 	</datalist>
+	<br>
+	<!--Start Time: <input type="date" ng-model="vm.searchlist.times.start"> 
+	End Time: <input type="date" ng-model='vm.searchlist.times.end'> <br>-->
 
 	<table class='table'>
 		<tr>
@@ -26,11 +30,13 @@
 		<tr ng-repeat='drawer in vm.cashDrawerList track by $index'>
 			<td></td>
 			<td></td>
-			<td>{{drawer.name}}</td>
+			<td>{{drawer.test}}</td>
 			<td></td>
 			<td></td>
 			<td></td>
 		</tr>
 	</table>
 	</div>
+
+	{{vm.sqrEmployees}}
 </div>

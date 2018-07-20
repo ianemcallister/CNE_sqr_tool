@@ -19,9 +19,6 @@ function dataService($http) {
 	var dataService = {
 		sales_days: {
 			compile_batch: compile_new_sales_day_batch
-		},
-		square: {
-			
 		}
 	};
 
