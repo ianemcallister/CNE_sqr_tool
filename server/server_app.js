@@ -116,6 +116,38 @@ serverApp.post('/squarepos/txs', function(req, res) {
 	
 });
 
+//	POST: SQUARE EMPLOYEES 
+serverApp.post('/squarepos/employees', function(req, res) {
+	//return an affirmative status code
+	CNE.square.employees.list(req.body.status, req.body.external_id, req.body.limit, req.body.order, req.body.begin_updated_at, req.body.end_updated_at, req.body.begin_created_at, req.body.end_created_at).then(function success(s) {
+
+		//console.log(s, 'got a response');
+		res.setHeader('Content-Type', 'application/json');
+    	res.status(200);
+    	res.send(JSON.stringify(s));
+
+	}).catch(function error(e) {
+		res.sendStatus(550);
+	});
+	
+});
+
+//	POST: SQUARE EMPLOYEES 
+serverApp.post('/squarepos/locations', function(req, res) {
+	//return an affirmative status code
+	CNE.square.locations.list().then(function success(s) {
+
+		//console.log(s, 'got a response');
+		res.setHeader('Content-Type', 'application/json');
+    	res.status(200);
+    	res.send(JSON.stringify(s));
+
+	}).catch(function error(e) {
+		res.sendStatus(550);
+	});
+	
+});
+
 //	BATCH REQUEST FOR NEW SALES DAYS
 serverApp.post('/api/sales_days/compile_new_sales_days_batch', function(req, res) {
 	

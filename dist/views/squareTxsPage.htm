@@ -38,7 +38,7 @@
 			</tr>
 			<tr ng-repeat="device in vm.daystransactions track by $index">
 				<td>{{device.device_name}}</td>
-				<td>{{device.employee}}</td>
+				<td>{{vm.employeeName(device.employee)}}</td>
 				<td><input type="text"></td>
 				<td><button class="btn btn-success">Split</button></td>
 				<td>{{device.sales_total / 100 | currency: "$" : 2 }}</td>

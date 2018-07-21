@@ -17,6 +17,12 @@ function dataService($http) {
 
 	//define methods
 	var dataService = {
+		sqr_locations: {
+			list: sqr_locations_list
+		},
+		sqr_employees: {
+			list: sqr_employees_list
+		},
 		sqr_txs: {
 			full_day: sqr_txs_day
 		},
@@ -24,6 +30,69 @@ function dataService($http) {
 			compile_batch: compile_new_sales_day_batch
 		}
 	};
+
+	//
+	function sqr_locations_list() {
+		//define local variables
+		var postObject = {};
+
+		console.log('getting locations list');
+
+		return new Promise(function(resolve, reject) {
+			//try POST
+			$http({
+				method: 'POST',
+				url: '/squarepos/locations',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				data: postObject
+			}).then(function successCallback(response) {
+				
+				resolve(response.data);
+				
+			}, function errorCallback(error) {
+				reject(error);
+			});
+		});
+
+	};
+
+	//
+	function sqr_employees_list(status, external_id, limit, order, begin_updated_at, end_updated_at, begin_created_at, end_created_at) {
+		//define local variables
+		var postObject = {
+			status: status,
+			external_id: external_id,
+			limit: limit,
+			order: order,
+			begin_updated_at: begin_updated_at,
+			end_updated_at: end_updated_at,
+			begin_created_at: begin_created_at,
+			end_created_at: end_created_at
+		};
+
+		console.log('getting employees list');
+
+		return new Promise(function(resolve, reject) {
+			//try POST
+			$http({
+				method: 'POST',
+				url: '/squarepos/employees',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				data: postObject
+			}).then(function successCallback(response) {
+				
+				resolve(response.data);
+				
+			}, function errorCallback(error) {
+				reject(error);
+			});
+		});
+
+	}
 
 	//	TEST FUNCTION
 	function compile_new_sales_day_batch(params) {

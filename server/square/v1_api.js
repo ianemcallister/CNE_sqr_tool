@@ -551,6 +551,9 @@ function employees_list(order, updatesTimes, createdTimes, status, externalId, l
 		headers: _headers
 	};
 
+	//notify
+	console.log('squarev1: employees_list');
+
 	//return for async work
 	return new Promise(function(resolve, reject) {
 
@@ -561,6 +564,9 @@ function employees_list(order, updatesTimes, createdTimes, status, externalId, l
 		.then(function success(s) {
 
 			buffer_extract(s).then(function success(ss) {
+				
+				console.log(ss, 'got this');
+
 				resolve(ss);
 			});
 

@@ -30,7 +30,43 @@ var transactions = {
 		batch_txs: sync_batch_txs,
 		single_tx: sync_single_tx
 	},
+	square: {
+		employees: {
+			list: square_employees_list
+		},
+		locations: {
+			list: square_Locations_list
+		}
+	},
 	test: test
+};
+
+//
+function square_Locations_list() {
+	//console.log('transactions:square_employees_list');
+	//return async work
+	return new Promise(function(resolve, reject) {
+		squareV1.locations.list().then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+	});
+
+};
+
+//
+function square_employees_list(status, external_id, limit, order, begin_updated_at, end_updated_at, begin_created_at, end_created_at) {
+	//console.log('transactions:square_employees_list');
+	//return async work
+	return new Promise(function(resolve, reject) {
+		squareV1.employees.list(order, {begin:begin_updated_at, end:end_updated_at}, {begin:begin_created_at, end:end_created_at}, status, external_id, limit).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+	});
+
 };
 
 //

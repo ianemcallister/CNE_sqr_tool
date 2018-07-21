@@ -10,7 +10,8 @@ function squareTxsController($scope, $log, $routeParams, $firebase, $firebaseObj
 	//define view model variable
 	var vm = this;
 	var yesterday = moment(new Date()).subtract(1, "day");
-	
+	var sqrLocations = dataService.sqr_locations.list();//$firebaseArray(firebase.database().ref().child('reference_lists/sqr_locations'));
+	var sqrEmployees = dataService.sqr_employees.list();
 	//define viewmodel variables
 	//vm.highlightedDate = yesterday.format("MM-DD-YYYY");
 	vm.selectedLocation = {
@@ -19,7 +20,6 @@ function squareTxsController($scope, $log, $routeParams, $firebase, $firebaseObj
 	};
 	vm.selectedDate = new Date(yesterday.format("MM-DD-YYYY"));
 	vm.dayHrs = [1, 2, 3, 4, 5,6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-	vm.sqrLocations = $firebaseArray(firebase.database().ref().child('reference_lists/sqr_locations'));
 	vm.daystransactions = [];
 
 	//notify progress
@@ -46,17 +46,29 @@ function squareTxsController($scope, $log, $routeParams, $firebase, $firebaseObj
 	function defineLocation() {
 		//define local varaiables
 		
-		//make sure locations object is loaded
-		vm.sqrLocations.$loaded().then(function(allLocations) {
-				
+		Promise.all([sqrLocations, sqrEmployees]).then(function success(s) {
+
+			vm.sqrLocations = s[0];
+			vm.sqrEmployees = s[1];
+
+			console.log(vm.sqrLocations);
+			console.log(vm.sqrEmployees);
+
 			//iterate through all locations
-			allLocations.forEach(function(location) {
+			vm.sqrLocations.forEach(function(location) {
 				
-				if(location.name == vm.selectedLocation.name) vm.selectedLocation.id = location.sqr_id;
+				if(location.name == vm.selectedLocation.name) {
+					
+					vm.selectedLocation.id = location.id;
+				};
+
 			});
 
 			//then run the data service
 			updateTxList();
+
+		}).catch(function error(e) {
+			console.log('error', e);
 		});
 
 	};
@@ -83,26 +95,19 @@ function squareTxsController($scope, $log, $routeParams, $firebase, $firebaseObj
 		updateTxList();
 	}
 
-	vm.countTx = function(txArray) {
-		var newCount = new sum(txArray.length);
-		return newCount;
-	}
+	//
+	vm.employeeName = function(employee_id) {
+		//define local variables
+		var employee_name = "";
 
-	vm.sumTx = function(txArray) {
-		var counter = 0
-		var sum = 0;
+		Object.keys(vm.sqrEmployees).forEach(function(key) {
+			var newName = vm.sqrEmployees[key].first_name + " " + vm.sqrEmployees[key].last_name;
 
-		//iterate through all items
-		txArray.forEach(function(tx) {
-			console.log(counter, tx.gross_sales_money.amount);
-			sum += tx.gross_sales_money.amount
-			counter++;
-		})
+			if(vm.sqrEmployees[key].id == employee_id) employee_name = newName;
+		});
 
-		console.log('sum', sum);
-
-		return "";
-	}
+		return employee_name;
+	};
 
 	//run the test
 	

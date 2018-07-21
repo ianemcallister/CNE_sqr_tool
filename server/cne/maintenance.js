@@ -12,6 +12,14 @@ var transactions		= require('./transactions_collection.js');
 
 //define local variables
 var maintenace = {
+	square: {
+		employees: {
+			list: square_employees_list
+		},
+		locations: {
+			list: square_locations_list
+		}
+	},
 	txs: {
 		download: {
 			from_square: {
@@ -31,6 +39,42 @@ var maintenace = {
 	reports: {},
 	test: test
 };
+
+//
+function square_locations_list() {
+	//define local variables
+	//console.log('maintenance:square_employees_list');
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//start by downloading the transaction
+		transactions.square.locations.list().then(function success(s) {
+			//when the response comes back format it
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+};
+
+//
+function square_employees_list(status, external_id, limit, order, begin_updated_at, end_updated_at, begin_created_at, end_created_at) {
+	//define local variables
+	//console.log('maintenance:square_employees_list');
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//start by downloading the transaction
+		transactions.square.employees.list(status, external_id, limit, order, begin_updated_at, end_updated_at, begin_created_at, end_created_at).then(function success(s) {
+			//when the response comes back format it
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+}
 
 // 	DOWNLOAD TRANSACTIONS FROM SQUARE, FORMAT BY DEVICE
 function download_tx_from_square_by_device(location_id, start, end) {

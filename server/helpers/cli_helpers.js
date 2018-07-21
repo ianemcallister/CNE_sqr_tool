@@ -49,8 +49,27 @@ var cli_helper = {
 	tests: {
 		single_tx_sync: test_single_tx_sync,
 		general: test,
-		cne_sqr_tx_download: cne_sqr_tx_download
+		cne_sqr_tx_download: cne_sqr_tx_download,
+		cne_sqr_employees_download: cne_sqr_employees_download,
+		cne_sqr_locations_download: cne_sqr_locations_download
 	}
+};
+
+function cne_sqr_locations_download() {
+	maintenance.square.locations.list().then(function success(s) {
+		console.log('success', s);
+	}).catch(function error(e) {
+		console.log('ERROR', e);
+	});
+};
+
+
+function cne_sqr_employees_download(status, external_id, limit, order, begin_updated_at, end_updated_at, begin_created_at, end_created_at) {
+	maintenance.square.employees.list(status, external_id, limit, order, begin_updated_at, end_updated_at, begin_created_at, end_created_at).then(function success(s) {
+		console.log('success', s);
+	}).catch(function error(e) {
+		console.log('ERROR', e);
+	});
 };
 
 function read_firebase_record(path) {
