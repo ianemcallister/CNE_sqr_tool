@@ -63,23 +63,36 @@ function parse_sq_txs_to_by_device_list(txArray) {
 			device_id: deviceId,
 			device_name: deviceName,
 			employee: employeeId,
-			txs: hrBlocks
+			hrs: hrBlocks,
+			sales_total: 0,
+			no_txs: 0
 		};
 
-		deviceObject[arrayId].txs[txHr].push(tx)
+		deviceObject[arrayId].hrs[txHr].txs.push(tx)
 
 	});
 
 	//turn the object into an array
-	Object.keys(deviceObject).forEach(function(key) {
+	Object.keys(deviceObject).forEach(function(deviceKey) {
 
 		//iterate through the tx hrs
-		deviceArray.push(deviceObject[key]);
+		Object.keys(deviceObject[deviceKey].hrs).forEach(function(hrKey) {
+
+			//iterate through the transactions
+			deviceObject[deviceKey].hrs[hrKey].txs.forEach(function(tx) {
+				deviceObject[deviceKey].hrs[hrKey].sum += tx.gross_sales_money.amount;
+				deviceObject[deviceKey].sales_total += tx.gross_sales_money.amount;
+				deviceObject[deviceKey].hrs[hrKey].no_of++;
+				deviceObject[deviceKey].no_txs++;
+			});
+
+		});
+		//deviceArray.push(deviceObject[key]);
 	});
 
-	//console.log(deviceArray);
+	console.log(deviceObject);
 
-	return deviceArray;
+	return deviceObject;
 }
 
 /*

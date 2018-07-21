@@ -20,7 +20,7 @@
 		
 		<br>
 		<button class="btn btn-success" ng-click='vm.dayChange("-")'>-</button>
-		<input type="date" ng-model="vm.selectedDate">
+		<input type="date" ng-model="vm.selectedDate" ng-blur="vm.dayChange()">
 		<button class="btn btn-success" ng-click='vm.dayChange("+")'>+</button>
 		<br>
 		
@@ -41,10 +41,10 @@
 				<td>{{device.employee}}</td>
 				<td><input type="text"></td>
 				<td><button class="btn btn-success">Split</button></td>
-				<td>$345</td>
-				<td>32</td>
-				<td ng-repeat="hrblock in device.txs track by $index">
-					{{hrblock.length}}
+				<td>{{device.sales_total / 100 | currency: "$" : 2 }}</td>
+				<td>{{device.no_txs}}</td>
+				<td ng-repeat="hrblock in device.hrs track by $index">
+					{{hrblock.sum / 100 | currency: "$" : 2 }}
 					<!--{{vm.sumTx(hrblock) / 100 | currency: "$" : 2 }}-->
 				</td>
 			</tr>
