@@ -190,7 +190,7 @@ function test() { console.log('testing cli_helper module'); }
 
 
 function cne_sqr_tx_download() {
-	maintenance.txs.download.from_square("M53KQT35YKE5C", "2018-07-19T00:00:00-07:00", "2018-07-19T23:59:59-07:00").then(function success(s) {
+	maintenance.txs.download.from_square.by_device("M53KQT35YKE5C", "2018-07-19T00:00:00-07:00", "2018-07-19T23:59:59-07:00").then(function success(s) {
 		
 		console.log(s)
 

@@ -38,20 +38,21 @@ var data_formatting = {
 
 function parse_sq_txs_to_by_device_list(txArray) {
 	//define local variables
-	var hrBlocks = stdio.read.json('./templates/hrblocks.json');
 	var deviceArray = [];
 	var deviceObject = {};
 	var txsObject = {};
 
 	//console.log(hrBlocks);
 
-	//iterate through list
+	//iterate through list of transactions
 	txArray.forEach(function(tx) {
+		//define the local variables
 		var deviceId = parse_tx_device_id(tx.device.id);
 		var employeeId = tx.tender[0].employee_id;
 		var arrayId = deviceId + "_" + employeeId;
 		var deviceName = tx.device.name;
 		var txHr = moment(tx.created_at).hour();
+		var tx_id = tx.id;
 
 		//console.log(txHr);
 
@@ -63,34 +64,30 @@ function parse_sq_txs_to_by_device_list(txArray) {
 			device_id: deviceId,
 			device_name: deviceName,
 			employee: employeeId,
-			hrs: hrBlocks,
+			hrs: stdio.read.json('./templates/hrblocks.json'),
 			sales_total: 0,
-			no_txs: 0
+			no_txs: 0,
+			txs: []
 		};
 
-		deviceObject[arrayId].hrs[txHr].txs.push(tx)
+		//add the tx_id
+		deviceObject[arrayId].txs.push(tx_id);
+
+		//add to the device sales
+		deviceObject[arrayId].sales_total += (tx.gross_sales_money.amount - tx.discount_money.amount);
+
+		//incriment the number of transactions
+		deviceObject[arrayId].no_txs++;
+
+		//add to the hour number
+		deviceObject[arrayId].hrs[txHr].sum += (tx.gross_sales_money.amount - tx.discount_money.amount);
+
+		//add to the hour number of transactions
+		deviceObject[arrayId].hrs[txHr].no_of++;
 
 	});
 
-	//turn the object into an array
-	Object.keys(deviceObject).forEach(function(deviceKey) {
-
-		//iterate through the tx hrs
-		Object.keys(deviceObject[deviceKey].hrs).forEach(function(hrKey) {
-
-			//iterate through the transactions
-			deviceObject[deviceKey].hrs[hrKey].txs.forEach(function(tx) {
-				deviceObject[deviceKey].hrs[hrKey].sum += tx.gross_sales_money.amount;
-				deviceObject[deviceKey].sales_total += tx.gross_sales_money.amount;
-				deviceObject[deviceKey].hrs[hrKey].no_of++;
-				deviceObject[deviceKey].no_txs++;
-			});
-
-		});
-		//deviceArray.push(deviceObject[key]);
-	});
-
-	console.log(deviceObject);
+	//console.log(deviceObject);
 
 	return deviceObject;
 }
