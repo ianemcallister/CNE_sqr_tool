@@ -1,30 +1,35 @@
 <div>
-	<div class="">
+	<div class="container">
 		<!--Heading-->
 		<h2>Square Transactions Page</h2>
 	
 		<!--Location Input-->
-		Square Location: <input list='sqrLctnsList' 
-						name='sqrLctnsList'
-						class=""
-						ng-model='vm.selectedLocation.name'
-						ng-blur=''>
-		<datalist name="sqrLctnsList" id="sqrLctnsList">
-			<option ng-repeat="location in vm.sqrLocations track by $index"
-					style='font-size: 12pt'
-					ng-click=''>
-					{{location.name}}
-			</option>
+		Square Location: 
+		<input 	list='sqrLctnsList' 
+				name='sqrLctnsList'
+				class=""
+				ng-model='vm.selectedLocation.name'
+				ng-blur=''>
+		
+		<br>
+		<button class="btn btn-success" 
+				ng-click='vm.dayChange("-")'>
+				-
+		</button>
 
-		</datalist>
-		
+		<input 	type="date" 
+				ng-model="vm.selectedDate" 
+				ng-blur="vm.dayChange()">
+
+		<button class="btn btn-success" 
+				ng-click='vm.dayChange("+")'>
+				+
+		</button>
 		<br>
-		<button class="btn btn-success" ng-click='vm.dayChange("-")'>-</button>
-		<input type="date" ng-model="vm.selectedDate" ng-blur="vm.dayChange()">
-		<button class="btn btn-success" ng-click='vm.dayChange("+")'>+</button>
-		<br>
 		
+		<!--List the transaction Day-->
 		<h4>{{vm.selectedDate | date: "fullDate"}}</h4>
+
 		<!--Transactions by Device Table-->
 		<table class="table">
 			<tr>
@@ -50,5 +55,17 @@
 			</tr>
 		</table>
 	</div>
+	
+	{{vm.salesDays}}
+	
+	<!--DATA LISTS-->
+	<datalist name="sqrLctnsList" id="sqrLctnsList">
+		<option ng-repeat="location in vm.sqrLocations track by $index"
+				style='font-size: 12pt'
+				ng-click=''>
+				{{location.name}}
+		</option>
+
+	</datalist>
 
 </div>

@@ -12,6 +12,10 @@ function squareTxsController($scope, $log, $routeParams, $firebase, $firebaseObj
 	var yesterday = moment(new Date()).subtract(1, "day");
 	var sqrLocations = dataService.sqr_locations.list();//$firebaseArray(firebase.database().ref().child('reference_lists/sqr_locations'));
 	var sqrEmployees = dataService.sqr_employees.list();
+	var allSalesdays = $firebaseObject(firebase.database().ref().child('sales_days'));
+	vm.salesDays = "";
+	vm.filteredSalesDays = [];
+
 	//define viewmodel variables
 	//vm.highlightedDate = yesterday.format("MM-DD-YYYY");
 	vm.selectedLocation = {
@@ -26,6 +30,25 @@ function squareTxsController($scope, $log, $routeParams, $firebase, $firebaseObj
 	$log.info('in a square Txs controller', yesterday.format());	//TODO: TAKE THIS OUT LATER
 
 	//define local functions
+	function syncLists() {
+		updateTxList();
+		updateSaledaysList();
+	};
+
+	function updateSaledaysList() {
+		var year = vm.selectedDate.getFullYear();
+		var month = vm.selectedDate.getMonth() + 1;
+		var day = vm.selectedDate.getDate();
+
+		if(month < 10) month = "0" + month;
+		if(day < 10) day = "0" + day;
+
+		var date = year + "-" + month + "-" + day;
+		var dbPath = '/calender/' + year + "/" + date + "/sales_days";
+		vm.salesDays = $firebaseObject(firebase.database().ref().child(dbPath));
+		
+		//console.log(dbPath);
+	};
 	
 	function updateTxList() {
 		var endOfDay = moment(vm.selectedDate).hours(23).minutes(59).seconds(59).format();
@@ -65,7 +88,7 @@ function squareTxsController($scope, $log, $routeParams, $firebase, $firebaseObj
 			});
 
 			//then run the data service
-			updateTxList();
+			syncLists();
 
 		}).catch(function error(e) {
 			console.log('error', e);
@@ -92,7 +115,7 @@ function squareTxsController($scope, $log, $routeParams, $firebase, $firebaseObj
 
 		vm.selectedDate = new Date(currentDate.format("MM-DD-YYYY"));
 
-		updateTxList();
+		syncLists();
 	}
 
 	//
