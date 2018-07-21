@@ -26,6 +26,8 @@ function squareTxsController($scope, $log, $routeParams, $firebase, $firebaseObj
 	$log.info('in a square Txs controller', yesterday.format());	//TODO: TAKE THIS OUT LATER
 
 	//define local functions
+	function sum(value) { this.value = value; }
+
 	function updateTxList() {
 		var endOfDay = moment(vm.selectedDate).hours(23).minutes(59).seconds(59).format();
 		var startOfDay = moment(vm.selectedDate).format();
@@ -34,8 +36,9 @@ function squareTxsController($scope, $log, $routeParams, $firebase, $firebaseObj
 			startOfDay,
 			endOfDay
 		).then(function success(s) {
-			//console.log(s, 'got this back');
+			console.log('got a response with', s.length, "records");
 			vm.daystransactions = s;
+			$scope.$apply();
 		}).catch(function error(e) {
 			console.log('ERROR', e);
 		});
@@ -79,6 +82,22 @@ function squareTxsController($scope, $log, $routeParams, $firebase, $firebaseObj
 		vm.selectedDate = new Date(currentDate.format("MM-DD-YYYY"));
 
 		updateTxList();
+	}
+
+	vm.countTx = function(txArray) {
+		var newCount = new sum(txArray.length);
+		return newCount;
+	}
+
+	vm.sumTx = function(txArray) {
+		var sum = 0;
+
+		//iterate through all items
+		txArray.forEach(function(tx) {
+			sum += tx.gross_sales_money.amount
+		})
+
+		return sum;
 	}
 
 	//run the test

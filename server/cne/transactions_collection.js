@@ -21,11 +21,21 @@ var transactions = {
 	filter: {
 		single_tx_type: filter_single_tx_type
 	},
+	format: {
+		raw_sq_tx: {
+			to_list_by_device: format_raw_sq_tx_to_list_by_device
+		}
+	},
 	sync: {
 		batch_txs: sync_batch_txs,
 		single_tx: sync_single_tx
 	},
 	test: test
+};
+
+//
+function format_raw_sq_tx_to_list_by_device(txArray) {
+	return data.parse.sq_txs_to_by_device_list(txArray);
 };
 
 /*

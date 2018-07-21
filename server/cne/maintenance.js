@@ -14,7 +14,10 @@ var transactions		= require('./transactions_collection.js');
 var maintenace = {
 	txs: {
 		download: {
-			from_square: download_tx_from_square
+			from_square: {
+				by_device: download_tx_from_square_by_device,
+				raw_txs: download_tx_from_square
+			}
 		},
 		sync: {
 			ahNuts_to_Square: tx_sync_cne_db_to_sqr_db
@@ -28,6 +31,27 @@ var maintenace = {
 	reports: {},
 	test: test
 };
+
+// 	DOWNLOAD TRANSACTIONS FROM SQUARE, FORMAT BY DEVICE
+function download_tx_from_square_by_device(location_id, start, end) {
+	//define local variables
+	//console.log('got to download_tx_from_square');
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//start by downloading the transaction
+		download_tx_from_square(location_id, start, end).then(function success(s) {
+			//when the response comes back format it
+			resolve(transactions.format.raw_sq_tx.to_list_by_device(s));
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
+};
+
 
 // 	DOWNLOAD TRANSACTIONS FROM SQUARE
 function download_tx_from_square(location_id, start, end) {

@@ -29,10 +29,58 @@ var data_formatting = {
 	parse: {
 		last_batch_sync: format_sync_log,
 		tx_timestamp: parse_timestamp,
-		tx_device_id: parse_tx_device_id
+		tx_device_id: parse_tx_device_id,
+		sq_txs_to_by_device_list: parse_sq_txs_to_by_device_list
 	},
 	test: test
 };
+
+
+function parse_sq_txs_to_by_device_list(txArray) {
+	//define local variables
+	var hrBlocks = stdio.read.json('./templates/hrblocks.json');
+	var deviceArray = [];
+	var deviceObject = {};
+	var txsObject = {};
+
+	//console.log(hrBlocks);
+
+	//iterate through list
+	txArray.forEach(function(tx) {
+		var deviceId = parse_tx_device_id(tx.device.id);
+		var employeeId = tx.tender[0].employee_id;
+		var arrayId = deviceId + "_" + employeeId;
+		var deviceName = tx.device.name;
+		var txHr = moment(tx.created_at).hour();
+
+		//console.log(txHr);
+
+		//add the tx to the txObject
+		txsObject[tx.id] = tx;
+
+		//add device Id's 
+		if(deviceObject[arrayId]==undefined) deviceObject[arrayId] = {
+			device_id: deviceId,
+			device_name: deviceName,
+			employee: employeeId,
+			txs: hrBlocks
+		};
+
+		deviceObject[arrayId].txs[txHr].push(tx)
+
+	});
+
+	//turn the object into an array
+	Object.keys(deviceObject).forEach(function(key) {
+
+		//iterate through the tx hrs
+		deviceArray.push(deviceObject[key]);
+	});
+
+	//console.log(deviceArray);
+
+	return deviceArray;
+}
 
 /*
 *	CALCULATE FINANCIAL SUMS

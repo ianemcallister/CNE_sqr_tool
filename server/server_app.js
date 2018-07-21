@@ -103,9 +103,9 @@ serverApp.post('/sqrwebhook', function(req, res) {
 //	POST: SQUARE TRANSACTIONS 
 serverApp.post('/squarepos/txs', function(req, res) {
 	//return an affirmative status code
-	CNE.txs.download.from_square(req.body.location, req.body.start, req.body.end).then(function success(s) {
+	CNE.txs.download.from_square.by_device(req.body.location, req.body.start, req.body.end).then(function success(s) {
 
-		console.log(JSON.stringify(s), 'got a response');
+		//console.log(s, 'got a response');
 		res.setHeader('Content-Type', 'application/json');
     	res.status(200);
     	res.send(JSON.stringify(s));

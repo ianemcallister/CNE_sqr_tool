@@ -1,5 +1,5 @@
 <div>
-	<div class="container">
+	<div class="">
 		<!--Heading-->
 		<h2>Square Transactions Page</h2>
 	
@@ -36,16 +36,19 @@
 				<th>Txs</th>
 				<th ng-repeat="hr in vm.dayHrs track by $index"> {{hr}}</th>
 			</tr>
-			<tr>
-				<td>Kit02-Oregon</td>
-				<td>Kiley Tyler</td>
+			<tr ng-repeat="device in vm.daystransactions track by $index">
+				<td>{{device.device_name}}</td>
+				<td>{{device.employee}}</td>
 				<td><input type="text"></td>
 				<td><button class="btn btn-success">Split</button></td>
 				<td>$345</td>
 				<td>32</td>
-
+				<td ng-repeat="hrblock in device.txs track by $index">
+					{{hrblock.length}}
+					<!--{{vm.sumTx(hrblock) / 100 | currency: "$" : 2 }}-->
+				</td>
 			</tr>
 		</table>
 	</div>
-	{{vm.daystransactions}}
+
 </div>
