@@ -8,7 +8,7 @@
 
 //define dependencies
 var transactions		= require('./transactions_collection.js');
-
+var customers 			= require('./customers_collection.js');
 
 //define local variables
 var maintenace = {
@@ -32,13 +32,35 @@ var maintenace = {
 		}
 	},
 	calendar: {},
-	customers: {},
+	customers: {
+		season: {
+			add: add_customer_season
+		}
+	},
 	employees: {},
 	sales_days: {},
 	ref_lists: {},
 	reports: {},
 	test: test
 };
+
+function add_customer_season(customer_id, params) {
+	//define local variables
+	console.log('maintenance:add_customer_season');
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//start by downloading the transaction
+		customers.season.add(customer_id, params).then(function success(s) {
+			//when the response comes back format it
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+}
+
 
 //
 function square_locations_list() {

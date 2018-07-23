@@ -2,10 +2,10 @@ angular
     .module('cne')
     .controller('customersController', customersController);
 
-customersController.$inject = ['$scope','$log', 'customerList', 'firebaseService', '$firebase', '$firebaseObject', '$firebaseArray'];
+customersController.$inject = ['$scope','$log', '$location', 'customerList', 'firebaseService', '$firebase', '$firebaseObject', '$firebaseArray'];
 
 /* @ngInject */
-function customersController($scope, $log, customerList, firebaseService, $firebase, $firebaseObject, $firebaseArray) {
+function customersController($scope, $log, $location, customerList, firebaseService, $firebase, $firebaseObject, $firebaseArray) {
 
 	//define view model variable
 	var vm = this;
@@ -109,6 +109,13 @@ function customersController($scope, $log, customerList, firebaseService, $fireb
 		console.log('generating bulk salesdays', vm.selectedCustomer.sales_days);
 		
 	};
+
+	vm.changePage = function() {
+		var pagePath = '/customers/' + vm.state.selected.customer.$id;
+		console.log('redirecting to', pagePath);
+		$location.path(pagePath);
+		//$scope.$apply();
+	}
 
 	//run the test
 

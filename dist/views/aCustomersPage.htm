@@ -1,0 +1,62 @@
+<div>
+	<div class="container">
+	<h2>{{vm.customerProfile.display_name}}</h2>
+	<h3>{{vm.customerProfile.name}}</h3>
+
+	<!--Address-->
+
+	<!--Seasons-->
+	<h4>Seasons</h4>
+	<!--Season List-->
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		<button class="btn btn-success" ng-click="">Add Season</button>
+		<ul>
+			<li 	ng-repeat="season in vm.customerProfile.seasons track by $index"
+					ng-click='vm.selectSeason(season.id)'>
+				{{season.name}}
+			</li>
+		</ul>
+
+	</div>
+	<!--Season Details-->
+	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+		
+		Name: <input type="text" ng-model='vm.customerProfile.seasons[vm.selected.season_id].name'><br>
+		Start: <input type="text" ng-model='vm.customerProfile.seasons[vm.selected.season_id].start_date'><br>
+		End: <input type="text" ng-value='vm.customerProfile.seasons[vm.selected.season_id].end_date'> <br>
+		Number of Occurances: {{vm.customerProfile.seasons[vm.selected.season_id].no_of_occurances}} <br>
+		Hours: 
+		<ul>
+			<li>Load-In: <input type="text" ng-model='vm.customerProfile.seasons[vm.selected.season_id].hrs.load_in' ng-change='vm.saveChanges()'></li>
+			<li>Open: <input type="text" ng-model='vm.customerProfile.seasons[vm.selected.season_id].hrs.open' ng-change='vm.saveChanges()'></li>
+			<li>Sales Start: <input type="text" ng-model='vm.customerProfile.seasons[vm.selected.season_id].hrs.sales_start' ng-change='vm.saveChanges()'></li>
+			<li>Sales End: <input type="text" ng-model='vm.customerProfile.seasons[vm.selected.season_id].hrs.sales_end' ng-change='vm.saveChanges()'></li>
+			<li>Close: <input type="text" ng-model='vm.customerProfile.seasons[vm.selected.season_id].hrs.close' ng-change='vm.saveChanges()'></li>
+			<li>Load-Out: <input type="text" ng-model='vm.customerProfile.seasons[vm.selected.season_id].hrs.load_out' ng-change='vm.saveChanges()'></li>
+		</ul> <br>
+		<h5>Repeats</h5>
+		<input type="radio" name='repeats' value='never' ng-model='vm.scheduling_params.repeats'> Never <br>
+		Every
+		<input type="radio" name='repeats' value='every_week' ng-model='vm.customerProfile.seasons[vm.selected.season_id].repeats' ng-change='vm.saveChanges()'> Week
+		<input type="radio" name='repeats' value='every_2_weeks' ng-model='vm.customerProfile.seasons[vm.selected.season_id].repeats' ng-change='vm.saveChanges()'> 2 wks
+		<input type="radio" name='repeats' value='every_3_weeks' ng-model='vm.customerProfile.seasons[vm.selected.season_id].repeats' ng-change='vm.saveChanges()'> 3 wks
+		<input type="radio" name='repeats' value='every_4_weeks' ng-model='vm.customerProfile.seasons[vm.selected.season_id].repeats' ng-change='vm.saveChanges()'> 4 wks
+		<input type="radio" name='repeats' value='every_5_weeks' ng-model='vm.customerProfile.seasons[vm.selected.season_id].repeats' ng-change='vm.saveChanges()'> 5 wks
+		<input type="radio" name='repeats' value='every_6_weeks' ng-model='vm.customerProfile.seasons[vm.selected.season_id].repeats' ng-change='vm.saveChanges()'> 6 wks
+		<input type="radio" name='repeats' value='every_7_weeks' ng-model='vm.customerProfile.seasons[vm.selected.season_id].repeats' ng-change='vm.saveChanges()'> 7 wks
+		<input type="radio" name='repeats' value='every_8_weeks' ng-model='vm.customerProfile.seasons[vm.selected.season_id].repeats' ng-change='vm.saveChanges()'> 8 wks
+		 
+		 <br>
+		Repeat On: 
+		<input type="checkbox" name='wkdays' value='Mon' ng-model='vm.customerProfile.seasons[vm.selected.season_id].repeat_on.mon' ng-change='vm.saveChanges()'> Mon
+		<input type="checkbox" name='wkdays' value='Tue' ng-model='vm.customerProfile.seasons[vm.selected.season_id].repeat_on.tue' ng-change='vm.saveChanges()'> Tue
+		<input type="checkbox" name='wkdays' value='Wed' ng-model='vm.customerProfile.seasons[vm.selected.season_id].repeat_on.wed' ng-change='vm.saveChanges()'> Wed
+		<input type="checkbox" name='wkdays' value='Thu' ng-model='vm.customerProfile.seasons[vm.selected.season_id].repeat_on.thu' ng-change='vm.saveChanges()'> Thu
+		<input type="checkbox" name='wkdays' value='Fri' ng-model='vm.customerProfile.seasons[vm.selected.season_id].repeat_on.fri' ng-change='vm.saveChanges()'> Fri
+		<input type="checkbox" name='wkdays' value='Sat' ng-model='vm.customerProfile.seasons[vm.selected.season_id].repeat_on.sat' ng-change='vm.saveChanges()'> Sat
+		<input type="checkbox" name='wkdays' value='Sun' ng-model='vm.customerProfile.seasons[vm.selected.season_id].repeat_on.sun' ng-change='vm.saveChanges()'> Su 	
+		<br>
+		
+	</div>
+
+</div>

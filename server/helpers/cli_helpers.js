@@ -22,9 +22,15 @@ var firebase		= require('../firebase/firebase.js');
 var maintenance 	= require('../cne/maintenance.js');
 //var calendarFns		= require('./cne/ahnuts_calender_fn.js'); 
 //var txFns			= require('./cne/ahnuts_transactions_fn.js');
+var slingapi 		= require('../sling/api.js');
 
 //define local variables
 var cli_helper = {
+	customers: {
+		season: {
+			add: add_customer_season
+		}
+	},
 	ops: {
 		allTx: all_db_tx_read
 	},
@@ -32,6 +38,15 @@ var cli_helper = {
 		create: create_firebase_record,
 		push: push_firebase_record,
 		read: read_firebase_record
+	},
+	sling: {
+		accounts: {
+			accessToken: sling_accounts_accessToken,
+			login: sling_accounts_login
+		},
+		calendar: {
+			summary: sling_calendar_summary
+		}
 	},
 	stdio: {
 		read: {
@@ -53,6 +68,59 @@ var cli_helper = {
 		cne_sqr_employees_download: cne_sqr_employees_download,
 		cne_sqr_locations_download: cne_sqr_locations_download
 	}
+};
+
+function add_customer_season(customer_id, params) {
+	
+	return new Promise(function(resolve, reject) {
+		maintenance.customers.season.add(customer_id, params).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
+};
+
+
+//
+function sling_accounts_accessToken(username, pass) {
+	
+	return new Promise(function(resolve, reject) {
+		slingapi.accounts.accessToken(username, pass).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
+};
+
+function sling_accounts_login(username, pass) {
+	
+	return new Promise(function(resolve, reject) {
+		slingapi.accounts.login(username, pass).then(function success(s) {
+			resolve('success', s);
+		}).catch(function error(e) {
+			reject('ERROR', e);
+		});
+
+	});
+
+};
+
+//	S
+function sling_calendar_summary(token, dates) {
+	
+	return new Promise(function(resolve, reject) {
+		slingapi.calendar.summaries(token, dates).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+	});
 };
 
 function cne_sqr_locations_download() {

@@ -25,6 +25,14 @@ function config($routeProvider, $locationProvider) {
             customerList: customerList
         }
     })
+    .when('/customers/:customerid', {
+        templateUrl: 'views/aCustomersPage.htm',      //'views/mainPage.htm'
+        controller: 'aCustomersController',           //'mainController'
+        controllerAs: 'vm',
+        resolve: { /* @ngInject */
+            customerList: customerList
+        }
+    })
     .when('/salesdays', {
         templateUrl: 'views/salesDaysPage.htm',      //'views/mainPage.htm'
         controller: 'salesDaysController',           //'mainController'

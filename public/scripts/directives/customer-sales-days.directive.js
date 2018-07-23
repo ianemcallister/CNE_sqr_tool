@@ -98,7 +98,15 @@ function customerSalesDays() {
 			//define local variables
 			vm.salesdaySelected = vm.detailedSalesDaysList[index].$id;
 			//console.log(vm.salesdaysList[index]);
-		}
+		};
+
+		//
+		vm.addSalesDaysToCal = function() { 
+			//define local variables
+			
+			console.log('addSalesDaysToCal');
+
+		};
 
 	}
 

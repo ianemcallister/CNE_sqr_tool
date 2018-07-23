@@ -105,11 +105,14 @@ function push(path, data) {
 	return new Promise(function(resolve, reject) {
 
 		//hit the database
-		ref.push(data).set(data, function(error) {
+		var newPostRef = ref.push(data);
+		var postId = newPostRef.key;
+
+		newPostRef.set(data, function(error) {
 		if (error) {
 		  reject("Data could not be saved." + error);
 		} else {
-		  resolve("Data saved successfully.");
+		  resolve({msg:"Data saved successfully.", id: postId});
 		}
 		});
 
