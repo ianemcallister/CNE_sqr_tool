@@ -21,9 +21,9 @@
 	<!--Season Details-->
 	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 		
-		Name: <input type="text" ng-model='vm.customerProfile.seasons[vm.selected.season_id].name'><br>
-		Start: <input type="text" ng-model='vm.customerProfile.seasons[vm.selected.season_id].start_date'><br>
-		End: <input type="text" ng-value='vm.customerProfile.seasons[vm.selected.season_id].end_date'> <br>
+		Name: <input type="text" ng-model='vm.customerProfile.seasons[vm.selected.season_id].name' ng-change='vm.saveChanges()'><br>
+		Start: <input type="text" ng-model='vm.customerProfile.seasons[vm.selected.season_id].start_date' ng-change='vm.saveChanges()'><br>
+		End: <input type="text" ng-model='vm.customerProfile.seasons[vm.selected.season_id].end_date' ng-change='vm.saveChanges()'> <br>
 		Number of Occurances: {{vm.customerProfile.seasons[vm.selected.season_id].no_of_occurances}} <br>
 		Hours: 
 		<ul>
@@ -58,5 +58,37 @@
 		<br>
 		
 	</div>
+	
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<h3>Mock Sales Days</h3>
+		<button class="btn btn-success" ng-click = 'vm.generateSalesDaysList()'>
+			Generate Sales Day
+		</button>
+		<button class='btn btn-success'
+				ng-click="vm.saveSalesDays()">
+				Save Sales Days
+		</button>
 
+
+		<br>
+
+		<table class='table'>
+			<tr>
+				<th>#</th>
+				<th>Date</th>
+				<th>Wkday</th>
+				<th>ID</th>
+				<th>Open</th>
+				<th>Close</th>
+			</tr>
+			<tr ng-repeat='salesday in vm.tempSalesDays track by $index'>
+				<td>{{$index + 1}}</td>
+				<td>{{salesday.date | date: "M/d/yy"}}</td>
+				<td>{{salesday.wk_day}}</td>
+				<td>{{salesday.cme_name}}</td>
+				<td>{{salesday.schedule.open | date: "h:mm a"}}</td>
+				<td>{{salesday.schedule.close | date: "h:mm a"}}</td>
+			</tr>
+		</table>
+	</div>
 </div>
