@@ -18,6 +18,12 @@ var transactions = {
 		batch_txs: download_batch_txs,
 		single_tx: download_single_tx
 	},
+	tx_blocks: {
+		update: {
+			single: update_tx_blocks_singular,
+			batch: update_tx_blocks_batch
+		}
+	},
 	filter: {
 		single_tx_type: filter_single_tx_type
 	},
@@ -40,6 +46,76 @@ var transactions = {
 	},
 	test: test
 };
+
+/*
+*	
+*
+*/
+function update_tx_blocks_singular(pushObject, tx_id, location_id) {
+	//define local variables
+	
+	//if a push object was given, use it to set the tx id
+	if(pushObject != undefined) {
+		tx_id = pushObject.entity_id;
+		location_id = pushObject.location_id;
+	};
+
+	//notify progress
+	//console.log(typeof pushObject, tx_id, location_id);
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		
+		//1. Download the transation
+		tasks.download.txs.single(tx_id, location_id).then(function success(s) {
+		
+			//	2. identify it's block id. 
+			var block_id = data.format.block_txs.id(s);
+			//define the path
+			var blockPath = "tx_blocks/" + block_id;
+
+			// check for current block
+			var blockPromise = firebase.read(blockPath);
+
+			// get employee names
+			var employeesListPromise = squareV1.employees.list();
+
+			// get location names
+			var locationsListPromise = squareV1.locations.list();
+
+			//resolve all promises
+			Promise.all([blockPromise, employeesListPromise, locationsListPromise])
+			.then(function success(ss) {
+
+				var currentBlock = ss[0];
+				var employeesList = ss[1];
+				var locationsList = ss[2];
+
+				var block_object = data.format.block_txs.object(s, location_id, employeesList, locationsList, currentBlock);
+				
+				
+
+				//update the database with the values
+				firebase.update(blockPath, block_object)
+				.then(function success(ss) {
+					resolve(ss);
+				}).catch(function error(ee) {
+					reject(ee);
+				});	
+
+
+			}).catch(function error(ee) {
+				reject(ee);
+			});	
+
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+};
+
+function update_tx_blocks_batch() {};
 
 //
 function square_Locations_list() {

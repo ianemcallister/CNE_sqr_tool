@@ -32,7 +32,10 @@ var cli_helper = {
 		}
 	},
 	ops: {
-		allTx: all_db_tx_read
+		allTx: all_db_tx_read,
+		tx_blocks: {
+			update: update_tx_blocks
+		}
 	},
 	firebase: {
 		create: create_firebase_record,
@@ -59,7 +62,7 @@ var cli_helper = {
 		},
 		employees: {
 			list: sqr_employees_list
-		}
+		},
 	},
 	tests: {
 		single_tx_sync: test_single_tx_sync,
@@ -68,6 +71,16 @@ var cli_helper = {
 		cne_sqr_employees_download: cne_sqr_employees_download,
 		cne_sqr_locations_download: cne_sqr_locations_download
 	}
+};
+
+function update_tx_blocks(batchRequest, pushObject) {
+	return new Promise(function(resolve, reject) {
+		maintenance.tx_blocks.update(batchRequest, pushObject).then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+	});	
 };
 
 function add_customer_season(customer_id, params) {

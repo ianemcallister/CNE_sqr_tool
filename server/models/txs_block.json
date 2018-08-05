@@ -1,0 +1,21 @@
+{
+	"employee_id": "",
+	"employee_name": "",
+	"device_id": "",
+	"device_name": "",
+	"location_id": "",
+	"location_name": "",
+	"date": "",
+	"validation": {
+		"employee": {
+			"identifying_tx": false,
+			"designated_customer_id": ""
+		},
+		"manager": {
+			"confirmed": false
+		},
+		"schedule": {}
+	},
+	"is_split": false,
+	"splits": {}
+}

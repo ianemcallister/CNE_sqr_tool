@@ -1,0 +1,54 @@
+new plan of attack here.  We don't need to track sales days.  We just need to attribute sales to customers, and the time stamp can server as the sales day, along with the other expenses, for now at least.
+
+A transaction should be tracked in a few different places.
+
+We whould have a transaction collection that is organzied by transaction id from square, but aside from that only contains a customer_id and a times_stamp.
+
+On the customer, we just have a collection of transactions, the keys are the timestamps and the value is the transaction id
+
+for customer transactions we use a batch process to download all of the transactions for a given customer on a given day from square.
+
+Every transaction must fall under a customer or be held temporarily under an unassigned placeholder.
+
+Once a transaction has been assigned the employee and device within a given timestamp range are recorded for future refrence
+
+the calendar ontains years -> dates -> timestampblocks which default to the full day, unless there is a split on a device or employee sales day.  Unforutnately that will create the same id on a single day, therefore, in order to have a unique id the next level can't be a timestamp it must be on object key. then the objefct will have to contain {
+	window: "",
+	employee_id: "",
+	device_id: "",
+	customer_id: "",
+	split_component: false,
+	split_counterpart: "some_id" 
+}
+
+Every device, employee, date creates a new block.  these blocks can be split. DateEmployeeDevice is a key that creates a block.  These blocks can be split on time if need be
+
+"dateEmployeeDevice": {
+	"employee_id": "",
+	"employee_name": "",
+	"device_id": "",
+	"device_name": "",
+	"location_id": "",
+	"location_name": "",
+	"date": "",
+	"validation": {
+		"employee": {
+			"identifying_tx": false,
+			"designated_customer_id": ""
+		},
+		"manager": {
+			"confirmed": false
+		},
+		"schedule": {}
+	},
+	"is_split": false,
+	"splits": {
+		"somekey": {
+			"window": "startTime/endTime",
+			"customer_id": "UNASSIGNED",
+			"txs": {
+				"txTime": "sqr_id"
+			}
+		}
+	}
+}

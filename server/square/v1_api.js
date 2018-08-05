@@ -565,7 +565,7 @@ function employees_list(order, updatesTimes, createdTimes, status, externalId, l
 
 			buffer_extract(s).then(function success(ss) {
 				
-				console.log(ss, 'got this');
+				//console.log(ss, 'got this');
 
 				resolve(ss);
 			});

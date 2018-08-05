@@ -1,0 +1,18 @@
+{
+	"SOMEKEY": {
+		"address": {
+			"city": "",
+			"state": "",
+			"street1": "",
+			"street2": "",
+			"street3": "",
+			"zip": ""
+		},
+		"dispaly_name": "",
+		"name": "",
+		"schedule": {},
+		"seasons": {},
+		"timezone": "",
+		"transactions": {}
+	}
+}

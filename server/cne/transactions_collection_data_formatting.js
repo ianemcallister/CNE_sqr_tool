@@ -32,9 +32,130 @@ var data_formatting = {
 		tx_device_id: parse_tx_device_id,
 		sq_txs_to_by_device_list: parse_sq_txs_to_by_device_list
 	},
+	format: {
+		block_txs: {
+			id: format_block_txs_id,
+			object: format_block_txs_object
+		}
+	},
 	test: test
 };
 
+// FORMAT BLOCK TRANSACTION OBJECT
+function format_block_txs_object(sqrTx, location_id, employeesList, locationsList, currentBlock) {
+	//define local value
+	var returnObject = stdio.read.json('./models/txs_block.json');
+	var employeeName = "";
+	var locationName = "";
+
+	var dateObject = new Date(sqrTx.created_at);
+	var fullDate = moment(dateObject).format();
+	var splitDate = fullDate.split("T");
+	var date = splitDate[0];
+
+	var txMoment = moment(sqrTx.created_at);
+	var txTime = txMoment.format()
+
+	//iterate through employees list
+	employeesList.forEach(function(employee) {
+		if(employee.id == sqrTx.tender[0].employee_id) employeeName = employee.first_name + " " + employee.last_name;
+	});
+
+	//iterate through locations list
+	locationsList.forEach(function(location) {
+		if(location.id == location_id) locationName = location.name;
+	});
+
+	//update values
+	returnObject.date = date;
+	returnObject.device_id = sqrTx.device.id;
+	returnObject.device_name = sqrTx.device.name;
+	returnObject.employee_id = sqrTx.tender[0].employee_id;
+	returnObject.employee_name = employeeName;
+	returnObject.location_id = location_id;
+	returnObject.location_name = locationName;
+
+	//if current block exists
+	if(currentBlock != undefined) {
+
+		//notifing progress
+		console.log('current block was defined, updating it\'s txs');
+
+		//copy the existing object
+		returnObject.splits = currentBlock.splits;
+
+		//iterate through the splits
+		Object.keys(currentBlock.splits).forEach(function(key) {
+			
+			var splitObject = currentBlock.splits[key];
+
+			var windowStart = splitObject.window.split("/")[0];
+			var windowFinish = splitObject.window.split("/")[1];
+			
+			var isBetween = txMoment.isBetween(windowStart, windowFinish);
+
+			//console.log('isBetween', windowStart, windowFinish, isBetween);
+
+			//check the tx time against the split window
+			if(isBetween) {
+				//notify progress
+				console.log('is between the window times');
+
+				//make sure the tx is listed in with the object
+				returnObject.splits[key].txs[txTime] = sqrTx.id;
+
+			} else {
+				//will have to create a new block
+				console.log('not between the window dates, need new split');
+
+				//returnObject.splits[key].txs['holding'] = 'placeholder';
+			};
+
+		});
+
+		
+
+	} else {
+		
+		//notify progress
+		console.log('currentBlock was undefined, defining it\'s splis now');
+
+		//if no block was found we have to create the needed values
+		returnObject.splits["01"] = {
+			window: date + "T00:00:00-07:00/" + date + "T23:59:59-07:00",
+			customer_id: "UNASSIGNED",
+			txs: {}
+		};
+
+		//add the tx object
+		returnObject.splits["01"].txs[txTime] = sqrTx.id
+	}
+
+	//return value
+	return returnObject;
+};
+
+// FORMAT BLOCK TRANSACTIONS
+function format_block_txs_id(sqrTx) {
+	//define local variables
+	//define the date
+	var dateObject = new Date(sqrTx.created_at);
+	var fullDate = moment(dateObject).format();
+	var splitDate = fullDate.split("T");
+	var date = splitDate[0];
+
+	//defne the employee id
+	var employee_id = sqrTx.tender[0].employee_id;
+
+	//define the device
+	var device_id = parse_tx_device_id(sqrTx.device.id);
+
+	//define the block_id
+	var block_id = date + employee_id + device_id;
+
+	//return value
+	return block_id;
+}
 
 function parse_sq_txs_to_by_device_list(txArray) {
 	//define local variables

@@ -85,7 +85,19 @@ serverApp.post('/sqrwebhook', function(req, res) {
 	console.log(req.body);
 
 	//run the requird function
-	CNE.transactions.sync.ahNuts_to_Square('single', req.body).then(function success(s) {
+	CNE.tx_blocks.update(undefined, req.body).then(function success(s) {
+		
+		//return an affirmative status code
+		res.sendStatus(200);
+
+	}).catch(function error(e) {
+
+		//return an error status code
+		res.sendStatus(550);
+		
+	});
+
+	/*CNE.transactions.sync.ahNuts_to_Square('single', req.body).then(function success(s) {
 		
 		//return an affirmative status code
 		res.sendStatus(200);
@@ -95,7 +107,7 @@ serverApp.post('/sqrwebhook', function(req, res) {
 		//return an error status code
 		res.sendStatus(550);
 		
-	});
+	});*/
 
 });
 
