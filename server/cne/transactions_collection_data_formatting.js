@@ -11,6 +11,9 @@ var moment 			= require('moment-timezone');
 
 //define module
 var data_formatting = {
+	general: {
+		timezone_offset: timezone_offset
+	},
 	calculate: {
 		financial: {
 			sums: calculate_financial_sums,
@@ -41,10 +44,24 @@ var data_formatting = {
 	test: test
 };
 
+function timezone_offset(location_id) {
+	//define local variables
+	var returnString = "";
+
+	var locationsHash = { "M53KQT35YKE5C": "-07:00" }
+
+	if(locationsHash[location_id] != undefined)
+		returnString = locationsHash[location_id];
+
+	//return string
+	return returnString;
+}
+
 // FORMAT BLOCK TRANSACTION OBJECT
 function format_block_txs_object(sqrTx, location_id, employeesList, locationsList, currentBlock) {
 	//define local value
 	var returnObject = stdio.read.json('./models/txs_block.json');
+	var timezoneOffset = timezone_offset(location_id);
 	var employeeName = "";
 	var locationName = "";
 
@@ -53,8 +70,10 @@ function format_block_txs_object(sqrTx, location_id, employeesList, locationsLis
 	var splitDate = fullDate.split("T");
 	var date = splitDate[0];
 
-	var txMoment = moment(sqrTx.created_at);
-	var txTime = txMoment.format()
+	var txMoment = moment(sqrTx.created_at).utcOffset(timezoneOffset);
+	var txTime = txMoment.utcOffset(timezoneOffset).format();
+
+	console.log('txTime', txTime);
 
 	//iterate through employees list
 	employeesList.forEach(function(employee) {
@@ -122,7 +141,7 @@ function format_block_txs_object(sqrTx, location_id, employeesList, locationsLis
 
 		//if no block was found we have to create the needed values
 		returnObject.splits["01"] = {
-			window: date + "T00:00:00-07:00/" + date + "T23:59:59-07:00",
+			window: date + "T00:00:00" + timezoneOffset + "/" + date + "T23:59:59" + timezoneOffset,
 			customer_id: "UNASSIGNED",
 			txs: {}
 		};
@@ -136,11 +155,13 @@ function format_block_txs_object(sqrTx, location_id, employeesList, locationsLis
 };
 
 // FORMAT BLOCK TRANSACTIONS
-function format_block_txs_id(sqrTx) {
+function format_block_txs_id(sqrTx, location_id) {
 	//define local variables
+	var timezoneOffset = timezone_offset(location_id);
+
 	//define the date
 	var dateObject = new Date(sqrTx.created_at);
-	var fullDate = moment(dateObject).format();
+	var fullDate = moment(dateObject).utcOffset(timezoneOffset).format();
 	var splitDate = fullDate.split("T");
 	var date = splitDate[0];
 

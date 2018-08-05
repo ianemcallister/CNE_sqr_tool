@@ -70,7 +70,7 @@ function update_tx_blocks_singular(pushObject, tx_id, location_id) {
 		tasks.download.txs.single(tx_id, location_id).then(function success(s) {
 		
 			//	2. identify it's block id. 
-			var block_id = data.format.block_txs.id(s);
+			var block_id = data.format.block_txs.id(s, location_id);
 			//define the path
 			var blockPath = "tx_blocks/" + block_id;
 
