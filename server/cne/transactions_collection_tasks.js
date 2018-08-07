@@ -50,10 +50,82 @@ var tasks = {
 			batch: batch_update_txs,
 			single: update_single_tx,
 			fields: update_tx_fields
+		},
+		tx_block: {
+			single: update_tx_block_single_tx
 		}
 	},
 	test: test
 };
+
+/*
+*	UPDATE TRANSACTION BLOCK WITH SINGLE TX
+*
+*
+*/
+function update_tx_block_single_tx(location_id, allPromises) {
+	//define local variables
+	var tx = allPromises[0];
+	var employeesList = allPromises[1];
+	var locationsList = allPromises[2];
+	var blockPath = data.format.block_txs.id(tx, location_id);
+	
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//	1. CHECK FOR A CURRENT ITERATION OF THE OBJECT
+		firebase.read(blockPath)
+		.then(function success(currentBlock) {
+			 	
+			//	2. CHECK IF THE OBJECT CURRENTLY EXISTS
+			if(currentBlock == undefined) {
+				//	2.1 IF NO OBJECT EXISTS, CREATE IT
+				var newBlock = data.format.block_txs.object(tx, location_id, employeesList, locationsList)
+
+				//	2.1.1 THEN SAVE IT
+				firebase.push(blockPath, newBlock)
+				.then(function success(ss) {
+					resolve(ss);
+				}).catch(function error(ee) {
+					reject(ee);
+				});
+
+			} else {
+				//	2.2 IF THE OBJECT DOES EXIST, ADD THE TX TO THE PROPER SPLIT
+
+				//iterate through all the splits
+				Object.keys(currentBlock).forEach(function(key) {
+
+					//check the window
+					if(data.calculate.tx.within_window(tx.created_at, currentBlock[key].window, location_id)) {
+						// if it's good
+						var updatePath = blockPath + "/" + key + "/txs";
+						var updateObject = data.format.block_txs.single_tx(tx.created_at, tx.id, location_id)
+						//notify progress
+						console.log('fits the window');
+
+						firebase.update(updatePath, updateObject)
+
+					} else {
+						// if it's not good
+
+						//notify progress
+						console.log('not in the window');
+					}
+
+				});
+
+				resolve('exiting');
+
+			}
+
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
+};	
 
 /*
 *	CHECK KNOWN CME

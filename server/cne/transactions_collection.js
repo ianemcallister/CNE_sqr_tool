@@ -53,56 +53,34 @@ var transactions = {
 */
 function update_tx_blocks_singular(pushObject, tx_id, location_id) {
 	//define local variables
-	
+	var employeesListPromise = squareV1.employees.list();
+	var locationsListPromise = squareV1.locations.list();
+
 	//if a push object was given, use it to set the tx id
 	if(pushObject != undefined) {
 		tx_id = pushObject.entity_id;
 		location_id = pushObject.location_id;
 	};
 
+	//one more local variable
+	var txPromise = tasks.download.txs.single(tx_id, location_id);
+	
 	//notify progress
 	//console.log(typeof pushObject, tx_id, location_id);
 
 	//return async work
 	return new Promise(function(resolve, reject) {
 		
-		//1. Download the transation
-		tasks.download.txs.single(tx_id, location_id).then(function success(s) {
-		
-			//	2. identify it's block id. 
-			var block_id = data.format.block_txs.id(s, location_id);
-			//define the path
-			var blockPath = "tx_blocks/" + block_id;
+		//1. DOWNLOAD TRANSACTION, EMPLOYEE LIST, LOCATIONS LIST
+		Promise.all([txPromise, employeesListPromise, locationsListPromise])
+		.then(function success(allPromises) {
 
-			// check for current block
-			var blockPromise = firebase.read(blockPath);
+			//	2. UPDATE THE TRANSACTION BLOCK
+			tasks.update.tx_block.single(location_id, allPromises)
+			.then(function success(result) {
 
-			// get employee names
-			var employeesListPromise = squareV1.employees.list();
-
-			// get location names
-			var locationsListPromise = squareV1.locations.list();
-
-			//resolve all promises
-			Promise.all([blockPromise, employeesListPromise, locationsListPromise])
-			.then(function success(ss) {
-				//define the local variables
-				var currentBlock = ss[0];
-				var employeesList = ss[1];
-				var locationsList = ss[2];
-
-				//build the block
-				var block_object = data.format.block_txs.object(s, location_id, employeesList, locationsList, currentBlock);
+				resolve(result);
 				
-				//update the database with the values
-				firebase.update(blockPath, block_object)
-				.then(function success(ss) {
-					resolve(ss);
-				}).catch(function error(ee) {
-					reject(ee);
-				});	
-
-
 			}).catch(function error(ee) {
 				reject(ee);
 			});	

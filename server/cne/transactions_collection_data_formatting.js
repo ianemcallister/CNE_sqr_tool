@@ -21,6 +21,9 @@ var data_formatting = {
 		},
 		mfg: {
 			sums: calculate_mfg_sums
+		},
+		tx: {
+			within_window: calculate_tx_within_window
 		}
 	},
 	map: {
@@ -38,10 +41,77 @@ var data_formatting = {
 	format: {
 		block_txs: {
 			id: format_block_txs_id,
-			object: format_block_txs_object
+			object: format_block_txs_object,
+			fill_new_object: fill_new_block_txs_object,
+			single_tx: format_block_tx_single_tx
 		}
 	},
 	test: test
+};
+
+function format_block_tx_single_tx(sqTxTime, txId, location_id) {
+	var timezoneOffset = timezone_offset(location_id);
+	var txMoment = moment(sqTxTime).utcOffset(timezoneOffset);
+	var txTime = txMoment.utcOffset(timezoneOffset).format();
+	var returnObject = {};
+	returnObject[txTime] = txId;
+	return returnObject;
+}
+
+function calculate_tx_within_window(txTime, window, location_id) {
+	//define local variables
+	var timezoneOffset = timezone_offset(location_id);
+	var txMoment = moment(txTime).utcOffset(timezoneOffset);
+	var windowStart = window.split("/")[0];
+	var windowFinish = window.split("/")[1];
+
+	return txMoment.isBetween(windowStart, windowFinish);
+}
+
+/*
+*	FILL NEW BLOCK TRANSACTIONS OBJECT
+*/
+function fill_new_block_txs_object(sqrTx, location_id, employeesList, locationsList) {
+	//define local variables
+	var timezoneOffset = timezone_offset(location_id);
+	var returnObject = stdio.read.json('./models/txs_block.json');
+	var employeeName = "";
+	var locationName = "";
+
+	//	1. SETUP DATE VARIABLES
+	var dateObject = new Date(sqrTx.created_at);
+	var fullDate = moment(dateObject).format();
+	var splitDate = fullDate.split("T");
+	var date = splitDate[0];
+
+	//	2. ACCOUNT FOR TIMEZONE OFFSET
+	var txMoment = moment(sqrTx.created_at).utcOffset(timezoneOffset);
+	var txTime = txMoment.utcOffset(timezoneOffset).format();
+
+	//	3. SET EMPLOYEE NAME
+	employeesList.forEach(function(employee) {
+		if(employee.id == sqrTx.tender[0].employee_id) employeeName = employee.first_name + " " + employee.last_name;
+	});
+
+	//	4. SET LOCATION NAME
+	locationsList.forEach(function(location) {
+		if(location.id == location_id) locationName = location.name;
+	});
+
+	//update values
+	returnObject.date = date;
+	returnObject.device_id = sqrTx.device.id;
+	returnObject.device_name = sqrTx.device.name;
+	returnObject.employee_id = sqrTx.tender[0].employee_id;
+	returnObject.employee_name = employeeName;
+	returnObject.location_id = location_id;
+	returnObject.location_name = locationName;
+	returnObject.txs[txTime] = sqrTx.id
+	returnObject.window = date + "T00:00:00" + timezoneOffset + "/" + date + "T23:59:59" + timezoneOffset;
+
+	console.log('returning this object', returnObject);
+	//return the returnObject
+	return returnObject;
 };
 
 function timezone_offset(location_id) {
@@ -58,105 +128,15 @@ function timezone_offset(location_id) {
 }
 
 // FORMAT BLOCK TRANSACTION OBJECT
-function format_block_txs_object(sqrTx, location_id, employeesList, locationsList, currentBlock) {
+function format_block_txs_object(sqrTx, location_id, employeesList, locationsList) {
 	//define local value
-	var returnObject = stdio.read.json('./models/txs_block.json');
-	var timezoneOffset = timezone_offset(location_id);
-	var employeeName = "";
-	var locationName = "";
-
-	var dateObject = new Date(sqrTx.created_at);
-	var fullDate = moment(dateObject).format();
-	var splitDate = fullDate.split("T");
-	var date = splitDate[0];
-
-	var txMoment = moment(sqrTx.created_at).utcOffset(timezoneOffset);
-	var txTime = txMoment.utcOffset(timezoneOffset).format();
-
-	console.log('txTime', txTime);
-
-	//iterate through employees list
-	employeesList.forEach(function(employee) {
-		if(employee.id == sqrTx.tender[0].employee_id) employeeName = employee.first_name + " " + employee.last_name;
-	});
-
-	//iterate through locations list
-	locationsList.forEach(function(location) {
-		if(location.id == location_id) locationName = location.name;
-	});
-
-	//update values
-	returnObject.date = date;
-	returnObject.device_id = sqrTx.device.id;
-	returnObject.device_name = sqrTx.device.name;
-	returnObject.employee_id = sqrTx.tender[0].employee_id;
-	returnObject.employee_name = employeeName;
-	returnObject.location_id = location_id;
-	returnObject.location_name = locationName;
-
-	//if current block exists
-	if(currentBlock != undefined) {
-
-		//notifing progress
-		console.log('current block was defined, updating it\'s txs');
-
-		//copy the existing object
-		returnObject.splits = currentBlock.splits;
-
-		//iterate through the splits
-		Object.keys(currentBlock.splits).forEach(function(key) {
-			
-			var splitObject = currentBlock.splits[key];
-
-			var windowStart = splitObject.window.split("/")[0];
-			var windowFinish = splitObject.window.split("/")[1];
-			
-			var isBetween = txMoment.isBetween(windowStart, windowFinish);
-
-			//console.log('isBetween', windowStart, windowFinish, isBetween);
-
-			//check the tx time against the split window
-			if(isBetween) {
-				//notify progress
-				console.log('is between the window times');
-
-				//make sure the tx is listed in with the object
-				returnObject.splits[key].txs[txTime] = sqrTx.id;
-
-			} else {
-				//will have to create a new block
-				console.log('not between the window dates, need new split');
-
-				//returnObject.splits[key].txs['holding'] = 'placeholder';
-			};
-
-		});
-
-		
-
-	} else {
-		
-		//notify progress
-		console.log('currentBlock was undefined, defining it\'s splis now');
-
-		//if no block was found we have to create the needed values
-		returnObject.splits["01"] = stdio.read.json('./models/txs_block_splits.json');
-
-		//add the window times
-		returnObject.splits["01"].window = date + "T00:00:00" + timezoneOffset + "/" + date + "T23:59:59" + timezoneOffset;
-
-
-		//add the tx object
-		returnObject.splits["01"].txs[txTime] = sqrTx.id
-	}
-
-	//return value
-	return returnObject;
+	return fill_new_block_txs_object(sqrTx, location_id, employeesList, locationsList);
 };
 
 // FORMAT BLOCK TRANSACTIONS
 function format_block_txs_id(sqrTx, location_id) {
 	//define local variables
+	var blockPath = "tx_blocks/";
 	var timezoneOffset = timezone_offset(location_id);
 
 	//define the date
@@ -172,10 +152,10 @@ function format_block_txs_id(sqrTx, location_id) {
 	var device_id = parse_tx_device_id(sqrTx.device.id);
 
 	//define the block_id
-	var block_id = date + employee_id + device_id;
+	blockPath = blockPath + date + "/" + employee_id + "/" + device_id;
 
 	//return value
-	return block_id;
+	return blockPath;
 }
 
 function parse_sq_txs_to_by_device_list(txArray) {

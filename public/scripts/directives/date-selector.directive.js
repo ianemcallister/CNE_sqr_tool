@@ -62,7 +62,7 @@ function dateSelector() {
 			self.selectedDate = new Date(currentDate.format("MM-DD-YYYY"));
 
 			//syncLists();
-			self.updateDate({newDate: currentDate.format("MM-DD-YYYY")});
+			self.updateDate({newDate: currentDate.format("MM-DD-YYYY") });
 		}
 	}
 

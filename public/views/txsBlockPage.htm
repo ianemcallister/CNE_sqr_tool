@@ -16,10 +16,13 @@
 		<button class="btn btn-success">Save</button>
 
 		<!-- Sales Days Tally Table-->
-		<tx-block-sales-days-table cmes='vm.cmes'></tx-block-sales-days-table>
+		<tx-block-sales-days-table 	cmes='vm.cmes'>
+		</tx-block-sales-days-table>
 		
 		<!-- The Transactions Block Table-->
-		<tx-block-table tx-blocks='vm.txBlocks'></tx-block-table>
+		<tx-block-table 	tx-blocks='vm.txBlocks'
+							cmes='vm.cmes'>
+		</tx-block-table>
 
 	</div>
 </div>

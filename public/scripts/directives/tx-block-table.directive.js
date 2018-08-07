@@ -16,7 +16,8 @@ function txBlockTable() {
 		templateUrl: 'views/directives/tx-block-table.directive.htm',
 		replace: true,
 		scope: {
-			txBlocks: '='
+			txBlocks: '=',
+			cmes: "="
 		},
 		link: linkFunc,
 		controller: txBlockTableController,

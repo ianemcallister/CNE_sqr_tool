@@ -20,10 +20,10 @@
 		<tr ng-repeat="block in vm.txBlocks track by $index">
 			
 			<!--Device-->
-			<td>{{block}}</td>	
+			<td>{{block.device_name}}</td>	
 			
 			<!--Employee-->
-			<td></td>
+			<td>{{block.employee_name}}</td>
 			
 			<!--# Txs-->
 			<td></td>
@@ -59,14 +59,11 @@
 
 	<!--DATA LISTS -->
 	<datalist name="customerDaysList" id="customerDaysList">
-		<option value="one">1</option>
-		<option value="two">2</option>
-		<option value="three">3</option>
-		<!--<option ng-repeat="location in vm.sqrLocations track by $index"
+		<option ng-repeat="cme in vm.cmes track by $index"
 				style='font-size: 12pt'
 				ng-click=''>
-				{{location.name}}
-		</option>-->
+				{{cme.$value}}
+		</option>
 
 	</datalist>
 

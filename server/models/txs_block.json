@@ -7,16 +7,19 @@
 	"location_name": "",
 	"date": "",
 	"validation": {
-		"splits_confirmed": 0,
 		"employee": {
 			"identifying_tx": false,
 			"designated_customer_id": ""
 		},
 		"manager": {
 			"confirmed": false
-		},
-		"schedule": {}
+		}
 	},
-	"is_split": false,
-	"splits": {}
+	"assigned": false,
+	"customer_id": "UNASSIGNED",
+	"customer_name": "UNASSIGNED",
+	"sales_day_id": "UNASSIGNED",
+	"sales_day_name": "UNASSIGNED",
+	"txs": {},
+	"window": ""
 }
