@@ -8,13 +8,15 @@
 		<h4>{{vm.selectedDate | date: "fullDate"}}</h4>
 		
 		<!--Date Buttons-->
-		<date-selector selected-date="vm.selectedDate"></date-selector>
+		<date-selector 	selected-date="vm.selectedDate" 
+						update-date='vm.dateUpdate(newDate)'>
+		</date-selector>
 
 		<!--Save Button-->
 		<button class="btn btn-success">Save</button>
 
 		<!-- Sales Days Tally Table-->
-		<tx-block-sales-days-table></tx-block-sales-days-table>
+		<tx-block-sales-days-table cmes='vm.cmes'></tx-block-sales-days-table>
 		
 		<!-- The Transactions Block Table-->
 		<tx-block-table tx-blocks='vm.txBlocks'></tx-block-table>

@@ -16,7 +16,8 @@ function dateSelector() {
 		templateUrl: 'views/directives/date-selector.directive.htm',
 		replace: true,
 		scope: {
-			selectedDate: "="
+			selectedDate: "=",
+			updateDate: "&"
 		},
 		link: linkFunc,
 		controller: dateSelectorController,
@@ -43,6 +44,7 @@ function dateSelector() {
 		*/
 		self.dayChange = function(direction) {
 			//define local variables
+			var vm = self;
 			var dirHash = {"-":0, "+":1};
 			var currentDate = moment(new Date(self.selectedDate));
 
@@ -60,6 +62,7 @@ function dateSelector() {
 			self.selectedDate = new Date(currentDate.format("MM-DD-YYYY"));
 
 			//syncLists();
+			self.updateDate({newDate: currentDate.format("MM-DD-YYYY")});
 		}
 	}
 

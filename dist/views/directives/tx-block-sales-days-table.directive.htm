@@ -1,3 +1,29 @@
 <div>
+	<!--Section Header-->
 	<h3>Sales Days</h3>
+	
+	<!--Section Table-->
+	<table class="table">
+		<!--Header Row-->
+		<tr>
+			<th>CME</th>
+			<th>Customer</th>
+			<th>Date</th>
+			<th># Blocks</th>
+			<th># TXs</th>
+			<th>Gross Sales</th>
+			<th>Net Sales</th>
+		</tr>
+		<!--Data Rows-->
+		<tr ng-repeat='cme in vm.cmes track by $index'>
+			<td>{{cme.$value}}</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+
 </div>

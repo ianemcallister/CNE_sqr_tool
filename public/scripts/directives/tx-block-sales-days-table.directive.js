@@ -16,6 +16,7 @@ function txBlockSalesDaysTable() {
 		templateUrl: 'views/directives/tx-block-sales-days-table.directive.htm',
 		replace: true,
 		scope: {
+			cmes: "="
 		},
 		link: linkFunc,
 		controller: txBlockSalesDaysTableController,
