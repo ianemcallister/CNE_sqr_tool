@@ -1,0 +1,17 @@
+<div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<button class="btn btn-success" 
+				ng-click='vm.dayChange("-")'>
+				-
+		</button>
+
+		<input 	type="date" 
+				ng-model="vm.selectedDate" 
+				ng-blur="vm.dayChange()">
+
+		<button class="btn btn-success" 
+				ng-click='vm.dayChange("+")'>
+				+
+		</button>
+	</div>
+</div>

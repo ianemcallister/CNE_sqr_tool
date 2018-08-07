@@ -53,6 +53,11 @@ function config($routeProvider, $locationProvider) {
         controller: 'squareTxsController',           //'mainController'
         controllerAs: 'vm'
     })  
+    .when('/tx_blocks', {
+        templateUrl: 'views/txsBlockPage.htm',      //'views/mainPage.htm'
+        controller: 'txsBlockController',           //'mainController'
+        controllerAs: 'vm'
+    })  
     .when('/login', {
         templateUrl: 'views/loginPage.htm',      //'views/mainPage.htm'
         controller: 'loginController',           //'mainController'

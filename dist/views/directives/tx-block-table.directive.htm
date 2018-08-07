@@ -1,0 +1,73 @@
+<div>
+	
+	<h3>Transaction Blocks</h3>
+
+	<table class="table">
+		<!--Header Row-->
+		<tr>
+			<th>Device</th>
+			<th>Employee</th>
+			<th># Txs</th>
+			<th>Gross Sales</th>
+			<th>Tips</th>
+			<th>Net</th>
+			<th>Window</th>
+			<th>Split</th>
+			<th>Customer Day</th>
+		</tr>
+
+		<!--Data Rows-->
+		<tr ng-repeat="block in vm.txBlocks track by $index">
+			
+			<!--Device-->
+			<td>{{block}}</td>	
+			
+			<!--Employee-->
+			<td></td>
+			
+			<!--# Txs-->
+			<td></td>
+
+			<!--Gross Sales-->
+			<td></td>
+
+			<!--Tips-->
+			<td></td>
+
+			<!--Net-->
+			<td></td>
+
+			<!--Window-->
+			<td>
+				
+			</td>
+
+			<!--Split-->
+			<td>
+				<button class="btn btn-warning">Split</button>
+			</td>
+
+			<!--Customer Day-->
+			<td>
+				<input list='customerDaysList' 
+						name='customerDaysList'>
+			</td>
+
+		</tr>
+	</table>
+
+
+	<!--DATA LISTS -->
+	<datalist name="customerDaysList" id="customerDaysList">
+		<option value="one">1</option>
+		<option value="two">2</option>
+		<option value="three">3</option>
+		<!--<option ng-repeat="location in vm.sqrLocations track by $index"
+				style='font-size: 12pt'
+				ng-click=''>
+				{{location.name}}
+		</option>-->
+
+	</datalist>
+
+</div>
