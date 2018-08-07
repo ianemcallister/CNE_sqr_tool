@@ -35,6 +35,11 @@ var cli_helper = {
 		allTx: all_db_tx_read,
 		tx_blocks: {
 			update: update_tx_blocks
+		},
+		sales_days: {
+			repair: {
+				ids: repair_sales_day_id
+			}
 		}
 	},
 	firebase: {
@@ -71,6 +76,16 @@ var cli_helper = {
 		cne_sqr_employees_download: cne_sqr_employees_download,
 		cne_sqr_locations_download: cne_sqr_locations_download
 	}
+};
+
+function repair_sales_day_id() {
+	return new Promise(function(resolve, reject) {
+		maintenance.sales_days.repair.ids().then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+	});	
 };
 
 function update_tx_blocks(batchRequest, pushObject) {

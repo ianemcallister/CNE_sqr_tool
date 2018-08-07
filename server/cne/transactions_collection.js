@@ -86,15 +86,14 @@ function update_tx_blocks_singular(pushObject, tx_id, location_id) {
 			//resolve all promises
 			Promise.all([blockPromise, employeesListPromise, locationsListPromise])
 			.then(function success(ss) {
-
+				//define the local variables
 				var currentBlock = ss[0];
 				var employeesList = ss[1];
 				var locationsList = ss[2];
 
+				//build the block
 				var block_object = data.format.block_txs.object(s, location_id, employeesList, locationsList, currentBlock);
 				
-				
-
 				//update the database with the values
 				firebase.update(blockPath, block_object)
 				.then(function success(ss) {

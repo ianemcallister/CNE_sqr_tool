@@ -9,6 +9,7 @@
 //define dependencies
 var transactions		= require('./transactions_collection.js');
 var customers 			= require('./customers_collection.js');
+var salesDays 			= require('./sales_days_collection.js');
 
 //define local variables
 var maintenace = {
@@ -41,10 +42,36 @@ var maintenace = {
 		}
 	},
 	employees: {},
-	sales_days: {},
+	sales_days: {
+		repair: {
+			ids: repair_sales_day_id
+		}
+	},
 	ref_lists: {},
 	reports: {},
 	test: test
+};
+
+/*
+*	REPAIR SALES DAY ID
+*
+*	This function ensures that every sales day has an id listed in its object.
+*/
+function repair_sales_day_id() {
+	//define local variables
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		//run method
+		salesDays.repair.ids()
+		.then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
 };
 
 /*

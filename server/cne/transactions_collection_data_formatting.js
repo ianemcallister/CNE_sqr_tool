@@ -140,11 +140,11 @@ function format_block_txs_object(sqrTx, location_id, employeesList, locationsLis
 		console.log('currentBlock was undefined, defining it\'s splis now');
 
 		//if no block was found we have to create the needed values
-		returnObject.splits["01"] = {
-			window: date + "T00:00:00" + timezoneOffset + "/" + date + "T23:59:59" + timezoneOffset,
-			customer_id: "UNASSIGNED",
-			txs: {}
-		};
+		returnObject.splits["01"] = stdio.read.json('./models/txs_block_splits.json');
+
+		//add the window times
+		returnObject.splits["01"].window = date + "T00:00:00" + timezoneOffset + "/" + date + "T23:59:59" + timezoneOffset;
+
 
 		//add the tx object
 		returnObject.splits["01"].txs[txTime] = sqrTx.id
