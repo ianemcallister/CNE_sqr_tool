@@ -27,6 +27,11 @@ var slingapi 		= require('../sling/api.js');
 //define local variables
 var cli_helper = {
 	customers: {
+		compile: {
+			hashes: {
+				name_id: compile_customer_name_id_hash
+			}
+		},
 		season: {
 			add: add_customer_season
 		}
@@ -38,6 +43,7 @@ var cli_helper = {
 		},
 		sales_days: {
 			repair: {
+				customer_id: repair_sales_day_customer_id,
 				ids: repair_sales_day_id
 			}
 		}
@@ -76,6 +82,26 @@ var cli_helper = {
 		cne_sqr_employees_download: cne_sqr_employees_download,
 		cne_sqr_locations_download: cne_sqr_locations_download
 	}
+};
+
+function compile_customer_name_id_hash() {
+	return new Promise(function(resolve, reject) {
+		maintenance.customers.compile.hashes.name_id().then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+	});	
+};
+
+function repair_sales_day_customer_id() {
+	return new Promise(function(resolve, reject) {
+		maintenance.sales_days.repair.customer_id().then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+	});	
 };
 
 function repair_sales_day_id() {

@@ -14,9 +14,48 @@ var tasks			= require('./transactions_collection_tasks.js');
 //define local variables
 var salesDays = {
 	repair: {
+		customer_id: repair_customer_id,
 		ids: repair_ids
 	},
 	test: test
+};
+
+/*
+*	REPAIR CUSTOMER IDS
+*
+*	This function iterats over all the sales days and insures that every one has a customer
+*	id.
+*/
+function repair_customer_id() {
+	//define local variables
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//	1. COLLECT ALL THE SALES DAYS
+		firebase.read('sales_days')
+		.then(function success(allSalesdays) {
+			//define local variables
+			var allPromises = [];
+			var returnObject = {};
+			
+			//	2. ITERATE OVER ALL THE SALES DAYS
+			Object.keys(allSalesdays).forEach(function(key) {
+				//define local variables
+				var customer_name = allSalesdays[key].customer_name;
+
+				if(returnObject[customer_name] == undefined) returnObject[customer_name] = "";
+
+			});
+
+			resolve(returnObject);
+
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
 };
 
 /*

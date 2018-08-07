@@ -37,6 +37,11 @@ var maintenace = {
 	},
 	calendar: {},
 	customers: {
+		compile: {
+			hashes: {
+				name_id: compile_customer_name_id_hash
+			}
+		},
 		season: {
 			add: add_customer_season
 		}
@@ -44,12 +49,58 @@ var maintenace = {
 	employees: {},
 	sales_days: {
 		repair: {
+			customer_id: repair_sales_day_customer_id,
 			ids: repair_sales_day_id
 		}
 	},
 	ref_lists: {},
 	reports: {},
 	test: test
+};
+
+/*
+*	COMPILE CUSTOMER NAME/ID HASH
+*
+*	This function looks over the customer list to create a name/id hash and saves
+*	it to the reference lists.
+*/
+function compile_customer_name_id_hash() {
+	//define local variables
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		//run method
+		customers.compile.hashes.name_id()
+		.then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
+};
+
+/*
+*	REPAIR SALES DAY CUSTOMER ID
+*
+*	This function ensures that every sales day has an id listed in its object.
+*/
+function repair_sales_day_customer_id() {
+	//define local variables
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		//run method
+		salesDays.repair.customer_id()
+		.then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
 };
 
 /*

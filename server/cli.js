@@ -7,7 +7,7 @@
 //declare dependencies
 var helper 		= require('./helpers/cli_helpers.js');
 
-helper.ops.sales_days.repair.ids().then(function success(s) {
+helper.customers.compile.hashes.name_id().then(function success(s) {
 	console.log('success', s);
 }).catch(function error(e) {
 	console.log('error', e);
