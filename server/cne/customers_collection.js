@@ -19,7 +19,69 @@ var customers = {
 	},
 	season: {
 		add: add_customer_season
+	},
+	repair: {
+		sales_day_list: repair_sales_day_list
 	}
+};
+
+/*
+*	REPAIR SAES DAY LIST
+*
+*	This function updates the format of all sales day within a customer
+*/
+function repair_sales_day_list() {
+	//define local variables
+	var allPromises = [firebase.read('customers'), firebase.read('sales_days')]
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//	1. DOWNLOAD ALL OF THE CUSTOMERS
+		Promise.all(allPromises)
+		.then(function success(s) {
+			//define local variables
+			var allCustomers = s[0];
+			var allSalesDays = s[1];
+			var updateObject = {};
+
+			//	1. ITERATE THROUGH EACH OF THE CUSTOMERS
+			Object.keys(allCustomers).forEach(function(customerKey) {
+				//define local variables
+				var customerSalesDays = allCustomers[customerKey].sales_days;
+
+				//	2. ITERATE THROUGH THE SALES DAYS LIST FOR THIS CUSTOMER
+				Object.keys(customerSalesDays).forEach(function(customerSalesdayKey) {
+					//define local variables
+					var oldUpdatePath = customerKey + "/sales_days/" + customerSalesdayKey;
+					var salesDayId = customerSalesDays[customerSalesdayKey];
+					var newUpdatePath = customerKey + "/sales_days/" + allSalesDays[salesDayId].date;
+
+					//	3. SET THE OLD VALUE TO NULL
+					updateObject[oldUpdatePath] = null;
+
+					//	4. SET THE KEY VALUE PAIR FOR THE NEW VERSION
+					if(salesDayId != "placeholder" && salesDayId != "undefined" )
+						updateObject[newUpdatePath] = salesDayId;
+
+				});
+
+			});
+
+			//resolve(updateObject);
+
+			//	5. SAVE THE UPDATE OBJECT CHANGES TO THE DATABASE
+			firebase.update('customers', updateObject)
+			.then(function success(ss) {
+				resolve(ss);
+			}).catch(function error(ee) {
+				reject(ee);
+			});
+
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});	
 };
 
 /*

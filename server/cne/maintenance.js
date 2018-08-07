@@ -44,11 +44,15 @@ var maintenace = {
 		},
 		season: {
 			add: add_customer_season
+		},
+		repair: {
+			sales_day_list: repair_sales_day_list
 		}
 	},
 	employees: {},
 	sales_days: {
 		repair: {
+			delete_duplicates: repair_sales_day_delete_duplicates,
 			customer_id: repair_sales_day_customer_id,
 			ids: repair_sales_day_id
 		}
@@ -56,6 +60,49 @@ var maintenace = {
 	ref_lists: {},
 	reports: {},
 	test: test
+};
+
+/*
+*	REPAIR SAES DAY LIST
+*
+*	This function updates the format of all sales day within a customer
+*/
+function repair_sales_day_list() {
+	//define local variables
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		//run method
+		customers.repair.sales_day_list()
+		.then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+};
+
+/*
+*	REPAIR SALES DAY BY DELETING DUPLICATES
+*
+*	This function looks over the sales days list and deletes any duplicate or
+*	incomplete records
+*/
+function repair_sales_day_delete_duplicates() {
+	//define local variables
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+		//run method
+		salesDays.repair.delete_duplicats()
+		.then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
 };
 
 /*

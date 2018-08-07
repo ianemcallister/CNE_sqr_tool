@@ -34,6 +34,9 @@ var cli_helper = {
 		},
 		season: {
 			add: add_customer_season
+		},
+		repair: {
+			sales_day_list: repair_sales_day_list
 		}
 	},
 	ops: {
@@ -43,6 +46,7 @@ var cli_helper = {
 		},
 		sales_days: {
 			repair: {
+				delete_duplicates: repair_sales_day_delete_duplicates,
 				customer_id: repair_sales_day_customer_id,
 				ids: repair_sales_day_id
 			}
@@ -83,6 +87,26 @@ var cli_helper = {
 		cne_sqr_locations_download: cne_sqr_locations_download
 	}
 };
+
+function repair_sales_day_list() {
+	return new Promise(function(resolve, reject) {
+		maintenance.customers.repair.sales_day_list().then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+	});	
+};
+
+function repair_sales_day_delete_duplicates() {
+	return new Promise(function(resolve, reject) {
+		maintenance.sales_days.repair.delete_duplicates().then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+	});		
+}
 
 function compile_customer_name_id_hash() {
 	return new Promise(function(resolve, reject) {
