@@ -26,6 +26,11 @@ var slingapi 		= require('../sling/api.js');
 
 //define local variables
 var cli_helper = {
+	calender: {
+		update: {
+			sales_days: update_calendar_salesdays
+		}
+	},
 	customers: {
 		compile: {
 			hashes: {
@@ -87,6 +92,16 @@ var cli_helper = {
 		cne_sqr_locations_download: cne_sqr_locations_download
 	}
 };
+
+function update_calendar_salesdays() {
+	return new Promise(function(resolve, reject) {
+		maintenance.calendar.update.sales_days().then(function success(s) {
+			resolve(s);
+		}).catch(function error(e) {
+			reject(e);
+		});
+	});		
+}
 
 function repair_sales_day_list() {
 	return new Promise(function(resolve, reject) {

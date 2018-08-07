@@ -29,7 +29,7 @@ var ahcalfn = {
 // 	COMPILE SEASON SALES DAYS LIST
 function season_sales_days_list(start_date, end_date, frequency, rpt_on, hrs) {
 	//define local variables
-	var frequency_hash = { "never":0 , "every_week": 1, "every_2_weeks": 2, "every_3_weeks": 3, "every_4_weeks": 4, "every_5_weeks": 5, "every_6_weeks": 6, "every_7_weeks": 7, "every_8_weeks": 8 };
+	//var frequency_hash = { "never":0 , "every_week": 1, "every_2_weeks": 2, "every_3_weeks": 3, "every_4_weeks": 4, "every_5_weeks": 5, "every_6_weeks": 6, "every_7_weeks": 7, "every_8_weeks": 8 };
 
 };
 

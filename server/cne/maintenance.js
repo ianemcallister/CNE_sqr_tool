@@ -10,6 +10,7 @@
 var transactions		= require('./transactions_collection.js');
 var customers 			= require('./customers_collection.js');
 var salesDays 			= require('./sales_days_collection.js');
+var calendar 			= require('./calendar_collection.js');
 
 //define local variables
 var maintenace = {
@@ -35,7 +36,11 @@ var maintenace = {
 	tx_blocks: {
 		update: update_tx_blocks
 	},
-	calendar: {},
+	calendar: {
+		update: {
+			sales_days: update_calendar_salesdays
+		}
+	},
 	customers: {
 		compile: {
 			hashes: {
@@ -60,6 +65,22 @@ var maintenace = {
 	ref_lists: {},
 	reports: {},
 	test: test
+};
+
+/*
+*	UPDATE CALENDAR SALESDAYS
+*
+*	This function run through all the sales days and makes sure they're on the
+*	calendar.
+*/
+function update_calendar_salesdays() {
+	//define local variables
+	//return async work
+	return new Promise(function(resolve, reject) {
+		//run method
+		resolve(calendar.update.sales_days());
+
+	});
 };
 
 /*
