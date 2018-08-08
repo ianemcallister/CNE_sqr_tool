@@ -149,6 +149,8 @@ function read_range(path, start, end) {
 			//pass the data back
 			resolve(snapshot.val());
 
+		}).catch(function error(e){
+			reject(e);
 		});
 
 	});

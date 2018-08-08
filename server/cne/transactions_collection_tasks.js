@@ -194,14 +194,15 @@ function check_known_cme(ahnuts_tx) {
 *	This is used to..
 */
 function batch_download_txs(batchLog, employeesList, locationsList) { 
+	
 	//define local variables
 	var batchStrt = Object.keys(batchLog)[0];
 	var batchEnds = data.general.current_time();
 
 	//TODO: DEAL WITH THE NUMBER OF REQUESTS LATER FOR NOW JUST GET TX FOR PRIMARY LOCATIONS
 	locationsList = [
-		{"id": "M53KQT35YKE5C"},
-		{"id": "14E8S7P16JQDM"}
+		{"id": "M53KQT35YKE5C", "name": "Oregon"},
+		{"id": "14E8S7P16JQDM", "name": "Utah"}
 	];
 		
 	//TODO: IF THE LAST DOWNLOAD WAS NOT SUCCESSFUL, GO FURTHER BACK
@@ -224,10 +225,10 @@ function batch_download_txs(batchLog, employeesList, locationsList) {
 
 		//	3. ALLOW ALL PROMISES TO RESOLVE
 		Promise.all(allLocationPromises)
-		.then(function success(allLocations) {
+		.then(function success(allLocationsTxs) {
 			
 			//	4. UPDATE ALL RECORDS WITH NEW TRANSACTIONS
-			batch_update_txs(allLocations, batchStrt, batchEnds)
+			batch_update_txs(allLocationsTxs, batchStrt, batchEnds, locationsList, employeesList)
 			.then(function success(s) {
 				resolve(s);
 			}).catch(function error(ee) {
@@ -516,7 +517,7 @@ function update_sales_calculations(sales_day_id, location_id) {
 *
 *	This is used to..
 */
-function batch_update_txs(allLocationTxs, batchStrt, batchEnds) { 
+function batch_update_txs(allLocationTxs, batchStrt, batchEnds, locationsList, employeesList) { 
 	//define local variables
 	var strtDate = data.parse.date_yyyy_mm_dd(batchStrt);
 	var endsDate = data.parse.date_yyyy_mm_dd(batchEnds);
@@ -526,27 +527,106 @@ function batch_update_txs(allLocationTxs, batchStrt, batchEnds) {
 	return new Promise(function(resolve, reject) {
 		
 		//	1. DOWNLOAD CURRENT BLOCKS FOR THIS DATE RANGE
-		txBlocksPromsise.then(function success(s) {
-			
+		txBlocksPromsise.then(function success(allBlocks) {
 			//define local variables
 			var counter = 0;
+			var updatesToProcess = {};
+
+			if(allBlocks == undefined || allBlocks == null) allBlocks = {};
+
+			//notify progress
+			console.log('allLocationTxs', allLocationTxs.length);
 
 			//	1. ITERATE OVER ALL LOCATIONS
 			allLocationTxs.forEach(function(location) {
 
+				//notify progress
+				//console.log('location Txs', location.length);
+
 				//	2. ITERATE OVER ALL TXS
 				location.forEach(function(tx) {
 
+					//notify progress
+					//console.log(tx);
+
+					//define local varaibles
+					var txCounter = 0;
+					var txDate = "UNKNOWN";
+					var txEmployee = "UNKNOWN";
+					var txDevice = 'UNKNOWN';
+
+					//console.log('tx', txCounter);
+
+					if(data.parse.date_yyyy_mm_dd(tx.created_at) != undefined) txDate = data.parse.date_yyyy_mm_dd(tx.created_at);
+					if(tx.tender[0].employee_id != undefined) txEmployee = tx.tender[0].employee_id;
+					if(tx.device != undefined) txDevice = data.parse.tx_device_id(tx.device.id);
+
+					//update last variable
+					var updatePath = txDate + "/" + txEmployee + "/" + txDevice;
+
+					//notify progress
+					console.log('txDate', txDate, 'txEmployee', txEmployee, 'txDevice', txDevice);
+
+					//	3. DOES THE TX BLOCK ALREADY EXIST
+					if(!data.test.tx_block_exists(allBlocks, txDate, txEmployee, txDevice)) {
+						//notify progress
+						console.log('creating new exists', allBlocks);
+
+						//	3.1 IF IT DOESN'T EXIST CREATE A NEW ONE
+						var newBlock = data.format.block_txs.object(tx, locationsList[counter].id, employeesList, locationsList, txEmployee);
+						
+						//	3.1.1 ADD THE NEW VALUES TO THE BLOCK FOR SUBSEQUENT TRANSACTIONS
+						allBlocks = data.format.block_txs.batch_block(allBlocks, txDate, txEmployee, txDevice, newBlock);
+
+						//	3.1.2 TURN THE NEW BLOCK INTO A BATCH OF UPDATES TO BE PROCESSED
+						updatePath = updatePath + "/" + txDate + txEmployee + txDevice;
+						var batchUpdates = data.parse.block_to_batch_updates(updatePath, newBlock);
+
+						//	3.1.1 ADD ALL UPDATES TO THE MASTER UPDATES
+						batchUpdates.forEach(function(update) {
+							
+							var updateKey = Object.keys(update)[0];
+							updatesToProcess[updateKey] = update[updateKey];
+							
+						});
+
+					} else {
+						
+						//	3.2 IF THE BLOCK ALREADY EXISTS, ADD THE TX TO THE PROPER SPLIT
+						//iterate over the split keys
+						Object.keys(allBlocks[txDate][txEmployee][txDevice]).forEach(function(splitKey) {
+							//define local variables
+							var updateTime = data.parse.sqr_tx_time(tx.created_at, tx.id, location.id)
+							updatePath = updatePath + "/" + splitKey + "/txs/" + updateTime;
+							
+							//
+							updatesToProcess[updatePath] = tx.id;
+						});
+
+					}
+
+
+					//incriment tx counter
+					txCounter++;
 				});
 
 				//notify or progress
 				console.log("location", counter, "txs", location.length);
 
 				//incriment the counter
-				counter++
+				counter++;;
 			});
 
-			resolve(s);
+			data.write.json('./testResults/updatesTest.json', updatesToProcess);
+
+			//once all the updates have been established, process them in the database
+			firebase.update('tx_blocks', updatesToProcess)
+			.then(function success(s) {
+				resolve(s);
+			}).catch(function error(ee) {
+				reject(ee);
+			});
+			//resolve(updatesToProcess);
 
 		}).catch(function error(e) {
 			reject(e);

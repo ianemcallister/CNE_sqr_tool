@@ -34,22 +34,131 @@ var data_formatting = {
 		sq_tx_mods_to_ahNuts: map_sqr_tx_mods_to_ahnts_tx_mods
 	},
 	parse: {
+		sqr_tx_time: parse_sq_tx_time,
 		date_yyyy_mm_dd: parse_date_yyyy_mm_dd,
 		last_batch_sync: format_sync_log,
 		tx_timestamp: parse_timestamp,
 		tx_device_id: parse_tx_device_id,
-		sq_txs_to_by_device_list: parse_sq_txs_to_by_device_list
+		sq_txs_to_by_device_list: parse_sq_txs_to_by_device_list,
+		block_to_batch_updates: parse_block_to_batch_updates
 	},
 	format: {
 		block_txs: {
 			id: format_block_txs_id,
 			object: format_block_txs_object,
 			fill_new_object: fill_new_block_txs_object,
-			single_tx: format_block_tx_single_tx
+			single_tx_time: format_block_tx_single_tx,
+			batch_block: format_block_txs_batch_block
 		}
 	},
-	test: test
+	write: {
+		json: write_json
+	},
+	test: {
+		tx_block_exists: test_tx_block_exists,
+		test: test
+	}
 };
+
+function write_json(path, data) {
+	stdio.write.json(data, path);
+}
+
+function parse_sq_tx_time(sqTxTime, txId, location_id) {
+	var timezoneOffset = timezone_offset(location_id);
+	var txMoment = moment(sqTxTime).utcOffset(timezoneOffset);
+	var txTime = txMoment.utcOffset(timezoneOffset).format();
+	return txTime;
+}
+
+/*
+*
+*
+*/
+function parse_block_to_batch_updates(path, block) {
+	//define local variables
+	var returnArray = [];
+
+	console.log('parse_block_to_batch_updates');
+
+	//iterate through all the keys of the object
+	Object.keys(block).forEach(function(key) {
+		//define local variables
+		var writePath = path + "/" + key;
+
+		//look for embeded objects
+		if(key == 'txs' || key == 'validation') {
+
+			//if this is the txs, iterate through all the records
+			Object.keys(block[key]).forEach(function(subKey) {
+				var updateObject = {};
+				writePath = writePath + "/" + subKey;
+
+				updateObject[writePath] = block[key][subKey];
+
+				returnArray.push(updateObject);
+			});
+
+		} else {
+			var updateObject = {};
+			updateObject[writePath] = block[key];
+
+			returnArray.push(updateObject);
+		}
+
+	});
+
+	//console.log('returnArray', returnArray);
+
+	//return array
+	return returnArray;
+}
+
+/*
+*
+*
+*/
+function format_block_txs_batch_block(allBlocks, txDate, txEmployee, txDevice, newBlock) {
+	//define local variables
+	var returnObject = allBlocks;
+	var splitKey = txDate + txEmployee + txDevice
+
+	console.log('starting with', allBlocks, txDate, txEmployee, txDevice, newBlock);
+
+	//add the available data
+	if(returnObject[txDate] == undefined) returnObject[txDate] = {};
+	if(returnObject[txDate][txEmployee] == undefined) returnObject[txDate][txEmployee] = {};
+	if(returnObject[txDate][txEmployee][txDevice] == undefined) returnObject[txDate][txEmployee][txDevice] = {};
+
+	//then add the split key
+	returnObject[txDate][txEmployee][txDevice][splitKey] = newBlock;
+
+	//console.log('returning this', returnObject);
+
+	return returnObject;
+}
+
+
+function test_tx_block_exists(allBlocks, txDate, txEmployee, txDevice) {
+	//define local variables
+	var blockExists = true;
+
+	console.log('test_tx_block_exists', allBlocks, txDate, txEmployee, txDevice);
+
+	//test for date
+	if(allBlocks[txDate] == undefined) blockExists = false;
+	else {
+		//then for employee
+		if(allBlocks[txDate][txEmployee] == undefined) blockExists = false;
+		else {
+			//then for device
+			if(allBlocks[txDate][txEmployee][txDevice] == undefined) blockExists = false;
+		};
+		
+	};
+
+	return blockExists
+}
 
 function parse_date_yyyy_mm_dd(date) {
 	return moment(date).format("YYYY-MM-DD");
@@ -82,12 +191,27 @@ function calculate_tx_within_window(txTime, window, location_id) {
 /*
 *	FILL NEW BLOCK TRANSACTIONS OBJECT
 */
-function fill_new_block_txs_object(sqrTx, location_id, employeesList, locationsList) {
+function fill_new_block_txs_object(sqrTx, location_id, employeesList, locationsList, txEmployee) {
 	//define local variables
+	//console.log('formatting block object');
+
 	var timezoneOffset = timezone_offset(location_id);
 	var returnObject = stdio.read.json('./models/txs_block.json');
+	var employeeId = "UNKNOWN";
+	var deviceId = "UNKNOWN";
+	var deviceName = "UNKNOWN";
 	var employeeName = "";
 	var locationName = "";
+
+	console.log('sqrTx.device', sqrTx.device, 'sqrTx.tender', sqrTx.tender);
+
+	//error checking
+	if(sqrTx.tender[0].employee_id != undefined) employeeId = sqrTx.tender[0].employee_id;
+	if(employeeId == undefined) employeeId = txEmployee;
+	if(sqrTx.device.id != undefined) {
+		deviceId = sqrTx.device.id;
+		deviceName = sqrTx.device.name;
+	};
 
 	//	1. SETUP DATE VARIABLES
 	var dateObject = new Date(sqrTx.created_at);
@@ -101,7 +225,7 @@ function fill_new_block_txs_object(sqrTx, location_id, employeesList, locationsL
 
 	//	3. SET EMPLOYEE NAME
 	employeesList.forEach(function(employee) {
-		if(employee.id == sqrTx.tender[0].employee_id) employeeName = employee.first_name + " " + employee.last_name;
+		if(employee.id == employeeId) employeeName = employee.first_name + " " + employee.last_name;
 	});
 
 	//	4. SET LOCATION NAME
@@ -111,16 +235,16 @@ function fill_new_block_txs_object(sqrTx, location_id, employeesList, locationsL
 
 	//update values
 	returnObject.date = date;
-	returnObject.device_id = sqrTx.device.id;
-	returnObject.device_name = sqrTx.device.name;
-	returnObject.employee_id = sqrTx.tender[0].employee_id;
+	returnObject.device_id = deviceId;
+	returnObject.device_name = deviceName;
+	returnObject.employee_id = employeeId;
 	returnObject.employee_name = employeeName;
 	returnObject.location_id = location_id;
 	returnObject.location_name = locationName;
 	returnObject.txs[txTime] = sqrTx.id
 	returnObject.window = date + "T00:00:00" + timezoneOffset + "/" + date + "T23:59:59" + timezoneOffset;
 
-	console.log('returning this object', returnObject);
+	//console.log('returning this object', returnObject);
 	//return the returnObject
 	return returnObject;
 };
@@ -129,7 +253,7 @@ function timezone_offset(location_id) {
 	//define local variables
 	var returnString = "";
 
-	var locationsHash = { "M53KQT35YKE5C": "-07:00" }
+	var locationsHash = { "M53KQT35YKE5C": "-07:00", "14E8S7P16JQDM": "-06:00" }
 
 	if(locationsHash[location_id] != undefined)
 		returnString = locationsHash[location_id];
@@ -496,11 +620,15 @@ function parse_timestamp(timestamp, location_id) {
 *	This is used to...
 */
 function parse_tx_device_id(sqrDeviceId) {
-	//define local variables
-	var namesplit = sqrDeviceId.split(":");
-	var ahnuts_device_id = namesplit[1];
 
-	return ahnuts_device_id;
+	if(sqrDeviceId != undefined) {
+		//define local variables
+		var namesplit = sqrDeviceId.split(":");
+		var ahnuts_device_id = namesplit[1];
+
+		return ahnuts_device_id;		
+	} else return 'UNKNOWN'
+
 };
 
 /*

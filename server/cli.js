@@ -26,7 +26,7 @@ var pushRequest = undefined; /*{
  };*/
 
 helper.ops.tx_blocks.update(batchRequets, pushRequest).then(function success(s) {
-	console.log('success', s);
+	console.log('success');
 }).catch(function error(e) {
 	console.log('error', e);
 });

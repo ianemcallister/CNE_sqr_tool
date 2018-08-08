@@ -6,16 +6,10 @@
 	"location_id": "",
 	"location_name": "",
 	"date": "",
-	"validation": {
-		"employee": {
-			"identifying_tx": false,
-			"designated_customer_id": ""
-		},
-		"manager": {
-			"confirmed": false
-		}
-	},
-	"assigned": false,
+	"employee_identifed": "",
+	"employee_designated_customer_id": "",
+	"manager_confirmed": "",
+	"assigned": "",
 	"customer_id": "UNASSIGNED",
 	"customer_name": "UNASSIGNED",
 	"sales_day_id": "UNASSIGNED",
