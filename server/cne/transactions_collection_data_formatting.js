@@ -143,7 +143,7 @@ function test_tx_block_exists(allBlocks, txDate, txEmployee, txDevice) {
 	//define local variables
 	var blockExists = true;
 
-	console.log('test_tx_block_exists', allBlocks, txDate, txEmployee, txDevice);
+	//console.log('test_tx_block_exists', allBlocks, txDate, txEmployee, txDevice);
 
 	//test for date
 	if(allBlocks[txDate] == undefined) blockExists = false;

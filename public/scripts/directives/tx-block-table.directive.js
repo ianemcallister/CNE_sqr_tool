@@ -50,14 +50,33 @@ function txBlockTable() {
 		var vm = this;
 
 		//define view model variables
-		vm.txBlockList = [];
+		
+		//define private functions
+		function calcGrossSales(txs) { 
+			
+			return 100; 
+		};
+
+		function calcTips(txs) { 
+			
+			return 100; 
+		};
+
+		function calcNetSales(txs) { 
+			
+			return 100; 
+		};
 
 		//define local functions
 		$scope.updateTxBlockList = function() {
 			//define local variables
 			vm.txBlockList = [];
+			vm.txBlockPath = [];
+			vm.txBlockGrosses = [];
+			vm.txBlockTips = [];
+			vm.txBlockNets = [];
 
-			//iterate through all employees
+			//	1. BUILD THE TXBLOCKLIST
 			Object.keys(vm.txBlocks).forEach(function(empKey) {
 				//define local variables
 				var employee = vm.txBlocks[empKey];
@@ -81,7 +100,18 @@ function txBlockTable() {
 								var txBlock = device[splitKey];
 								var splitSplitTest = splitKey.split("$");
 
-								if(splitSplitTest.length == 1) vm.txBlockList.push(txBlock);
+								if(splitSplitTest.length == 1) {
+									//get the blocks
+									vm.txBlockList.push(txBlock);
+
+									//record the paths
+									vm.txBlockPath.push({b:empKey, d:devKey, s:splitKey});
+
+									//get the money
+									vm.txBlockGrosses.push(calcGrossSales(txBlock.txs));
+									vm.txBlockTips.push(calcTips(txBlock.txs));
+									vm.txBlockNets.push(calcNetSales(txBlock.txs));
+								}
 
 							});
 
@@ -92,6 +122,8 @@ function txBlockTable() {
 				}
 
 			});
+
+		console.log(vm.txBlockPath);
 		};
 
 		//define view model functions
@@ -117,17 +149,16 @@ function txBlockTable() {
 			return counter;
 		};
 
-		vm.calcGrossSales = function(txs) {
-			//define local variables
-			var txList = ['50E8Ae5FxUoRq1dwfGZgLQB', 'VmOqJuqH2G2IIx266JwQKQB', '9Gaj6n5AtFOv3ITKAaZKKQB'];
-			console.log('calculating the gross');
-
-
-		};
-		vm.calcTips = function(txs) {};
-		vm.calcNetSales = function(txs) {}
+		vm.testing = function(id) {
+			var device = vm.txBlockPath[id].d;
+			var split = vm.txBlockPath[id].s;
+			var tempBlock = vm.txBlocks[id][device][split];
+			console.log('got this id', id, tempBlock);
+			
+		}
 
 		console.log('in tx-block table controller');
+		
 	}
 
 	//pass it back

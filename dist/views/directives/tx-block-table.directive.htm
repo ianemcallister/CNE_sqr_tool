@@ -32,11 +32,13 @@
 
 			<!--Gross Sales-->
 			<td>
-				{{vm.calcGrossSales(block.txs) / 100 | currency: "$" : 2 }}
+				{{vm.txBlockGrosses[$index] / 100 | currency: "$" : 2}}
 			</td>
 
 			<!--Tips-->
-			<td></td>
+			<td>
+				
+			</td>
 
 			<!--Net-->
 			<td></td>
@@ -49,7 +51,7 @@
 
 			<!--Split-->
 			<td>
-				<button class="btn btn-warning">Split</button>
+				<button class="btn btn-warning" ng-click="vm.testing($index)">Split</button>
 			</td>
 
 			<!--Customer Day-->
