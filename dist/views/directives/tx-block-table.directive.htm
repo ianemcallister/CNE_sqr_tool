@@ -17,7 +17,7 @@
 		</tr>
 
 		<!--Data Rows-->
-		<tr ng-repeat="block in vm.txBlocks track by $index">
+		<tr ng-repeat="block in vm.txBlockList track by $index">
 			
 			<!--Device-->
 			<td>{{block.device_name}}</td>	
@@ -39,7 +39,7 @@
 
 			<!--Window-->
 			<td>
-				
+				{{block.window}}
 			</td>
 
 			<!--Split-->
@@ -54,6 +54,8 @@
 			</td>
 
 		</tr>
+
+		
 	</table>
 
 

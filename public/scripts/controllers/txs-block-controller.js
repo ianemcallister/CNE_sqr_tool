@@ -13,7 +13,7 @@ function txsBlockController($scope, $log, $firebase, $firebaseArray) {
 	var theYear = yesterday.year();
 	var theDate = yesterday.format("YYYY-MM-DD");
 	var cmesPath = 'calender/' + theYear + '/' + theDate + '/sales_days';
-	var txBlocksPath = "tx_blocks";
+	var txBlocksPath = "tx_blocks/" + theDate;
 	//console.log(yesterday.format(), theDate);
 
 	//define view model variables
@@ -37,12 +37,14 @@ function txsBlockController($scope, $log, $firebase, $firebaseArray) {
 		var newYear = newDate.year();
 		var pathDate = newDate.format("YYYY-MM-DD");
 		var newCmesPath = 'calender/' + newYear + '/' + pathDate + '/sales_days'; 
+		var newTxBlocksPath = "tx_blocks/" + pathDate;
 		
 		//notify progress
 		console.log('updating date', pathDate);
 
 		//update values
 		vm.cmes = $firebaseArray(firebase.database().ref().child(newCmesPath));
+		vm.txBlocks = $firebaseArray(firebase.database().ref().child(newTxBlocksPath));
 	};
 
 }
