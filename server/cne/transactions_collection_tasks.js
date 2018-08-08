@@ -193,12 +193,51 @@ function check_known_cme(ahnuts_tx) {
 *
 *	This is used to..
 */
-function batch_download_txs(batchLogPromise, employeesListPromise, locationsListPromise) { 
+function batch_download_txs(batchLog, employeesList, locationsList) { 
 	//define local variables
+	var batchStrt = Object.keys(batchLog)[0];
+	var batchEnds = data.general.current_time();
+
+	//TODO: DEAL WITH THE NUMBER OF REQUESTS LATER FOR NOW JUST GET TX FOR PRIMARY LOCATIONS
+	locationsList = [
+		{"id": "M53KQT35YKE5C"},
+		{"id": "14E8S7P16JQDM"}
+	];
+		
+	//TODO: IF THE LAST DOWNLOAD WAS NOT SUCCESSFUL, GO FURTHER BACK
 
 	//return async work
 	return new Promise(function(resolve, reject) {
-		resolve(batchLogPromise);
+		//define local variables
+		var allLocationPromises = [];
+		var counter = 0;
+
+		//	1. ITERATE THROUGH ALL THE LOCATIONS
+		Object.keys(locationsList).forEach(function(locKey) {
+			//define local variables
+			var locationId = locationsList[locKey].id;
+			var locationSalesPromise = squareV1.payments.list(locationId, batchStrt, batchEnds);
+
+			//	2. EACH SQUARE LOCATION GETS ITS OWN PROMISE, ADD TO THE ARRAY
+			allLocationPromises.push(locationSalesPromise);
+		});	
+
+		//	3. ALLOW ALL PROMISES TO RESOLVE
+		Promise.all(allLocationPromises)
+		.then(function success(allLocations) {
+			
+			//	4. UPDATE ALL RECORDS WITH NEW TRANSACTIONS
+			batch_update_txs(allLocations, batchStrt, batchEnds)
+			.then(function success(s) {
+				resolve(s);
+			}).catch(function error(ee) {
+				reject(e);
+			});
+
+		}).catch(function error(e) {
+			reject(e);
+		});
+
 	}); 
 
 };
@@ -477,12 +516,42 @@ function update_sales_calculations(sales_day_id, location_id) {
 *
 *	This is used to..
 */
-function batch_update_txs(locationsList, lastUpdated) { 
+function batch_update_txs(allLocationTxs, batchStrt, batchEnds) { 
 	//define local variables
+	var strtDate = data.parse.date_yyyy_mm_dd(batchStrt);
+	var endsDate = data.parse.date_yyyy_mm_dd(batchEnds);
+	var txBlocksPromsise = firebase.read_specific.range('tx_blocks', strtDate, endsDate);
 
 	//return async work
 	return new Promise(function(resolve, reject) {
-		resolve(lastUpdated);
+		
+		//	1. DOWNLOAD CURRENT BLOCKS FOR THIS DATE RANGE
+		txBlocksPromsise.then(function success(s) {
+			
+			//define local variables
+			var counter = 0;
+
+			//	1. ITERATE OVER ALL LOCATIONS
+			allLocationTxs.forEach(function(location) {
+
+				//	2. ITERATE OVER ALL TXS
+				location.forEach(function(tx) {
+
+				});
+
+				//notify or progress
+				console.log("location", counter, "txs", location.length);
+
+				//incriment the counter
+				counter++
+			});
+
+			resolve(s);
+
+		}).catch(function error(e) {
+			reject(e);
+		});
+
 	}); 
 
 };

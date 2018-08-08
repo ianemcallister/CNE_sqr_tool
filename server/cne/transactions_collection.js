@@ -101,7 +101,7 @@ function update_tx_blocks_singular(pushObject, tx_id, location_id) {
 function update_tx_blocks_batch() {
 	//define local variables
 	//var txsPromise = tasks.download.txs.batch();
-	var batchLogPromise = firebase.read_most_recent('logs/tx_syncs');
+	var batchLogPromise = firebase.read_specific.most_recent('logs/tx_syncs');
 	var employeesListPromise = squareV1.employees.list();
 	var locationsListPromise = squareV1.locations.list();
 

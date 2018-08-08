@@ -34,7 +34,10 @@ admin.initializeApp({
 var firebase = {
 	create: create,
 	read: read,
-	read_most_recent: read_most_recent,
+	read_specific: {
+		most_recent: read_most_recent,
+		range: read_range
+	},
 	update: update,
 	push: push,
 	del: del,
@@ -120,7 +123,38 @@ function read_most_recent(path) {
 		});
 
 	});
-}
+};
+
+/*
+*
+*/
+function read_range(path, start, end) {
+	//notify progress
+	console.log('reading range records', path, start, end);
+	
+	//TODO: FIGURE OUT HOW TO ADD ALL SORTS AND FILTERS LATER
+
+	//define local variable
+	var ref = admin.database().ref(path).orderByKey().startAt(start).endAt(end);
+
+	//return async work
+	return new Promise(function(resolve, reject) {
+
+		//hit the database
+		ref.once("value")
+		.then(function(snapshot) {
+		    
+			//console.log(snapshot.val());
+
+			//pass the data back
+			resolve(snapshot.val());
+
+		});
+
+	});
+};
+
+
 
 /*
 *	PUSH

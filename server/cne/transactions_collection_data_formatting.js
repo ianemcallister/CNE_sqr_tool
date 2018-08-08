@@ -12,7 +12,8 @@ var moment 			= require('moment-timezone');
 //define module
 var data_formatting = {
 	general: {
-		timezone_offset: timezone_offset
+		timezone_offset: timezone_offset,
+		current_time: current_time
 	},
 	calculate: {
 		financial: {
@@ -33,6 +34,7 @@ var data_formatting = {
 		sq_tx_mods_to_ahNuts: map_sqr_tx_mods_to_ahnts_tx_mods
 	},
 	parse: {
+		date_yyyy_mm_dd: parse_date_yyyy_mm_dd,
 		last_batch_sync: format_sync_log,
 		tx_timestamp: parse_timestamp,
 		tx_device_id: parse_tx_device_id,
@@ -48,6 +50,15 @@ var data_formatting = {
 	},
 	test: test
 };
+
+function parse_date_yyyy_mm_dd(date) {
+	return moment(date).format("YYYY-MM-DD");
+}
+
+function current_time() {
+	var currentTime = moment(new Date());
+	return currentTime.format();
+}
 
 function format_block_tx_single_tx(sqTxTime, txId, location_id) {
 	var timezoneOffset = timezone_offset(location_id);
