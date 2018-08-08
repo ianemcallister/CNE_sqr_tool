@@ -193,12 +193,12 @@ function check_known_cme(ahnuts_tx) {
 *
 *	This is used to..
 */
-function batch_download_txs(locationsList, lastUpdated) { 
+function batch_download_txs(batchLogPromise, employeesListPromise, locationsListPromise) { 
 	//define local variables
 
 	//return async work
 	return new Promise(function(resolve, reject) {
-		resolve(lastUpdated);
+		resolve(batchLogPromise);
 	}); 
 
 };

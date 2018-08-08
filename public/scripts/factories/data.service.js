@@ -24,12 +24,43 @@ function dataService($http) {
 			list: sqr_employees_list
 		},
 		sqr_txs: {
-			full_day: sqr_txs_day
+			full_day: sqr_txs_day,
+			select_txs: sqr_select_txs
 		},
 		sales_days: {
 			compile_batch: compile_new_sales_day_batch
 		}
 	};
+
+	function sqr_select_txs(txsList) {
+		//define local variables
+		var postObject = {};
+		console.log('getting sqr txs');
+
+		//iterate over all tx
+		txsList.forEach(function(tx) {
+
+		});
+
+		return new Promise(function(resolve, reject) {
+			//try POST
+			$http({
+				method: 'POST',
+				url: '/v1/batch',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				data: postObject
+			}).then(function successCallback(response) {
+				
+				resolve(response.data);
+				
+			}, function errorCallback(error) {
+				reject(error);
+			});
+		});
+
+	}
 
 	//
 	function sqr_locations_list() {

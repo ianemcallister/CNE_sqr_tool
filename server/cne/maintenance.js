@@ -226,10 +226,14 @@ function update_tx_blocks(batchRequest, pushObject) {
 		if(batchRequest != undefined) {
 			
 			//notify progress
-			console.log('there is a batch request');
+			//console.log('there is a batch request', batchRequest);
 
-			//TODO: ADD THE BATCH TRANSACTION FUNCTION HERE
-
+			transactions.tx_blocks.update.batch()
+			.then(function success(s) {
+				resolve(s)
+			}).catch(function error(e) {
+				reject({type: "Error", message: e});
+			});
 
 		//if no batch request is there a push request
 		} else if (pushObject != undefined) {

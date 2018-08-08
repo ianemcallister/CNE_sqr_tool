@@ -26,10 +26,14 @@
 			<td>{{block.employee_name}}</td>
 			
 			<!--# Txs-->
-			<td></td>
+			<td>
+				{{vm.countTxs(block.txs)}}
+			</td>
 
 			<!--Gross Sales-->
-			<td></td>
+			<td>
+				{{vm.calcGrossSales(block.txs) / 100 | currency: "$" : 2 }}
+			</td>
 
 			<!--Tips-->
 			<td></td>
@@ -39,7 +43,8 @@
 
 			<!--Window-->
 			<td>
-				{{block.window}}
+				{{vm.windowParse(block.window, true) | date: "hh:mm a"}} -
+				{{vm.windowParse(block.window, false) | date: "hh:mm a"}}
 			</td>
 
 			<!--Split-->

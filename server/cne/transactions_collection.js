@@ -92,7 +92,41 @@ function update_tx_blocks_singular(pushObject, tx_id, location_id) {
 	});
 };
 
-function update_tx_blocks_batch() {};
+/*
+*	UPDATE TX BLOCKS BATCH
+*
+*	This function usese paramaters to download all square transactions during a time 
+*	period and at a location, then save them to the database
+*/
+function update_tx_blocks_batch() {
+	//define local variables
+	//var txsPromise = tasks.download.txs.batch();
+	var batchLogPromise = firebase.read_most_recent('logs/tx_syncs');
+	var employeesListPromise = squareV1.employees.list();
+	var locationsListPromise = squareV1.locations.list();
+
+	//return asyn work
+	return new Promise(function(resolve, reject) {
+
+		//	1. DOWNLOAD THE REQUIRED RESOURCES
+		Promise.all([batchLogPromise, employeesListPromise, locationsListPromise])
+		.then(function success(allPromises) {
+
+			//	2. DOWNLOAD TXS AND UPDATE DATABASE
+			tasks.download.txs.batch(allPromises[0], allPromises[1], allPromises[2])
+			.then(function success(result) {
+				resolve(result);
+			}).catch(function error(ee) {
+				reject(ee);
+			});
+
+		}).catch(function error(e) {
+			reject(e);
+		});
+
+	});
+
+};
 
 //
 function square_Locations_list() {

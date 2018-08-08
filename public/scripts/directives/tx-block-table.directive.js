@@ -42,10 +42,10 @@ function txBlockTable() {
 		}, true);
 	}
 
-	txBlockTableController.$inject = ['$scope', '$log'];
+	txBlockTableController.$inject = ['$scope', '$log', 'dataService', '$q'];
 	
 	/* @ngInject */
-	function txBlockTableController($scope, $log) {
+	function txBlockTableController($scope, $log, dataService, $q) {
 		//define local variables
 		var vm = this;
 
@@ -92,9 +92,40 @@ function txBlockTable() {
 				}
 
 			});
-			
-			
 		};
+
+		//define view model functions
+		/*
+		*	WINDOW PARSE
+		*/
+		vm.windowParse = function(window, isStart) {
+			//define local varaibles
+			var windowSplit = window.split("/");
+			if(isStart) return windowSplit[0]
+			else return windowSplit[1];
+		};
+
+		/*
+		*	TX COUNT
+		*/
+		vm.countTxs = function(txs) {
+			//define local varaibles
+			var counter = 0;
+			Object.keys(txs).forEach(function() {
+				counter++;
+			});
+			return counter;
+		};
+
+		vm.calcGrossSales = function(txs) {
+			//define local variables
+			var txList = ['50E8Ae5FxUoRq1dwfGZgLQB', 'VmOqJuqH2G2IIx266JwQKQB', '9Gaj6n5AtFOv3ITKAaZKKQB'];
+			console.log('calculating the gross');
+
+
+		};
+		vm.calcTips = function(txs) {};
+		vm.calcNetSales = function(txs) {}
 
 		console.log('in tx-block table controller');
 	}
